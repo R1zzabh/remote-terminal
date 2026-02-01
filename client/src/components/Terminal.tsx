@@ -11,12 +11,13 @@ import { Dashboard } from "./Dashboard";
 import { clsx } from "clsx";
 import { FileExplorer } from "./FileExplorer";
 import { CodeEditor } from "./CodeEditor";
-import { ShortcutManager } from "./ShortcutManager";
 import { UserAdmin } from "./UserAdmin";
+import { ShortcutManager } from "./ShortcutManager";
 import { ThemeBuilder } from "./ThemeBuilder";
 import { MacroManager } from "./MacroManager";
+import { TouchToolbar } from "./TouchToolbar";
 import { decodeToken } from "../utils/auth";
-import { Plus, X, Monitor, RefreshCw, LayoutTemplate, Search, Files, Activity, Clock, ShieldCheck, Palette as PaletteIcon, Zap } from "lucide-react";
+import { Plus, X, Monitor, RefreshCw, LayoutTemplate, Search, Files, Activity, Clock, ShieldCheck, Palette as PaletteIcon, Zap, Menu } from "lucide-react";
 
 const THEMES = {
     dark: { background: "#050505", foreground: "#e0e0e0", cursor: "#00ff88" },
@@ -55,6 +56,10 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
     const [fontFamily, setFontFamily] = useState("'JetBrains Mono', 'Fira Code', monospace");
     const [showSidebar, setShowSidebar] = useState(true);
     const [sidebarView, setSidebarView] = useState<'files' | 'system' | 'users' | 'theme' | 'macros'>('files');
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [ctrlPressed, setCtrlPressed] = useState(false);
+    const [altPressed, setAltPressed] = useState(false);
+    const [touchStartX, setTouchStartX] = useState<number | null>(null);
     const [editingFilePath, setEditingFilePath] = useState<string | null>(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [showSearch, setShowSearch] = useState(false);
@@ -295,40 +300,64 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
     };
 
     return (
-        <div className="terminal-page" style={{ height: "100vh", display: "flex", flexDirection: "column", background: "#050505" }}>
+        <div
+            className="terminal-page"
+            style={{ height: "100vh", display: "flex", flexDirection: "column", background: "#050505", overflow: 'hidden' }}
+            onTouchStart={(e) => setTouchStartX(e.touches[0].clientX)}
+            onTouchEnd={(e) => {
+                if (touchStartX === null) return;
+                const touchEndX = e.changedTouches[0].clientX;
+                const deltaX = touchEndX - touchStartX;
+                if (deltaX > 100) setIsMobileMenuOpen(true); // Swipe Right
+                else if (deltaX < -100) setIsMobileMenuOpen(false); // Swipe Left
+                setTouchStartX(null);
+            }}
+        >
             <div className="tab-bar" style={{ display: 'flex', background: 'rgba(255,255,255,0.03)', borderBottom: '1px solid var(--glass-border)', padding: '4px 8px', gap: '4px', alignItems: 'center' }}>
-                <div style={{ padding: '0 12px', fontSize: '13px', fontWeight: 'bold', color: 'var(--accent-color)', letterSpacing: '1px' }}>RYO</div>
-                {sessions.map(s => (
-                    <div
-                        key={s.id}
-                        id={`tab-${s.id}`}
-                        className={clsx("tab-item", s.id === activeSessionId && "active")}
-                        onClick={() => setActiveSessionId(s.id)}
-                        style={{
-                            display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 12px',
-                            borderRadius: '6px', fontSize: '12px', cursor: 'pointer',
-                            background: s.id === activeSessionId ? 'rgba(255,255,255,0.1)' : 'transparent',
-                            color: s.id === activeSessionId ? '#fff' : 'var(--text-dim)',
-                            border: '1px solid',
-                            borderColor: s.id === activeSessionId ? 'var(--glass-border)' : 'transparent',
-                            transition: 'all 0.2s ease'
-                        }}
-                    >
-                        <Monitor size={14} />
-                        <span>Tab {s.id}</span>
-                        <X size={14} className="close-icon" onClick={(e) => { e.stopPropagation(); closeTab(s.id); }} />
+                <div className="terminal-header" style={{ height: 'var(--header-height)', display: 'flex', alignItems: 'center', background: 'var(--bg-secondary)', borderBottom: '1px solid var(--glass-border)', zIndex: 1001 }}>
+                    <div className="show-mobile" style={{ padding: '0 12px' }} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                        <Menu size={20} className="text-accent cursor-pointer" />
                     </div>
-                ))}
-                <button onClick={() => createNewTab()} className="tab-action-btn" title="New Tab"><Plus size={18} /></button>
-                <button onClick={() => splitActiveTab('vertical')} className="tab-action-btn" title="Split Vertical"><LayoutTemplate size={16} /></button>
-                <button onClick={() => restoreSessions()} className="tab-action-btn" title="Sync Sessions"><RefreshCw size={16} /></button>
-                <div style={{ flex: 1 }} />
-                <button onClick={onLogout} style={{ background: 'transparent', border: 'none', color: 'var(--text-dim)', fontSize: '11px', cursor: 'pointer', padding: '0 12px' }}>Logout</button>
-            </div>
+                    <div className="hidden-mobile" style={{ padding: '0 12px', fontSize: '13px', fontWeight: 'bold', color: 'var(--accent-color)', letterSpacing: '1px' }}>RYO</div>
+                    {sessions.map(s => (
+                        <div
+                            key={s.id}
+                            id={`tab-${s.id}`}
+                            className={clsx("tab-item", s.id === activeSessionId && "active")}
+                            onClick={() => setActiveSessionId(s.id)}
+                            style={{
+                                display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 12px',
+                                borderRadius: '6px', fontSize: '12px', cursor: 'pointer',
+                                background: s.id === activeSessionId ? 'rgba(255,255,255,0.1)' : 'transparent',
+                                color: s.id === activeSessionId ? '#fff' : 'var(--text-dim)',
+                                border: '1px solid',
+                                borderColor: s.id === activeSessionId ? 'var(--glass-border)' : 'transparent',
+                                transition: 'all 0.2s ease'
+                            }}
+                        >
+                            <Monitor size={14} />
+                            <span>Tab {s.id}</span>
+                            <X size={14} className="close-icon" onClick={(e) => { e.stopPropagation(); closeTab(s.id); }} />
+                        </div>
+                    ))}
+                    <button onClick={() => createNewTab()} className="tab-action-btn" title="New Tab"><Plus size={18} /></button>
+                    <button onClick={() => splitActiveTab('vertical')} className="tab-action-btn" title="Split Vertical"><LayoutTemplate size={16} /></button>
+                    <button onClick={() => restoreSessions()} className="tab-action-btn" title="Sync Sessions"><RefreshCw size={16} /></button>
+                    <div style={{ flex: 1 }} />
+                    <button onClick={onLogout} style={{ background: 'transparent', border: 'none', color: 'var(--text-dim)', fontSize: '11px', cursor: 'pointer', padding: '0 12px' }}>Logout</button>
+                </div>
 
-            <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
-                {showSidebar && (
-                    <div style={{ display: 'flex', borderRight: '1px solid var(--glass-border)' }}>
+                <div style={{ flex: 1, display: 'flex', overflow: 'hidden', position: 'relative' }}>
+                    {/* Mobile Overlay */}
+                    {isMobileMenuOpen && (
+                        <div
+                            className="show-mobile"
+                            style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 999 }}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        />
+                    )}
+
+                    <div className={clsx("sidebar-root", isMobileMenuOpen ? "mobile-drawer open" : "mobile-drawer", !showSidebar && "hidden")} style={{ display: 'flex', borderRight: '1px solid var(--glass-border)' }}>
                         <div style={{ width: '48px', background: 'rgba(0,0,0,0.2)', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '12px 0', gap: '20px', borderRight: '1px solid var(--glass-border)' }}>
                             <Files size={20} className={clsx("cursor-pointer", sidebarView === 'files' ? "text-accent" : "text-dim")} onClick={() => setSidebarView('files')} />
                             <Activity
@@ -370,9 +399,9 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                             <MacroManager token={token} />
                         )}
                     </div>
-                )}
+                </div>
 
-                <div style={{ flex: 1, position: 'relative', display: 'flex' }}>
+                <div style={{ flex: 1, position: 'relative', display: 'flex', flexDirection: 'column' }}>
                     <div style={{ flex: 1, position: 'relative', display: 'flex', flexDirection: activeSession?.layout === 'vertical' ? 'row' : 'column' }}>
                         {activeSession?.panes.map((pane, index) => (
                             <div
@@ -394,8 +423,27 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                         ))}
                     </div>
 
+                    <TouchToolbar
+                        onKeyPress={(key) => {
+                            if (key === 'ctrl') setCtrlPressed(!ctrlPressed);
+                            else if (key === 'alt') setAltPressed(!altPressed);
+                            else {
+                                if (!activeSession) return;
+                                let data = key;
+                                if (ctrlPressed) {
+                                    // Map common ctrl keys
+                                    const code = key.toUpperCase().charCodeAt(0);
+                                    if (code >= 65 && code <= 90) data = String.fromCharCode(code - 64);
+                                }
+                                activeSession.panes[0].ws.send(JSON.stringify({ type: "input", data }));
+                                if (ctrlPressed) setCtrlPressed(false);
+                                if (altPressed) setAltPressed(false);
+                            }
+                        }}
+                    />
+
                     {editingFilePath && (
-                        <div style={{ width: '40%', minWidth: '400px', borderLeft: '1px solid var(--glass-border)' }}>
+                        <div className="editor-pane">
                             <CodeEditor path={editingFilePath} token={token} theme={theme} onClose={() => setEditingFilePath(null)} />
                         </div>
                     )}
