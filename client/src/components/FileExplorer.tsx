@@ -5,6 +5,7 @@ import useSWR from "swr";
 interface FileExplorerProps {
     token: string;
     onSelectFolder: (path: string) => void;
+    onSelectFile: (path: string) => void;
 }
 
 interface FileItem {
@@ -17,7 +18,7 @@ interface FileItem {
 const fetcher = (url: string, token: string) =>
     fetch(url, { headers: { Authorization: `Bearer ${token}` } }).then(res => res.json());
 
-export function FileExplorer({ token, onSelectFolder }: FileExplorerProps) {
+export function FileExplorer({ token, onSelectFolder, onSelectFile }: FileExplorerProps) {
     const [currentPath, setCurrentPath] = useState<string>("");
     const { data: files, error, mutate, isLoading } = useSWR(
         token ? [`http://localhost:3001/api/files?path=${currentPath}`, token] : null,
@@ -61,7 +62,7 @@ export function FileExplorer({ token, onSelectFolder }: FileExplorerProps) {
                         <div
                             key={file.path}
                             className="explorer-item"
-                            onClick={() => file.isDirectory ? setCurrentPath(file.path) : null}
+                            onClick={() => file.isDirectory ? setCurrentPath(file.path) : onSelectFile(file.path)}
                             onDoubleClick={() => file.isDirectory && onSelectFolder(file.path)}
                             style={{
                                 display: 'flex', alignItems: 'center', gap: '8px', padding: '4px 8px',

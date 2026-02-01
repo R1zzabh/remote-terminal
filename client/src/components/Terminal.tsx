@@ -7,6 +7,7 @@ import { CommandPalette } from "./CommandPalette";
 import { Plus, X, Monitor, RefreshCw } from "lucide-react";
 import { clsx } from "clsx";
 import { FileExplorer } from "./FileExplorer";
+import { CodeEditor } from "./CodeEditor";
 
 const THEMES = {
     dark: { background: "#050505", foreground: "#e0e0e0", cursor: "#00ff88" },
@@ -38,6 +39,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
     const [theme, setTheme] = useState<keyof typeof THEMES>("dark");
     const [fontFamily, setFontFamily] = useState("'JetBrains Mono', 'Fira Code', monospace");
     const [showSidebar, setShowSidebar] = useState(true);
+    const [editingFilePath, setEditingFilePath] = useState<string | null>(null);
 
     const activeSession = sessions.find(s => s.id === activeSessionId);
 
@@ -209,29 +211,45 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
             </div>
 
             <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
-                {showSidebar && <FileExplorer token={token} onSelectFolder={(path) => {
-                    activeSession?.ws.send(JSON.stringify({ type: "input", data: `cd "${path}"\r` }));
-                }} />}
+                {showSidebar && <FileExplorer
+                    token={token}
+                    onSelectFolder={(path) => {
+                        activeSession?.ws.send(JSON.stringify({ type: "input", data: `cd "${path}"\r` }));
+                    }}
+                    onSelectFile={(path) => setEditingFilePath(path)}
+                />}
 
-                <div style={{ flex: 1, position: 'relative' }}>
-                    {sessions.map(s => (
-                        <div
-                            key={s.id}
-                            ref={el => { if (el) terminalContainersRef.current.set(s.id, el); else terminalContainersRef.current.delete(s.id); }}
-                            className="terminal-wrapper"
-                            style={{
-                                position: 'absolute', inset: 0,
-                                visibility: s.id === activeSessionId ? 'visible' : 'hidden',
-                                zIndex: s.id === activeSessionId ? 1 : 0
-                            }}
-                        >
-                            {s.status !== 'connected' && (
-                                <div style={{ position: 'absolute', top: 10, right: 20, zIndex: 10, fontSize: '10px', color: 'var(--accent-color)' }}>
-                                    {s.status.toUpperCase()}...
-                                </div>
-                            )}
+                <div style={{ flex: 1, position: 'relative', display: 'flex' }}>
+                    <div style={{ flex: 1, position: 'relative' }}>
+                        {sessions.map(s => (
+                            <div
+                                key={s.id}
+                                ref={el => { if (el) terminalContainersRef.current.set(s.id, el); else terminalContainersRef.current.delete(s.id); }}
+                                className="terminal-wrapper"
+                                style={{
+                                    position: 'absolute', inset: 0,
+                                    visibility: s.id === activeSessionId ? 'visible' : 'hidden',
+                                    zIndex: s.id === activeSessionId ? 1 : 0
+                                }}
+                            >
+                                {s.status !== 'connected' && (
+                                    <div style={{ position: 'absolute', top: 10, right: 20, zIndex: 10, fontSize: '10px', color: 'var(--accent-color)' }}>
+                                        {s.status.toUpperCase()}...
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+
+                    {editingFilePath && (
+                        <div style={{ width: '40%', minWidth: '400px', borderLeft: '1px solid var(--glass-border)' }}>
+                            <CodeEditor
+                                path={editingFilePath}
+                                token={token}
+                                onClose={() => setEditingFilePath(null)}
+                            />
                         </div>
-                    ))}
+                    )}
                 </div>
             </div>
 
