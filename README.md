@@ -45,4 +45,4 @@ A premium, high-performance web-based terminal emulator with real shell executio
 - **Styling**: Vanilla CSS with Glassmorphism and @keyframes.
 
 ---
-Built with ❤️ for a professional terminal experience.
+

@@ -1,3 +1,5 @@
+import { WebSocket } from "ws";
+import * as pty from "node-pty";
 
 export interface User {
     username: string;
@@ -17,6 +19,7 @@ export interface WSMessage {
     rows?: number;
     token?: string;
     command?: string;
+    sshHost?: string;
 }
 
 export interface WSData {
@@ -25,17 +28,13 @@ export interface WSData {
     authenticated: boolean;
 }
 
-// Mock interface for the socket with attached data
-export interface AuthenticatedWebSocket {
-    send(data: string): void;
-    close(code?: number, reason?: string): void;
-    terminate(): void;
+export interface AuthenticatedWebSocket extends WebSocket {
     data: WSData;
 }
 
 export interface PTYSession {
     id: string;
-    pty: any; // Mock or node-pty
+    pty: pty.IPty;
     username: string;
     createdAt: Date;
     lastActivity: Date;
@@ -46,4 +45,3 @@ export interface TmuxSession {
     windows: number;
     attached: boolean;
 }
-

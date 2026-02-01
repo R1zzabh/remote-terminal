@@ -1,0 +1,927 @@
+{"timestamp":"2026-02-01T02:37:34.710Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}
+{"timestamp":"2026-02-01T02:37:35.843Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:35.861Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913455855"}
+{"timestamp":"2026-02-01T02:37:35.879Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:35.896Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:35.914Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913455911"}
+{"timestamp":"2026-02-01T02:37:35.918Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913455916"}
+{"timestamp":"2026-02-01T02:37:35.934Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:35.952Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913455950"}
+{"timestamp":"2026-02-01T02:37:45.406Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:45.422Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913465419"}
+{"timestamp":"2026-02-01T02:37:45.432Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:45.447Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913465445"}
+{"timestamp":"2026-02-01T02:37:45.449Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:45.457Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913465455"}
+{"timestamp":"2026-02-01T02:37:45.464Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:45.469Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913465467"}
+{"timestamp":"2026-02-01T02:37:45.479Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:45.484Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913465481"}
+{"timestamp":"2026-02-01T02:37:47.180Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:47.192Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913467189"}
+{"timestamp":"2026-02-01T02:37:47.193Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:47.201Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913467200"}
+{"timestamp":"2026-02-01T02:37:47.210Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:47.214Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913467212"}
+{"timestamp":"2026-02-01T02:37:47.224Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:47.227Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913467226"}
+{"timestamp":"2026-02-01T02:37:47.237Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:47.241Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913467239"}
+{"timestamp":"2026-02-01T02:37:47.250Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:47.255Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913467253"}
+{"timestamp":"2026-02-01T02:37:47.267Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:47.271Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913467269"}
+{"timestamp":"2026-02-01T02:37:47.281Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:47.285Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913467283"}
+{"timestamp":"2026-02-01T02:37:47.295Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:47.301Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913467298"}
+{"timestamp":"2026-02-01T02:37:48.544Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:48.558Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:48.565Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913468562"}
+{"timestamp":"2026-02-01T02:37:48.576Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913468574"}
+{"timestamp":"2026-02-01T02:37:48.577Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:48.587Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913468585"}
+{"timestamp":"2026-02-01T02:37:48.590Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:48.599Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913468597"}
+{"timestamp":"2026-02-01T02:37:48.607Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:48.612Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913468609"}
+{"timestamp":"2026-02-01T02:37:48.645Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:48.649Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913468647"}
+{"timestamp":"2026-02-01T02:37:48.658Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:48.662Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913468660"}
+{"timestamp":"2026-02-01T02:37:48.675Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:48.679Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913468677"}
+{"timestamp":"2026-02-01T02:37:48.690Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:48.695Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913468693"}
+{"timestamp":"2026-02-01T02:37:48.704Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:48.709Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913468707"}
+{"timestamp":"2026-02-01T02:37:48.721Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:48.725Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913468723"}
+{"timestamp":"2026-02-01T02:37:48.735Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:48.739Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913468737"}
+{"timestamp":"2026-02-01T02:37:48.752Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:48.756Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913468754"}
+{"timestamp":"2026-02-01T02:37:48.769Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:48.773Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913468771"}
+{"timestamp":"2026-02-01T02:37:48.819Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:48.822Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913468820"}
+{"timestamp":"2026-02-01T02:37:49.507Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:49.510Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913469509"}
+{"timestamp":"2026-02-01T02:37:50.257Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:50.272Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:50.286Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913470283"}
+{"timestamp":"2026-02-01T02:37:50.287Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:50.300Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913470298"}
+{"timestamp":"2026-02-01T02:37:50.301Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:50.315Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913470314"}
+{"timestamp":"2026-02-01T02:37:50.316Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:50.329Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913470327"}
+{"timestamp":"2026-02-01T02:37:50.331Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:50.346Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913470344"}
+{"timestamp":"2026-02-01T02:37:50.347Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:50.360Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:50.365Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913470362"}
+{"timestamp":"2026-02-01T02:37:50.378Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:50.382Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913470380"}
+{"timestamp":"2026-02-01T02:37:50.385Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913470383"}
+{"timestamp":"2026-02-01T02:37:50.396Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913470394"}
+{"timestamp":"2026-02-01T02:37:50.400Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:50.406Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913470404"}
+{"timestamp":"2026-02-01T02:37:50.457Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:50.461Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913470459"}
+{"timestamp":"2026-02-01T02:37:50.515Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:50.520Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913470517"}
+{"timestamp":"2026-02-01T02:37:50.847Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:50.850Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913470848"}
+{"timestamp":"2026-02-01T02:37:51.035Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:51.038Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913471037"}
+{"timestamp":"2026-02-01T02:37:51.325Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:51.328Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913471327"}
+{"timestamp":"2026-02-01T02:37:51.343Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913470283"}
+{"timestamp":"2026-02-01T02:37:51.348Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913455855"}
+{"timestamp":"2026-02-01T02:37:51.427Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:51.430Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913471428"}
+{"timestamp":"2026-02-01T02:37:51.555Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913470298"}
+{"timestamp":"2026-02-01T02:37:51.561Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913455911"}
+{"timestamp":"2026-02-01T02:37:51.613Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:51.616Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913471614"}
+{"timestamp":"2026-02-01T02:37:51.848Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:51.852Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913471850"}
+{"timestamp":"2026-02-01T02:37:51.892Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:51.896Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913471894"}
+{"timestamp":"2026-02-01T02:37:51.906Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:51.909Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913471907"}
+{"timestamp":"2026-02-01T02:37:51.936Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913455916"}
+{"timestamp":"2026-02-01T02:37:52.189Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:52.192Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913472191"}
+{"timestamp":"2026-02-01T02:37:52.472Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913455950"}
+{"timestamp":"2026-02-01T02:37:52.532Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:52.537Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913472534"}
+{"timestamp":"2026-02-01T02:37:52.553Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:52.557Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913472555"}
+{"timestamp":"2026-02-01T02:37:52.567Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:52.574Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913472572"}
+{"timestamp":"2026-02-01T02:37:52.673Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913465419"}
+{"timestamp":"2026-02-01T02:37:52.838Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:52.842Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913472840"}
+{"timestamp":"2026-02-01T02:37:53.141Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:53.144Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913465445"}
+{"timestamp":"2026-02-01T02:37:53.155Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913473153"}
+{"timestamp":"2026-02-01T02:37:53.220Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:53.223Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913473221"}
+{"timestamp":"2026-02-01T02:37:53.239Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:53.242Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913473240"}
+{"timestamp":"2026-02-01T02:37:53.277Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:53.280Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913473278"}
+{"timestamp":"2026-02-01T02:37:53.337Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913465455"}
+{"timestamp":"2026-02-01T02:37:53.346Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:53.353Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913473351"}
+{"timestamp":"2026-02-01T02:37:53.358Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:53.362Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913473360"}
+{"timestamp":"2026-02-01T02:37:53.445Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:53.448Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913473447"}
+{"timestamp":"2026-02-01T02:37:53.520Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913465467"}
+{"timestamp":"2026-02-01T02:37:53.534Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:53.570Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913473568"}
+{"timestamp":"2026-02-01T02:37:53.682Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913473351"}
+{"timestamp":"2026-02-01T02:37:53.687Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913465481"}
+{"timestamp":"2026-02-01T02:37:53.702Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:53.717Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:53.730Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913473728"}
+{"timestamp":"2026-02-01T02:37:53.735Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913473733"}
+{"timestamp":"2026-02-01T02:37:53.735Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:53.743Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913473740"}
+{"timestamp":"2026-02-01T02:37:53.789Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:53.793Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913473791"}
+{"timestamp":"2026-02-01T02:37:53.818Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:53.822Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913473819"}
+{"timestamp":"2026-02-01T02:37:53.856Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913467189"}
+{"timestamp":"2026-02-01T02:37:53.884Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:53.887Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913473885"}
+{"timestamp":"2026-02-01T02:37:54.007Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:54.012Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913474009"}
+{"timestamp":"2026-02-01T02:37:54.030Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913467200"}
+{"timestamp":"2026-02-01T02:37:54.171Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913473733"}
+{"timestamp":"2026-02-01T02:37:54.176Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913467212"}
+{"timestamp":"2026-02-01T02:37:54.177Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:54.190Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913474188"}
+{"timestamp":"2026-02-01T02:37:54.193Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:54.196Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913474194"}
+{"timestamp":"2026-02-01T02:37:54.228Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:54.232Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913474230"}
+{"timestamp":"2026-02-01T02:37:54.335Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:54.350Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913474347"}
+{"timestamp":"2026-02-01T02:37:54.425Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:54.428Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913474427"}
+{"timestamp":"2026-02-01T02:37:54.457Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:54.461Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913474459"}
+{"timestamp":"2026-02-01T02:37:54.522Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:54.535Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913474532"}
+{"timestamp":"2026-02-01T02:37:54.611Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:54.614Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913474612"}
+{"timestamp":"2026-02-01T02:37:54.683Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:54.759Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:54.783Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:54.797Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:54.830Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:54.845Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:54.938Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:54.952Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:54.979Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913474975"}
+{"timestamp":"2026-02-01T02:37:54.984Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913474981"}
+{"timestamp":"2026-02-01T02:37:54.989Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913474985"}
+{"timestamp":"2026-02-01T02:37:54.993Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913474990"}
+{"timestamp":"2026-02-01T02:37:54.997Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913474995"}
+{"timestamp":"2026-02-01T02:37:55.002Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913474999"}
+{"timestamp":"2026-02-01T02:37:55.008Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913475004"}
+{"timestamp":"2026-02-01T02:37:55.012Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913475009"}
+{"timestamp":"2026-02-01T02:37:55.014Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.028Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.133Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913467226"}
+{"timestamp":"2026-02-01T02:37:55.362Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.392Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.433Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.448Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.518Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.535Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.539Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913475537"}
+{"timestamp":"2026-02-01T02:37:55.542Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913475540"}
+{"timestamp":"2026-02-01T02:37:55.555Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.563Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913475561"}
+{"timestamp":"2026-02-01T02:37:55.566Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913475564"}
+{"timestamp":"2026-02-01T02:37:55.569Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913475567"}
+{"timestamp":"2026-02-01T02:37:55.573Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913475570"}
+{"timestamp":"2026-02-01T02:37:55.576Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913475574"}
+{"timestamp":"2026-02-01T02:37:55.578Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.589Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913475586"}
+{"timestamp":"2026-02-01T02:37:55.592Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.609Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.639Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.648Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913475644"}
+{"timestamp":"2026-02-01T02:37:55.655Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.677Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.702Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.727Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.740Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.754Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.767Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.795Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913467239"}
+{"timestamp":"2026-02-01T02:37:55.807Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.823Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.838Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.858Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.891Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.928Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:55.949Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913467253"}
+{"timestamp":"2026-02-01T02:37:55.986Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.001Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.022Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.035Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.052Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.066Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.080Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913467269"}
+{"timestamp":"2026-02-01T02:37:56.093Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.127Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.142Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.158Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.179Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.192Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.206Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.220Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.232Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476230"}
+{"timestamp":"2026-02-01T02:37:56.234Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.248Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.249Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913467283"}
+{"timestamp":"2026-02-01T02:37:56.262Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476260"}
+{"timestamp":"2026-02-01T02:37:56.265Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476263"}
+{"timestamp":"2026-02-01T02:37:56.271Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476268"}
+{"timestamp":"2026-02-01T02:37:56.274Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476272"}
+{"timestamp":"2026-02-01T02:37:56.277Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476275"}
+{"timestamp":"2026-02-01T02:37:56.282Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476279"}
+{"timestamp":"2026-02-01T02:37:56.285Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476283"}
+{"timestamp":"2026-02-01T02:37:56.289Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476287"}
+{"timestamp":"2026-02-01T02:37:56.294Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476291"}
+{"timestamp":"2026-02-01T02:37:56.299Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476295"}
+{"timestamp":"2026-02-01T02:37:56.304Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476300"}
+{"timestamp":"2026-02-01T02:37:56.308Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476306"}
+{"timestamp":"2026-02-01T02:37:56.313Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476310"}
+{"timestamp":"2026-02-01T02:37:56.318Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476315"}
+{"timestamp":"2026-02-01T02:37:56.323Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476320"}
+{"timestamp":"2026-02-01T02:37:56.328Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476325"}
+{"timestamp":"2026-02-01T02:37:56.334Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476331"}
+{"timestamp":"2026-02-01T02:37:56.339Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476336"}
+{"timestamp":"2026-02-01T02:37:56.346Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476342"}
+{"timestamp":"2026-02-01T02:37:56.350Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476347"}
+{"timestamp":"2026-02-01T02:37:56.355Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476352"}
+{"timestamp":"2026-02-01T02:37:56.360Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476357"}
+{"timestamp":"2026-02-01T02:37:56.366Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476362"}
+{"timestamp":"2026-02-01T02:37:56.370Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476367"}
+{"timestamp":"2026-02-01T02:37:56.375Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476372"}
+{"timestamp":"2026-02-01T02:37:56.399Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476377"}
+{"timestamp":"2026-02-01T02:37:56.404Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476401"}
+{"timestamp":"2026-02-01T02:37:56.410Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476406"}
+{"timestamp":"2026-02-01T02:37:56.415Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476412"}
+{"timestamp":"2026-02-01T02:37:56.421Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476418"}
+{"timestamp":"2026-02-01T02:37:56.427Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476424"}
+{"timestamp":"2026-02-01T02:37:56.429Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.438Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476433"}
+{"timestamp":"2026-02-01T02:37:56.445Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476441"}
+{"timestamp":"2026-02-01T02:37:56.462Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.475Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476471"}
+{"timestamp":"2026-02-01T02:37:56.486Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.491Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476488"}
+{"timestamp":"2026-02-01T02:37:56.499Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913467298"}
+{"timestamp":"2026-02-01T02:37:56.500Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.518Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476515"}
+{"timestamp":"2026-02-01T02:37:56.520Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.532Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476529"}
+{"timestamp":"2026-02-01T02:37:56.537Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.547Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476543"}
+{"timestamp":"2026-02-01T02:37:56.551Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.567Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.584Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.622Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.630Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476627"}
+{"timestamp":"2026-02-01T02:37:56.635Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476632"}
+{"timestamp":"2026-02-01T02:37:56.643Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476638"}
+{"timestamp":"2026-02-01T02:37:56.649Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913476645"}
+{"timestamp":"2026-02-01T02:37:56.651Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.668Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.681Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.696Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.711Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.733Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.749Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.766Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.781Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.803Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.818Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.832Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.847Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.860Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.874Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.880Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913468562"}
+{"timestamp":"2026-02-01T02:37:56.889Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.904Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.922Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.937Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.950Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.965Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.979Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:56.992Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.006Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.020Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.025Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913468574"}
+{"timestamp":"2026-02-01T02:37:57.034Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.050Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.068Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.087Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.116Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.131Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.144Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.159Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.173Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.187Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.190Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913468585"}
+{"timestamp":"2026-02-01T02:37:57.201Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.216Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.229Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.242Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.257Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.275Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.288Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.301Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.315Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.328Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.345Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913468597"}
+{"timestamp":"2026-02-01T02:37:57.372Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.456Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.545Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.591Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.623Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.638Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.653Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.676Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.692Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.707Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.763Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.785Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.799Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.842Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.862Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.888Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.908Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.921Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.938Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.957Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.972Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:57.987Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.023Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.053Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.070Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.084Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.090Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478088"}
+{"timestamp":"2026-02-01T02:37:58.104Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478101"}
+{"timestamp":"2026-02-01T02:37:58.106Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.157Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478154"}
+{"timestamp":"2026-02-01T02:37:58.162Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478159"}
+{"timestamp":"2026-02-01T02:37:58.166Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478163"}
+{"timestamp":"2026-02-01T02:37:58.173Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478170"}
+{"timestamp":"2026-02-01T02:37:58.178Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478175"}
+{"timestamp":"2026-02-01T02:37:58.184Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478180"}
+{"timestamp":"2026-02-01T02:37:58.192Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478188"}
+{"timestamp":"2026-02-01T02:37:58.198Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478194"}
+{"timestamp":"2026-02-01T02:37:58.203Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478200"}
+{"timestamp":"2026-02-01T02:37:58.209Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478205"}
+{"timestamp":"2026-02-01T02:37:58.215Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478211"}
+{"timestamp":"2026-02-01T02:37:58.221Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478217"}
+{"timestamp":"2026-02-01T02:37:58.228Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478223"}
+{"timestamp":"2026-02-01T02:37:58.235Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478232"}
+{"timestamp":"2026-02-01T02:37:58.241Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478237"}
+{"timestamp":"2026-02-01T02:37:58.247Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478242"}
+{"timestamp":"2026-02-01T02:37:58.254Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478250"}
+{"timestamp":"2026-02-01T02:37:58.259Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478256"}
+{"timestamp":"2026-02-01T02:37:58.265Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478261"}
+{"timestamp":"2026-02-01T02:37:58.271Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478267"}
+{"timestamp":"2026-02-01T02:37:58.277Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478274"}
+{"timestamp":"2026-02-01T02:37:58.282Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478279"}
+{"timestamp":"2026-02-01T02:37:58.288Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478284"}
+{"timestamp":"2026-02-01T02:37:58.297Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478293"}
+{"timestamp":"2026-02-01T02:37:58.303Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478299"}
+{"timestamp":"2026-02-01T02:37:58.309Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478305"}
+{"timestamp":"2026-02-01T02:37:58.316Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478312"}
+{"timestamp":"2026-02-01T02:37:58.326Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478321"}
+{"timestamp":"2026-02-01T02:37:58.332Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478328"}
+{"timestamp":"2026-02-01T02:37:58.338Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478334"}
+{"timestamp":"2026-02-01T02:37:58.344Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478340"}
+{"timestamp":"2026-02-01T02:37:58.352Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478348"}
+{"timestamp":"2026-02-01T02:37:58.358Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478355"}
+{"timestamp":"2026-02-01T02:37:58.359Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.366Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478362"}
+{"timestamp":"2026-02-01T02:37:58.376Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478370"}
+{"timestamp":"2026-02-01T02:37:58.382Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478379"}
+{"timestamp":"2026-02-01T02:37:58.391Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478386"}
+{"timestamp":"2026-02-01T02:37:58.398Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478393"}
+{"timestamp":"2026-02-01T02:37:58.403Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478400"}
+{"timestamp":"2026-02-01T02:37:58.409Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478406"}
+{"timestamp":"2026-02-01T02:37:58.415Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478411"}
+{"timestamp":"2026-02-01T02:37:58.420Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478417"}
+{"timestamp":"2026-02-01T02:37:58.427Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478423"}
+{"timestamp":"2026-02-01T02:37:58.433Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478429"}
+{"timestamp":"2026-02-01T02:37:58.439Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478435"}
+{"timestamp":"2026-02-01T02:37:58.445Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478441"}
+{"timestamp":"2026-02-01T02:37:58.451Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478447"}
+{"timestamp":"2026-02-01T02:37:58.457Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478453"}
+{"timestamp":"2026-02-01T02:37:58.468Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478463"}
+{"timestamp":"2026-02-01T02:37:58.475Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478471"}
+{"timestamp":"2026-02-01T02:37:58.487Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478480"}
+{"timestamp":"2026-02-01T02:37:58.497Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478490"}
+{"timestamp":"2026-02-01T02:37:58.504Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478499"}
+{"timestamp":"2026-02-01T02:37:58.511Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478506"}
+{"timestamp":"2026-02-01T02:37:58.517Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478513"}
+{"timestamp":"2026-02-01T02:37:58.527Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478520"}
+{"timestamp":"2026-02-01T02:37:58.533Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478530"}
+{"timestamp":"2026-02-01T02:37:58.541Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478536"}
+{"timestamp":"2026-02-01T02:37:58.546Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478543"}
+{"timestamp":"2026-02-01T02:37:58.552Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478548"}
+{"timestamp":"2026-02-01T02:37:58.559Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478554"}
+{"timestamp":"2026-02-01T02:37:58.566Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478561"}
+{"timestamp":"2026-02-01T02:37:58.573Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478568"}
+{"timestamp":"2026-02-01T02:37:58.581Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478576"}
+{"timestamp":"2026-02-01T02:37:58.587Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478583"}
+{"timestamp":"2026-02-01T02:37:58.593Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478589"}
+{"timestamp":"2026-02-01T02:37:58.602Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478598"}
+{"timestamp":"2026-02-01T02:37:58.609Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478604"}
+{"timestamp":"2026-02-01T02:37:58.616Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478611"}
+{"timestamp":"2026-02-01T02:37:58.625Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913478618"}
+{"timestamp":"2026-02-01T02:37:58.633Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.657Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.673Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.689Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.705Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.720Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.742Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.760Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.777Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.794Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.811Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.832Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.847Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.861Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.876Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.890Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.904Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.926Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.944Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.958Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.972Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:58.992Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.006Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.023Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.038Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.053Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.067Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.081Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.103Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.122Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.135Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.150Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.166Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.182Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.195Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.213Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.233Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.251Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.267Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.285Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.302Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.315Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.330Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.343Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.366Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.382Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.395Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.409Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.467Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.503Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.523Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.538Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.553Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.569Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.584Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.647Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.670Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:37:59.965Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913479952"}
+{"timestamp":"2026-02-01T02:37:59.976Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913479973"}
+{"timestamp":"2026-02-01T02:37:59.981Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913479978"}
+{"timestamp":"2026-02-01T02:37:59.985Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913479982"}
+{"timestamp":"2026-02-01T02:37:59.990Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913479987"}
+{"timestamp":"2026-02-01T02:37:59.994Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913479991"}
+{"timestamp":"2026-02-01T02:38:00.001Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913479997"}
+{"timestamp":"2026-02-01T02:38:00.006Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480002"}
+{"timestamp":"2026-02-01T02:38:00.012Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480008"}
+{"timestamp":"2026-02-01T02:38:00.017Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480014"}
+{"timestamp":"2026-02-01T02:38:00.023Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480019"}
+{"timestamp":"2026-02-01T02:38:00.029Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480025"}
+{"timestamp":"2026-02-01T02:38:00.035Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480031"}
+{"timestamp":"2026-02-01T02:38:00.040Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480036"}
+{"timestamp":"2026-02-01T02:38:00.046Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480042"}
+{"timestamp":"2026-02-01T02:38:00.051Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480048"}
+{"timestamp":"2026-02-01T02:38:00.057Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480053"}
+{"timestamp":"2026-02-01T02:38:00.062Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480059"}
+{"timestamp":"2026-02-01T02:38:00.068Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480064"}
+{"timestamp":"2026-02-01T02:38:00.073Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480069"}
+{"timestamp":"2026-02-01T02:38:00.079Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480075"}
+{"timestamp":"2026-02-01T02:38:00.085Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480081"}
+{"timestamp":"2026-02-01T02:38:00.090Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480086"}
+{"timestamp":"2026-02-01T02:38:00.095Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480092"}
+{"timestamp":"2026-02-01T02:38:00.101Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480097"}
+{"timestamp":"2026-02-01T02:38:00.106Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480103"}
+{"timestamp":"2026-02-01T02:38:00.111Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480108"}
+{"timestamp":"2026-02-01T02:38:00.118Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480113"}
+{"timestamp":"2026-02-01T02:38:00.124Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480120"}
+{"timestamp":"2026-02-01T02:38:00.130Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480125"}
+{"timestamp":"2026-02-01T02:38:00.136Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480132"}
+{"timestamp":"2026-02-01T02:38:00.141Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480137"}
+{"timestamp":"2026-02-01T02:38:00.147Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480143"}
+{"timestamp":"2026-02-01T02:38:00.153Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480149"}
+{"timestamp":"2026-02-01T02:38:00.159Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480155"}
+{"timestamp":"2026-02-01T02:38:00.167Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480161"}
+{"timestamp":"2026-02-01T02:38:00.174Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480169"}
+{"timestamp":"2026-02-01T02:38:00.181Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480176"}
+{"timestamp":"2026-02-01T02:38:00.208Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480183"}
+{"timestamp":"2026-02-01T02:38:00.213Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480210"}
+{"timestamp":"2026-02-01T02:38:00.219Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480215"}
+{"timestamp":"2026-02-01T02:38:00.225Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480221"}
+{"timestamp":"2026-02-01T02:38:00.230Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480227"}
+{"timestamp":"2026-02-01T02:38:00.236Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480232"}
+{"timestamp":"2026-02-01T02:38:00.243Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480238"}
+{"timestamp":"2026-02-01T02:38:00.248Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480245"}
+{"timestamp":"2026-02-01T02:38:00.255Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480250"}
+{"timestamp":"2026-02-01T02:38:00.260Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480257"}
+{"timestamp":"2026-02-01T02:38:00.266Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480262"}
+{"timestamp":"2026-02-01T02:38:00.272Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480268"}
+{"timestamp":"2026-02-01T02:38:00.279Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480275"}
+{"timestamp":"2026-02-01T02:38:00.285Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480280"}
+{"timestamp":"2026-02-01T02:38:00.292Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480287"}
+{"timestamp":"2026-02-01T02:38:00.298Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480294"}
+{"timestamp":"2026-02-01T02:38:00.303Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480300"}
+{"timestamp":"2026-02-01T02:38:00.309Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480305"}
+{"timestamp":"2026-02-01T02:38:00.316Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480311"}
+{"timestamp":"2026-02-01T02:38:00.322Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480318"}
+{"timestamp":"2026-02-01T02:38:00.374Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:00.379Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913480376"}
+{"timestamp":"2026-02-01T02:38:01.014Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:01.019Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913481016"}
+{"timestamp":"2026-02-01T02:38:01.042Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:01.051Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913481048"}
+{"timestamp":"2026-02-01T02:38:01.105Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:01.109Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913481107"}
+{"timestamp":"2026-02-01T02:38:01.475Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:01.480Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913481477"}
+{"timestamp":"2026-02-01T02:38:01.506Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913481048"}
+{"timestamp":"2026-02-01T02:38:01.528Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913468723"}
+{"timestamp":"2026-02-01T02:38:01.696Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:01.722Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:01.857Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913468737"}
+{"timestamp":"2026-02-01T02:38:02.033Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913468754"}
+{"timestamp":"2026-02-01T02:38:02.174Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:02.190Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913468771"}
+{"timestamp":"2026-02-01T02:38:02.363Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913468820"}
+{"timestamp":"2026-02-01T02:38:02.479Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:02.508Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913469509"}
+{"timestamp":"2026-02-01T02:38:02.648Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913470314"}
+{"timestamp":"2026-02-01T02:38:02.829Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913470327"}
+{"timestamp":"2026-02-01T02:38:03.196Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:04.231Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913470344"}
+{"timestamp":"2026-02-01T02:38:05.414Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913470517"}
+{"timestamp":"2026-02-01T02:38:06.463Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913470848"}
+{"timestamp":"2026-02-01T02:38:06.647Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913471037"}
+{"timestamp":"2026-02-01T02:38:06.815Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913471327"}
+{"timestamp":"2026-02-01T02:38:06.976Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913471428"}
+{"timestamp":"2026-02-01T02:38:07.185Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913471614"}
+{"timestamp":"2026-02-01T02:38:07.319Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913471850"}
+{"timestamp":"2026-02-01T02:38:07.832Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913487827"}
+{"timestamp":"2026-02-01T02:38:07.837Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913487834"}
+{"timestamp":"2026-02-01T02:38:07.882Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913487878"}
+{"timestamp":"2026-02-01T02:38:07.928Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913487925"}
+{"timestamp":"2026-02-01T02:38:07.998Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913487994"}
+{"timestamp":"2026-02-01T02:38:08.228Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:08.244Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:08.258Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:08.281Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:08.295Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:08.309Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:08.323Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:08.344Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:08.363Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:08.378Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:08.395Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:08.410Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:08.432Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:08.471Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:08.490Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:10.099Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913468609"}
+{"timestamp":"2026-02-01T02:38:10.100Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913468693"}
+{"timestamp":"2026-02-01T02:38:10.101Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913468677"}
+{"timestamp":"2026-02-01T02:38:10.101Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913468647"}
+{"timestamp":"2026-02-01T02:38:10.101Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913468660"}
+{"timestamp":"2026-02-01T02:38:10.102Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913470380"}
+{"timestamp":"2026-02-01T02:38:10.103Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913470362"}
+{"timestamp":"2026-02-01T02:38:10.103Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913473360"}
+{"timestamp":"2026-02-01T02:38:10.103Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913468707"}
+{"timestamp":"2026-02-01T02:38:10.105Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913473568"}
+{"timestamp":"2026-02-01T02:38:10.105Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913471894"}
+{"timestamp":"2026-02-01T02:38:10.105Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913472191"}
+{"timestamp":"2026-02-01T02:38:10.106Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913471907"}
+{"timestamp":"2026-02-01T02:38:10.106Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913474194"}
+{"timestamp":"2026-02-01T02:38:10.106Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913474009"}
+{"timestamp":"2026-02-01T02:38:10.106Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913470459"}
+{"timestamp":"2026-02-01T02:38:10.106Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913470404"}
+{"timestamp":"2026-02-01T02:38:10.107Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913470394"}
+{"timestamp":"2026-02-01T02:38:10.107Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913470383"}
+{"timestamp":"2026-02-01T02:38:10.112Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913472534"}
+{"timestamp":"2026-02-01T02:38:10.113Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913473728"}
+{"timestamp":"2026-02-01T02:38:10.114Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913475540"}
+{"timestamp":"2026-02-01T02:38:10.114Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913474612"}
+{"timestamp":"2026-02-01T02:38:10.114Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913473740"}
+{"timestamp":"2026-02-01T02:38:10.114Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913472555"}
+{"timestamp":"2026-02-01T02:38:10.115Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913473240"}
+{"timestamp":"2026-02-01T02:38:10.123Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913475564"}
+{"timestamp":"2026-02-01T02:38:10.124Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476515"}
+{"timestamp":"2026-02-01T02:38:10.124Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476441"}
+{"timestamp":"2026-02-01T02:38:10.124Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913474990"}
+{"timestamp":"2026-02-01T02:38:10.124Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478088"}
+{"timestamp":"2026-02-01T02:38:10.124Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476279"}
+{"timestamp":"2026-02-01T02:38:10.124Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913474427"}
+{"timestamp":"2026-02-01T02:38:10.125Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476406"}
+{"timestamp":"2026-02-01T02:38:10.127Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478267"}
+{"timestamp":"2026-02-01T02:38:10.128Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913474459"}
+{"timestamp":"2026-02-01T02:38:10.128Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913474230"}
+{"timestamp":"2026-02-01T02:38:10.128Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913474347"}
+{"timestamp":"2026-02-01T02:38:10.128Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913474995"}
+{"timestamp":"2026-02-01T02:38:10.129Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913472572"}
+{"timestamp":"2026-02-01T02:38:10.129Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913474985"}
+{"timestamp":"2026-02-01T02:38:10.130Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913474981"}
+{"timestamp":"2026-02-01T02:38:10.130Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913473221"}
+{"timestamp":"2026-02-01T02:38:10.142Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480075"}
+{"timestamp":"2026-02-01T02:38:10.142Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913479991"}
+{"timestamp":"2026-02-01T02:38:10.142Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480108"}
+{"timestamp":"2026-02-01T02:38:10.142Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478340"}
+{"timestamp":"2026-02-01T02:38:10.142Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480120"}
+{"timestamp":"2026-02-01T02:38:10.143Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480103"}
+{"timestamp":"2026-02-01T02:38:10.143Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480125"}
+{"timestamp":"2026-02-01T02:38:10.143Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478312"}
+{"timestamp":"2026-02-01T02:38:10.143Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478386"}
+{"timestamp":"2026-02-01T02:38:10.143Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476283"}
+{"timestamp":"2026-02-01T02:38:10.143Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480059"}
+{"timestamp":"2026-02-01T02:38:10.143Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480250"}
+{"timestamp":"2026-02-01T02:38:10.143Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478370"}
+{"timestamp":"2026-02-01T02:38:10.143Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478334"}
+{"timestamp":"2026-02-01T02:38:10.144Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480042"}
+{"timestamp":"2026-02-01T02:38:10.144Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476529"}
+{"timestamp":"2026-02-01T02:38:10.144Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913475586"}
+{"timestamp":"2026-02-01T02:38:10.144Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478279"}
+{"timestamp":"2026-02-01T02:38:10.144Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913473819"}
+{"timestamp":"2026-02-01T02:38:10.144Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913475009"}
+{"timestamp":"2026-02-01T02:38:10.144Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478256"}
+{"timestamp":"2026-02-01T02:38:10.144Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476627"}
+{"timestamp":"2026-02-01T02:38:10.144Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913473278"}
+{"timestamp":"2026-02-01T02:38:10.145Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478200"}
+{"timestamp":"2026-02-01T02:38:10.146Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913475537"}
+{"timestamp":"2026-02-01T02:38:10.146Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913473885"}
+{"timestamp":"2026-02-01T02:38:10.148Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913474975"}
+{"timestamp":"2026-02-01T02:38:10.148Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476412"}
+{"timestamp":"2026-02-01T02:38:10.150Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913473153"}
+{"timestamp":"2026-02-01T02:38:10.151Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476342"}
+{"timestamp":"2026-02-01T02:38:10.151Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476263"}
+{"timestamp":"2026-02-01T02:38:10.152Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913473447"}
+{"timestamp":"2026-02-01T02:38:10.152Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913475004"}
+{"timestamp":"2026-02-01T02:38:10.152Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476336"}
+{"timestamp":"2026-02-01T02:38:10.153Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913474532"}
+{"timestamp":"2026-02-01T02:38:10.153Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913472840"}
+{"timestamp":"2026-02-01T02:38:10.153Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913475561"}
+{"timestamp":"2026-02-01T02:38:10.153Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476362"}
+{"timestamp":"2026-02-01T02:38:10.153Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913475570"}
+{"timestamp":"2026-02-01T02:38:10.154Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913474999"}
+{"timestamp":"2026-02-01T02:38:10.154Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913473791"}
+{"timestamp":"2026-02-01T02:38:10.154Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913474188"}
+{"timestamp":"2026-02-01T02:38:10.171Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478321"}
+{"timestamp":"2026-02-01T02:38:10.172Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476315"}
+{"timestamp":"2026-02-01T02:38:10.173Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476401"}
+{"timestamp":"2026-02-01T02:38:10.173Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478211"}
+{"timestamp":"2026-02-01T02:38:10.173Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478435"}
+{"timestamp":"2026-02-01T02:38:10.173Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476632"}
+{"timestamp":"2026-02-01T02:38:10.174Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476418"}
+{"timestamp":"2026-02-01T02:38:10.174Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476352"}
+{"timestamp":"2026-02-01T02:38:10.174Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480262"}
+{"timestamp":"2026-02-01T02:38:10.174Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476488"}
+{"timestamp":"2026-02-01T02:38:10.174Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476471"}
+{"timestamp":"2026-02-01T02:38:10.174Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476230"}
+{"timestamp":"2026-02-01T02:38:10.174Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476377"}
+{"timestamp":"2026-02-01T02:38:10.174Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478411"}
+{"timestamp":"2026-02-01T02:38:10.174Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476357"}
+{"timestamp":"2026-02-01T02:38:10.175Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480097"}
+{"timestamp":"2026-02-01T02:38:10.175Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478417"}
+{"timestamp":"2026-02-01T02:38:10.175Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480036"}
+{"timestamp":"2026-02-01T02:38:10.175Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476291"}
+{"timestamp":"2026-02-01T02:38:10.175Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478536"}
+{"timestamp":"2026-02-01T02:38:10.175Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478250"}
+{"timestamp":"2026-02-01T02:38:10.176Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480137"}
+{"timestamp":"2026-02-01T02:38:10.176Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480081"}
+{"timestamp":"2026-02-01T02:38:10.176Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480014"}
+{"timestamp":"2026-02-01T02:38:10.176Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478355"}
+{"timestamp":"2026-02-01T02:38:10.176Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476275"}
+{"timestamp":"2026-02-01T02:38:10.177Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476295"}
+{"timestamp":"2026-02-01T02:38:10.177Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478429"}
+{"timestamp":"2026-02-01T02:38:10.177Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478499"}
+{"timestamp":"2026-02-01T02:38:10.177Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480210"}
+{"timestamp":"2026-02-01T02:38:10.178Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478293"}
+{"timestamp":"2026-02-01T02:38:10.178Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478447"}
+{"timestamp":"2026-02-01T02:38:10.178Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476372"}
+{"timestamp":"2026-02-01T02:38:10.178Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480048"}
+{"timestamp":"2026-02-01T02:38:10.178Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478530"}
+{"timestamp":"2026-02-01T02:38:10.178Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478423"}
+{"timestamp":"2026-02-01T02:38:10.178Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478159"}
+{"timestamp":"2026-02-01T02:38:10.179Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476543"}
+{"timestamp":"2026-02-01T02:38:10.179Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480149"}
+{"timestamp":"2026-02-01T02:38:10.180Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478237"}
+{"timestamp":"2026-02-01T02:38:10.180Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480245"}
+{"timestamp":"2026-02-01T02:38:10.181Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476325"}
+{"timestamp":"2026-02-01T02:38:10.182Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480092"}
+{"timestamp":"2026-02-01T02:38:10.182Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478611"}
+{"timestamp":"2026-02-01T02:38:10.182Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476424"}
+{"timestamp":"2026-02-01T02:38:10.182Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913475574"}
+{"timestamp":"2026-02-01T02:38:10.182Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476306"}
+{"timestamp":"2026-02-01T02:38:10.183Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478348"}
+{"timestamp":"2026-02-01T02:38:10.183Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478400"}
+{"timestamp":"2026-02-01T02:38:10.183Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478520"}
+{"timestamp":"2026-02-01T02:38:10.183Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476433"}
+{"timestamp":"2026-02-01T02:38:10.183Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478362"}
+{"timestamp":"2026-02-01T02:38:10.183Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913475644"}
+{"timestamp":"2026-02-01T02:38:10.183Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478188"}
+{"timestamp":"2026-02-01T02:38:10.184Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913475567"}
+{"timestamp":"2026-02-01T02:38:10.184Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478490"}
+{"timestamp":"2026-02-01T02:38:10.184Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476310"}
+{"timestamp":"2026-02-01T02:38:10.184Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478589"}
+{"timestamp":"2026-02-01T02:38:10.187Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478163"}
+{"timestamp":"2026-02-01T02:38:10.187Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480155"}
+{"timestamp":"2026-02-01T02:38:10.187Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480176"}
+{"timestamp":"2026-02-01T02:38:10.199Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T02:38:10.199Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T02:38:10.200Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T02:38:10.200Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T02:38:10.200Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T02:38:10.200Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T02:38:10.200Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T02:38:10.200Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T02:38:10.200Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T02:38:10.201Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913487834"}
+{"timestamp":"2026-02-01T02:38:10.201Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913487827"}
+{"timestamp":"2026-02-01T02:38:10.201Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480287"}
+{"timestamp":"2026-02-01T02:38:10.201Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913481107"}
+{"timestamp":"2026-02-01T02:38:10.201Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913487878"}
+{"timestamp":"2026-02-01T02:38:10.202Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913481477"}
+{"timestamp":"2026-02-01T02:38:10.202Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913487925"}
+{"timestamp":"2026-02-01T02:38:10.202Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913481016"}
+{"timestamp":"2026-02-01T02:38:10.202Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913487994"}
+{"timestamp":"2026-02-01T02:38:10.202Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480215"}
+{"timestamp":"2026-02-01T02:38:10.202Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480376"}
+{"timestamp":"2026-02-01T02:38:10.202Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480143"}
+{"timestamp":"2026-02-01T02:38:10.202Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478576"}
+{"timestamp":"2026-02-01T02:38:10.203Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480053"}
+{"timestamp":"2026-02-01T02:38:10.203Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480064"}
+{"timestamp":"2026-02-01T02:38:10.203Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478463"}
+{"timestamp":"2026-02-01T02:38:10.203Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478261"}
+{"timestamp":"2026-02-01T02:38:10.203Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478194"}
+{"timestamp":"2026-02-01T02:38:10.203Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478305"}
+{"timestamp":"2026-02-01T02:38:10.203Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478548"}
+{"timestamp":"2026-02-01T02:38:10.203Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478101"}
+{"timestamp":"2026-02-01T02:38:10.204Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480257"}
+{"timestamp":"2026-02-01T02:38:10.204Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480019"}
+{"timestamp":"2026-02-01T02:38:10.204Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913479987"}
+{"timestamp":"2026-02-01T02:38:10.204Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478154"}
+{"timestamp":"2026-02-01T02:38:10.205Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476367"}
+{"timestamp":"2026-02-01T02:38:10.206Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478480"}
+{"timestamp":"2026-02-01T02:38:10.206Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480294"}
+{"timestamp":"2026-02-01T02:38:10.206Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913479952"}
+{"timestamp":"2026-02-01T02:38:10.206Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480002"}
+{"timestamp":"2026-02-01T02:38:10.206Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480311"}
+{"timestamp":"2026-02-01T02:38:10.207Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480305"}
+{"timestamp":"2026-02-01T02:38:10.207Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478506"}
+{"timestamp":"2026-02-01T02:38:10.208Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478561"}
+{"timestamp":"2026-02-01T02:38:10.208Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478406"}
+{"timestamp":"2026-02-01T02:38:10.209Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478618"}
+{"timestamp":"2026-02-01T02:38:10.209Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480221"}
+{"timestamp":"2026-02-01T02:38:10.209Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476347"}
+{"timestamp":"2026-02-01T02:38:10.209Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478604"}
+{"timestamp":"2026-02-01T02:38:10.210Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476638"}
+{"timestamp":"2026-02-01T02:38:10.210Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480300"}
+{"timestamp":"2026-02-01T02:38:10.210Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480318"}
+{"timestamp":"2026-02-01T02:38:10.210Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478217"}
+{"timestamp":"2026-02-01T02:38:10.210Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480183"}
+{"timestamp":"2026-02-01T02:38:10.210Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480113"}
+{"timestamp":"2026-02-01T02:38:10.210Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478284"}
+{"timestamp":"2026-02-01T02:38:10.210Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478223"}
+{"timestamp":"2026-02-01T02:38:10.210Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478299"}
+{"timestamp":"2026-02-01T02:38:10.211Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480069"}
+{"timestamp":"2026-02-01T02:38:10.211Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478568"}
+{"timestamp":"2026-02-01T02:38:10.211Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913479982"}
+{"timestamp":"2026-02-01T02:38:10.211Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478471"}
+{"timestamp":"2026-02-01T02:38:10.211Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476260"}
+{"timestamp":"2026-02-01T02:38:10.212Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480227"}
+{"timestamp":"2026-02-01T02:38:10.212Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480031"}
+{"timestamp":"2026-02-01T02:38:10.214Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478170"}
+{"timestamp":"2026-02-01T02:38:10.214Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478583"}
+{"timestamp":"2026-02-01T02:38:10.216Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913479973"}
+{"timestamp":"2026-02-01T02:38:10.216Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480086"}
+{"timestamp":"2026-02-01T02:38:10.216Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480132"}
+{"timestamp":"2026-02-01T02:38:10.216Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478513"}
+{"timestamp":"2026-02-01T02:38:10.217Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480238"}
+{"timestamp":"2026-02-01T02:38:10.217Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480232"}
+{"timestamp":"2026-02-01T02:38:10.217Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478554"}
+{"timestamp":"2026-02-01T02:38:10.217Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478274"}
+{"timestamp":"2026-02-01T02:38:10.217Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476300"}
+{"timestamp":"2026-02-01T02:38:10.218Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478205"}
+{"timestamp":"2026-02-01T02:38:10.218Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478441"}
+{"timestamp":"2026-02-01T02:38:10.219Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913479978"}
+{"timestamp":"2026-02-01T02:38:10.219Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476287"}
+{"timestamp":"2026-02-01T02:38:10.219Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478232"}
+{"timestamp":"2026-02-01T02:38:10.220Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478328"}
+{"timestamp":"2026-02-01T02:38:10.220Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476331"}
+{"timestamp":"2026-02-01T02:38:10.220Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480275"}
+{"timestamp":"2026-02-01T02:38:10.220Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480025"}
+{"timestamp":"2026-02-01T02:38:10.220Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476320"}
+{"timestamp":"2026-02-01T02:38:10.220Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478453"}
+{"timestamp":"2026-02-01T02:38:10.220Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478393"}
+{"timestamp":"2026-02-01T02:38:10.221Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480008"}
+{"timestamp":"2026-02-01T02:38:10.221Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478175"}
+{"timestamp":"2026-02-01T02:38:10.221Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478598"}
+{"timestamp":"2026-02-01T02:38:10.221Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478543"}
+{"timestamp":"2026-02-01T02:38:10.222Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480280"}
+{"timestamp":"2026-02-01T02:38:10.222Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478242"}
+{"timestamp":"2026-02-01T02:38:10.222Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480268"}
+{"timestamp":"2026-02-01T02:38:10.222Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913479997"}
+{"timestamp":"2026-02-01T02:38:10.222Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476268"}
+{"timestamp":"2026-02-01T02:38:10.222Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476645"}
+{"timestamp":"2026-02-01T02:38:10.222Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478180"}
+{"timestamp":"2026-02-01T02:38:10.223Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913476272"}
+{"timestamp":"2026-02-01T02:38:10.223Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913478379"}
+{"timestamp":"2026-02-01T02:38:10.223Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480161"}
+{"timestamp":"2026-02-01T02:38:10.223Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913480169"}
+{"timestamp":"2026-02-01T02:38:10.227Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T02:38:10.228Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T02:38:10.228Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T02:38:10.228Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T02:38:10.228Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T02:38:10.228Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T02:38:10.314Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:10.333Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:10.350Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913490348"}
+{"timestamp":"2026-02-01T02:38:10.354Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913490352"}
+{"timestamp":"2026-02-01T02:38:10.370Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:10.395Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913490392"}
+{"timestamp":"2026-02-01T02:38:10.407Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:10.424Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913490422"}
+{"timestamp":"2026-02-01T02:38:10.426Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:10.433Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913490430"}
+{"timestamp":"2026-02-01T02:38:12.866Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:12.875Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913492873"}
+{"timestamp":"2026-02-01T02:38:12.882Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:12.885Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913492883"}
+{"timestamp":"2026-02-01T02:38:12.899Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:12.903Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913492901"}
+{"timestamp":"2026-02-01T02:38:12.924Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:12.927Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913492926"}
+{"timestamp":"2026-02-01T02:38:12.939Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:12.943Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913492941"}
+{"timestamp":"2026-02-01T02:38:15.986Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913492873"}
+{"timestamp":"2026-02-01T02:38:15.994Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913490348"}
+{"timestamp":"2026-02-01T02:38:16.434Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913492883"}
+{"timestamp":"2026-02-01T02:38:16.447Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913490352"}
+{"timestamp":"2026-02-01T02:38:16.789Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:16.799Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913496797"}
+{"timestamp":"2026-02-01T02:38:16.802Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:16.809Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913496807"}
+{"timestamp":"2026-02-01T02:38:16.815Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:16.818Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913496817"}
+{"timestamp":"2026-02-01T02:38:16.840Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:16.843Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913496842"}
+{"timestamp":"2026-02-01T02:38:16.856Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:16.860Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913496858"}
+{"timestamp":"2026-02-01T02:38:16.870Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:16.874Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913496872"}
+{"timestamp":"2026-02-01T02:38:17.466Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913496797"}
+{"timestamp":"2026-02-01T02:38:17.475Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913490392"}
+{"timestamp":"2026-02-01T02:38:17.978Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913496807"}
+{"timestamp":"2026-02-01T02:38:17.989Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913490422"}
+{"timestamp":"2026-02-01T02:38:18.473Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913496817"}
+{"timestamp":"2026-02-01T02:38:18.482Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913490430"}
+{"timestamp":"2026-02-01T02:38:19.426Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913496842"}
+{"timestamp":"2026-02-01T02:38:19.434Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913492901"}
+{"timestamp":"2026-02-01T02:38:20.194Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913496858"}
+{"timestamp":"2026-02-01T02:38:20.202Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769913492926"}
+{"timestamp":"2026-02-01T02:38:25.172Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:25.179Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913505177"}
+{"timestamp":"2026-02-01T02:38:25.185Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:38:25.189Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913505187"}

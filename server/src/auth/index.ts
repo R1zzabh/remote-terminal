@@ -1,26 +1,28 @@
 import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 import type { User, JWTPayload } from "../types.js";
 import { config } from "../config.js";
 
-// In-memory user store (single user for now)
+// In-memory user store
 let adminUser: User | null = null;
 
-// Hash mechanism removed for compatibility (Bun missing, native addons fail)
 export async function initializeAuth() {
-    // In a real app we would hash this, but for this mock environment we store plain
+    // Generate salt and hash for the default password
+    const salt = await bcrypt.genSalt(10);
+    const passwordHash = await bcrypt.hash(config.defaultUser.password, salt);
+
     adminUser = {
         username: config.defaultUser.username,
-        passwordHash: config.defaultUser.password,
+        passwordHash: passwordHash,
     };
-    console.log(`✓ Auth initialized for user: ${adminUser.username} (Mock Auth Mode)`);
+    console.log(`✓ Auth initialized. Secure password hashing enabled for: ${adminUser.username}`);
 }
 
 export async function verifyPassword(username: string, password: string): Promise<boolean> {
     if (!adminUser || adminUser.username !== username) {
         return false;
     }
-    // Simple comparison for mock mode
-    return password === adminUser.passwordHash;
+    return await bcrypt.compare(password, adminUser.passwordHash);
 }
 
 export function generateToken(username: string): string {

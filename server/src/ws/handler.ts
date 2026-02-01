@@ -1,8 +1,9 @@
-// import type { ServerWebSocket } from "bun";
+import { RawData } from "ws";
 import type { AuthenticatedWebSocket, WSMessage, WSData } from "../types.js";
 import { verifyToken } from "../auth/index.js";
 import { createSession, getSession, destroySession, resizeSession, writeToSession } from "../pty/manager.js";
 import { listTmuxSessions } from "../pty/tmux.js";
+import { logger } from "../utils/logger.js";
 
 export function handleWebSocketOpen(ws: AuthenticatedWebSocket) {
     const banner = `\r\n\x1b[32m
@@ -13,12 +14,12 @@ export function handleWebSocketOpen(ws: AuthenticatedWebSocket) {
    ██║  ██║   ██║   ╚██████╔╝
    ╚═╝  ╚═╝   ╚═╝    ╚═════╝ 
    \x1b[0m\r\n\x1b[1mWelcome to Ryo Terminal v1.0.0\x1b[0m\r\n`;
-    console.log("WebSocket connection opened");
+    logger.info("WebSocket connection opened");
     ws.send(JSON.stringify({ type: "connected", message: "Welcome to Ryo Terminal" }));
     ws.send(JSON.stringify({ type: "output", data: banner }));
 }
 
-export function handleWebSocketMessage(ws: AuthenticatedWebSocket, message: string | Buffer) {
+export function handleWebSocketMessage(ws: AuthenticatedWebSocket, message: RawData) {
     try {
         const msg: WSMessage = JSON.parse(message.toString());
 
@@ -51,7 +52,7 @@ export function handleWebSocketClose(ws: AuthenticatedWebSocket) {
     if (ws.data.sessionId) {
         destroySession(ws.data.sessionId);
     }
-    console.log(`WebSocket closed for ${ws.data.username || "unknown"}`);
+    logger.info(`WebSocket closed for ${ws.data.username || "unknown"}`, { sessionId: ws.data.sessionId });
 }
 
 function handleAuth(ws: AuthenticatedWebSocket, msg: WSMessage) {
@@ -74,7 +75,7 @@ function handleAuth(ws: AuthenticatedWebSocket, msg: WSMessage) {
     ws.data.authenticated = true;
 
     // Create PTY session
-    const session = createSession(payload.username, sessionId);
+    const session = createSession(payload.username, sessionId, msg.sshHost);
 
     // Forward PTY output to WebSocket
     session.pty.onData((data: string) => {
@@ -86,6 +87,7 @@ function handleAuth(ws: AuthenticatedWebSocket, msg: WSMessage) {
         ws.close();
     });
 
+    logger.info(`Session authenticated: ${payload.username}`, { sessionId, sshHost: msg.sshHost });
     ws.send(JSON.stringify({ type: "authenticated", sessionId }));
 }
 

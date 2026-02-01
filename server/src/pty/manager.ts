@@ -1,15 +1,18 @@
 import * as pty from "node-pty";
-import type { PTYSession } from "../types.js";
-import { config } from "../config.js";
+
+export interface PTYSession {
+    pty: pty.IPty;
+    sessionId: string;
+    username: string;
+    createdAt: Date;
+    sshHost?: string;
+}
 
 const sessions = new Map<string, PTYSession>();
 
-export function createSession(username: string, sessionId: string): PTYSession {
-    const shell = process.env.SHELL || "/bin/bash";
-
-    // Re-enabling TMUX for persistent sessions if user has it installed
-    // If tmux fails, it falls back to a normal shell
-    const args = ["-c", `tmux new-session -A -s ryo-${username} || ${shell}`];
+export function createSession(username: string, sessionId: string, sshHost?: string): PTYSession {
+    const shell = sshHost ? "ssh" : (process.env.SHELL || "/bin/bash");
+    const args = sshHost ? [sshHost] : ["-c", `tmux new-session -A -s ryo-${username}-${sessionId} || ${process.env.SHELL || "/bin/bash"}`];
 
     const ptyProcess = pty.spawn(shell, args, {
         name: "xterm-256color",
@@ -20,21 +23,20 @@ export function createSession(username: string, sessionId: string): PTYSession {
             ...process.env,
             TERM: "xterm-256color",
             COLORTERM: "truecolor",
-            RYO_TERMINAL: "1"
+            RYO_TERMINAL: "1",
+            PS1: `\\[\\e[1;32m\\]ryo\\[\\e[0m\\]:\\[\\e[1;34m\\]\\w\\[\\e[0m\\] $ `
         } as any,
     });
 
     const session: PTYSession = {
-        id: sessionId,
         pty: ptyProcess,
+        sessionId,
         username,
         createdAt: new Date(),
-        lastActivity: new Date(),
+        sshHost
     };
 
     sessions.set(sessionId, session);
-    console.log(`✓ PTY session created: ${sessionId} for ${username}`);
-
     return session;
 }
 
@@ -42,27 +44,24 @@ export function getSession(sessionId: string): PTYSession | undefined {
     return sessions.get(sessionId);
 }
 
-export function updateActivity(sessionId: string) {
-    const session = sessions.get(sessionId);
-    if (session) {
-        session.lastActivity = new Date();
-    }
+export function listSessions(username: string): PTYSession[] {
+    return Array.from(sessions.values()).filter(s => s.username === username);
 }
 
-export function destroySession(sessionId: string) {
+export function deleteSession(sessionId: string) {
     const session = sessions.get(sessionId);
     if (session) {
         session.pty.kill();
         sessions.delete(sessionId);
-        console.log(`✓ PTY session destroyed: ${sessionId}`);
     }
 }
+
+export const destroySession = deleteSession;
 
 export function resizeSession(sessionId: string, cols: number, rows: number) {
     const session = sessions.get(sessionId);
     if (session) {
         session.pty.resize(cols, rows);
-        updateActivity(sessionId);
     }
 }
 
@@ -70,17 +69,5 @@ export function writeToSession(sessionId: string, data: string) {
     const session = sessions.get(sessionId);
     if (session) {
         session.pty.write(data);
-        updateActivity(sessionId);
     }
 }
-
-// Cleanup inactive sessions
-setInterval(() => {
-    const now = Date.now();
-    for (const [id, session] of sessions.entries()) {
-        if (now - session.lastActivity.getTime() > config.sessionTimeout) {
-            console.log(`⚠ Session timeout: ${id}`);
-            destroySession(id);
-        }
-    }
-}, 60000); // Check every minute
