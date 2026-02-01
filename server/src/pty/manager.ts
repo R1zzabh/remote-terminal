@@ -100,3 +100,15 @@ export function cleanupStaleSessions() {
         });
     });
 }
+
+export function shutdownAllSessions() {
+    logger.info(`Shutting down ${sessions.size} active PTY sessions...`);
+    sessions.forEach(session => {
+        try {
+            session.pty.kill();
+        } catch (e) {
+            // Ignore already dead processes
+        }
+    });
+    sessions.clear();
+}

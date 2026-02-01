@@ -14,7 +14,8 @@ import macrosRouter from "./api/macros.js";
 import { logger } from "./utils/logger.js";
 import { initializeAuth } from "./auth/index.js";
 import { handleWebSocketOpen, handleWebSocketMessage, handleWebSocketClose } from "./ws/handler.js";
-import { cleanupStaleSessions } from "./pty/manager.js";
+import { shutdownAllSessions, cleanupStaleSessions } from "./pty/manager.js";
+import { db } from "./utils/db.js";
 import type { AuthenticatedWebSocket } from "./types.js";
 
 const app = express();
@@ -61,6 +62,11 @@ wss.on("connection", (ws: AuthenticatedWebSocket) => {
 const start = async () => {
     try {
         await initializeAuth();
+
+        if (config.jwtSecret === "change-this-secret-in-production") {
+            logger.warn("SECURITY WARNING: Using default JWT secret. Change this in production by setting JWT_SECRET environment variable!");
+        }
+
         cleanupStaleSessions();
         server.listen(config.port, () => {
             logger.info(`Ryo Terminal Server running on port ${config.port}`);
@@ -76,3 +82,22 @@ start().catch((err: any) => {
     logger.error("Failed to start server", { error: err.message });
     process.exit(1);
 });
+
+async function gracefulShutdown(signal: string) {
+    logger.info(`${signal} received. Starting graceful shutdown...`);
+
+    // Close HTTP server first
+    server.close(() => {
+        logger.info("Express/WebSocket server closed.");
+    });
+
+    // Cleanup resources
+    shutdownAllSessions();
+    db.close();
+
+    logger.info("Graceful shutdown complete.");
+    process.exit(0);
+}
+
+process.on("SIGINT", () => gracefulShutdown("SIGINT"));
+process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));

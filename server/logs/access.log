@@ -5979,3 +5979,918 @@
 {"timestamp":"2026-02-01T03:36:22.179Z","level":"INFO","message":"WebSocket connection opened"}
 {"timestamp":"2026-02-01T03:36:22.194Z","level":"INFO","message":"WebSocket connection opened"}
 {"timestamp":"2026-02-01T03:36:22.221Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916982219"}
+{"timestamp":"2026-02-01T03:36:22.236Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916982234"}
+{"timestamp":"2026-02-01T03:36:22.239Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916982238"}
+{"timestamp":"2026-02-01T03:36:22.244Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916982242"}
+{"timestamp":"2026-02-01T03:36:22.248Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916982246"}
+{"timestamp":"2026-02-01T03:36:22.252Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916982250"}
+{"timestamp":"2026-02-01T03:36:22.258Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916982255"}
+{"timestamp":"2026-02-01T03:36:22.264Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916982262"}
+{"timestamp":"2026-02-01T03:36:22.268Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916982266"}
+{"timestamp":"2026-02-01T03:36:22.279Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916982274"}
+{"timestamp":"2026-02-01T03:36:22.283Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916982281"}
+{"timestamp":"2026-02-01T03:36:22.293Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916982285"}
+{"timestamp":"2026-02-01T03:36:22.297Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916982295"}
+{"timestamp":"2026-02-01T03:36:22.303Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916982300"}
+{"timestamp":"2026-02-01T03:36:22.309Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916982306"}
+{"timestamp":"2026-02-01T03:36:22.316Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916982314"}
+{"timestamp":"2026-02-01T03:36:22.322Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916982319"}
+{"timestamp":"2026-02-01T03:36:22.329Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916982326"}
+{"timestamp":"2026-02-01T03:36:22.336Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916982331"}
+{"timestamp":"2026-02-01T03:36:22.338Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.355Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.372Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.396Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.420Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.437Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.466Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.487Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.504Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.555Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.574Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.621Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.656Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.682Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.746Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.775Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.791Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.826Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.844Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.870Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.884Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.900Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.914Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.930Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.946Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.962Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.977Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:22.992Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.007Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.023Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.038Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.053Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.068Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.085Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.099Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.128Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.146Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.161Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.178Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983176"}
+{"timestamp":"2026-02-01T03:36:23.182Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983179"}
+{"timestamp":"2026-02-01T03:36:23.186Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983183"}
+{"timestamp":"2026-02-01T03:36:23.190Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983187"}
+{"timestamp":"2026-02-01T03:36:23.194Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983192"}
+{"timestamp":"2026-02-01T03:36:23.198Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983196"}
+{"timestamp":"2026-02-01T03:36:23.202Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983199"}
+{"timestamp":"2026-02-01T03:36:23.206Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983204"}
+{"timestamp":"2026-02-01T03:36:23.210Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983208"}
+{"timestamp":"2026-02-01T03:36:23.215Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983212"}
+{"timestamp":"2026-02-01T03:36:23.219Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983217"}
+{"timestamp":"2026-02-01T03:36:23.224Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983221"}
+{"timestamp":"2026-02-01T03:36:23.228Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983226"}
+{"timestamp":"2026-02-01T03:36:23.234Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983231"}
+{"timestamp":"2026-02-01T03:36:23.238Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983236"}
+{"timestamp":"2026-02-01T03:36:23.242Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983240"}
+{"timestamp":"2026-02-01T03:36:23.247Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983244"}
+{"timestamp":"2026-02-01T03:36:23.252Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983249"}
+{"timestamp":"2026-02-01T03:36:23.258Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983254"}
+{"timestamp":"2026-02-01T03:36:23.263Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983260"}
+{"timestamp":"2026-02-01T03:36:23.270Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983266"}
+{"timestamp":"2026-02-01T03:36:23.275Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983272"}
+{"timestamp":"2026-02-01T03:36:23.280Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983277"}
+{"timestamp":"2026-02-01T03:36:23.286Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983283"}
+{"timestamp":"2026-02-01T03:36:23.293Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916983290"}
+{"timestamp":"2026-02-01T03:36:23.296Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.319Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.343Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.374Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.398Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.425Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.453Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.470Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.503Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.525Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.550Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.582Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.611Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.626Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.656Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.689Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.714Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.750Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.773Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.791Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.808Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.828Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.853Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.867Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.881Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.902Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.917Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.933Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.947Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.964Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.978Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:23.994Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.010Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.072Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.117Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.149Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.165Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.180Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.193Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.211Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.227Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.242Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.248Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984246"}
+{"timestamp":"2026-02-01T03:36:24.253Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984250"}
+{"timestamp":"2026-02-01T03:36:24.258Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984255"}
+{"timestamp":"2026-02-01T03:36:24.262Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984260"}
+{"timestamp":"2026-02-01T03:36:24.266Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984264"}
+{"timestamp":"2026-02-01T03:36:24.271Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984268"}
+{"timestamp":"2026-02-01T03:36:24.275Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984273"}
+{"timestamp":"2026-02-01T03:36:24.281Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984277"}
+{"timestamp":"2026-02-01T03:36:24.286Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984283"}
+{"timestamp":"2026-02-01T03:36:24.290Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984287"}
+{"timestamp":"2026-02-01T03:36:24.295Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984292"}
+{"timestamp":"2026-02-01T03:36:24.300Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984297"}
+{"timestamp":"2026-02-01T03:36:24.305Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984302"}
+{"timestamp":"2026-02-01T03:36:24.309Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984306"}
+{"timestamp":"2026-02-01T03:36:24.314Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984311"}
+{"timestamp":"2026-02-01T03:36:24.319Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984316"}
+{"timestamp":"2026-02-01T03:36:24.324Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984321"}
+{"timestamp":"2026-02-01T03:36:24.329Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984326"}
+{"timestamp":"2026-02-01T03:36:24.335Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984332"}
+{"timestamp":"2026-02-01T03:36:24.343Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984339"}
+{"timestamp":"2026-02-01T03:36:24.351Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984346"}
+{"timestamp":"2026-02-01T03:36:24.358Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984354"}
+{"timestamp":"2026-02-01T03:36:24.363Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984361"}
+{"timestamp":"2026-02-01T03:36:24.369Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984366"}
+{"timestamp":"2026-02-01T03:36:24.377Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984372"}
+{"timestamp":"2026-02-01T03:36:24.385Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984380"}
+{"timestamp":"2026-02-01T03:36:24.392Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984389"}
+{"timestamp":"2026-02-01T03:36:24.397Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984394"}
+{"timestamp":"2026-02-01T03:36:24.403Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984399"}
+{"timestamp":"2026-02-01T03:36:24.410Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984407"}
+{"timestamp":"2026-02-01T03:36:24.415Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984412"}
+{"timestamp":"2026-02-01T03:36:24.424Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984420"}
+{"timestamp":"2026-02-01T03:36:24.434Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984429"}
+{"timestamp":"2026-02-01T03:36:24.442Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984436"}
+{"timestamp":"2026-02-01T03:36:24.448Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984444"}
+{"timestamp":"2026-02-01T03:36:24.455Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984451"}
+{"timestamp":"2026-02-01T03:36:24.461Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984457"}
+{"timestamp":"2026-02-01T03:36:24.470Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916984464"}
+{"timestamp":"2026-02-01T03:36:24.477Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.499Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.521Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.543Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.561Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.582Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.597Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.617Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.633Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.649Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.665Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.687Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.707Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.733Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.747Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.762Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.779Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.796Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.814Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.829Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.853Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.875Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.890Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.906Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.931Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.946Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.971Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:24.988Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.004Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.027Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.042Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.057Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.073Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.089Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.104Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.119Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.167Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.229Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.244Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.259Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.311Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.373Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.411Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.426Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.477Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.496Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.531Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.564Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.621Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985618"}
+{"timestamp":"2026-02-01T03:36:25.630Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985628"}
+{"timestamp":"2026-02-01T03:36:25.634Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985632"}
+{"timestamp":"2026-02-01T03:36:25.638Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985636"}
+{"timestamp":"2026-02-01T03:36:25.641Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985639"}
+{"timestamp":"2026-02-01T03:36:25.645Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985642"}
+{"timestamp":"2026-02-01T03:36:25.649Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985646"}
+{"timestamp":"2026-02-01T03:36:25.653Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985650"}
+{"timestamp":"2026-02-01T03:36:25.656Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985654"}
+{"timestamp":"2026-02-01T03:36:25.660Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985657"}
+{"timestamp":"2026-02-01T03:36:25.663Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985661"}
+{"timestamp":"2026-02-01T03:36:25.667Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985664"}
+{"timestamp":"2026-02-01T03:36:25.671Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985668"}
+{"timestamp":"2026-02-01T03:36:25.675Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985673"}
+{"timestamp":"2026-02-01T03:36:25.680Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985677"}
+{"timestamp":"2026-02-01T03:36:25.685Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985682"}
+{"timestamp":"2026-02-01T03:36:25.690Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985687"}
+{"timestamp":"2026-02-01T03:36:25.696Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985693"}
+{"timestamp":"2026-02-01T03:36:25.702Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985698"}
+{"timestamp":"2026-02-01T03:36:25.707Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985704"}
+{"timestamp":"2026-02-01T03:36:25.712Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985709"}
+{"timestamp":"2026-02-01T03:36:25.718Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985715"}
+{"timestamp":"2026-02-01T03:36:25.724Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985720"}
+{"timestamp":"2026-02-01T03:36:25.729Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985726"}
+{"timestamp":"2026-02-01T03:36:25.735Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985731"}
+{"timestamp":"2026-02-01T03:36:25.741Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985737"}
+{"timestamp":"2026-02-01T03:36:25.746Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985743"}
+{"timestamp":"2026-02-01T03:36:25.752Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985748"}
+{"timestamp":"2026-02-01T03:36:25.757Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985754"}
+{"timestamp":"2026-02-01T03:36:25.762Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985759"}
+{"timestamp":"2026-02-01T03:36:25.768Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985765"}
+{"timestamp":"2026-02-01T03:36:25.773Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985770"}
+{"timestamp":"2026-02-01T03:36:25.779Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985775"}
+{"timestamp":"2026-02-01T03:36:25.784Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985781"}
+{"timestamp":"2026-02-01T03:36:25.789Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985786"}
+{"timestamp":"2026-02-01T03:36:25.795Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985792"}
+{"timestamp":"2026-02-01T03:36:25.801Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985797"}
+{"timestamp":"2026-02-01T03:36:25.806Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985803"}
+{"timestamp":"2026-02-01T03:36:25.812Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985808"}
+{"timestamp":"2026-02-01T03:36:25.819Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985814"}
+{"timestamp":"2026-02-01T03:36:25.824Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916985821"}
+{"timestamp":"2026-02-01T03:36:25.831Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.851Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.868Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.890Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.913Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.940Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:25.960Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.002Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.018Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.108Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.123Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.142Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.176Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.286Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.324Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.343Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.366Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.414Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.475Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.553Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.624Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.652Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.745Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.759Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.883Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.898Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.914Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.929Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.944Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:26.960Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:27.073Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:27.196Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:27.249Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:27.277Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:27.293Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:27.482Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:27.553Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:27.599Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:27.677Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:27.831Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:27.915Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:28.089Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:28.104Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:28.151Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:28.359Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988356"}
+{"timestamp":"2026-02-01T03:36:28.379Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:28.402Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988399"}
+{"timestamp":"2026-02-01T03:36:28.406Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988404"}
+{"timestamp":"2026-02-01T03:36:28.410Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988407"}
+{"timestamp":"2026-02-01T03:36:28.414Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988411"}
+{"timestamp":"2026-02-01T03:36:28.417Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988415"}
+{"timestamp":"2026-02-01T03:36:28.422Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988419"}
+{"timestamp":"2026-02-01T03:36:28.425Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988423"}
+{"timestamp":"2026-02-01T03:36:28.429Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988427"}
+{"timestamp":"2026-02-01T03:36:28.434Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988431"}
+{"timestamp":"2026-02-01T03:36:28.438Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988436"}
+{"timestamp":"2026-02-01T03:36:28.443Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988440"}
+{"timestamp":"2026-02-01T03:36:28.448Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988445"}
+{"timestamp":"2026-02-01T03:36:28.452Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988450"}
+{"timestamp":"2026-02-01T03:36:28.458Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988454"}
+{"timestamp":"2026-02-01T03:36:28.463Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988460"}
+{"timestamp":"2026-02-01T03:36:28.470Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988466"}
+{"timestamp":"2026-02-01T03:36:28.474Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988471"}
+{"timestamp":"2026-02-01T03:36:28.480Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988476"}
+{"timestamp":"2026-02-01T03:36:28.485Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988482"}
+{"timestamp":"2026-02-01T03:36:28.491Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988487"}
+{"timestamp":"2026-02-01T03:36:28.496Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988493"}
+{"timestamp":"2026-02-01T03:36:28.502Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988499"}
+{"timestamp":"2026-02-01T03:36:28.508Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988504"}
+{"timestamp":"2026-02-01T03:36:28.513Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988510"}
+{"timestamp":"2026-02-01T03:36:28.519Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988515"}
+{"timestamp":"2026-02-01T03:36:28.524Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988521"}
+{"timestamp":"2026-02-01T03:36:28.530Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988527"}
+{"timestamp":"2026-02-01T03:36:28.535Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988532"}
+{"timestamp":"2026-02-01T03:36:28.541Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988537"}
+{"timestamp":"2026-02-01T03:36:28.546Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988542"}
+{"timestamp":"2026-02-01T03:36:28.551Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988548"}
+{"timestamp":"2026-02-01T03:36:28.560Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988556"}
+{"timestamp":"2026-02-01T03:36:28.566Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988562"}
+{"timestamp":"2026-02-01T03:36:28.572Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988568"}
+{"timestamp":"2026-02-01T03:36:28.578Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988574"}
+{"timestamp":"2026-02-01T03:36:28.584Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988581"}
+{"timestamp":"2026-02-01T03:36:28.589Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988586"}
+{"timestamp":"2026-02-01T03:36:28.595Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988591"}
+{"timestamp":"2026-02-01T03:36:28.601Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988597"}
+{"timestamp":"2026-02-01T03:36:28.607Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988604"}
+{"timestamp":"2026-02-01T03:36:28.614Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988610"}
+{"timestamp":"2026-02-01T03:36:28.619Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988616"}
+{"timestamp":"2026-02-01T03:36:28.625Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988621"}
+{"timestamp":"2026-02-01T03:36:28.631Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988627"}
+{"timestamp":"2026-02-01T03:36:28.637Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988633"}
+{"timestamp":"2026-02-01T03:36:28.643Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988639"}
+{"timestamp":"2026-02-01T03:36:28.649Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988645"}
+{"timestamp":"2026-02-01T03:36:28.654Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916988651"}
+{"timestamp":"2026-02-01T03:36:28.661Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:28.675Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:28.694Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:28.708Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:28.722Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:28.763Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:28.947Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:28.974Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:29.138Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:29.373Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:36:33.636Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993633"}
+{"timestamp":"2026-02-01T03:36:33.641Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993638"}
+{"timestamp":"2026-02-01T03:36:33.646Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993643"}
+{"timestamp":"2026-02-01T03:36:33.649Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993647"}
+{"timestamp":"2026-02-01T03:36:33.654Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993651"}
+{"timestamp":"2026-02-01T03:36:33.658Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993656"}
+{"timestamp":"2026-02-01T03:36:33.663Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993660"}
+{"timestamp":"2026-02-01T03:36:33.667Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993665"}
+{"timestamp":"2026-02-01T03:36:33.671Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993669"}
+{"timestamp":"2026-02-01T03:36:33.676Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993673"}
+{"timestamp":"2026-02-01T03:36:33.680Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993678"}
+{"timestamp":"2026-02-01T03:36:33.685Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993682"}
+{"timestamp":"2026-02-01T03:36:33.689Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993687"}
+{"timestamp":"2026-02-01T03:36:33.694Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993691"}
+{"timestamp":"2026-02-01T03:36:33.698Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993696"}
+{"timestamp":"2026-02-01T03:36:33.702Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993699"}
+{"timestamp":"2026-02-01T03:36:33.706Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993703"}
+{"timestamp":"2026-02-01T03:36:33.712Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993708"}
+{"timestamp":"2026-02-01T03:36:33.719Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993714"}
+{"timestamp":"2026-02-01T03:36:33.725Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993721"}
+{"timestamp":"2026-02-01T03:36:33.731Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993728"}
+{"timestamp":"2026-02-01T03:36:33.737Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993734"}
+{"timestamp":"2026-02-01T03:36:33.743Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993740"}
+{"timestamp":"2026-02-01T03:36:33.749Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993745"}
+{"timestamp":"2026-02-01T03:36:33.754Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993751"}
+{"timestamp":"2026-02-01T03:36:33.759Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993756"}
+{"timestamp":"2026-02-01T03:36:33.765Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993761"}
+{"timestamp":"2026-02-01T03:36:33.770Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993767"}
+{"timestamp":"2026-02-01T03:36:33.776Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993772"}
+{"timestamp":"2026-02-01T03:36:33.784Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993778"}
+{"timestamp":"2026-02-01T03:36:33.790Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993786"}
+{"timestamp":"2026-02-01T03:36:33.797Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993793"}
+{"timestamp":"2026-02-01T03:36:33.803Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993800"}
+{"timestamp":"2026-02-01T03:36:33.809Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993805"}
+{"timestamp":"2026-02-01T03:36:33.816Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993812"}
+{"timestamp":"2026-02-01T03:36:33.822Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993818"}
+{"timestamp":"2026-02-01T03:36:33.829Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993824"}
+{"timestamp":"2026-02-01T03:36:33.835Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993831"}
+{"timestamp":"2026-02-01T03:36:33.842Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993837"}
+{"timestamp":"2026-02-01T03:36:33.848Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993844"}
+{"timestamp":"2026-02-01T03:36:33.855Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993850"}
+{"timestamp":"2026-02-01T03:36:33.862Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993857"}
+{"timestamp":"2026-02-01T03:36:33.868Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993864"}
+{"timestamp":"2026-02-01T03:36:33.876Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916993871"}
+{"timestamp":"2026-02-01T03:36:43.258Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769917003254"}
+{"timestamp":"2026-02-01T03:37:40.075Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985709"}
+{"timestamp":"2026-02-01T03:37:40.089Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985775"}
+{"timestamp":"2026-02-01T03:37:40.090Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984354"}
+{"timestamp":"2026-02-01T03:37:40.091Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985657"}
+{"timestamp":"2026-02-01T03:37:40.092Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984321"}
+{"timestamp":"2026-02-01T03:37:40.092Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983204"}
+{"timestamp":"2026-02-01T03:37:40.094Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916979586"}
+{"timestamp":"2026-02-01T03:37:40.095Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993699"}
+{"timestamp":"2026-02-01T03:37:40.114Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916982285"}
+{"timestamp":"2026-02-01T03:37:40.115Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988574"}
+{"timestamp":"2026-02-01T03:37:40.115Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983283"}
+{"timestamp":"2026-02-01T03:37:40.115Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988454"}
+{"timestamp":"2026-02-01T03:37:40.116Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985650"}
+{"timestamp":"2026-02-01T03:37:40.117Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983231"}
+{"timestamp":"2026-02-01T03:37:40.117Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985632"}
+{"timestamp":"2026-02-01T03:37:40.118Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984366"}
+{"timestamp":"2026-02-01T03:37:40.118Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988633"}
+{"timestamp":"2026-02-01T03:37:40.118Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T03:37:40.118Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993740"}
+{"timestamp":"2026-02-01T03:37:40.119Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T03:37:40.119Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916981538"}
+{"timestamp":"2026-02-01T03:37:40.119Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985628"}
+{"timestamp":"2026-02-01T03:37:40.119Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993687"}
+{"timestamp":"2026-02-01T03:37:40.119Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988423"}
+{"timestamp":"2026-02-01T03:37:40.120Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988537"}
+{"timestamp":"2026-02-01T03:37:40.120Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916982274"}
+{"timestamp":"2026-02-01T03:37:40.122Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T03:37:40.123Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984250"}
+{"timestamp":"2026-02-01T03:37:40.124Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916979520"}
+{"timestamp":"2026-02-01T03:37:40.126Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985687"}
+{"timestamp":"2026-02-01T03:37:40.127Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988645"}
+{"timestamp":"2026-02-01T03:37:40.127Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993837"}
+{"timestamp":"2026-02-01T03:37:40.128Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985814"}
+{"timestamp":"2026-02-01T03:37:40.128Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983217"}
+{"timestamp":"2026-02-01T03:37:40.155Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984283"}
+{"timestamp":"2026-02-01T03:37:40.156Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916982314"}
+{"timestamp":"2026-02-01T03:37:40.156Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988460"}
+{"timestamp":"2026-02-01T03:37:40.157Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T03:37:40.157Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916979782"}
+{"timestamp":"2026-02-01T03:37:40.157Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988610"}
+{"timestamp":"2026-02-01T03:37:40.158Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985715"}
+{"timestamp":"2026-02-01T03:37:40.158Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985821"}
+{"timestamp":"2026-02-01T03:37:40.158Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984332"}
+{"timestamp":"2026-02-01T03:37:40.158Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985808"}
+{"timestamp":"2026-02-01T03:37:40.158Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916982281"}
+{"timestamp":"2026-02-01T03:37:40.159Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993728"}
+{"timestamp":"2026-02-01T03:37:40.159Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993643"}
+{"timestamp":"2026-02-01T03:37:40.159Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988532"}
+{"timestamp":"2026-02-01T03:37:40.159Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988581"}
+{"timestamp":"2026-02-01T03:37:40.160Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916979731"}
+{"timestamp":"2026-02-01T03:37:40.160Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916982300"}
+{"timestamp":"2026-02-01T03:37:40.160Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983249"}
+{"timestamp":"2026-02-01T03:37:40.160Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983277"}
+{"timestamp":"2026-02-01T03:37:40.160Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984380"}
+{"timestamp":"2026-02-01T03:37:40.161Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983290"}
+{"timestamp":"2026-02-01T03:37:40.161Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988407"}
+{"timestamp":"2026-02-01T03:37:40.161Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985636"}
+{"timestamp":"2026-02-01T03:37:40.161Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916980427"}
+{"timestamp":"2026-02-01T03:37:40.162Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984316"}
+{"timestamp":"2026-02-01T03:37:40.162Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916979610"}
+{"timestamp":"2026-02-01T03:37:40.162Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916982242"}
+{"timestamp":"2026-02-01T03:37:40.162Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993864"}
+{"timestamp":"2026-02-01T03:37:40.162Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985765"}
+{"timestamp":"2026-02-01T03:37:40.163Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988542"}
+{"timestamp":"2026-02-01T03:37:40.163Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993691"}
+{"timestamp":"2026-02-01T03:37:40.164Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993714"}
+{"timestamp":"2026-02-01T03:37:40.164Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T03:37:40.164Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985682"}
+{"timestamp":"2026-02-01T03:37:40.165Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988450"}
+{"timestamp":"2026-02-01T03:37:40.165Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988621"}
+{"timestamp":"2026-02-01T03:37:40.165Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984394"}
+{"timestamp":"2026-02-01T03:37:40.165Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916979645"}
+{"timestamp":"2026-02-01T03:37:40.166Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988521"}
+{"timestamp":"2026-02-01T03:37:40.166Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993818"}
+{"timestamp":"2026-02-01T03:37:40.166Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993678"}
+{"timestamp":"2026-02-01T03:37:40.166Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993656"}
+{"timestamp":"2026-02-01T03:37:40.166Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993638"}
+{"timestamp":"2026-02-01T03:37:40.166Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988651"}
+{"timestamp":"2026-02-01T03:37:40.167Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988562"}
+{"timestamp":"2026-02-01T03:37:40.167Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984311"}
+{"timestamp":"2026-02-01T03:37:40.167Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984255"}
+{"timestamp":"2026-02-01T03:37:40.167Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983183"}
+{"timestamp":"2026-02-01T03:37:40.167Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993772"}
+{"timestamp":"2026-02-01T03:37:40.168Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916980439"}
+{"timestamp":"2026-02-01T03:37:40.168Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984464"}
+{"timestamp":"2026-02-01T03:37:40.168Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T03:37:40.168Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985704"}
+{"timestamp":"2026-02-01T03:37:40.169Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985698"}
+{"timestamp":"2026-02-01T03:37:40.169Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916982331"}
+{"timestamp":"2026-02-01T03:37:40.169Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993857"}
+{"timestamp":"2026-02-01T03:37:40.169Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916979814"}
+{"timestamp":"2026-02-01T03:37:40.170Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984346"}
+{"timestamp":"2026-02-01T03:37:40.170Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983221"}
+{"timestamp":"2026-02-01T03:37:40.170Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988466"}
+{"timestamp":"2026-02-01T03:37:40.170Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985754"}
+{"timestamp":"2026-02-01T03:37:40.170Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916979634"}
+{"timestamp":"2026-02-01T03:37:40.171Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916979662"}
+{"timestamp":"2026-02-01T03:37:40.171Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988482"}
+{"timestamp":"2026-02-01T03:37:40.171Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988399"}
+{"timestamp":"2026-02-01T03:37:40.172Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985642"}
+{"timestamp":"2026-02-01T03:37:40.172Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993831"}
+{"timestamp":"2026-02-01T03:37:40.172Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769917003254"}
+{"timestamp":"2026-02-01T03:37:40.172Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984264"}
+{"timestamp":"2026-02-01T03:37:40.173Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988471"}
+{"timestamp":"2026-02-01T03:37:40.182Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985720"}
+{"timestamp":"2026-02-01T03:37:40.182Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T03:37:40.182Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985677"}
+{"timestamp":"2026-02-01T03:37:40.182Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993871"}
+{"timestamp":"2026-02-01T03:37:40.182Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985639"}
+{"timestamp":"2026-02-01T03:37:40.183Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988487"}
+{"timestamp":"2026-02-01T03:37:40.183Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993778"}
+{"timestamp":"2026-02-01T03:37:40.183Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983187"}
+{"timestamp":"2026-02-01T03:37:40.183Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984260"}
+{"timestamp":"2026-02-01T03:37:40.183Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984399"}
+{"timestamp":"2026-02-01T03:37:40.184Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985781"}
+{"timestamp":"2026-02-01T03:37:40.184Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993767"}
+{"timestamp":"2026-02-01T03:37:40.184Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988476"}
+{"timestamp":"2026-02-01T03:37:40.184Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993651"}
+{"timestamp":"2026-02-01T03:37:40.184Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984389"}
+{"timestamp":"2026-02-01T03:37:40.185Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984361"}
+{"timestamp":"2026-02-01T03:37:40.185Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983226"}
+{"timestamp":"2026-02-01T03:37:40.185Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988639"}
+{"timestamp":"2026-02-01T03:37:40.185Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916982219"}
+{"timestamp":"2026-02-01T03:37:40.185Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916982326"}
+{"timestamp":"2026-02-01T03:37:40.185Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988419"}
+{"timestamp":"2026-02-01T03:37:40.186Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985770"}
+{"timestamp":"2026-02-01T03:37:40.186Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993696"}
+{"timestamp":"2026-02-01T03:37:40.186Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983199"}
+{"timestamp":"2026-02-01T03:37:40.186Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985654"}
+{"timestamp":"2026-02-01T03:37:40.186Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993844"}
+{"timestamp":"2026-02-01T03:37:40.186Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993703"}
+{"timestamp":"2026-02-01T03:37:40.186Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988427"}
+{"timestamp":"2026-02-01T03:37:40.186Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916979710"}
+{"timestamp":"2026-02-01T03:37:40.187Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993633"}
+{"timestamp":"2026-02-01T03:37:40.187Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985618"}
+{"timestamp":"2026-02-01T03:37:40.187Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983179"}
+{"timestamp":"2026-02-01T03:37:40.187Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993660"}
+{"timestamp":"2026-02-01T03:37:40.187Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985668"}
+{"timestamp":"2026-02-01T03:37:40.187Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984287"}
+{"timestamp":"2026-02-01T03:37:40.187Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993793"}
+{"timestamp":"2026-02-01T03:37:40.187Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983208"}
+{"timestamp":"2026-02-01T03:37:40.188Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988627"}
+{"timestamp":"2026-02-01T03:37:40.188Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993647"}
+{"timestamp":"2026-02-01T03:37:40.188Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916982238"}
+{"timestamp":"2026-02-01T03:37:40.188Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916979495"}
+{"timestamp":"2026-02-01T03:37:40.188Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916979719"}
+{"timestamp":"2026-02-01T03:37:40.188Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988445"}
+{"timestamp":"2026-02-01T03:37:40.188Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985646"}
+{"timestamp":"2026-02-01T03:37:40.189Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916982266"}
+{"timestamp":"2026-02-01T03:37:40.189Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985803"}
+{"timestamp":"2026-02-01T03:37:40.189Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993761"}
+{"timestamp":"2026-02-01T03:37:40.189Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984372"}
+{"timestamp":"2026-02-01T03:37:40.189Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993734"}
+{"timestamp":"2026-02-01T03:37:40.189Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988591"}
+{"timestamp":"2026-02-01T03:37:40.190Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983254"}
+{"timestamp":"2026-02-01T03:37:40.190Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985737"}
+{"timestamp":"2026-02-01T03:37:40.190Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988604"}
+{"timestamp":"2026-02-01T03:37:40.190Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985786"}
+{"timestamp":"2026-02-01T03:37:40.190Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916979832"}
+{"timestamp":"2026-02-01T03:37:40.191Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993805"}
+{"timestamp":"2026-02-01T03:37:40.191Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985661"}
+{"timestamp":"2026-02-01T03:37:40.191Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993669"}
+{"timestamp":"2026-02-01T03:37:40.191Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983196"}
+{"timestamp":"2026-02-01T03:37:40.192Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984457"}
+{"timestamp":"2026-02-01T03:37:40.192Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984302"}
+{"timestamp":"2026-02-01T03:37:40.192Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T03:37:40.192Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985792"}
+{"timestamp":"2026-02-01T03:37:40.192Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983266"}
+{"timestamp":"2026-02-01T03:37:40.192Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984268"}
+{"timestamp":"2026-02-01T03:37:40.193Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984246"}
+{"timestamp":"2026-02-01T03:37:40.193Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984444"}
+{"timestamp":"2026-02-01T03:37:40.193Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916980447"}
+{"timestamp":"2026-02-01T03:37:40.193Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916982255"}
+{"timestamp":"2026-02-01T03:37:40.194Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988436"}
+{"timestamp":"2026-02-01T03:37:40.194Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988356"}
+{"timestamp":"2026-02-01T03:37:40.194Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984277"}
+{"timestamp":"2026-02-01T03:37:40.194Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984436"}
+{"timestamp":"2026-02-01T03:37:40.194Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988586"}
+{"timestamp":"2026-02-01T03:37:40.195Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983236"}
+{"timestamp":"2026-02-01T03:37:40.195Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916981532"}
+{"timestamp":"2026-02-01T03:37:40.195Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916979767"}
+{"timestamp":"2026-02-01T03:37:40.195Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916982319"}
+{"timestamp":"2026-02-01T03:37:40.195Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993786"}
+{"timestamp":"2026-02-01T03:37:40.195Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993756"}
+{"timestamp":"2026-02-01T03:37:40.196Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988504"}
+{"timestamp":"2026-02-01T03:37:40.196Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983212"}
+{"timestamp":"2026-02-01T03:37:40.196Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988556"}
+{"timestamp":"2026-02-01T03:37:40.196Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993745"}
+{"timestamp":"2026-02-01T03:37:40.196Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916982306"}
+{"timestamp":"2026-02-01T03:37:40.196Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983176"}
+{"timestamp":"2026-02-01T03:37:40.197Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984412"}
+{"timestamp":"2026-02-01T03:37:40.197Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993665"}
+{"timestamp":"2026-02-01T03:37:40.197Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916979680"}
+{"timestamp":"2026-02-01T03:37:40.197Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988415"}
+{"timestamp":"2026-02-01T03:37:40.197Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985726"}
+{"timestamp":"2026-02-01T03:37:40.198Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984292"}
+{"timestamp":"2026-02-01T03:37:40.198Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916982234"}
+{"timestamp":"2026-02-01T03:37:40.198Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916979850"}
+{"timestamp":"2026-02-01T03:37:40.198Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993673"}
+{"timestamp":"2026-02-01T03:37:40.198Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988493"}
+{"timestamp":"2026-02-01T03:37:40.198Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985664"}
+{"timestamp":"2026-02-01T03:37:40.199Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916982262"}
+{"timestamp":"2026-02-01T03:37:40.199Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983244"}
+{"timestamp":"2026-02-01T03:37:40.199Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916982246"}
+{"timestamp":"2026-02-01T03:37:40.199Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984407"}
+{"timestamp":"2026-02-01T03:37:40.199Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984297"}
+{"timestamp":"2026-02-01T03:37:40.199Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988616"}
+{"timestamp":"2026-02-01T03:37:40.200Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993721"}
+{"timestamp":"2026-02-01T03:37:40.200Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984326"}
+{"timestamp":"2026-02-01T03:37:40.200Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988440"}
+{"timestamp":"2026-02-01T03:37:40.200Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984339"}
+{"timestamp":"2026-02-01T03:37:40.200Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988597"}
+{"timestamp":"2026-02-01T03:37:40.200Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983260"}
+{"timestamp":"2026-02-01T03:37:40.201Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985748"}
+{"timestamp":"2026-02-01T03:37:40.201Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993800"}
+{"timestamp":"2026-02-01T03:37:40.201Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916982250"}
+{"timestamp":"2026-02-01T03:37:40.201Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916980953"}
+{"timestamp":"2026-02-01T03:37:40.201Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988431"}
+{"timestamp":"2026-02-01T03:37:40.201Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984429"}
+{"timestamp":"2026-02-01T03:37:40.202Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985759"}
+{"timestamp":"2026-02-01T03:37:40.202Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983192"}
+{"timestamp":"2026-02-01T03:37:40.202Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988411"}
+{"timestamp":"2026-02-01T03:37:40.202Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916979983"}
+{"timestamp":"2026-02-01T03:37:40.202Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T03:37:40.202Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985797"}
+{"timestamp":"2026-02-01T03:37:40.202Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985673"}
+{"timestamp":"2026-02-01T03:37:40.203Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988527"}
+{"timestamp":"2026-02-01T03:37:40.203Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983272"}
+{"timestamp":"2026-02-01T03:37:40.203Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988510"}
+{"timestamp":"2026-02-01T03:37:40.203Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984451"}
+{"timestamp":"2026-02-01T03:37:40.203Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916979795"}
+{"timestamp":"2026-02-01T03:37:40.204Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984306"}
+{"timestamp":"2026-02-01T03:37:40.204Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988404"}
+{"timestamp":"2026-02-01T03:37:40.204Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985731"}
+{"timestamp":"2026-02-01T03:37:40.204Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993751"}
+{"timestamp":"2026-02-01T03:37:40.204Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916981528"}
+{"timestamp":"2026-02-01T03:37:40.204Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T03:37:40.204Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988548"}
+{"timestamp":"2026-02-01T03:37:40.205Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988515"}
+{"timestamp":"2026-02-01T03:37:40.205Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993812"}
+{"timestamp":"2026-02-01T03:37:40.206Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984273"}
+{"timestamp":"2026-02-01T03:37:40.206Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993824"}
+{"timestamp":"2026-02-01T03:37:40.206Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993682"}
+{"timestamp":"2026-02-01T03:37:40.206Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916984420"}
+{"timestamp":"2026-02-01T03:37:40.206Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988568"}
+{"timestamp":"2026-02-01T03:37:40.206Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993708"}
+{"timestamp":"2026-02-01T03:37:40.207Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916980443"}
+{"timestamp":"2026-02-01T03:37:40.207Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916993850"}
+{"timestamp":"2026-02-01T03:37:40.207Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916982295"}
+{"timestamp":"2026-02-01T03:37:40.207Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916983240"}
+{"timestamp":"2026-02-01T03:37:40.207Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916988499"}
+{"timestamp":"2026-02-01T03:37:40.207Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985693"}
+{"timestamp":"2026-02-01T03:37:40.207Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916981522"}
+{"timestamp":"2026-02-01T03:37:40.209Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916985743"}
+{"timestamp":"2026-02-01T03:38:10.725Z","level":"INFO","message":"Database initialized and vacuumed."}
+{"timestamp":"2026-02-01T03:38:10.780Z","level":"INFO","message":"Auth initialized. 1 users found in database."}
+{"timestamp":"2026-02-01T03:38:10.785Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}
+{"timestamp":"2026-02-01T03:38:10.793Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916976480"}
+{"timestamp":"2026-02-01T03:38:10.795Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916976485"}
+{"timestamp":"2026-02-01T03:38:10.797Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916976536"}
+{"timestamp":"2026-02-01T03:38:10.799Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916976585"}
+{"timestamp":"2026-02-01T03:38:10.801Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916976589"}
+{"timestamp":"2026-02-01T03:38:10.803Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916976608"}
+{"timestamp":"2026-02-01T03:38:10.805Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916976623"}
+{"timestamp":"2026-02-01T03:38:10.807Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916977141"}
+{"timestamp":"2026-02-01T03:38:10.809Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916979495"}
+{"timestamp":"2026-02-01T03:38:10.811Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916979520"}
+{"timestamp":"2026-02-01T03:38:10.813Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916979586"}
+{"timestamp":"2026-02-01T03:38:10.814Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916979610"}
+{"timestamp":"2026-02-01T03:38:10.816Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916979634"}
+{"timestamp":"2026-02-01T03:38:10.818Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916979645"}
+{"timestamp":"2026-02-01T03:38:10.820Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916979662"}
+{"timestamp":"2026-02-01T03:38:10.821Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916979680"}
+{"timestamp":"2026-02-01T03:38:10.823Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916979710"}
+{"timestamp":"2026-02-01T03:38:10.825Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916979719"}
+{"timestamp":"2026-02-01T03:38:10.827Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916979731"}
+{"timestamp":"2026-02-01T03:38:10.828Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916979767"}
+{"timestamp":"2026-02-01T03:38:10.830Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916979782"}
+{"timestamp":"2026-02-01T03:38:10.832Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916979795"}
+{"timestamp":"2026-02-01T03:38:10.833Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916979814"}
+{"timestamp":"2026-02-01T03:38:10.835Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916979832"}
+{"timestamp":"2026-02-01T03:38:10.838Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916979850"}
+{"timestamp":"2026-02-01T03:38:10.839Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916979983"}
+{"timestamp":"2026-02-01T03:38:10.841Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916980427"}
+{"timestamp":"2026-02-01T03:38:10.842Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916980439"}
+{"timestamp":"2026-02-01T03:38:10.844Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916980443"}
+{"timestamp":"2026-02-01T03:38:10.845Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916980447"}
+{"timestamp":"2026-02-01T03:38:10.847Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916980953"}
+{"timestamp":"2026-02-01T03:38:10.849Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916981522"}
+{"timestamp":"2026-02-01T03:38:10.851Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916981528"}
+{"timestamp":"2026-02-01T03:38:10.853Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916981532"}
+{"timestamp":"2026-02-01T03:38:10.854Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916981538"}
+{"timestamp":"2026-02-01T03:38:10.856Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916982219"}
+{"timestamp":"2026-02-01T03:38:10.858Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916982234"}
+{"timestamp":"2026-02-01T03:38:10.860Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916982238"}
+{"timestamp":"2026-02-01T03:38:10.861Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916982242"}
+{"timestamp":"2026-02-01T03:38:10.863Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916982246"}
+{"timestamp":"2026-02-01T03:38:10.865Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916982250"}
+{"timestamp":"2026-02-01T03:38:10.867Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916982255"}
+{"timestamp":"2026-02-01T03:38:10.868Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916982262"}
+{"timestamp":"2026-02-01T03:38:10.870Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916982266"}
+{"timestamp":"2026-02-01T03:38:10.872Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916982274"}
+{"timestamp":"2026-02-01T03:38:10.874Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916982281"}
+{"timestamp":"2026-02-01T03:38:10.876Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916982285"}
+{"timestamp":"2026-02-01T03:38:10.879Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916982295"}
+{"timestamp":"2026-02-01T03:38:10.881Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916982300"}
+{"timestamp":"2026-02-01T03:38:10.883Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916982306"}
+{"timestamp":"2026-02-01T03:38:10.884Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916982314"}
+{"timestamp":"2026-02-01T03:38:10.886Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916982319"}
+{"timestamp":"2026-02-01T03:38:10.888Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916982326"}
+{"timestamp":"2026-02-01T03:38:10.890Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916982331"}
+{"timestamp":"2026-02-01T03:38:10.892Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983176"}
+{"timestamp":"2026-02-01T03:38:10.894Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983179"}
+{"timestamp":"2026-02-01T03:38:10.895Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983183"}
+{"timestamp":"2026-02-01T03:38:10.898Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983187"}
+{"timestamp":"2026-02-01T03:38:10.899Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983192"}
+{"timestamp":"2026-02-01T03:38:10.901Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983196"}
+{"timestamp":"2026-02-01T03:38:10.903Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983199"}
+{"timestamp":"2026-02-01T03:38:10.905Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983204"}
+{"timestamp":"2026-02-01T03:38:10.907Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983208"}
+{"timestamp":"2026-02-01T03:38:10.908Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983212"}
+{"timestamp":"2026-02-01T03:38:10.910Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983217"}
+{"timestamp":"2026-02-01T03:38:10.912Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983221"}
+{"timestamp":"2026-02-01T03:38:10.914Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983226"}
+{"timestamp":"2026-02-01T03:38:10.916Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983231"}
+{"timestamp":"2026-02-01T03:38:10.918Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983236"}
+{"timestamp":"2026-02-01T03:38:10.920Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983240"}
+{"timestamp":"2026-02-01T03:38:10.922Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983244"}
+{"timestamp":"2026-02-01T03:38:10.967Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983249"}
+{"timestamp":"2026-02-01T03:38:10.969Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983254"}
+{"timestamp":"2026-02-01T03:38:10.971Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983260"}
+{"timestamp":"2026-02-01T03:38:10.972Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983266"}
+{"timestamp":"2026-02-01T03:38:10.974Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983272"}
+{"timestamp":"2026-02-01T03:38:10.977Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983277"}
+{"timestamp":"2026-02-01T03:38:10.979Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983283"}
+{"timestamp":"2026-02-01T03:38:10.981Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916983290"}
+{"timestamp":"2026-02-01T03:38:10.983Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984246"}
+{"timestamp":"2026-02-01T03:38:10.986Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984250"}
+{"timestamp":"2026-02-01T03:38:10.988Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984255"}
+{"timestamp":"2026-02-01T03:38:10.990Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984260"}
+{"timestamp":"2026-02-01T03:38:10.992Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984264"}
+{"timestamp":"2026-02-01T03:38:10.995Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984268"}
+{"timestamp":"2026-02-01T03:38:10.997Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984273"}
+{"timestamp":"2026-02-01T03:38:10.999Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984277"}
+{"timestamp":"2026-02-01T03:38:11.001Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984283"}
+{"timestamp":"2026-02-01T03:38:11.003Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984287"}
+{"timestamp":"2026-02-01T03:38:11.005Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984292"}
+{"timestamp":"2026-02-01T03:38:11.008Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984297"}
+{"timestamp":"2026-02-01T03:38:11.010Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984302"}
+{"timestamp":"2026-02-01T03:38:11.012Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984306"}
+{"timestamp":"2026-02-01T03:38:11.014Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984311"}
+{"timestamp":"2026-02-01T03:38:11.018Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984316"}
+{"timestamp":"2026-02-01T03:38:11.020Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984321"}
+{"timestamp":"2026-02-01T03:38:11.023Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984326"}
+{"timestamp":"2026-02-01T03:38:11.025Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984332"}
+{"timestamp":"2026-02-01T03:38:11.028Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984339"}
+{"timestamp":"2026-02-01T03:38:11.030Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984346"}
+{"timestamp":"2026-02-01T03:38:11.032Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984354"}
+{"timestamp":"2026-02-01T03:38:11.035Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984361"}
+{"timestamp":"2026-02-01T03:38:11.037Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984366"}
+{"timestamp":"2026-02-01T03:38:11.039Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984372"}
+{"timestamp":"2026-02-01T03:38:11.041Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984380"}
+{"timestamp":"2026-02-01T03:38:11.043Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984389"}
+{"timestamp":"2026-02-01T03:38:11.045Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984394"}
+{"timestamp":"2026-02-01T03:38:11.048Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984399"}
+{"timestamp":"2026-02-01T03:38:11.049Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984407"}
+{"timestamp":"2026-02-01T03:38:11.052Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984412"}
+{"timestamp":"2026-02-01T03:38:11.054Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984420"}
+{"timestamp":"2026-02-01T03:38:11.056Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984429"}
+{"timestamp":"2026-02-01T03:38:11.058Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984436"}
+{"timestamp":"2026-02-01T03:38:11.060Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984444"}
+{"timestamp":"2026-02-01T03:38:11.063Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984451"}
+{"timestamp":"2026-02-01T03:38:11.065Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984457"}
+{"timestamp":"2026-02-01T03:38:11.067Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916984464"}
+{"timestamp":"2026-02-01T03:38:11.070Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985618"}
+{"timestamp":"2026-02-01T03:38:11.072Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985628"}
+{"timestamp":"2026-02-01T03:38:11.076Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985632"}
+{"timestamp":"2026-02-01T03:38:11.078Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985636"}
+{"timestamp":"2026-02-01T03:38:11.080Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985639"}
+{"timestamp":"2026-02-01T03:38:11.082Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985642"}
+{"timestamp":"2026-02-01T03:38:11.084Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985646"}
+{"timestamp":"2026-02-01T03:38:11.087Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985650"}
+{"timestamp":"2026-02-01T03:38:11.089Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985654"}
+{"timestamp":"2026-02-01T03:38:11.092Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985657"}
+{"timestamp":"2026-02-01T03:38:11.094Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985661"}
+{"timestamp":"2026-02-01T03:38:11.096Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985664"}
+{"timestamp":"2026-02-01T03:38:11.099Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985668"}
+{"timestamp":"2026-02-01T03:38:11.101Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985673"}
+{"timestamp":"2026-02-01T03:38:11.103Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985677"}
+{"timestamp":"2026-02-01T03:38:11.106Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985682"}
+{"timestamp":"2026-02-01T03:38:11.108Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985687"}
+{"timestamp":"2026-02-01T03:38:11.110Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985693"}
+{"timestamp":"2026-02-01T03:38:11.113Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985698"}
+{"timestamp":"2026-02-01T03:38:11.115Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985704"}
+{"timestamp":"2026-02-01T03:38:11.118Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985709"}
+{"timestamp":"2026-02-01T03:38:11.120Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985715"}
+{"timestamp":"2026-02-01T03:38:11.123Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985720"}
+{"timestamp":"2026-02-01T03:38:11.125Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985726"}
+{"timestamp":"2026-02-01T03:38:11.129Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985731"}
+{"timestamp":"2026-02-01T03:38:11.132Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985737"}
+{"timestamp":"2026-02-01T03:38:11.134Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985743"}
+{"timestamp":"2026-02-01T03:38:11.135Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985748"}
+{"timestamp":"2026-02-01T03:38:11.138Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985754"}
+{"timestamp":"2026-02-01T03:38:11.140Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985759"}
+{"timestamp":"2026-02-01T03:38:11.142Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985765"}
+{"timestamp":"2026-02-01T03:38:11.144Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985770"}
+{"timestamp":"2026-02-01T03:38:11.146Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985775"}
+{"timestamp":"2026-02-01T03:38:11.148Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985781"}
+{"timestamp":"2026-02-01T03:38:11.151Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985786"}
+{"timestamp":"2026-02-01T03:38:11.153Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985792"}
+{"timestamp":"2026-02-01T03:38:11.155Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985797"}
+{"timestamp":"2026-02-01T03:38:11.157Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985803"}
+{"timestamp":"2026-02-01T03:38:11.159Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985808"}
+{"timestamp":"2026-02-01T03:38:11.199Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985814"}
+{"timestamp":"2026-02-01T03:38:11.201Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916985821"}
+{"timestamp":"2026-02-01T03:38:11.203Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988356"}
+{"timestamp":"2026-02-01T03:38:11.204Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988399"}
+{"timestamp":"2026-02-01T03:38:11.207Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988404"}
+{"timestamp":"2026-02-01T03:38:11.211Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988407"}
+{"timestamp":"2026-02-01T03:38:11.213Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988411"}
+{"timestamp":"2026-02-01T03:38:11.215Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988415"}
+{"timestamp":"2026-02-01T03:38:11.217Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988419"}
+{"timestamp":"2026-02-01T03:38:11.220Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988423"}
+{"timestamp":"2026-02-01T03:38:11.222Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988427"}
+{"timestamp":"2026-02-01T03:38:11.224Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988431"}
+{"timestamp":"2026-02-01T03:38:11.226Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988436"}
+{"timestamp":"2026-02-01T03:38:11.229Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988440"}
+{"timestamp":"2026-02-01T03:38:11.231Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988445"}
+{"timestamp":"2026-02-01T03:38:11.233Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988450"}
+{"timestamp":"2026-02-01T03:38:11.235Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988454"}
+{"timestamp":"2026-02-01T03:38:11.237Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988460"}
+{"timestamp":"2026-02-01T03:38:11.239Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988466"}
+{"timestamp":"2026-02-01T03:38:11.242Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988471"}
+{"timestamp":"2026-02-01T03:38:11.244Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988476"}
+{"timestamp":"2026-02-01T03:38:11.246Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988482"}
+{"timestamp":"2026-02-01T03:38:11.248Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988487"}
+{"timestamp":"2026-02-01T03:38:11.250Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988493"}
+{"timestamp":"2026-02-01T03:38:11.252Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988499"}
+{"timestamp":"2026-02-01T03:38:11.254Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988504"}
+{"timestamp":"2026-02-01T03:38:11.256Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988510"}
+{"timestamp":"2026-02-01T03:38:11.258Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988515"}
+{"timestamp":"2026-02-01T03:38:11.260Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988521"}
+{"timestamp":"2026-02-01T03:38:11.262Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988527"}
+{"timestamp":"2026-02-01T03:38:11.264Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988532"}
+{"timestamp":"2026-02-01T03:38:11.266Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988537"}
+{"timestamp":"2026-02-01T03:38:11.269Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988542"}
+{"timestamp":"2026-02-01T03:38:11.271Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988548"}
+{"timestamp":"2026-02-01T03:38:11.273Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988556"}
+{"timestamp":"2026-02-01T03:38:11.276Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988562"}
+{"timestamp":"2026-02-01T03:38:11.278Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988568"}
+{"timestamp":"2026-02-01T03:38:11.280Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988574"}
+{"timestamp":"2026-02-01T03:38:11.282Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988581"}
+{"timestamp":"2026-02-01T03:38:11.285Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988586"}
+{"timestamp":"2026-02-01T03:38:11.287Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988591"}
+{"timestamp":"2026-02-01T03:38:11.289Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988597"}
+{"timestamp":"2026-02-01T03:38:11.291Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988604"}
+{"timestamp":"2026-02-01T03:38:11.293Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988610"}
+{"timestamp":"2026-02-01T03:38:11.295Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988616"}
+{"timestamp":"2026-02-01T03:38:11.297Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988621"}
+{"timestamp":"2026-02-01T03:38:11.300Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988627"}
+{"timestamp":"2026-02-01T03:38:11.302Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988633"}
+{"timestamp":"2026-02-01T03:38:11.304Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988639"}
+{"timestamp":"2026-02-01T03:38:11.306Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988645"}
+{"timestamp":"2026-02-01T03:38:11.308Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916988651"}
+{"timestamp":"2026-02-01T03:38:11.310Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993633"}
+{"timestamp":"2026-02-01T03:38:11.313Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993638"}
+{"timestamp":"2026-02-01T03:38:11.315Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993643"}
+{"timestamp":"2026-02-01T03:38:11.317Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993647"}
+{"timestamp":"2026-02-01T03:38:11.320Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993651"}
+{"timestamp":"2026-02-01T03:38:11.322Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993656"}
+{"timestamp":"2026-02-01T03:38:11.324Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993660"}
+{"timestamp":"2026-02-01T03:38:11.326Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993665"}
+{"timestamp":"2026-02-01T03:38:11.328Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993669"}
+{"timestamp":"2026-02-01T03:38:11.330Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993673"}
+{"timestamp":"2026-02-01T03:38:11.332Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993678"}
+{"timestamp":"2026-02-01T03:38:11.334Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993682"}
+{"timestamp":"2026-02-01T03:38:11.336Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993687"}
+{"timestamp":"2026-02-01T03:38:11.338Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993691"}
+{"timestamp":"2026-02-01T03:38:11.341Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993696"}
+{"timestamp":"2026-02-01T03:38:11.343Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993699"}
+{"timestamp":"2026-02-01T03:38:11.345Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993703"}
+{"timestamp":"2026-02-01T03:38:11.347Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993708"}
+{"timestamp":"2026-02-01T03:38:11.350Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993714"}
+{"timestamp":"2026-02-01T03:38:11.352Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993721"}
+{"timestamp":"2026-02-01T03:38:11.354Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993728"}
+{"timestamp":"2026-02-01T03:38:11.357Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993734"}
+{"timestamp":"2026-02-01T03:38:11.359Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993740"}
+{"timestamp":"2026-02-01T03:38:11.361Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993745"}
+{"timestamp":"2026-02-01T03:38:11.364Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993751"}
+{"timestamp":"2026-02-01T03:38:11.366Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993756"}
+{"timestamp":"2026-02-01T03:38:11.368Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993761"}
+{"timestamp":"2026-02-01T03:38:11.370Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993767"}
+{"timestamp":"2026-02-01T03:38:11.373Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993772"}
+{"timestamp":"2026-02-01T03:38:11.375Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993778"}
+{"timestamp":"2026-02-01T03:38:11.379Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993786"}
+{"timestamp":"2026-02-01T03:38:11.383Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993793"}
+{"timestamp":"2026-02-01T03:38:11.385Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993800"}
+{"timestamp":"2026-02-01T03:38:11.387Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993805"}
+{"timestamp":"2026-02-01T03:38:11.389Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993812"}
+{"timestamp":"2026-02-01T03:38:11.392Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993818"}
+{"timestamp":"2026-02-01T03:38:11.394Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993824"}
+{"timestamp":"2026-02-01T03:38:11.397Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993831"}
+{"timestamp":"2026-02-01T03:38:11.399Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993837"}
+{"timestamp":"2026-02-01T03:38:11.401Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993844"}
+{"timestamp":"2026-02-01T03:38:11.404Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993850"}
+{"timestamp":"2026-02-01T03:38:11.406Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993857"}
+{"timestamp":"2026-02-01T03:38:11.408Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993864"}
+{"timestamp":"2026-02-01T03:38:11.410Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916993871"}
+{"timestamp":"2026-02-01T03:38:11.412Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769917003254"}
+{"timestamp":"2026-02-01T03:38:38.794Z","level":"INFO","message":"Database initialized and vacuumed."}
+{"timestamp":"2026-02-01T03:38:38.851Z","level":"INFO","message":"Auth initialized. 1 users found in database."}
+{"timestamp":"2026-02-01T03:38:38.857Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}
+{"timestamp":"2026-02-01T03:38:47.276Z","level":"INFO","message":"Database initialized and vacuumed."}
+{"timestamp":"2026-02-01T03:38:47.340Z","level":"INFO","message":"Auth initialized. 1 users found in database."}
+{"timestamp":"2026-02-01T03:38:47.340Z","level":"WARN","message":"SECURITY WARNING: Using default JWT secret. Change this in production by setting JWT_SECRET environment variable!"}
+{"timestamp":"2026-02-01T03:38:47.345Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}

@@ -115,6 +115,10 @@ class DB {
     transaction(fn: () => void) {
         this.db.transaction(fn)();
     }
+
+    close() {
+        this.db.close();
+    }
 }
 
 export const db = new DB();
