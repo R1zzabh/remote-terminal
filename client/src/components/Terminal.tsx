@@ -2,9 +2,10 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { Terminal } from "xterm";
 import { FitAddon } from "xterm-addon-fit";
 import { WebLinksAddon } from "xterm-addon-web-links";
+import { SearchAddon } from "xterm-addon-search";
 import "xterm/css/xterm.css";
 import { CommandPalette } from "./CommandPalette";
-import { Plus, X, Monitor, RefreshCw, LayoutTemplate } from "lucide-react";
+import { Plus, X, Monitor, RefreshCw, LayoutTemplate, Search } from "lucide-react";
 import { clsx } from "clsx";
 import { FileExplorer } from "./FileExplorer";
 import { CodeEditor } from "./CodeEditor";
@@ -26,6 +27,7 @@ interface TerminalPane {
     id: string;
     term: Terminal;
     fitAddon: FitAddon;
+    searchAddon: SearchAddon;
     ws: WebSocket;
     status: "connecting" | "connected" | "disconnected" | "error";
 }
@@ -46,6 +48,8 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
     const [fontFamily, setFontFamily] = useState("'JetBrains Mono', 'Fira Code', monospace");
     const [showSidebar, setShowSidebar] = useState(true);
     const [editingFilePath, setEditingFilePath] = useState<string | null>(null);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [showSearch, setShowSearch] = useState(false);
 
     const activeSession = sessions.find(s => s.id === activeSessionId);
 
@@ -63,17 +67,19 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
             allowProposedApi: true
         });
         const fitAddon = new FitAddon();
+        const searchAddon = new SearchAddon();
         term.loadAddon(fitAddon);
         term.loadAddon(new WebLinksAddon());
-        return { term, fitAddon };
+        term.loadAddon(searchAddon);
+        return { term, fitAddon, searchAddon };
     }, [theme, fontFamily]);
 
     const createPane = useCallback((paneId: string, sshHost?: string): TerminalPane => {
-        const { term, fitAddon } = createTerminalObject();
+        const { term, fitAddon, searchAddon } = createTerminalObject();
         const ws = new WebSocket(`ws://localhost:3001/ws?sessionId=${paneId}`);
 
         const pane: TerminalPane = {
-            id: paneId, term, fitAddon, ws,
+            id: paneId, term, fitAddon, searchAddon, ws,
             status: "connecting"
         };
 
@@ -226,6 +232,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         else if (action === 'new-tab') createNewTab();
         else if (action === 'close-tab') activeSessionId && closeTab(activeSessionId);
         else if (action === 'palette') setIsPaletteOpen(true);
+        else if (action === 'search') setShowSearch(prev => !prev);
     };
 
     return (
@@ -291,6 +298,33 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                     {editingFilePath && (
                         <div style={{ width: '40%', minWidth: '400px', borderLeft: '1px solid var(--glass-border)' }}>
                             <CodeEditor path={editingFilePath} token={token} onClose={() => setEditingFilePath(null)} />
+                        </div>
+                    )}
+
+                    {showSearch && (
+                        <div style={{
+                            position: 'absolute', top: 10, right: editingFilePath ? '41%' : 20, zIndex: 100,
+                            background: 'var(--glass-bg)', backdropFilter: 'blur(20px)', border: '1px solid var(--glass-border)',
+                            borderRadius: '8px', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: '8px',
+                            boxShadow: 'var(--glass-shadow)', animation: 'paletteScaleUp 0.1s ease'
+                        }}>
+                            <Search size={14} className="text-dim" />
+                            <input
+                                autoFocus
+                                type="text"
+                                placeholder="Find..."
+                                value={searchTerm}
+                                onChange={e => {
+                                    setSearchTerm(e.target.value);
+                                    activeSession?.panes[0].searchAddon.findNext(e.target.value);
+                                }}
+                                onKeyDown={e => {
+                                    if (e.key === 'Enter') activeSession?.panes[0].searchAddon.findNext(searchTerm);
+                                    if (e.key === 'Escape') setShowSearch(false);
+                                }}
+                                style={{ background: 'transparent', border: 'none', color: '#fff', outline: 'none', fontSize: '13px' }}
+                            />
+                            <X size={14} className="cursor-pointer text-dim" onClick={() => setShowSearch(false)} />
                         </div>
                     )}
                 </div>

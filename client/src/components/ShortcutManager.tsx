@@ -36,6 +36,10 @@ export function ShortcutManager({ onAction }: ShortcutManagerProps) {
                     e.preventDefault();
                     onAction('split-horizontal');
                     break;
+                case 'F':
+                    e.preventDefault();
+                    onAction('search');
+                    break;
             }
         };
 
