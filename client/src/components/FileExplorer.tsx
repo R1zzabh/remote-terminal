@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Folder, File, ChevronRight, RefreshCcw } from "lucide-react";
+import { Folder, File, ChevronRight, RefreshCcw, FilePlus, FolderPlus, Edit3, Trash2, X, Check } from "lucide-react";
 import useSWR from "swr";
 
 interface FileExplorerProps {
@@ -20,6 +20,10 @@ const fetcher = (url: string, token: string) =>
 
 export function FileExplorer({ token, onSelectFolder, onSelectFile }: FileExplorerProps) {
     const [currentPath, setCurrentPath] = useState<string>("");
+    const [isCreating, setIsCreating] = useState<"file" | "folder" | null>(null);
+    const [renamingPath, setRenamingPath] = useState<string | null>(null);
+    const [newName, setNewName] = useState("");
+
     const { data: files, error, mutate, isLoading } = useSWR(
         token ? [`http://localhost:3001/api/files?path=${currentPath}`, token] : null,
         ([url, t]) => fetcher(url, t)
@@ -31,6 +35,42 @@ export function FileExplorer({ token, onSelectFolder, onSelectFile }: FileExplor
         setCurrentPath(parts.join("/"));
     };
 
+    const handleCreate = async () => {
+        if (!newName) return;
+        const targetPath = currentPath ? `${currentPath}/${newName}` : newName;
+        await fetch("http://localhost:3001/api/files/create", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+            body: JSON.stringify({ path: targetPath, isDirectory: isCreating === "folder" })
+        });
+        setIsCreating(null);
+        setNewName("");
+        mutate();
+    };
+
+    const handleRename = async (oldPath: string) => {
+        if (!newName) return;
+        const parent = oldPath.split("/").slice(0, -1).join("/");
+        const newPath = parent ? `${parent}/${newName}` : newName;
+        await fetch("http://localhost:3001/api/files/rename", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+            body: JSON.stringify({ oldPath, newPath })
+        });
+        setRenamingPath(null);
+        setNewName("");
+        mutate();
+    };
+
+    const handleDelete = async (path: string) => {
+        if (!confirm("Are you sure you want to delete this?")) return;
+        await fetch(`http://localhost:3001/api/files?path=${path}`, {
+            method: "DELETE",
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        mutate();
+    };
+
     if (error) return <div className="p-4 text-danger">Error loading files</div>;
 
     return (
@@ -40,10 +80,28 @@ export function FileExplorer({ token, onSelectFolder, onSelectFile }: FileExplor
         }}>
             <div className="explorer-header" style={{ padding: '8px 12px', borderBottom: '1px solid var(--glass-border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <span style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--text-dim)' }}>EXPLORER</span>
-                <RefreshCcw size={14} className="cursor-pointer text-dim" onClick={() => mutate()} />
+                <div style={{ display: 'flex', gap: '8px' }}>
+                    <FilePlus size={14} className="cursor-pointer text-dim hover:text-white" onClick={() => { setIsCreating("file"); setNewName(""); }} />
+                    <FolderPlus size={14} className="cursor-pointer text-dim hover:text-white" onClick={() => { setIsCreating("folder"); setNewName(""); }} />
+                    <RefreshCcw size={14} className="cursor-pointer text-dim hover:text-white" onClick={() => mutate()} />
+                </div>
             </div>
 
             <div className="explorer-content" style={{ flex: 1, overflowY: 'auto', padding: '8px' }}>
+                {isCreating && (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '4px', padding: '4px 8px' }}>
+                        {isCreating === "folder" ? <Folder size={14} color="#88c0d0" /> : <File size={14} color="var(--text-dim)" />}
+                        <input
+                            autoFocus
+                            value={newName}
+                            onChange={e => setNewName(e.target.value)}
+                            onKeyDown={e => e.key === 'Enter' && handleCreate()}
+                            style={{ flex: 1, background: 'rgba(255,255,255,0.05)', border: 'none', color: '#fff', fontSize: '12px', outline: 'none', padding: '2px 4px', borderRadius: '2px' }}
+                        />
+                        <Check size={12} className="cursor-pointer" onClick={handleCreate} />
+                        <X size={12} className="cursor-pointer" onClick={() => setIsCreating(null)} />
+                    </div>
+                )}
                 {currentPath && (
                     <div
                         className="explorer-item"
@@ -61,20 +119,46 @@ export function FileExplorer({ token, onSelectFolder, onSelectFile }: FileExplor
                     files?.map((file: FileItem) => (
                         <div
                             key={file.path}
-                            className="explorer-item"
+                            className="explorer-item group"
                             onClick={() => file.isDirectory ? setCurrentPath(file.path) : onSelectFile(file.path)}
                             onDoubleClick={() => file.isDirectory && onSelectFolder(file.path)}
                             style={{
                                 display: 'flex', alignItems: 'center', gap: '8px', padding: '4px 8px',
                                 cursor: 'pointer', fontSize: '13px', borderRadius: '4px',
                                 transition: 'background 0.2s',
-                                marginBottom: '2px'
+                                marginBottom: '2px',
+                                position: 'relative'
                             }}
                             onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}
                             onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
                         >
-                            {file.isDirectory ? <Folder size={14} color="#88c0d0" /> : <File size={14} color="var(--text-dim)" />}
-                            <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{file.name}</span>
+                            {renamingPath === file.path ? (
+                                <>
+                                    {file.isDirectory ? <Folder size={14} color="#88c0d0" /> : <File size={14} color="var(--text-dim)" />}
+                                    <input
+                                        autoFocus
+                                        value={newName}
+                                        onClick={e => e.stopPropagation()}
+                                        onChange={e => setNewName(e.target.value)}
+                                        onKeyDown={e => e.key === 'Enter' && handleRename(file.path)}
+                                        style={{ flex: 1, background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', fontSize: '12px', outline: 'none', padding: '2px 4px', borderRadius: '2px' }}
+                                    />
+                                    <Check size={12} onClick={(e) => { e.stopPropagation(); handleRename(file.path); }} />
+                                    <X size={12} onClick={(e) => { e.stopPropagation(); setRenamingPath(null); }} />
+                                </>
+                            ) : (
+                                <>
+                                    {file.isDirectory ? <Folder size={14} color="#88c0d0" /> : <File size={14} color="var(--text-dim)" />}
+                                    <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', flex: 1 }}>{file.name}</span>
+                                    <div className="explorer-actions" style={{ display: 'none', gap: '4px' }}>
+                                        <Edit3 size={12} className="text-dim hover:text-white" onClick={(e) => { e.stopPropagation(); setRenamingPath(file.path); setNewName(file.name); }} />
+                                        <Trash2 size={12} className="text-danger hover:text-red-400" onClick={(e) => { e.stopPropagation(); handleDelete(file.path); }} />
+                                    </div>
+                                    <style>{`
+                                        .explorer-item:hover .explorer-actions { display: flex !important; }
+                                    `}</style>
+                                </>
+                            )}
                         </div>
                     ))
                 )}
