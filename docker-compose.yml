@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  server:
+    build: ./server
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - JWT_SECRET=change-this-secret-in-production
+      - ALLOWED_ORIGINS=http://localhost:5173,http://localhost:80
+    volumes:
+      - ./server/data:/app/data
+    restart: always
+
+  client:
+    build: ./client
+    ports:
+      - "5173:80"
+    depends_on:
+      - server
+    restart: always

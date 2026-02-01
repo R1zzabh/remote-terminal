@@ -111,69 +111,102 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         return { term, fitAddon, searchAddon };
     }, [theme, fontFamily]);
 
-    const createPane = useCallback((paneId: string, sshHost?: string): TerminalPane => {
-        const { term, fitAddon, searchAddon } = createTerminalObject();
+    const connectWebSocket = useCallback((paneId: string, term: Terminal, sshHost?: string, attempt = 0) => {
         const ws = new WebSocket(`ws://localhost:3001/ws?sessionId=${paneId}`);
 
-        const pane: TerminalPane = {
-            id: paneId, term, fitAddon, searchAddon, ws,
-            status: "connecting"
+        const retry = () => {
+            const delay = Math.min(1000 * Math.pow(2, attempt), 30000);
+            console.info(`Reconnecting in ${delay}ms... (Attempt ${attempt + 1})`);
+            setTimeout(() => connectWebSocket(paneId, term, sshHost, attempt + 1), delay);
         };
 
         ws.onopen = () => {
             setSessions(prev => prev.map(s => ({
                 ...s,
-                panes: s.panes.map(p => p.id === paneId ? { ...p, status: "connected" as const } : p)
+                panes: s.panes.map(p => p.id === paneId ? { ...p, ws, status: "connected" as const } : p)
             })));
-            term.write(`\r\n\x1b[32m[SYSTEM]\x1b[0m ${sshHost ? `Connecting to ${sshHost}...` : 'Session Initialized'}\r\n`);
+            term.write(`\r\n\x1b[32m[SYSTEM]\x1b[0m ${sshHost ? `Connecting to ${sshHost}...` : 'Connected to Server'}\r\n`);
             ws.send(JSON.stringify({ type: "auth", token, sshHost }));
         };
 
         ws.onmessage = (event) => {
             try {
                 const msg = JSON.parse(event.data);
-                if (msg.type === "output") {
-                    term.write(msg.data);
-                } else if (msg.type === "authenticated") {
-                    term.onData(data => {
-                        if (ws.readyState === WebSocket.OPEN) {
-                            ws.send(JSON.stringify({ type: "input", data }));
-                        }
-                    });
-                    term.onResize(size => ws.send(JSON.stringify({ type: "resize", cols: size.cols, rows: size.rows })));
-
-                    term.onBell(() => {
-                        const sess = sessions.find(s => s.panes.some(p => p.id === paneId));
-                        if (sess) {
-                            const tab = document.getElementById(`tab-${sess.id}`);
-                            if (tab) {
-                                tab.style.animation = 'bell-shake 0.5s cubic-bezier(.36,.07,.19,.97) both';
-                                tab.style.borderColor = 'var(--accent-color)';
-                                setTimeout(() => {
-                                    tab.style.animation = '';
-                                    tab.style.borderColor = activeSessionId === sess.id ? 'var(--glass-border)' : 'transparent';
-                                }, 500);
-                            }
-                        }
-                    });
-
+                if (msg.type === "output") term.write(msg.data);
+                else if (msg.type === "authenticated") {
+                    // Reset attempt on successful auth
+                    attempt = 0;
                     ws.send(JSON.stringify({ type: "resize", cols: term.cols, rows: term.rows }));
                 }
             } catch (e) { console.error(e); }
         };
 
-        ws.onclose = () => setSessions(prev => prev.map(s => ({
-            ...s,
-            panes: s.panes.map(p => p.id === paneId ? { ...p, status: "disconnected" as const } : p)
-        })));
+        ws.onclose = (e) => {
+            setSessions(prev => prev.map(s => ({
+                ...s,
+                panes: s.panes.map(p => p.id === paneId ? { ...p, status: "disconnected" as const } : p)
+            })));
 
-        ws.onerror = () => setSessions(prev => prev.map(s => ({
-            ...s,
-            panes: s.panes.map(p => p.id === paneId ? { ...p, status: "error" as const } : p)
-        })));
+            // Reconnect if not closed cleanly
+            if (e.code !== 1000 && e.code !== 1001) {
+                term.write(`\r\n\x1b[31m[SYSTEM] Connection lost. Reconnecting...\x1b[0m\r\n`);
+                retry();
+            }
+        };
+
+        ws.onerror = () => {
+            setSessions(prev => prev.map(s => ({
+                ...s,
+                panes: s.panes.map(p => p.id === paneId ? { ...p, status: "error" as const } : p)
+            })));
+        };
+
+        return ws;
+    }, [token, sessions, activeSessionId]);
+
+    const createPane = useCallback((paneId: string, sshHost?: string): TerminalPane => {
+        const { term, fitAddon, searchAddon } = createTerminalObject();
+
+        const pane: TerminalPane = {
+            id: paneId, term, fitAddon, searchAddon,
+            ws: null as any, // Will be set by connectWebSocket
+            status: "connecting"
+        };
+
+        const ws = connectWebSocket(paneId, term, sshHost);
+        pane.ws = ws;
+
+        term.onData(data => {
+            const currentPane = sessions.find(s => s.panes.some(p => p.id === paneId))?.panes.find(p => p.id === paneId);
+            if (currentPane?.ws?.readyState === WebSocket.OPEN) {
+                currentPane.ws.send(JSON.stringify({ type: "input", data }));
+            }
+        });
+
+        term.onResize(size => {
+            const currentPane = sessions.find(s => s.panes.some(p => p.id === paneId))?.panes.find(p => p.id === paneId);
+            if (currentPane?.ws?.readyState === WebSocket.OPEN) {
+                currentPane.ws.send(JSON.stringify({ type: "resize", cols: size.cols, rows: size.rows }));
+            }
+        });
+
+        term.onBell(() => {
+            const sess = sessions.find(s => s.panes.some(p => p.id === paneId));
+            if (sess) {
+                const tab = document.getElementById(`tab-${sess.id}`);
+                if (tab) {
+                    tab.style.animation = 'bell-shake 0.5s cubic-bezier(.36,.07,.19,.97) both';
+                    tab.style.borderColor = 'var(--accent-color)';
+                    setTimeout(() => {
+                        tab.style.animation = '';
+                        tab.style.borderColor = activeSessionId === sess.id ? 'var(--glass-border)' : 'transparent';
+                    }, 500);
+                }
+            }
+        });
 
         return pane;
-    }, [token, createTerminalObject, sessions, activeSessionId]);
+    }, [token, createTerminalObject, connectWebSocket, sessions, activeSessionId]);
 
     const createNewTab = useCallback((sshHost?: string) => {
         const tabId = Math.random().toString(36).substring(7);

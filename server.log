@@ -1,0 +1,38 @@
+
+> ryo-terminal-server@1.0.0 dev
+> tsx watch src/index.ts
+
+[INFO] Database initialized. 
+[INFO] Auth initialized. 1 users found in database. 
+[INFO] Ryo Terminal Server running on port 3001 
+📡 WebSocket ready at ws://localhost:3001/ws
+
+[INFO] WebSocket connection opened 
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin { sessionId: 'admin-1769916335039', sshHost: undefined }
+[INFO] Session authenticated: admin { sessionId: 'admin-1769916335052', sshHost: undefined }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin { sessionId: 'admin-1769916335086', sshHost: undefined }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin { sessionId: 'admin-1769916335096', sshHost: undefined }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin { sessionId: 'admin-1769916335119', sshHost: undefined }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin { sessionId: 'admin-1769916335135', sshHost: undefined }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin { sessionId: 'admin-1769916335151', sshHost: undefined }
+[INFO] WebSocket closed for admin { sessionId: 'admin-1769916335151' }
+[INFO] WebSocket closed for admin { sessionId: 'admin-1769916335052' }
+[INFO] WebSocket closed for admin { sessionId: 'admin-1769916335039' }
+[INFO] WebSocket closed for admin { sessionId: 'admin-1769916335096' }
+[INFO] WebSocket closed for admin { sessionId: 'admin-1769916335086' }
+[INFO] WebSocket closed for admin { sessionId: 'admin-1769916335135' }
+[INFO] WebSocket closed for admin { sessionId: 'admin-1769916335119' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin { sessionId: 'admin-1769916337580', sshHost: undefined }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin { sessionId: 'admin-1769916337610', sshHost: undefined }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin { sessionId: 'admin-1769916337629', sshHost: undefined }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin { sessionId: 'admin-1769916337647', sshHost: undefined }
