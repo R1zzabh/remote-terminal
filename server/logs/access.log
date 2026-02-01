@@ -3832,3 +3832,19 @@
 {"timestamp":"2026-02-01T03:29:31.265Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916569028"}
 {"timestamp":"2026-02-01T03:29:31.265Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916568960"}
 {"timestamp":"2026-02-01T03:29:31.265Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916568922"}
+{"timestamp":"2026-02-01T03:30:25.665Z","level":"INFO","message":"Database initialized."}
+{"timestamp":"2026-02-01T03:30:25.726Z","level":"INFO","message":"Auth initialized. 1 users found in database."}
+{"timestamp":"2026-02-01T03:30:25.731Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}
+{"timestamp":"2026-02-01T03:30:25.736Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916565210"}
+{"timestamp":"2026-02-01T03:30:25.739Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916565257"}
+{"timestamp":"2026-02-01T03:30:25.741Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916565306"}
+{"timestamp":"2026-02-01T03:30:25.743Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916565318"}
+{"timestamp":"2026-02-01T03:30:25.746Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916565330"}
+{"timestamp":"2026-02-01T03:30:25.749Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916568922"}
+{"timestamp":"2026-02-01T03:30:25.751Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916568960"}
+{"timestamp":"2026-02-01T03:30:25.753Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916568999"}
+{"timestamp":"2026-02-01T03:30:25.755Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916569013"}
+{"timestamp":"2026-02-01T03:30:25.758Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916569028"}
+{"timestamp":"2026-02-01T03:30:27.692Z","level":"INFO","message":"Database initialized."}
+{"timestamp":"2026-02-01T03:30:27.749Z","level":"INFO","message":"Auth initialized. 1 users found in database."}
+{"timestamp":"2026-02-01T03:30:27.754Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}

@@ -16,19 +16,25 @@ export function createSession(username: string, sessionId: string, sshHost?: str
     const shell = sshHost ? "ssh" : (process.env.SHELL || "/bin/bash");
     const args = sshHost ? [sshHost] : ["-c", `tmux new-session -A -s ryo-${username}-${sessionId} || ${process.env.SHELL || "/bin/bash"}`];
 
-    const ptyProcess = pty.spawn(shell, args, {
-        name: "xterm-256color",
-        cols: 80,
-        rows: 24,
-        cwd: cwd || process.env.HOME || "/",
-        env: {
-            ...process.env,
-            TERM: "xterm-256color",
-            COLORTERM: "truecolor",
-            RYO_TERMINAL: "1",
-            PS1: `\\[\\e[1;32m\\]ryo\\[\\e[0m\\]:\\[\\e[1;34m\\]\\w\\[\\e[0m\\] $ `
-        } as any,
-    });
+    let ptyProcess: pty.IPty;
+    try {
+        ptyProcess = pty.spawn(shell, args, {
+            name: "xterm-256color",
+            cols: 80,
+            rows: 24,
+            cwd: cwd || process.env.HOME || "/",
+            env: {
+                ...process.env,
+                TERM: "xterm-256color",
+                COLORTERM: "truecolor",
+                RYO_TERMINAL: "1",
+                PS1: `\\[\\e[1;32m\\]ryo\\[\\e[0m\\]:\\[\\e[1;34m\\]\\w\\[\\e[0m\\] $ `
+            } as any,
+        });
+    } catch (error) {
+        logger.error(`Failed to spawn PTY session for ${username}:`, { error, shell, args });
+        throw new Error(`Terminal spawn failed: ${error instanceof Error ? error.message : "Unknown error"}`);
+    }
 
     const session: PTYSession = {
         pty: ptyProcess,

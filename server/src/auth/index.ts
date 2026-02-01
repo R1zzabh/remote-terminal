@@ -13,7 +13,7 @@ export async function initializeAuth() {
 
     if (userCount === 0) {
         // Create default admin user
-        const salt = await bcrypt.genSalt(10);
+        const salt = await bcrypt.genSalt(12);
         const passwordHash = await bcrypt.hash(config.defaultUser.password, salt);
 
         const defaultAdmin: User = {
