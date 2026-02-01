@@ -16,7 +16,7 @@ export function Login({ onLogin }: LoginProps) {
         setLoading(true);
 
         try {
-            const response = await fetch("http://localhost:3007/api/login", {
+            const response = await fetch("http://localhost:3001/api/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password }),
@@ -47,40 +47,34 @@ export function Login({ onLogin }: LoginProps) {
                 {error && <div className="error-message">{error}</div>}
 
                 <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label className="form-label" htmlFor="username">
-                            Username
-                        </label>
+                    <div className="input-group">
+                        <label htmlFor="username">Username</label>
                         <input
                             id="username"
                             type="text"
-                            className="form-input"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
-                            placeholder="Enter username"
+                            placeholder="Type admin..."
                             autoComplete="username"
                             required
                         />
                     </div>
 
-                    <div className="form-group">
-                        <label className="form-label" htmlFor="password">
-                            Password
-                        </label>
+                    <div className="input-group">
+                        <label htmlFor="password">Password</label>
                         <input
                             id="password"
                             type="password"
-                            className="form-input"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Enter password"
+                            placeholder="Type admin123..."
                             autoComplete="current-password"
                             required
                         />
                     </div>
 
-                    <button type="submit" className="btn" disabled={loading}>
-                        {loading ? "Connecting..." : "Login"}
+                    <button type="submit" className="login-button" disabled={loading}>
+                        {loading ? "Authenticating..." : "Establish Connection"}
                     </button>
                 </form>
             </div>

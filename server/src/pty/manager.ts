@@ -7,12 +7,21 @@ const sessions = new Map<string, PTYSession>();
 export function createSession(username: string, sessionId: string): PTYSession {
     const shell = process.env.SHELL || "/bin/bash";
 
-    const ptyProcess = pty.spawn(shell, [], {
+    // Re-enabling TMUX for persistent sessions if user has it installed
+    // If tmux fails, it falls back to a normal shell
+    const args = ["-c", `tmux new-session -A -s ryo-${username} || ${shell}`];
+
+    const ptyProcess = pty.spawn(shell, args, {
         name: "xterm-256color",
         cols: 80,
         rows: 24,
         cwd: process.env.HOME || "/",
-        env: process.env as any,
+        env: {
+            ...process.env,
+            TERM: "xterm-256color",
+            COLORTERM: "truecolor",
+            RYO_TERMINAL: "1"
+        } as any,
     });
 
     const session: PTYSession = {
