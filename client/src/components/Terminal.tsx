@@ -8,6 +8,7 @@ import { Plus, X, Monitor, RefreshCw, LayoutTemplate } from "lucide-react";
 import { clsx } from "clsx";
 import { FileExplorer } from "./FileExplorer";
 import { CodeEditor } from "./CodeEditor";
+import { ShortcutManager } from "./ShortcutManager";
 
 const THEMES = {
     dark: { background: "#050505", foreground: "#e0e0e0", cursor: "#00ff88" },
@@ -222,6 +223,9 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         else if (action === 'font-change' && value) setFontFamily(value);
         else if (action === 'split-horizontal') splitActiveTab('horizontal');
         else if (action === 'split-vertical') splitActiveTab('vertical');
+        else if (action === 'new-tab') createNewTab();
+        else if (action === 'close-tab') activeSessionId && closeTab(activeSessionId);
+        else if (action === 'palette') setIsPaletteOpen(true);
     };
 
     return (
@@ -292,6 +296,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                 </div>
             </div>
 
+            <ShortcutManager onAction={handleAction} />
             <CommandPalette isOpen={isPaletteOpen} onClose={() => setIsPaletteOpen(false)} onAction={handleAction} />
         </div>
     );
