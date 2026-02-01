@@ -72,6 +72,12 @@ router.post("/kill", async (req: Request, res: Response) => {
     const { pid } = req.body;
     if (!pid) return res.status(400).json({ error: "PID required" });
 
+    // Security Audit: Prevent killing core system processes
+    if (pid < 100) {
+        logger.warn(`SECURITY: Blocked attempt to kill system process ${pid}`, { token });
+        return res.status(403).json({ error: "Access Denied: Cannot kill system processes." });
+    }
+
     try {
         process.kill(pid, "SIGTERM");
         logger.info(`Process killed: ${pid}`);
