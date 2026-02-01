@@ -10,9 +10,8 @@ import { CommandPalette } from "./CommandPalette";
 import { clsx } from "clsx";
 import { CodeEditor } from "./CodeEditor";
 import { ShortcutManager } from "./ShortcutManager";
-import { TouchToolbar } from "./TouchToolbar";
 import { decodeToken } from "../utils/auth";
-import { Plus, X, Monitor, RefreshCw, LayoutTemplate, Search, Menu, Clock } from "lucide-react";
+import { Plus, X, Monitor, RefreshCw, Search, Clock } from "lucide-react";
 import { registerCorePlugins } from "../corePlugins";
 import { pluginRegistry } from "../utils/pluginRegistry";
 import { ErrorBoundary } from "./ErrorBoundary";
@@ -53,17 +52,14 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
     const [isPaletteOpen, setIsPaletteOpen] = useState(false);
     const [theme, setTheme] = useState<keyof typeof THEMES>("dark");
     const [fontFamily, setFontFamily] = useState("'JetBrains Mono', 'Fira Code', monospace");
-    const [showSidebar, setShowSidebar] = useState(true);
+    const [showSidebar, setShowSidebar] = useState(false);
     const [sidebarView, setSidebarView] = useState('files');
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [ctrlPressed, setCtrlPressed] = useState(false);
-    const [altPressed, setAltPressed] = useState(false);
-    const [touchStartX, setTouchStartX] = useState<number | null>(null);
     const [editingFilePath, setEditingFilePath] = useState<string | null>(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [showSearch, setShowSearch] = useState(false);
     const [showHistory, setShowHistory] = useState(false);
     const [historyResults, setHistoryResults] = useState<string[]>([]);
+    const hasRestoredRef = useRef(false);
 
     const activeSession = sessions.find(s => s.id === activeSessionId);
 
@@ -221,7 +217,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                 }));
                 setSessions(restored);
                 const savedActiveId = localStorage.getItem('ryo_active_tab');
-                if (savedActiveId && restored.some(s => s.id === savedActiveId)) {
+                if (savedActiveId && restored.some((s: TerminalSession) => s.id === savedActiveId)) {
                     setActiveSessionId(savedActiveId);
                 } else {
                     setActiveSessionId(restored[0].id);
@@ -266,22 +262,46 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
     };
 
     useEffect(() => {
-        let mounted = true;
-        if (mounted) restoreSessions();
-        return () => { mounted = false; };
-    }, []); // Only run once on mount
+        if (hasRestoredRef.current) return;
+        hasRestoredRef.current = true;
+        restoreSessions();
+    }, []);
 
+    // ResizeObserver for reliable terminal fitting
     useEffect(() => {
+        const observers: ResizeObserver[] = [];
+        const debounceTimers = new Map<string, ReturnType<typeof setTimeout>>();
+
         sessions.forEach(session => {
             session.panes.forEach(pane => {
                 const container = paneContainersRef.current.get(pane.id);
-                if (container && !pane.term.element) {
-                    pane.term.open(container);
-                    pane.fitAddon.fit();
-                    pane.term.focus();
+                if (container) {
+                    // Initial mount
+                    if (!pane.term.element) {
+                        pane.term.open(container);
+                        pane.fitAddon.fit();
+                        pane.term.focus();
+                    }
+
+                    // ResizeObserver for dynamic resizing
+                    const observer = new ResizeObserver(() => {
+                        const existing = debounceTimers.get(pane.id);
+                        if (existing) clearTimeout(existing);
+                        debounceTimers.set(pane.id, setTimeout(() => {
+                            pane.fitAddon.fit();
+                            debounceTimers.delete(pane.id);
+                        }, 100));
+                    });
+                    observer.observe(container);
+                    observers.push(observer);
                 }
             });
         });
+
+        return () => {
+            observers.forEach(o => o.disconnect());
+            debounceTimers.forEach(t => clearTimeout(t));
+        };
     }, [sessions, activeSessionId]);
 
     useEffect(() => {
@@ -289,7 +309,6 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
             s.panes.forEach(p => {
                 p.term.options.theme = THEMES[theme];
                 p.term.options.fontFamily = fontFamily;
-                p.fitAddon.fit();
             });
         });
         document.documentElement.setAttribute('data-theme', theme);
@@ -330,92 +349,59 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         <div
             className="terminal-page"
             style={{ height: "100vh", display: "flex", flexDirection: "column", background: "#050505", overflow: 'hidden' }}
-            onTouchStart={(e) => setTouchStartX(e.touches[0].clientX)}
-            onTouchEnd={(e) => {
-                if (touchStartX === null) return;
-                const touchEndX = e.changedTouches[0].clientX;
-                const deltaX = touchEndX - touchStartX;
-                if (deltaX > 100) setIsMobileMenuOpen(true); // Swipe Right
-                else if (deltaX < -100) setIsMobileMenuOpen(false); // Swipe Left
-                setTouchStartX(null);
-            }}
         >
-            {/* Header / Tab Bar */}
-            <div className="terminal-header" style={{
-                height: 'var(--header-height)',
-                display: 'flex',
-                alignItems: 'center',
-                background: 'var(--bg-secondary)',
-                borderBottom: '1px solid var(--glass-border)',
-                zIndex: 1001,
-                padding: '0 12px',
-                gap: '8px'
-            }}>
-                <div className="show-mobile" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-                    <Menu size={20} className="text-accent cursor-pointer" />
+            {/* macOS Window Title Bar */}
+            <div className="macos-titlebar">
+                <div className="traffic-lights">
+                    <button className="dot red" title="Close" />
+                    <button className="dot yellow" title="Minimize" />
+                    <button className="dot green" title="Fullscreen" />
                 </div>
-                <div className="hidden-mobile" style={{
-                    fontSize: '13px',
-                    fontWeight: 'bold',
-                    color: 'var(--accent-color)',
-                    letterSpacing: '1px',
-                    marginRight: '12px'
-                }}>RYO</div>
-
-                <div className="tab-container" style={{ display: 'flex', gap: '4px', overflowX: 'auto', flex: 1, padding: '4px 0' }}>
-                    {sessions.map(s => (
-                        <div
-                            key={s.id}
-                            id={`tab-${s.id}`}
-                            className={clsx("tab-item", s.id === activeSessionId && "active")}
-                            onClick={() => setActiveSessionId(s.id)}
-                            style={{
-                                display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 12px',
-                                borderRadius: '6px', fontSize: '12px', cursor: 'pointer',
-                                background: s.id === activeSessionId ? 'rgba(255,255,255,0.1)' : 'transparent',
-                                color: s.id === activeSessionId ? '#fff' : 'var(--text-dim)',
-                                border: '1px solid',
-                                borderColor: s.id === activeSessionId ? 'var(--glass-border)' : 'transparent',
-                                transition: 'all 0.2s ease',
-                                whiteSpace: 'nowrap'
-                            }}
-                        >
-                            <Monitor size={14} />
-                            <span>Tab {s.id}</span>
-                            <X size={14} className="close-icon" onClick={(e) => { e.stopPropagation(); closeTab(s.id); }} />
-                        </div>
-                    ))}
+                <div className="window-title">
+                    zsh — 80×24
                 </div>
-
-                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <button onClick={() => createNewTab()} className="tab-action-btn" title="New Tab"><Plus size={18} /></button>
-                    <button onClick={() => splitActiveTab('vertical')} className="tab-action-btn" title="Split Vertical"><LayoutTemplate size={16} /></button>
-                    <button onClick={() => restoreSessions()} className="tab-action-btn" title="Sync Sessions"><RefreshCw size={16} /></button>
-                    <div style={{ width: '1px', height: '24px', background: 'var(--glass-border)', margin: '0 8px' }} />
-                    <button onClick={onLogout} style={{ background: 'transparent', border: 'none', color: 'var(--text-dim)', fontSize: '11px', cursor: 'pointer' }}>Logout</button>
-                </div>
+                <div className="titlebar-spacer" />
             </div>
 
-            {/* Main Content Area */}
-            <div className="terminal-main" style={{ flex: 1, display: 'flex', overflow: 'hidden', position: 'relative' }}>
-                {/* Sidebar Overlay for Mobile */}
-                {isMobileMenuOpen && (
+            {/* macOS Tab Bar */}
+            <div className="macos-tabbar">
+                {sessions.map((session, index) => (
                     <div
-                        className="show-mobile"
-                        style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 999 }}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                    />
-                )}
+                        key={session.id}
+                        className={clsx("macos-tab", session.id === activeSessionId && "active")}
+                        onClick={() => setActiveSessionId(session.id)}
+                    >
+                        <span className="tab-icon">📁</span>
+                        <span className="tab-title">Terminal {index + 1}</span>
+                        <button
+                            className="tab-close"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                closeTab(session.id);
+                            }}
+                        >
+                            <X size={10} />
+                        </button>
+                    </div>
+                ))}
+                <button
+                    className="new-tab-btn"
+                    onClick={() => createNewTab()}
+                    title="New Tab"
+                >
+                    <Plus size={14} />
+                </button>
+            </div>
 
+            <div className="terminal-main" style={{ flex: 1, display: 'flex', overflow: 'hidden', position: 'relative' }}>
                 {/* Sidebar */}
-                <div className={clsx("sidebar-root", isMobileMenuOpen ? "mobile-drawer open" : "mobile-drawer", !showSidebar && "hidden")}
+                <div className={clsx("sidebar-root", !showSidebar && "hidden")}
                     style={{
                         display: showSidebar ? 'flex' : 'none',
                         borderRight: '1px solid var(--glass-border)',
                         background: 'var(--glass-bg)',
                         backdropFilter: 'blur(20px)',
-                        width: isMobileMenuOpen ? '85%' : 'var(--sidebar-width)',
-                        maxWidth: '320px',
+                        width: 'var(--sidebar-width)',
                         flexShrink: 0
                     }}>
                     <div style={{ width: '56px', background: 'rgba(0,0,0,0.2)', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '16px 0', gap: '24px', borderRight: '1px solid var(--glass-border)', flexShrink: 0 }}>
@@ -453,47 +439,68 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                     </div>
                 </div>
 
-                {/* Terminal Pane Container */}
-                <div style={{ flex: 1, position: 'relative', display: 'flex', flexDirection: 'column', background: '#050505', overflow: 'hidden' }}>
-                    <div style={{ flex: 1, position: 'relative', display: 'flex', flexDirection: activeSession?.layout === 'vertical' ? 'row' : 'column', overflow: 'hidden' }}>
-                        {activeSession?.panes.map((pane, index) => (
-                            <div
-                                key={pane.id}
-                                ref={el => { if (el) paneContainersRef.current.set(pane.id, el); else paneContainersRef.current.delete(pane.id); }}
-                                className="pane-wrapper"
+                {/* Terminal Pane Containers (DOM Preservation) */}
+                <div style={{ flex: 1, position: 'relative', display: 'flex', flexDirection: 'column', background: '#000', overflow: 'hidden' }}>
+                    {sessions.length === 0 ? (
+                        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '16px', color: 'var(--text-dim)' }}>
+                            <Monitor size={48} strokeWidth={1} />
+                            <span style={{ fontSize: '14px' }}>No active terminal</span>
+                            <button
+                                onClick={() => createNewTab()}
                                 style={{
-                                    flex: 1, position: 'relative',
-                                    borderLeft: index > 0 && activeSession.layout === 'vertical' ? '1px solid var(--glass-border)' : 'none',
-                                    borderTop: index > 0 && activeSession.layout === 'horizontal' ? '1px solid var(--glass-border)' : 'none',
-                                    overflow: 'hidden'
+                                    background: 'var(--accent-primary)',
+                                    border: 'none',
+                                    padding: '10px 24px',
+                                    borderRadius: '8px',
+                                    color: '#fff',
+                                    cursor: 'pointer',
+                                    fontWeight: 600
                                 }}
                             >
-                                {pane.status !== 'connected' && (
-                                    <div style={{ position: 'absolute', top: 12, right: 12, zIndex: 10, fontSize: '10px', color: 'var(--accent-color)', background: 'rgba(0,0,0,0.5)', padding: '2px 6px', borderRadius: '4px' }}>
-                                        {pane.status.toUpperCase()}...
-                                    </div>
+                                Open New Terminal
+                            </button>
+                        </div>
+                    ) : (
+                        sessions.map(session => (
+                            <div
+                                key={session.id}
+                                className={clsx(
+                                    session.id === activeSessionId ? "pane-active" : "pane-inactive"
                                 )}
+                                style={{
+                                    visibility: session.id === activeSessionId ? 'visible' : 'hidden',
+                                    position: session.id === activeSessionId ? 'relative' : 'absolute',
+                                    top: 0, left: 0,
+                                    display: 'flex',
+                                    flex: 1,
+                                    flexDirection: session.layout === 'vertical' ? 'row' : 'column',
+                                    height: '100%',
+                                    width: '100%',
+                                    zIndex: session.id === activeSessionId ? 1 : 0
+                                }}
+                            >
+                                {session.panes.map((pane, index) => (
+                                    <div
+                                        key={pane.id}
+                                        ref={el => { if (el) paneContainersRef.current.set(pane.id, el); else paneContainersRef.current.delete(pane.id); }}
+                                        className="pane-wrapper"
+                                        style={{
+                                            flex: 1, position: 'relative',
+                                            borderLeft: index > 0 && session.layout === 'vertical' ? '1px solid var(--glass-border)' : 'none',
+                                            borderTop: index > 0 && session.layout === 'horizontal' ? '1px solid var(--glass-border)' : 'none',
+                                            overflow: 'hidden'
+                                        }}
+                                    >
+                                        {pane.status === 'connecting' && (
+                                            <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.9)', zIndex: 20 }}>
+                                                <RefreshCw size={24} className="spinning" style={{ color: 'var(--accent-primary)' }} />
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
-
-                    <TouchToolbar
-                        onKeyPress={(key) => {
-                            if (key === 'ctrl') setCtrlPressed(!ctrlPressed);
-                            else if (key === 'alt') setAltPressed(!altPressed);
-                            else {
-                                if (!activeSession) return;
-                                let data = key;
-                                if (ctrlPressed) {
-                                    const code = key.toUpperCase().charCodeAt(0);
-                                    if (code >= 65 && code <= 90) data = String.fromCharCode(code - 64);
-                                }
-                                activeSession.panes[0].ws.send(JSON.stringify({ type: "input", data }));
-                                if (ctrlPressed) setCtrlPressed(false);
-                                if (altPressed) setAltPressed(false);
-                            }
-                        }}
-                    />
+                        ))
+                    )}
 
                     {editingFilePath && (
                         <div className="editor-pane" style={{
@@ -560,6 +567,6 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
 
             <ShortcutManager onAction={handleAction} />
             <CommandPalette isOpen={isPaletteOpen} onClose={() => setIsPaletteOpen(false)} onAction={handleAction} />
-        </div >
+        </div>
     );
 }

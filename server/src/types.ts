@@ -24,6 +24,7 @@ export interface WSMessage {
     token?: string;
     command?: string;
     sshHost?: string;
+    sessionId?: string;
 }
 
 export interface WSData {

@@ -3,10 +3,17 @@ import fs from "fs-extra";
 import path from "path";
 import type { AuthenticatedWebSocket, WSMessage, WSData } from "../types.js";
 import { verifyToken } from "../auth/index.js";
-import { createSession, getSession, destroySession, resizeSession, writeToSession } from "../pty/manager.js";
+import { createSession, getSession, destroySession, resizeSession, writeToSession, reattachSession } from "../pty/manager.js";
 import { listTmuxSessions } from "../pty/tmux.js";
 import { logger } from "../utils/logger.js";
 import { db } from "../utils/db.js";
+
+// Heartbeat interval (30 seconds)
+const HEARTBEAT_INTERVAL = 30000;
+const heartbeatTimers = new Map<AuthenticatedWebSocket, NodeJS.Timeout>();
+
+// Resize debounce map
+const resizeDebounceTimers = new Map<string, NodeJS.Timeout>();
 
 export function handleWebSocketOpen(ws: AuthenticatedWebSocket) {
     const banner = `\r\n\x1b[32m
@@ -20,6 +27,16 @@ export function handleWebSocketOpen(ws: AuthenticatedWebSocket) {
     logger.info("WebSocket connection opened");
     ws.send(JSON.stringify({ type: "connected", message: "Welcome to Ryo Terminal" }));
     ws.send(JSON.stringify({ type: "output", data: banner }));
+
+    // Start heartbeat
+    const heartbeat = setInterval(() => {
+        if (ws.readyState === 1) {
+            ws.send(JSON.stringify({ type: "ping", timestamp: Date.now() }));
+        } else {
+            clearInterval(heartbeat);
+        }
+    }, HEARTBEAT_INTERVAL);
+    heartbeatTimers.set(ws, heartbeat);
 }
 
 export function handleWebSocketMessage(ws: AuthenticatedWebSocket, message: RawData) {
@@ -52,6 +69,13 @@ export function handleWebSocketMessage(ws: AuthenticatedWebSocket, message: RawD
 }
 
 export function handleWebSocketClose(ws: AuthenticatedWebSocket) {
+    // Clear heartbeat
+    const heartbeat = heartbeatTimers.get(ws);
+    if (heartbeat) {
+        clearInterval(heartbeat);
+        heartbeatTimers.delete(ws);
+    }
+
     if (ws.data.sessionId) {
         destroySession(ws.data.sessionId);
     }
@@ -70,15 +94,19 @@ function handleAuth(ws: AuthenticatedWebSocket, msg: WSMessage) {
         return;
     }
 
-    // Create a unique session ID
-    const sessionId = `${payload.username}-${Date.now()}`;
+    // Use client-provided sessionId if available, otherwise generate one
+    const clientSessionId = msg.sessionId || (ws as any).clientSessionId;
+    const sessionId = clientSessionId || `${payload.username}-${Date.now()}`;
 
     ws.data.username = payload.username;
     ws.data.sessionId = sessionId;
     ws.data.authenticated = true;
 
-    // Create PTY session
-    const session = createSession(payload.username, sessionId, msg.sshHost, payload.homeDir);
+    // Try to reattach to existing session, or create new
+    let session = reattachSession(sessionId);
+    if (!session) {
+        session = createSession(payload.username, sessionId, msg.sshHost, payload.homeDir);
+    }
 
     // Forward PTY output to WebSocket
     session.pty.onData((data: string) => {
@@ -161,7 +189,14 @@ function handleResize(ws: AuthenticatedWebSocket, msg: WSMessage) {
     }
 
     if (msg.cols && msg.rows) {
-        resizeSession(ws.data.sessionId, msg.cols, msg.rows);
+        // Debounce resize (100ms)
+        const existing = resizeDebounceTimers.get(ws.data.sessionId);
+        if (existing) clearTimeout(existing);
+
+        resizeDebounceTimers.set(ws.data.sessionId, setTimeout(() => {
+            resizeSession(ws.data.sessionId!, msg.cols!, msg.rows!);
+            resizeDebounceTimers.delete(ws.data.sessionId!);
+        }, 100));
     }
 }
 

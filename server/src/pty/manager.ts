@@ -56,6 +56,10 @@ export function listSessions(username: string): PTYSession[] {
     return Array.from(sessions.values()).filter(s => s.username === username);
 }
 
+export function reattachSession(sessionId: string): PTYSession | undefined {
+    return sessions.get(sessionId);
+}
+
 export function deleteSession(sessionId: string) {
     const session = sessions.get(sessionId);
     if (session) {

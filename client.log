@@ -10,3 +10,537 @@
 3:56:24 AM [vite] (client) hmr update /src/components/Terminal.tsx
 3:56:43 AM [vite] (client) hmr update /src/components/Terminal.tsx
 3:59:43 AM [vite] (client) hmr update /src/components/Terminal.tsx
+4:05:47 AM [vite] (client) hmr update /src/components/Terminal.tsx
+4:06:10 AM [vite] (client) hmr update /src/components/Terminal.tsx
+4:07:20 AM [vite] (client) hmr update /src/components/Terminal.tsx
+4:12:40 AM [vite] (client) hmr update /src/components/Terminal.tsx
+4:12:40 AM [vite] Internal server error: /home/ridgehub/shobha/client/src/components/Terminal.tsx: Unexpected token (375:12)
+
+  373 |                 borderBottom: '1px solid var(--glass-border)',
+  374 |                 zIndex: 1001,
+> 375 |             {/* MacOS Title Bar */}
+      |             ^
+  376 |             <div className="terminal-header">
+  377 |                 <div className="traffic-lights">
+  378 |                     <div className="dot red" />
+  Plugin: vite:react-babel
+  File: /home/ridgehub/shobha/client/src/components/Terminal.tsx:375:12
+  373 |                  borderBottom: '1px solid var(--glass-border)',
+  374 |                  zIndex: 1001,
+  375 |              {/* MacOS Title Bar */}
+      |              ^
+  376 |              <div className="terminal-header">
+  377 |                  <div className="traffic-lights">
+      at constructor (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:365:19)
+      at TypeScriptParserMixin.raise (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:6599:19)
+      at TypeScriptParserMixin.unexpected (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:6619:16)
+      at TypeScriptParserMixin.parsePropertyName (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12024:18)
+      at TypeScriptParserMixin.parsePropertyDefinition (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11889:10)
+      at TypeScriptParserMixin.parseObjectLike (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11832:21)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11339:23)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9786:20)
+      at TypeScriptParserMixin.parseExpressionBase (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10784:23)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10780:39
+      at TypeScriptParserMixin.allowInAnd (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12426:12)
+      at TypeScriptParserMixin.parseExpression (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10780:17)
+      at TypeScriptParserMixin.jsxParseExpressionContainer (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4632:31)
+      at TypeScriptParserMixin.jsxParseAttributeValue (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4604:21)
+      at TypeScriptParserMixin.jsxParseAttribute (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4653:38)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4667:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10043:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4662:17)
+      at TypeScriptParserMixin.jsxParseElementAt (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4686:33)
+      at TypeScriptParserMixin.jsxParseElementAt (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4698:32)
+      at TypeScriptParserMixin.jsxParseElement (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4749:17)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4759:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9775:39
+      at TypeScriptParserMixin.tryParse (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:6907:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9775:18)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10800:39
+      at TypeScriptParserMixin.allowInAnd (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12426:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10800:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12493:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11675:28)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11081:23)
+4:12:43 AM [vite] (client) Pre-transform error: /home/ridgehub/shobha/client/src/components/Terminal.tsx: Unexpected token (375:12)
+
+  373 |                 borderBottom: '1px solid var(--glass-border)',
+  374 |                 zIndex: 1001,
+> 375 |             {/* MacOS Title Bar */}
+      |             ^
+  376 |             <div className="terminal-header">
+  377 |                 <div className="traffic-lights">
+  378 |                     <div className="dot red" />
+  Plugin: vite:react-babel
+  File: /home/ridgehub/shobha/client/src/components/Terminal.tsx:375:12
+  373 |                  borderBottom: '1px solid var(--glass-border)',
+  374 |                  zIndex: 1001,
+  375 |              {/* MacOS Title Bar */}
+      |              ^
+  376 |              <div className="terminal-header">
+  377 |                  <div className="traffic-lights">
+4:12:43 AM [vite] Internal server error: /home/ridgehub/shobha/client/src/components/Terminal.tsx: Unexpected token (375:12)
+
+  373 |                 borderBottom: '1px solid var(--glass-border)',
+  374 |                 zIndex: 1001,
+> 375 |             {/* MacOS Title Bar */}
+      |             ^
+  376 |             <div className="terminal-header">
+  377 |                 <div className="traffic-lights">
+  378 |                     <div className="dot red" />
+  Plugin: vite:react-babel
+  File: /home/ridgehub/shobha/client/src/components/Terminal.tsx:375:12
+  373 |                  borderBottom: '1px solid var(--glass-border)',
+  374 |                  zIndex: 1001,
+  375 |              {/* MacOS Title Bar */}
+      |              ^
+  376 |              <div className="terminal-header">
+  377 |                  <div className="traffic-lights">
+      at constructor (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:365:19)
+      at TypeScriptParserMixin.raise (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:6599:19)
+      at TypeScriptParserMixin.unexpected (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:6619:16)
+      at TypeScriptParserMixin.parsePropertyName (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12024:18)
+      at TypeScriptParserMixin.parsePropertyDefinition (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11889:10)
+      at TypeScriptParserMixin.parseObjectLike (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11832:21)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11339:23)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9786:20)
+      at TypeScriptParserMixin.parseExpressionBase (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10784:23)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10780:39
+      at TypeScriptParserMixin.allowInAnd (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12426:12)
+      at TypeScriptParserMixin.parseExpression (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10780:17)
+      at TypeScriptParserMixin.jsxParseExpressionContainer (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4632:31)
+      at TypeScriptParserMixin.jsxParseAttributeValue (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4604:21)
+      at TypeScriptParserMixin.jsxParseAttribute (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4653:38)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4667:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10043:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4662:17)
+      at TypeScriptParserMixin.jsxParseElementAt (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4686:33)
+      at TypeScriptParserMixin.jsxParseElementAt (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4698:32)
+      at TypeScriptParserMixin.jsxParseElement (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4749:17)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4759:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9775:39
+      at TypeScriptParserMixin.tryParse (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:6907:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9775:18)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10800:39
+      at TypeScriptParserMixin.allowInAnd (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12426:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10800:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12493:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11675:28)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11081:23)
+4:13:04 AM [vite] Internal server error: /home/ridgehub/shobha/client/src/components/Terminal.tsx: Unexpected token (375:12)
+
+  373 |                 borderBottom: '1px solid var(--glass-border)',
+  374 |                 zIndex: 1001,
+> 375 |             {/* MacOS Title Bar */}
+      |             ^
+  376 |             <div className="terminal-header">
+  377 |                 <div className="traffic-lights">
+  378 |                     <div className="dot red" />
+  Plugin: vite:react-babel
+  File: /home/ridgehub/shobha/client/src/components/Terminal.tsx:375:12
+  373 |                  borderBottom: '1px solid var(--glass-border)',
+  374 |                  zIndex: 1001,
+  375 |              {/* MacOS Title Bar */}
+      |              ^
+  376 |              <div className="terminal-header">
+  377 |                  <div className="traffic-lights">
+      at constructor (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:365:19)
+      at TypeScriptParserMixin.raise (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:6599:19)
+      at TypeScriptParserMixin.unexpected (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:6619:16)
+      at TypeScriptParserMixin.parsePropertyName (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12024:18)
+      at TypeScriptParserMixin.parsePropertyDefinition (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11889:10)
+      at TypeScriptParserMixin.parseObjectLike (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11832:21)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11339:23)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9786:20)
+      at TypeScriptParserMixin.parseExpressionBase (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10784:23)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10780:39
+      at TypeScriptParserMixin.allowInAnd (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12426:12)
+      at TypeScriptParserMixin.parseExpression (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10780:17)
+      at TypeScriptParserMixin.jsxParseExpressionContainer (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4632:31)
+      at TypeScriptParserMixin.jsxParseAttributeValue (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4604:21)
+      at TypeScriptParserMixin.jsxParseAttribute (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4653:38)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4667:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10043:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4662:17)
+      at TypeScriptParserMixin.jsxParseElementAt (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4686:33)
+      at TypeScriptParserMixin.jsxParseElementAt (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4698:32)
+      at TypeScriptParserMixin.jsxParseElement (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4749:17)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4759:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9775:39
+      at TypeScriptParserMixin.tryParse (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:6907:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9775:18)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10800:39
+      at TypeScriptParserMixin.allowInAnd (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12426:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10800:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12493:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11675:28)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11081:23)
+4:13:04 AM [vite] Internal server error: /home/ridgehub/shobha/client/src/components/Terminal.tsx: Unexpected token (375:12)
+
+  373 |                 borderBottom: '1px solid var(--glass-border)',
+  374 |                 zIndex: 1001,
+> 375 |             {/* MacOS Title Bar */}
+      |             ^
+  376 |             <div className="terminal-header">
+  377 |                 <div className="traffic-lights">
+  378 |                     <div className="dot red" />
+  Plugin: vite:react-babel
+  File: /home/ridgehub/shobha/client/src/components/Terminal.tsx:375:12
+  373 |                  borderBottom: '1px solid var(--glass-border)',
+  374 |                  zIndex: 1001,
+  375 |              {/* MacOS Title Bar */}
+      |              ^
+  376 |              <div className="terminal-header">
+  377 |                  <div className="traffic-lights">
+      at constructor (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:365:19)
+      at TypeScriptParserMixin.raise (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:6599:19)
+      at TypeScriptParserMixin.unexpected (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:6619:16)
+      at TypeScriptParserMixin.parsePropertyName (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12024:18)
+      at TypeScriptParserMixin.parsePropertyDefinition (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11889:10)
+      at TypeScriptParserMixin.parseObjectLike (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11832:21)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11339:23)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9786:20)
+      at TypeScriptParserMixin.parseExpressionBase (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10784:23)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10780:39
+      at TypeScriptParserMixin.allowInAnd (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12426:12)
+      at TypeScriptParserMixin.parseExpression (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10780:17)
+      at TypeScriptParserMixin.jsxParseExpressionContainer (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4632:31)
+      at TypeScriptParserMixin.jsxParseAttributeValue (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4604:21)
+      at TypeScriptParserMixin.jsxParseAttribute (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4653:38)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4667:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10043:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4662:17)
+      at TypeScriptParserMixin.jsxParseElementAt (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4686:33)
+      at TypeScriptParserMixin.jsxParseElementAt (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4698:32)
+      at TypeScriptParserMixin.jsxParseElement (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4749:17)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4759:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9775:39
+      at TypeScriptParserMixin.tryParse (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:6907:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9775:18)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10800:39
+      at TypeScriptParserMixin.allowInAnd (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12426:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10800:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12493:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11675:28)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11081:23)
+4:13:15 AM [vite] (client) hmr update /src/components/Terminal.tsx
+4:13:15 AM [vite] (client) Pre-transform error: /home/ridgehub/shobha/client/src/components/Terminal.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (580:12)
+
+  578 |             </div>
+  579 |
+> 580 |             <ShortcutManager onAction={handleAction} />
+      |             ^
+  581 |             <CommandPalette isOpen={isPaletteOpen} onClose={() => setIsPaletteOpen(false)} onAction={handleAction} />
+  582 |         </div >
+  583 |     );
+  Plugin: vite:react-babel
+  File: /home/ridgehub/shobha/client/src/components/Terminal.tsx:580:12
+  578 |              </div>
+  579 |  
+  580 |              <ShortcutManager onAction={handleAction} />
+      |              ^
+  581 |              <CommandPalette isOpen={isPaletteOpen} onClose={() => setIsPaletteOpen(false)} onAction={handleAction} />
+  582 |          </div >
+4:13:15 AM [vite] Internal server error: /home/ridgehub/shobha/client/src/components/Terminal.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (580:12)
+
+  578 |             </div>
+  579 |
+> 580 |             <ShortcutManager onAction={handleAction} />
+      |             ^
+  581 |             <CommandPalette isOpen={isPaletteOpen} onClose={() => setIsPaletteOpen(false)} onAction={handleAction} />
+  582 |         </div >
+  583 |     );
+  Plugin: vite:react-babel
+  File: /home/ridgehub/shobha/client/src/components/Terminal.tsx:580:12
+  578 |              </div>
+  579 |  
+  580 |              <ShortcutManager onAction={handleAction} />
+      |              ^
+  581 |              <CommandPalette isOpen={isPaletteOpen} onClose={() => setIsPaletteOpen(false)} onAction={handleAction} />
+  582 |          </div >
+      at constructor (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:365:19)
+      at TypeScriptParserMixin.raise (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:6599:19)
+      at TypeScriptParserMixin.jsxParseElementAt (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4742:18)
+      at TypeScriptParserMixin.jsxParseElement (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4749:17)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4759:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9775:39
+      at TypeScriptParserMixin.tryParse (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:6907:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9775:18)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10800:39
+      at TypeScriptParserMixin.allowInAnd (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12426:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10800:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12493:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11675:28)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9786:20)
+      at TypeScriptParserMixin.parseExpressionBase (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10784:23)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10780:39
+      at TypeScriptParserMixin.allowInAnd (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12421:16)
+      at TypeScriptParserMixin.parseExpression (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10780:17)
+      at TypeScriptParserMixin.parseReturnStatement (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:13142:28)
+      at TypeScriptParserMixin.parseStatementContent (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12798:21)
+      at TypeScriptParserMixin.parseStatementContent (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9508:18)
+      at TypeScriptParserMixin.parseStatementLike (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12767:17)
+      at TypeScriptParserMixin.parseStatementListItem (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12747:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:13316:61)
+      at TypeScriptParserMixin.parseBlockBody (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:13309:10)
+      at TypeScriptParserMixin.parseBlock (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:13297:10)
+      at TypeScriptParserMixin.parseFunctionBody (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12100:24)
+      at TypeScriptParserMixin.parseFunctionBodyAndFinish (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12086:10)
+      at TypeScriptParserMixin.parseFunctionBodyAndFinish (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9172:18)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:13445:12
+      at TypeScriptParserMixin.withSmartMixTopicForbiddingContext (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12403:14)
+      at TypeScriptParserMixin.parseFunction (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:13444:10)
+4:13:29 AM [vite] (client) hmr update /src/components/Terminal.tsx
+4:13:29 AM [vite] (client) Pre-transform error: /home/ridgehub/shobha/client/src/components/Terminal.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (582:12)
+
+  580 |             )}
+  581 |         </div>
+> 582 |             </div >
+      |             ^
+  583 |
+  584 |             <ShortcutManager onAction={handleAction} />
+  585 |             <CommandPalette isOpen={isPaletteOpen} onClose={() => setIsPaletteOpen(false)} onAction={handleAction} />
+  Plugin: vite:react-babel
+  File: /home/ridgehub/shobha/client/src/components/Terminal.tsx:582:12
+  580 |              )}
+  581 |          </div>
+  582 |              </div >
+      |              ^
+  583 |  
+  584 |              <ShortcutManager onAction={handleAction} />
+4:13:29 AM [vite] Internal server error: /home/ridgehub/shobha/client/src/components/Terminal.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (582:12)
+
+  580 |             )}
+  581 |         </div>
+> 582 |             </div >
+      |             ^
+  583 |
+  584 |             <ShortcutManager onAction={handleAction} />
+  585 |             <CommandPalette isOpen={isPaletteOpen} onClose={() => setIsPaletteOpen(false)} onAction={handleAction} />
+  Plugin: vite:react-babel
+  File: /home/ridgehub/shobha/client/src/components/Terminal.tsx:582:12
+  580 |              )}
+  581 |          </div>
+  582 |              </div >
+      |              ^
+  583 |  
+  584 |              <ShortcutManager onAction={handleAction} />
+      at constructor (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:365:19)
+      at TypeScriptParserMixin.raise (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:6599:19)
+      at TypeScriptParserMixin.jsxParseElementAt (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4742:18)
+      at TypeScriptParserMixin.jsxParseElement (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4749:17)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4759:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9775:39
+      at TypeScriptParserMixin.tryParse (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:6907:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9775:18)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10800:39
+      at TypeScriptParserMixin.allowInAnd (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12426:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10800:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12493:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11675:28)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9786:20)
+      at TypeScriptParserMixin.parseExpressionBase (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10784:23)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10780:39
+      at TypeScriptParserMixin.allowInAnd (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12421:16)
+      at TypeScriptParserMixin.parseExpression (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10780:17)
+      at TypeScriptParserMixin.parseReturnStatement (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:13142:28)
+      at TypeScriptParserMixin.parseStatementContent (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12798:21)
+      at TypeScriptParserMixin.parseStatementContent (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9508:18)
+      at TypeScriptParserMixin.parseStatementLike (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12767:17)
+      at TypeScriptParserMixin.parseStatementListItem (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12747:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:13316:61)
+      at TypeScriptParserMixin.parseBlockBody (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:13309:10)
+      at TypeScriptParserMixin.parseBlock (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:13297:10)
+      at TypeScriptParserMixin.parseFunctionBody (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12100:24)
+      at TypeScriptParserMixin.parseFunctionBodyAndFinish (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12086:10)
+      at TypeScriptParserMixin.parseFunctionBodyAndFinish (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9172:18)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:13445:12
+      at TypeScriptParserMixin.withSmartMixTopicForbiddingContext (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12403:14)
+      at TypeScriptParserMixin.parseFunction (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:13444:10)
+4:14:38 AM [vite] Internal server error: /home/ridgehub/shobha/client/src/components/Terminal.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (582:12)
+
+  580 |             )}
+  581 |         </div>
+> 582 |             </div >
+      |             ^
+  583 |
+  584 |             <ShortcutManager onAction={handleAction} />
+  585 |             <CommandPalette isOpen={isPaletteOpen} onClose={() => setIsPaletteOpen(false)} onAction={handleAction} />
+  Plugin: vite:react-babel
+  File: /home/ridgehub/shobha/client/src/components/Terminal.tsx:582:12
+  580 |              )}
+  581 |          </div>
+  582 |              </div >
+      |              ^
+  583 |  
+  584 |              <ShortcutManager onAction={handleAction} />
+      at constructor (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:365:19)
+      at TypeScriptParserMixin.raise (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:6599:19)
+      at TypeScriptParserMixin.jsxParseElementAt (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4742:18)
+      at TypeScriptParserMixin.jsxParseElement (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4749:17)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4759:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9775:39
+      at TypeScriptParserMixin.tryParse (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:6907:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9775:18)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10800:39
+      at TypeScriptParserMixin.allowInAnd (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12426:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10800:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12493:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11675:28)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at TypeScriptParserMixin.parseExprAtom (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9786:20)
+      at TypeScriptParserMixin.parseExpressionBase (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10784:23)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10780:39
+      at TypeScriptParserMixin.allowInAnd (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12421:16)
+      at TypeScriptParserMixin.parseExpression (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:10780:17)
+      at TypeScriptParserMixin.parseReturnStatement (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:13142:28)
+      at TypeScriptParserMixin.parseStatementContent (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12798:21)
+      at TypeScriptParserMixin.parseStatementContent (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9508:18)
+      at TypeScriptParserMixin.parseStatementLike (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12767:17)
+      at TypeScriptParserMixin.parseStatementListItem (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12747:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:13316:61)
+      at TypeScriptParserMixin.parseBlockBody (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:13309:10)
+      at TypeScriptParserMixin.parseBlock (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:13297:10)
+      at TypeScriptParserMixin.parseFunctionBody (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12100:24)
+      at TypeScriptParserMixin.parseFunctionBodyAndFinish (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12086:10)
+      at TypeScriptParserMixin.parseFunctionBodyAndFinish (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:9172:18)
+      at /home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:13445:12
+      at TypeScriptParserMixin.withSmartMixTopicForbiddingContext (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:12403:14)
+      at TypeScriptParserMixin.parseFunction (/home/ridgehub/shobha/client/node_modules/@babel/parser/lib/index.js:13444:10)
+4:14:44 AM [vite] (client) hmr update /src/components/Terminal.tsx
+4:14:46 AM [vite] (client) hmr update /src/components/Terminal.tsx
+4:14:54 AM [vite] (client) hmr update /src/components/Terminal.tsx
+4:21:20 AM [vite] (client) hmr update /src/components/Terminal.tsx
+4:21:49 AM [vite] (client) hmr update /src/components/Terminal.tsx
+4:29:08 AM [vite] (client) hmr update /src/components/Terminal.tsx
+4:29:10 AM [vite] (client) hmr update /src/components/Terminal.tsx
+4:29:25 AM [vite] (client) hmr update /src/components/Terminal.tsx
