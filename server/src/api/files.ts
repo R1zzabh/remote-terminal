@@ -25,15 +25,41 @@ router.get("/", async (req: Request, res: Response) => {
 
     const userHome = payload.homeDir;
     const targetPath = (req.query.path as string) || userHome;
+    const recursive = req.query.recursive === "true";
 
     try {
-        const normalizedPath = getNormalizedPath(targetPath, userHome);
-        const items = await fs.readdir(normalizedPath, { withFileTypes: true });
+        const normalizedBase = getNormalizedPath(targetPath, userHome);
+
+        if (recursive) {
+            const results: any[] = [];
+            const walk = async (dir: string) => {
+                const items = await fs.readdir(dir, { withFileTypes: true });
+                for (const item of items) {
+                    const fullPath = path.join(dir, item.name);
+                    const relPath = path.relative(normalizedBase, fullPath);
+                    if (item.isDirectory()) {
+                        if (item.name === "node_modules" || item.name === ".git") continue;
+                        await walk(fullPath);
+                    } else {
+                        results.push({
+                            name: item.name,
+                            isDirectory: false,
+                            path: fullPath,
+                            size: fs.statSync(fullPath).size
+                        });
+                    }
+                }
+            };
+            await walk(normalizedBase);
+            return res.json(results.slice(0, 500)); // Limit to 500 results for performance
+        }
+
+        const items = await fs.readdir(normalizedBase, { withFileTypes: true });
         const result = items.map(item => ({
             name: item.name,
             isDirectory: item.isDirectory(),
-            path: path.join(normalizedPath, item.name),
-            size: item.isFile() ? fs.statSync(path.join(normalizedPath, item.name)).size : 0
+            path: path.join(normalizedBase, item.name),
+            size: item.isFile() ? fs.statSync(path.join(normalizedBase, item.name)).size : 0
         })).sort((a, b) => {
             if (a.isDirectory === b.isDirectory) return a.name.localeCompare(b.name);
             return a.isDirectory ? -1 : 1;
@@ -56,6 +82,17 @@ router.get("/content", async (req: Request, res: Response) => {
 
     try {
         const normalizedPath = getNormalizedPath(targetPath, payload.homeDir);
+        const stats = await fs.stat(normalizedPath);
+
+        // Security Audit: Limit file size for direct reading to prevent OOM
+        const MAX_SIZE = 5 * 1024 * 1024; // 5MB
+        if (stats.size > MAX_SIZE) {
+            return res.status(413).json({
+                error: "File too large to open. Please download it instead.",
+                size: stats.size
+            });
+        }
+
         const content = await fs.readFile(normalizedPath, "utf-8");
         res.json({ content });
     } catch (error: any) {
