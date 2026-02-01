@@ -21,7 +21,17 @@ import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 
 const app = express();
-app.use(helmet());
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            connectSrc: ["'self'", "ws:", "wss:", "http:", "https:"],
+            scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"], // Vite needs unsafe-eval/inline
+            styleSrc: ["'self'", "'unsafe-inline'"],
+            imgSrc: ["'self'", "data:", "blob:"],
+        },
+    },
+}));
 const limiter = rateLimit({
     windowMs: config.rateLimit.windowMs,
     max: config.rateLimit.maxRequests,

@@ -1,6 +1,7 @@
 import * as pty from "node-pty";
 import { exec } from "child_process";
 import { logger } from "../utils/logger.js";
+import { killTmuxSession } from "../pty/tmux.js";
 
 export interface PTYSession {
     pty: pty.IPty;
@@ -64,6 +65,8 @@ export function deleteSession(sessionId: string) {
     const session = sessions.get(sessionId);
     if (session) {
         session.pty.kill();
+        // Also kill the actual tmux session
+        killTmuxSession(`ryo-${session.username}-${sessionId}`).catch(err => logger.error("Failed to kill tmux session", { error: err }));
         sessions.delete(sessionId);
     }
 }

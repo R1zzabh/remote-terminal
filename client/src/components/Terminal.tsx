@@ -11,7 +11,7 @@ import { clsx } from "clsx";
 import { CodeEditor } from "./CodeEditor";
 import { ShortcutManager } from "./ShortcutManager";
 import { decodeToken } from "../utils/auth";
-import { Plus, X, Monitor, RefreshCw, Search, Clock } from "lucide-react";
+import { Plus, X, Monitor, RefreshCw, Search, Clock, Power } from "lucide-react";
 import { registerCorePlugins } from "../corePlugins";
 import { pluginRegistry } from "../utils/pluginRegistry";
 import { ErrorBoundary } from "./ErrorBoundary";
@@ -91,12 +91,12 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         term.loadAddon(searchAddon);
 
         // WebGL acceleration
-        try {
-            const webgl = new WebglAddon();
-            term.loadAddon(webgl);
-        } catch (e) {
-            console.warn("WebGL addon could not be loaded", e);
-        }
+        // try {
+        //     const webgl = new WebglAddon();
+        //     term.loadAddon(webgl);
+        // } catch (e) {
+        //     console.warn("WebGL addon could not be loaded", e);
+        // }
 
         // Image Support
         try {
@@ -165,9 +165,9 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
 
     const createPane = useCallback((paneId: string, sshHost?: string): TerminalPane => {
         const { term, fitAddon, searchAddon } = createTerminalObject();
-        const pane: TerminalPane = { id: paneId, term, fitAddon, searchAddon, ws: null as any, status: "connecting" };
 
-        connectWebSocket(paneId, term, sshHost);
+        const ws = connectWebSocket(paneId, term, sshHost);
+        const pane: TerminalPane = { id: paneId, term, fitAddon, searchAddon, ws, status: "connecting" };
 
         term.onData(data => {
             const ws = socketsRef.current.get(paneId);
@@ -246,23 +246,35 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         } : s));
     }, [activeSession, activeSessionId, createPane]);
 
-    const closeTab = async (tabId: string) => {
-        const session = sessions.find(s => s.id === tabId);
-        if (session) {
-            const hostname = window.location.hostname;
-            session.panes.forEach(p => {
-                p.ws.close();
-                p.term.dispose();
+    const closeTab = (tabId: string) => {
+        const hostname = window.location.hostname;
+
+        // Optimistic update
+        setSessions(prev => {
+            const newSessions = prev.filter(s => s.id !== tabId);
+            if (activeSessionId === tabId) {
+                setActiveSessionId(newSessions.length > 0 ? newSessions[0].id : null);
+            }
+            return newSessions;
+        });
+
+        // Cleanup background
+        const sessionToClose = sessions.find(s => s.id === tabId);
+        if (sessionToClose) {
+            sessionToClose.panes.forEach(p => {
+                try {
+                    if (p.ws) p.ws.close();
+                    if (p.term) {
+                        try { p.term.dispose(); } catch (e) { /* ignore disposal errors */ }
+                    }
+                } catch (err) {
+                    console.error("Error cleaning up pane:", err);
+                }
                 fetch(`http://${hostname}:3001/api/sessions/${p.id}`, {
                     method: 'DELETE',
                     headers: { Authorization: `Bearer ${token}` }
                 }).catch(console.error);
             });
-            setSessions(prev => prev.filter(s => s.id !== tabId));
-            if (activeSessionId === tabId) {
-                const remaining = sessions.filter(s => s.id !== tabId);
-                setActiveSessionId(remaining.length > 0 ? remaining[0].id : null);
-            }
         }
     };
 
@@ -365,7 +377,29 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                 <div className="window-title">
                     zsh — 80×24
                 </div>
-                <div className="title-spacer" />
+                <button
+                    className="logout-btn"
+                    onClick={onLogout}
+                    title="Log Out"
+                    style={{
+                        background: 'transparent',
+                        border: 'none',
+                        color: '#666',
+                        cursor: 'pointer',
+                        padding: '0 8px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        fontSize: '12px',
+                        fontWeight: 500,
+                        transition: 'color 0.2s'
+                    }}
+                    onMouseEnter={e => e.currentTarget.style.color = '#ff5f56'}
+                    onMouseLeave={e => e.currentTarget.style.color = '#666'}
+                >
+                    <Power size={14} />
+                    <span>Logout</span>
+                </button>
             </div>
 
             {/* macOS Tab Bar */}
@@ -381,6 +415,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                         <button
                             className="tab-close-btn"
                             onClick={(e) => {
+                                console.log('Close button clicked for session:', session.id);
                                 e.stopPropagation();
                                 closeTab(session.id);
                             }}
