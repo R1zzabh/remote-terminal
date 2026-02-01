@@ -15,6 +15,7 @@
     "vite": "^7.2.4"
   },
   "dependencies": {
+    "@monaco-editor/react": "^4.7.0",
     "@vitejs/plugin-react": "^5.1.2",
     "ace-builds": "^1.43.6",
     "clsx": "^2.1.1",
