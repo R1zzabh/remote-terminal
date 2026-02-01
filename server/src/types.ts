@@ -1,4 +1,3 @@
-import type { ServerWebSocket } from "bun";
 
 export interface User {
     username: string;
@@ -26,11 +25,17 @@ export interface WSData {
     authenticated: boolean;
 }
 
-export type AuthenticatedWebSocket = ServerWebSocket<WSData>;
+// Mock interface for the socket with attached data
+export interface AuthenticatedWebSocket {
+    send(data: string): void;
+    close(code?: number, reason?: string): void;
+    terminate(): void;
+    data: WSData;
+}
 
 export interface PTYSession {
     id: string;
-    pty: any; // node-pty IPty type
+    pty: any; // Mock or node-pty
     username: string;
     createdAt: Date;
     lastActivity: Date;
@@ -41,3 +46,4 @@ export interface TmuxSession {
     windows: number;
     attached: boolean;
 }
+

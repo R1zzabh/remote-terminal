@@ -1,7 +1,9 @@
-import { config } from "./config";
-import { initializeAuth, handleLogin } from "./auth";
-import { handleWebSocketOpen, handleWebSocketMessage, handleWebSocketClose } from "./ws/handler";
-import type { WSData } from "./types";
+import { createServer } from "http";
+import { WebSocketServer } from "ws";
+import { config } from "./config.js";
+import { initializeAuth, handleLogin } from "./auth/index.js";
+import { handleWebSocketOpen, handleWebSocketMessage, handleWebSocketClose } from "./ws/handler.js";
+import type { AuthenticatedWebSocket } from "./types.js";
 
 // Initialize authentication
 await initializeAuth();
@@ -27,114 +29,129 @@ function checkRateLimit(ip: string): boolean {
 }
 
 // CORS headers
-function getCorsHeaders(origin: string | null) {
+function getCorsHeaders(origin: string | undefined) {
     const allowedOrigin = origin && config.allowedOrigins.includes(origin) ? origin : config.allowedOrigins[0];
 
     return {
-        "Access-Control-Allow-Origin": allowedOrigin,
+        "Access-Control-Allow-Origin": allowedOrigin || "*",
         "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
         "Access-Control-Allow-Credentials": "true",
     };
 }
 
-const server = Bun.serve<WSData>({
-    port: config.port,
+const server = createServer(async (req, res) => {
+    const url = new URL(req.url || '/', `http://${req.headers.host}`);
+    const origin = req.headers.origin as string | undefined;
+    const corsHeaders = getCorsHeaders(origin);
 
-    async fetch(req, server) {
-        const url = new URL(req.url);
-        const origin = req.headers.get("origin");
-        const corsHeaders = getCorsHeaders(origin);
+    // Helper to send JSON
+    const json = (status: number, data: any) => {
+        res.writeHead(status, { ...corsHeaders, "Content-Type": "application/json" });
+        res.end(JSON.stringify(data));
+    };
 
-        // Handle CORS preflight
-        if (req.method === "OPTIONS") {
-            return new Response(null, { headers: corsHeaders });
+    // Handle CORS preflight
+    if (req.method === "OPTIONS") {
+        res.writeHead(204, corsHeaders);
+        res.end();
+        return;
+    }
+
+    // Login endpoint
+    if (url.pathname === "/api/login" && req.method === "POST") {
+        const ip = req.socket.remoteAddress || "unknown";
+
+        if (!checkRateLimit(ip)) {
+            return json(429, { error: "Too many requests" });
         }
 
-        // WebSocket upgrade
-        if (url.pathname === "/ws") {
-            const upgraded = server.upgrade(req, {
-                data: {
-                    username: "",
-                    sessionId: "",
-                    authenticated: false,
-                },
-            });
+        try {
+            // Read body
+            const buffers = [];
+            for await (const chunk of req) {
+                buffers.push(chunk);
+            }
+            const body = JSON.parse(Buffer.concat(buffers).toString());
+            const { username, password } = body;
 
-            if (upgraded) {
-                return undefined;
+            if (!username || !password) {
+                return json(400, { error: "Missing credentials" });
             }
 
-            return new Response("WebSocket upgrade failed", { status: 400 });
-        }
+            const result = await handleLogin(username, password);
 
-        // Login endpoint
-        if (url.pathname === "/api/login" && req.method === "POST") {
-            const ip = server.requestIP(req)?.address || "unknown";
-
-            if (!checkRateLimit(ip)) {
-                return new Response(JSON.stringify({ error: "Too many requests" }), {
-                    status: 429,
-                    headers: { ...corsHeaders, "Content-Type": "application/json" },
-                });
+            if (!result.success) {
+                return json(401, { error: result.error });
             }
 
-            try {
-                const body = await req.json();
-                const { username, password } = body;
-
-                if (!username || !password) {
-                    return new Response(JSON.stringify({ error: "Missing credentials" }), {
-                        status: 400,
-                        headers: { ...corsHeaders, "Content-Type": "application/json" },
-                    });
-                }
-
-                const result = await handleLogin(username, password);
-
-                if (!result.success) {
-                    return new Response(JSON.stringify({ error: result.error }), {
-                        status: 401,
-                        headers: { ...corsHeaders, "Content-Type": "application/json" },
-                    });
-                }
-
-                return new Response(JSON.stringify({ token: result.token }), {
-                    status: 200,
-                    headers: { ...corsHeaders, "Content-Type": "application/json" },
-                });
-            } catch (error) {
-                return new Response(JSON.stringify({ error: "Invalid request" }), {
-                    status: 400,
-                    headers: { ...corsHeaders, "Content-Type": "application/json" },
-                });
-            }
+            return json(200, { token: result.token });
+        } catch (error) {
+            return json(400, { error: "Invalid request" });
         }
+    }
 
-        // Health check
-        if (url.pathname === "/health") {
-            return new Response(JSON.stringify({ status: "ok" }), {
-                headers: { ...corsHeaders, "Content-Type": "application/json" },
-            });
-        }
+    // Health check
+    if (url.pathname === "/health") {
+        return json(200, { status: "ok" });
+    }
 
-        return new Response("Not Found", { status: 404, headers: corsHeaders });
-    },
-
-    websocket: {
-        open: handleWebSocketOpen,
-        message: handleWebSocketMessage,
-        close: handleWebSocketClose,
-    },
+    // Not Found
+    res.writeHead(404, corsHeaders);
+    res.end("Not Found");
 });
 
-console.log(`
+const wss = new WebSocketServer({ noServer: true });
+
+server.on('upgrade', (request, socket, head) => {
+    const url = new URL(request.url || '/', `http://${request.headers.host}`);
+
+    if (url.pathname === '/ws') {
+        wss.handleUpgrade(request, socket, head, (ws) => {
+            const authWs = ws as unknown as AuthenticatedWebSocket;
+            authWs.data = {
+                username: "",
+                sessionId: "",
+                authenticated: false,
+            };
+
+            wss.emit('connection', authWs, request);
+        });
+    } else {
+        socket.destroy();
+    }
+});
+
+wss.on('connection', (ws) => {
+    const authWs = ws as unknown as AuthenticatedWebSocket;
+    handleWebSocketOpen(authWs);
+
+    ws.on('message', (message) => {
+        handleWebSocketMessage(authWs, message as any);
+    });
+
+    ws.on('close', () => {
+        handleWebSocketClose(authWs);
+    });
+});
+
+server.on('error', (err) => {
+    console.error('SERVER ERROR:', err);
+    process.exit(1);
+});
+
+wss.on('error', (err) => {
+    console.error('WSS ERROR:', err);
+});
+
+server.listen(config.port, () => {
+    console.log(`
 ╔════════════════════════════════════════╗
 ║   Shobha Terminal Server Running      ║
 ╚════════════════════════════════════════╝
 
-🚀 Server: http://localhost:${server.port}
-🔌 WebSocket: ws://localhost:${server.port}/ws
+🚀 Server: http://localhost:${config.port}
+🔌 WebSocket: ws://localhost:${config.port}/ws
 🔐 Login: POST /api/login
 
 Default credentials:
@@ -143,3 +160,4 @@ Default credentials:
 
 ⚠️  CHANGE THE DEFAULT PASSWORD IN PRODUCTION!
 `);
+});

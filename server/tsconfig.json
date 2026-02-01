@@ -3,12 +3,11 @@
         "lib": [
             "ESNext"
         ],
-        "module": "esnext",
-        "target": "esnext",
-        "moduleResolution": "bundler",
-        "moduleDetection": "force",
-        "allowImportingTsExtensions": true,
-        "noEmit": true,
+        "module": "NodeNext",
+        "target": "ES2022",
+        "moduleResolution": "NodeNext",
+        "outDir": "./dist",
+        "noEmit": false,
         "composite": true,
         "strict": true,
         "downlevelIteration": true,
@@ -16,9 +15,6 @@
         "jsx": "preserve",
         "allowSyntheticDefaultImports": true,
         "forceConsistentCasingInFileNames": true,
-        "allowJs": true,
-        "types": [
-            "bun-types"
-        ]
+        "allowJs": true
     }
 }

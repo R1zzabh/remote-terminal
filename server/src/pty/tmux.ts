@@ -1,4 +1,4 @@
-import type { TmuxSession } from "../types";
+import type { TmuxSession } from "../types.js";
 import { exec } from "child_process";
 import { promisify } from "util";
 

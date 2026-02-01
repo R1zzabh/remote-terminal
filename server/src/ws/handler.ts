@@ -1,15 +1,15 @@
-import type { ServerWebSocket } from "bun";
-import type { WSMessage, WSData } from "../types";
-import { verifyToken } from "../auth";
-import { createSession, getSession, destroySession, resizeSession, writeToSession } from "../pty/manager";
-import { listTmuxSessions } from "../pty/tmux";
+// import type { ServerWebSocket } from "bun";
+import type { AuthenticatedWebSocket, WSMessage, WSData } from "../types.js";
+import { verifyToken } from "../auth/index.js";
+import { createSession, getSession, destroySession, resizeSession, writeToSession } from "../pty/manager.js";
+import { listTmuxSessions } from "../pty/tmux.js";
 
-export function handleWebSocketOpen(ws: ServerWebSocket<WSData>) {
+export function handleWebSocketOpen(ws: AuthenticatedWebSocket) {
     console.log("WebSocket connection opened");
     ws.send(JSON.stringify({ type: "connected", message: "Welcome to Shobha Terminal" }));
 }
 
-export function handleWebSocketMessage(ws: ServerWebSocket<WSData>, message: string | Buffer) {
+export function handleWebSocketMessage(ws: AuthenticatedWebSocket, message: string | Buffer) {
     try {
         const msg: WSMessage = JSON.parse(message.toString());
 
@@ -38,14 +38,14 @@ export function handleWebSocketMessage(ws: ServerWebSocket<WSData>, message: str
     }
 }
 
-export function handleWebSocketClose(ws: ServerWebSocket<WSData>) {
+export function handleWebSocketClose(ws: AuthenticatedWebSocket) {
     if (ws.data.sessionId) {
         destroySession(ws.data.sessionId);
     }
     console.log(`WebSocket closed for ${ws.data.username || "unknown"}`);
 }
 
-function handleAuth(ws: ServerWebSocket<WSData>, msg: WSMessage) {
+function handleAuth(ws: AuthenticatedWebSocket, msg: WSMessage) {
     if (!msg.token) {
         ws.send(JSON.stringify({ type: "error", message: "No token provided" }));
         return;
@@ -80,7 +80,7 @@ function handleAuth(ws: ServerWebSocket<WSData>, msg: WSMessage) {
     ws.send(JSON.stringify({ type: "authenticated", sessionId }));
 }
 
-function handleInput(ws: ServerWebSocket<WSData>, msg: WSMessage) {
+function handleInput(ws: AuthenticatedWebSocket, msg: WSMessage) {
     if (!ws.data.authenticated || !ws.data.sessionId) {
         ws.send(JSON.stringify({ type: "error", message: "Not authenticated" }));
         return;
@@ -91,7 +91,7 @@ function handleInput(ws: ServerWebSocket<WSData>, msg: WSMessage) {
     }
 }
 
-function handleResize(ws: ServerWebSocket<WSData>, msg: WSMessage) {
+function handleResize(ws: AuthenticatedWebSocket, msg: WSMessage) {
     if (!ws.data.authenticated || !ws.data.sessionId) {
         return;
     }
@@ -101,7 +101,7 @@ function handleResize(ws: ServerWebSocket<WSData>, msg: WSMessage) {
     }
 }
 
-async function handleTmuxCommand(ws: ServerWebSocket<WSData>, msg: WSMessage) {
+async function handleTmuxCommand(ws: AuthenticatedWebSocket, msg: WSMessage) {
     if (!ws.data.authenticated) {
         ws.send(JSON.stringify({ type: "error", message: "Not authenticated" }));
         return;
