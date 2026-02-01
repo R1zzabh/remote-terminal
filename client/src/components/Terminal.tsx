@@ -36,6 +36,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
 
     const [isPaletteOpen, setIsPaletteOpen] = useState(false);
     const [theme, setTheme] = useState<keyof typeof THEMES>("dark");
+    const [fontFamily, setFontFamily] = useState("'JetBrains Mono', 'Fira Code', monospace");
     const [showSidebar, setShowSidebar] = useState(true);
 
     const activeSession = sessions.find(s => s.id === activeSessionId);
@@ -44,7 +45,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         const term = new Terminal({
             cursorBlink: true,
             theme: THEMES[theme],
-            fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+            fontFamily: fontFamily,
             fontSize: 14,
             allowProposedApi: true
         });
@@ -157,9 +158,11 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
     useEffect(() => {
         sessions.forEach(s => {
             s.term.options.theme = THEMES[theme];
+            s.term.options.fontFamily = fontFamily;
+            s.fitAddon.fit();
         });
         document.documentElement.setAttribute('data-theme', theme);
-    }, [theme, sessions]);
+    }, [theme, fontFamily, sessions]);
 
     const handleAction = (action: string, value?: string) => {
         if (action === 'logout') onLogout();
@@ -168,6 +171,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         else if (action === 'clear') activeSession?.term.clear();
         else if (action === 'status') restoreSessions();
         else if (action === 'ssh-connect' && value) createNewSession(value);
+        else if (action === 'font-change' && value) setFontFamily(value);
     };
 
     return (
