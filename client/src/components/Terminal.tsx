@@ -6,6 +6,7 @@ import "xterm/css/xterm.css";
 import { CommandPalette } from "./CommandPalette";
 import { Plus, X, Monitor } from "lucide-react";
 import { clsx } from "clsx";
+import { FileExplorer } from "./FileExplorer";
 
 const THEMES = {
     dark: { background: "#050505", foreground: "#e0e0e0", cursor: "#00ff88" },
@@ -34,6 +35,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
 
     const [isPaletteOpen, setIsPaletteOpen] = useState(false);
     const [theme, setTheme] = useState<keyof typeof THEMES>("dark");
+    const [showSidebar, setShowSidebar] = useState(true);
 
     const activeSession = sessions.find(s => s.id === activeSessionId);
 
@@ -133,6 +135,12 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         document.documentElement.setAttribute('data-theme', theme);
     }, [theme, sessions]);
 
+    const handleSelectFolder = (path: string) => {
+        if (activeSession) {
+            activeSession.ws.send(JSON.stringify({ type: "input", data: `cd "${path}"\r` }));
+        }
+    };
+
     return (
         <div className="terminal-page" style={{ height: "100vh", display: "flex", flexDirection: "column", background: "#050505" }}>
             {/* Tab Bar */}
@@ -165,27 +173,31 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                 </button>
             </div>
 
-            {/* Main Terminal Area */}
-            <div style={{ flex: 1, position: 'relative' }}>
-                {sessions.map(s => (
-                    <div
-                        key={s.id}
-                        ref={el => { if (el) terminalContainersRef.current.set(s.id, el); else terminalContainersRef.current.delete(s.id); }}
-                        className="terminal-wrapper"
-                        style={{
-                            position: 'absolute', inset: 0,
-                            visibility: s.id === activeSessionId ? 'visible' : 'hidden',
-                            zIndex: s.id === activeSessionId ? 1 : 0
-                        }}
-                    >
-                        {/* Status Overlay */}
-                        {s.status !== 'connected' && (
-                            <div style={{ position: 'absolute', top: 10, right: 20, zIndex: 10, fontSize: '10px', color: 'var(--accent-color)' }}>
-                                {s.status.toUpperCase()}...
-                            </div>
-                        )}
-                    </div>
-                ))}
+            {/* Main Area */}
+            <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
+                {showSidebar && <FileExplorer token={token} onSelectFolder={handleSelectFolder} />}
+
+                <div style={{ flex: 1, position: 'relative' }}>
+                    {sessions.map(s => (
+                        <div
+                            key={s.id}
+                            ref={el => { if (el) terminalContainersRef.current.set(s.id, el); else terminalContainersRef.current.delete(s.id); }}
+                            className="terminal-wrapper"
+                            style={{
+                                position: 'absolute', inset: 0,
+                                visibility: s.id === activeSessionId ? 'visible' : 'hidden',
+                                zIndex: s.id === activeSessionId ? 1 : 0
+                            }}
+                        >
+                            {/* Status Overlay */}
+                            {s.status !== 'connected' && (
+                                <div style={{ position: 'absolute', top: 10, right: 20, zIndex: 10, fontSize: '10px', color: 'var(--accent-color)' }}>
+                                    {s.status.toUpperCase()}...
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
             </div>
 
             <CommandPalette
@@ -193,6 +205,9 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                 onClose={() => setIsPaletteOpen(false)}
                 onAction={(action) => {
                     if (action === 'logout') onLogout();
+                    else if (action === 'toggle-sidebar') {
+                        setShowSidebar(prev => !prev);
+                    }
                     else if (action.startsWith('theme-')) setTheme(action.replace('theme-', '') as any);
                     else if (action === 'clear') activeSession?.term.clear();
                 }}

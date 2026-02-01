@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Search, Terminal, LogOut, Palette, Activity } from "lucide-react";
+import { Search, Terminal, LogOut, Palette, Activity, Sidebar } from "lucide-react";
 import { clsx } from "clsx";
 
 interface CommandPaletteProps {
@@ -14,6 +14,7 @@ const COMMANDS = [
     { id: "theme-matrix", label: "Set Theme: Matrix", icon: Palette },
     { id: "theme-nord", label: "Set Theme: Nord", icon: Palette },
     { id: "theme-solarized", label: "Set Theme: Solarized", icon: Palette },
+    { id: "toggle-sidebar", label: "Toggle Sidebar", icon: Sidebar },
     { id: "status", label: "Refresh Connection", icon: Activity },
     { id: "logout", label: "Terminate Session", icon: LogOut, danger: true },
 ];
