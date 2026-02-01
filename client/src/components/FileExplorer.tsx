@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import { Folder, File, ChevronRight, RefreshCcw, FilePlus, FolderPlus, Edit3, Trash2, X, Check } from "lucide-react";
 import useSWR from "swr";
 
@@ -17,6 +17,50 @@ interface FileItem {
 
 const fetcher = (url: string, token: string) =>
     fetch(url, { headers: { Authorization: `Bearer ${token}` } }).then(res => res.json());
+
+const FileItemComponent = memo(({ file, renamingPath, newName, setNewName, onSelect, onDoubleClick, onRename, onCancelRename, onDelete }: any) => {
+    return (
+        <div
+            className="explorer-item group"
+            onClick={onSelect}
+            onDoubleClick={onDoubleClick}
+            style={{
+                display: 'flex', alignItems: 'center', gap: '8px', padding: '4px 8px',
+                cursor: 'pointer', fontSize: '13px', borderRadius: '4px',
+                transition: 'background 0.2s',
+                marginBottom: '2px',
+                position: 'relative'
+            }}
+            onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}
+            onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+        >
+            {renamingPath === file.path ? (
+                <>
+                    {file.isDirectory ? <Folder size={14} color="#88c0d0" /> : <File size={14} color="var(--text-dim)" />}
+                    <input
+                        autoFocus
+                        value={newName}
+                        onClick={e => e.stopPropagation()}
+                        onChange={e => setNewName(e.target.value)}
+                        onKeyDown={e => e.key === 'Enter' && onRename(file.path)}
+                        style={{ flex: 1, background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', fontSize: '12px', outline: 'none', padding: '2px 4px', borderRadius: '2px' }}
+                    />
+                    <Check size={12} onClick={(e) => { e.stopPropagation(); onRename(file.path); }} />
+                    <X size={12} onClick={(e) => { e.stopPropagation(); onCancelRename(); }} />
+                </>
+            ) : (
+                <>
+                    {file.isDirectory ? <Folder size={14} color="#88c0d0" /> : <File size={14} color="var(--text-dim)" />}
+                    <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', flex: 1 }}>{file.name}</span>
+                    <div className="explorer-actions" style={{ display: 'none', gap: '4px' }}>
+                        <Edit3 size={12} className="text-dim hover:text-white" onClick={(e) => { e.stopPropagation(); onRename(file.path, file.name); }} />
+                        <Trash2 size={12} className="text-danger hover:text-red-400" onClick={(e) => { e.stopPropagation(); onDelete(file.path); }} />
+                    </div>
+                </>
+            )}
+        </div>
+    );
+});
 
 export function FileExplorer({ token, onSelectFolder, onSelectFile }: FileExplorerProps) {
     const [currentPath, setCurrentPath] = useState<string>("");
@@ -116,51 +160,32 @@ export function FileExplorer({ token, onSelectFolder, onSelectFile }: FileExplor
                 {isLoading ? (
                     <div className="p-4 text-center text-dim text-xs">Loading...</div>
                 ) : (
-                    files?.map((file: FileItem) => (
-                        <div
-                            key={file.path}
-                            className="explorer-item group"
-                            onClick={() => file.isDirectory ? setCurrentPath(file.path) : onSelectFile(file.path)}
-                            onDoubleClick={() => file.isDirectory && onSelectFolder(file.path)}
-                            style={{
-                                display: 'flex', alignItems: 'center', gap: '8px', padding: '4px 8px',
-                                cursor: 'pointer', fontSize: '13px', borderRadius: '4px',
-                                transition: 'background 0.2s',
-                                marginBottom: '2px',
-                                position: 'relative'
-                            }}
-                            onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}
-                            onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
-                        >
-                            {renamingPath === file.path ? (
-                                <>
-                                    {file.isDirectory ? <Folder size={14} color="#88c0d0" /> : <File size={14} color="var(--text-dim)" />}
-                                    <input
-                                        autoFocus
-                                        value={newName}
-                                        onClick={e => e.stopPropagation()}
-                                        onChange={e => setNewName(e.target.value)}
-                                        onKeyDown={e => e.key === 'Enter' && handleRename(file.path)}
-                                        style={{ flex: 1, background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', fontSize: '12px', outline: 'none', padding: '2px 4px', borderRadius: '2px' }}
-                                    />
-                                    <Check size={12} onClick={(e) => { e.stopPropagation(); handleRename(file.path); }} />
-                                    <X size={12} onClick={(e) => { e.stopPropagation(); setRenamingPath(null); }} />
-                                </>
-                            ) : (
-                                <>
-                                    {file.isDirectory ? <Folder size={14} color="#88c0d0" /> : <File size={14} color="var(--text-dim)" />}
-                                    <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', flex: 1 }}>{file.name}</span>
-                                    <div className="explorer-actions" style={{ display: 'none', gap: '4px' }}>
-                                        <Edit3 size={12} className="text-dim hover:text-white" onClick={(e) => { e.stopPropagation(); setRenamingPath(file.path); setNewName(file.name); }} />
-                                        <Trash2 size={12} className="text-danger hover:text-red-400" onClick={(e) => { e.stopPropagation(); handleDelete(file.path); }} />
-                                    </div>
-                                    <style>{`
-                                        .explorer-item:hover .explorer-actions { display: flex !important; }
-                                    `}</style>
-                                </>
-                            )}
-                        </div>
-                    ))
+                    <>
+                        {files?.map((file: FileItem) => (
+                            <FileItemComponent
+                                key={file.path}
+                                file={file}
+                                renamingPath={renamingPath}
+                                newName={newName}
+                                setNewName={setNewName}
+                                onSelect={() => file.isDirectory ? setCurrentPath(file.path) : onSelectFile(file.path)}
+                                onDoubleClick={() => file.isDirectory && onSelectFolder(file.path)}
+                                onRename={(path: string, name?: string) => {
+                                    if (name !== undefined) {
+                                        setRenamingPath(path);
+                                        setNewName(name);
+                                    } else {
+                                        handleRename(path);
+                                    }
+                                }}
+                                onCancelRename={() => setRenamingPath(null)}
+                                onDelete={() => handleDelete(file.path)}
+                            />
+                        ))}
+                        <style>{`
+                            .explorer-item:hover .explorer-actions { display: flex !important; }
+                        `}</style>
+                    </>
                 )}
             </div>
         </div>

@@ -3,6 +3,7 @@ import { Terminal } from "xterm";
 import { FitAddon } from "xterm-addon-fit";
 import { WebLinksAddon } from "xterm-addon-web-links";
 import { SearchAddon } from "xterm-addon-search";
+import { WebglAddon } from "xterm-addon-webgl";
 import "xterm/css/xterm.css";
 import { CommandPalette } from "./CommandPalette";
 import { Plus, X, Monitor, RefreshCw, LayoutTemplate, Search } from "lucide-react";
@@ -64,13 +65,26 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
             theme: THEMES[theme],
             fontFamily: fontFamily,
             fontSize: 14,
-            allowProposedApi: true
+            allowProposedApi: true,
+            scrollback: 10000,
+            drawBoldTextInBrightColors: true,
+            fastScrollModifier: "alt",
+            screenReaderMode: false
         });
         const fitAddon = new FitAddon();
         const searchAddon = new SearchAddon();
         term.loadAddon(fitAddon);
         term.loadAddon(new WebLinksAddon());
         term.loadAddon(searchAddon);
+
+        // WebGL acceleration with fallback
+        try {
+            const webgl = new WebglAddon();
+            term.loadAddon(webgl);
+        } catch (e) {
+            console.warn("WebGL addon could not be loaded, falling back to DOM renderer", e);
+        }
+
         return { term, fitAddon, searchAddon };
     }, [theme, fontFamily]);
 
