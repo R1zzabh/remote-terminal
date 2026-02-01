@@ -4,10 +4,11 @@ import { FitAddon } from "xterm-addon-fit";
 import { WebLinksAddon } from "xterm-addon-web-links";
 import { SearchAddon } from "xterm-addon-search";
 import { WebglAddon } from "xterm-addon-webgl";
+import { ImageAddon } from "xterm-addon-image";
 import "xterm/css/xterm.css";
 import { CommandPalette } from "./CommandPalette";
 import { Dashboard } from "./Dashboard";
-import { Plus, X, Monitor, RefreshCw, LayoutTemplate, Search, Files, Activity } from "lucide-react";
+import { Plus, X, Monitor, RefreshCw, LayoutTemplate, Search, Files, Activity, Clock } from "lucide-react";
 import { clsx } from "clsx";
 import { FileExplorer } from "./FileExplorer";
 import { CodeEditor } from "./CodeEditor";
@@ -53,6 +54,8 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
     const [editingFilePath, setEditingFilePath] = useState<string | null>(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [showSearch, setShowSearch] = useState(false);
+    const [showHistory, setShowHistory] = useState(false);
+    const [historyResults, setHistoryResults] = useState<string[]>([]);
 
     const activeSession = sessions.find(s => s.id === activeSessionId);
 
@@ -79,12 +82,20 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         term.loadAddon(new WebLinksAddon());
         term.loadAddon(searchAddon);
 
-        // WebGL acceleration with fallback
+        // WebGL acceleration
         try {
             const webgl = new WebglAddon();
             term.loadAddon(webgl);
         } catch (e) {
-            console.warn("WebGL addon could not be loaded, falling back to DOM renderer", e);
+            console.warn("WebGL addon could not be loaded", e);
+        }
+
+        // Image Support
+        try {
+            const imageAddon = new ImageAddon();
+            term.loadAddon(imageAddon);
+        } catch (e) {
+            console.warn("Image addon failed to load", e);
         }
 
         return { term, fitAddon, searchAddon };
@@ -119,6 +130,23 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                             ws.send(JSON.stringify({ type: "input", data }));
                         }
                     });
+                    term.onResize(size => ws.send(JSON.stringify({ type: "resize", cols: size.cols, rows: size.rows })));
+
+                    term.onBell(() => {
+                        const sess = sessions.find(s => s.panes.some(p => p.id === paneId));
+                        if (sess) {
+                            const tab = document.getElementById(`tab-${sess.id}`);
+                            if (tab) {
+                                tab.style.animation = 'bell-shake 0.5s cubic-bezier(.36,.07,.19,.97) both';
+                                tab.style.borderColor = 'var(--accent-color)';
+                                setTimeout(() => {
+                                    tab.style.animation = '';
+                                    tab.style.borderColor = activeSessionId === sess.id ? 'var(--glass-border)' : 'transparent';
+                                }, 500);
+                            }
+                        }
+                    });
+
                     ws.send(JSON.stringify({ type: "resize", cols: term.cols, rows: term.rows }));
                 }
             } catch (e) { console.error(e); }
@@ -135,7 +163,19 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         })));
 
         return pane;
-    }, [token, createTerminalObject]);
+    }, [token, createTerminalObject, sessions, activeSessionId]);
+
+    const createNewTab = useCallback((sshHost?: string) => {
+        const tabId = Math.random().toString(36).substring(7);
+        const paneId = Math.random().toString(36).substring(7);
+        const newSession: TerminalSession = {
+            id: tabId,
+            panes: [createPane(paneId, sshHost)],
+            layout: "single"
+        };
+        setSessions(prev => [...prev, newSession]);
+        setActiveSessionId(tabId);
+    }, [createPane]);
 
     const restoreSessions = useCallback(async () => {
         try {
@@ -145,7 +185,6 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
             const existing = await res.json();
 
             if (existing.length > 0) {
-                // Group existing backend sessions into tabs (For now, 1 session per tab)
                 const restored = existing.map((s: any): TerminalSession => ({
                     id: Math.random().toString(36).substring(7),
                     panes: [createPane(s.id)],
@@ -160,26 +199,12 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
             console.error("Failed to restore sessions", e);
             createNewTab();
         }
-    }, [token, createPane, activeSessionId]);
-
-    const createNewTab = useCallback((sshHost?: string) => {
-        const tabId = Math.random().toString(36).substring(7);
-        const paneId = Math.random().toString(36).substring(7);
-        const newSession: TerminalSession = {
-            id: tabId,
-            panes: [createPane(paneId, sshHost)],
-            layout: "single"
-        };
-        setSessions(prev => [...prev, newSession]);
-        setActiveSessionId(tabId);
-    }, [createPane]);
+    }, [token, createPane, activeSessionId, createNewTab]);
 
     const splitActiveTab = useCallback((type: 'horizontal' | 'vertical') => {
         if (!activeSession) return;
-
         const newPaneId = Math.random().toString(36).substring(7);
         const newPane = createPane(newPaneId);
-
         setSessions(prev => prev.map(s => s.id === activeSessionId ? {
             ...s,
             panes: [...s.panes, newPane],
@@ -198,11 +223,10 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                     headers: { Authorization: `Bearer ${token}` }
                 }).catch(console.error);
             });
-
             setSessions(prev => prev.filter(s => s.id !== tabId));
             if (activeSessionId === tabId) {
                 const remaining = sessions.filter(s => s.id !== tabId);
-                setActiveSessionId(remaining.length > 1 ? remaining[0].id : null);
+                setActiveSessionId(remaining.length > 0 ? remaining[0].id : null);
             }
         }
     };
@@ -235,6 +259,14 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         document.documentElement.setAttribute('data-theme', theme);
     }, [theme, fontFamily, sessions]);
 
+    const fetchHistory = async (q: string) => {
+        const res = await fetch(`http://localhost:3001/api/history?q=${encodeURIComponent(q)}`, {
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await res.json();
+        setHistoryResults(data);
+    };
+
     const handleAction = (action: string, value?: string) => {
         if (action === 'logout') onLogout();
         else if (action === 'toggle-sidebar') setShowSidebar(prev => !prev);
@@ -249,7 +281,11 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         else if (action === 'close-tab') activeSessionId && closeTab(activeSessionId);
         else if (action === 'palette') setIsPaletteOpen(true);
         else if (action === 'search') setShowSearch(prev => !prev);
-        else if (action === 'view-logs') setEditingFilePath(window.location.protocol === 'http:' ? '/home/ridgehub/shobha/server/logs/access.log' : 'server/logs/access.log');
+        else if (action === 'search-history') {
+            setShowHistory(true);
+            fetchHistory("");
+        }
+        else if (action === 'view-logs') setEditingFilePath('/home/ridgehub/shobha/server/logs/access.log');
     };
 
     return (
@@ -259,6 +295,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                 {sessions.map(s => (
                     <div
                         key={s.id}
+                        id={`tab-${s.id}`}
                         className={clsx("tab-item", s.id === activeSessionId && "active")}
                         onClick={() => setActiveSessionId(s.id)}
                         style={{
@@ -278,7 +315,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                 ))}
                 <button onClick={() => createNewTab()} className="tab-action-btn" title="New Tab"><Plus size={18} /></button>
                 <button onClick={() => splitActiveTab('vertical')} className="tab-action-btn" title="Split Vertical"><LayoutTemplate size={16} /></button>
-                <button onClick={restoreSessions} className="tab-action-btn" title="Sync Sessions"><RefreshCw size={16} /></button>
+                <button onClick={() => restoreSessions()} className="tab-action-btn" title="Sync Sessions"><RefreshCw size={16} /></button>
                 <div style={{ flex: 1 }} />
                 <button onClick={onLogout} style={{ background: 'transparent', border: 'none', color: 'var(--text-dim)', fontSize: '11px', cursor: 'pointer', padding: '0 12px' }}>Logout</button>
             </div>
@@ -286,20 +323,10 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
             <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
                 {showSidebar && (
                     <div style={{ display: 'flex', borderRight: '1px solid var(--glass-border)' }}>
-                        {/* Sidebar Switcher */}
                         <div style={{ width: '48px', background: 'rgba(0,0,0,0.2)', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '12px 0', gap: '20px', borderRight: '1px solid var(--glass-border)' }}>
-                            <Files
-                                size={20}
-                                className={clsx("cursor-pointer transition-colors", sidebarView === 'files' ? "text-accent" : "text-dim hover:text-white")}
-                                onClick={() => setSidebarView('files')}
-                            />
-                            <Activity
-                                size={20}
-                                className={clsx("cursor-pointer transition-colors", sidebarView === 'system' ? "text-accent" : "text-dim hover:text-white")}
-                                onClick={() => setSidebarView('system')}
-                            />
+                            <Files size={20} className={clsx("cursor-pointer", sidebarView === 'files' ? "text-accent" : "text-dim")} onClick={() => setSidebarView('files')} />
+                            <Activity size={20} className={clsx("cursor-pointer", sidebarView === 'system' ? "text-accent" : "text-dim")} onClick={() => setSidebarView('system')} />
                         </div>
-
                         {sidebarView === 'files' ? (
                             <FileExplorer
                                 token={token}
@@ -336,39 +363,54 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
 
                     {editingFilePath && (
                         <div style={{ width: '40%', minWidth: '400px', borderLeft: '1px solid var(--glass-border)' }}>
-                            <CodeEditor
-                                path={editingFilePath}
-                                token={token}
-                                theme={theme}
-                                onClose={() => setEditingFilePath(null)}
-                            />
+                            <CodeEditor path={editingFilePath} token={token} theme={theme} onClose={() => setEditingFilePath(null)} />
                         </div>
                     )}
 
                     {showSearch && (
-                        <div style={{
-                            position: 'absolute', top: 10, right: editingFilePath ? '41%' : 20, zIndex: 100,
-                            background: 'var(--glass-bg)', backdropFilter: 'blur(20px)', border: '1px solid var(--glass-border)',
-                            borderRadius: '8px', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: '8px',
-                            boxShadow: 'var(--glass-shadow)', animation: 'paletteScaleUp 0.1s ease'
-                        }}>
+                        <div style={{ position: 'absolute', top: 10, right: 20, zIndex: 100, background: 'var(--glass-bg)', backdropFilter: 'blur(20px)', border: '1px solid var(--glass-border)', borderRadius: '8px', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                             <Search size={14} className="text-dim" />
                             <input
                                 autoFocus
                                 type="text"
                                 placeholder="Find..."
                                 value={searchTerm}
-                                onChange={e => {
-                                    setSearchTerm(e.target.value);
-                                    activeSession?.panes[0].searchAddon.findNext(e.target.value);
-                                }}
-                                onKeyDown={e => {
-                                    if (e.key === 'Enter') activeSession?.panes[0].searchAddon.findNext(searchTerm);
-                                    if (e.key === 'Escape') setShowSearch(false);
-                                }}
+                                onChange={e => { setSearchTerm(e.target.value); activeSession?.panes[0].searchAddon.findNext(e.target.value); }}
+                                onKeyDown={e => { if (e.key === 'Enter') activeSession?.panes[0].searchAddon.findNext(searchTerm); if (e.key === 'Escape') setShowSearch(false); }}
                                 style={{ background: 'transparent', border: 'none', color: '#fff', outline: 'none', fontSize: '13px' }}
                             />
                             <X size={14} className="cursor-pointer text-dim" onClick={() => setShowSearch(false)} />
+                        </div>
+                    )}
+
+                    {showHistory && (
+                        <div style={{ position: 'absolute', top: '15vh', left: '50%', transform: 'translateX(-50%)', zIndex: 1000, width: '500px', background: 'var(--glass-bg)', backdropFilter: 'blur(30px)', border: '1px solid var(--glass-border)', borderRadius: '16px', boxShadow: 'var(--glass-shadow)', overflow: 'hidden' }}>
+                            <div style={{ padding: '16px', borderBottom: '1px solid var(--glass-border)', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                <Clock size={16} className="text-accent" />
+                                <input
+                                    autoFocus
+                                    placeholder="Search command history..."
+                                    style={{ flex: 1, background: 'transparent', border: 'none', color: '#fff', outline: 'none', fontSize: '15px' }}
+                                    onChange={e => fetchHistory(e.target.value)}
+                                    onKeyDown={e => { if (e.key === 'Escape') setShowHistory(false); }}
+                                />
+                                <X size={16} className="cursor-pointer text-dim" onClick={() => setShowHistory(false)} />
+                            </div>
+                            <div style={{ maxHeight: '400px', overflowY: 'auto', padding: '8px' }}>
+                                {historyResults.map((line, i) => (
+                                    <div
+                                        key={i}
+                                        onClick={() => { activeSession?.panes[0].ws.send(JSON.stringify({ type: "input", data: line + "\r" })); setShowHistory(false); }}
+                                        style={{ padding: '10px 12px', borderRadius: '8px', cursor: 'pointer', fontSize: '13px', color: '#ccc' }}
+                                        onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+                                        onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+                                    >
+                                        <code style={{ color: 'var(--accent-color)', marginRight: '8px' }}>$</code>
+                                        {line}
+                                    </div>
+                                ))}
+                                {historyResults.length === 0 && <div className="p-4 text-center text-dim text-xs">No history found</div>}
+                            </div>
                         </div>
                     )}
                 </div>

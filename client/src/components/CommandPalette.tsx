@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Search, Terminal, LogOut, Palette, Activity, Sidebar, Globe, Type, LayoutTemplate } from "lucide-react";
+import { Search, Terminal as TerminalIcon, LogOut, Palette, Type, LayoutTemplate, Clock, Globe, Sidebar, Activity } from "lucide-react";
 import { clsx } from "clsx";
 
 interface CommandPaletteProps {
@@ -11,7 +11,7 @@ interface CommandPaletteProps {
 const FONTS = ["'JetBrains Mono'", "'Fira Code'", "'Roboto Mono'", "monospace"];
 
 const COMMANDS = [
-    { id: "clear", label: "Clear Terminal", icon: Terminal, hotkey: "L" },
+    { id: "clear", label: "Clear Terminal", icon: TerminalIcon, hotkey: "L" },
     { id: "ssh", label: "Connect to SSH...", icon: Globe },
     { id: "font", label: "Change Font...", icon: Type },
     { id: "theme-dark", label: "Set Theme: Ryo Dark", icon: Palette },
@@ -23,6 +23,7 @@ const COMMANDS = [
     { id: "split-vertical", label: "Split Right", icon: LayoutTemplate },
     { id: "status", label: "Sync Sessions", icon: Activity },
     { id: "view-logs", label: "View System Logs", icon: Search },
+    { id: "search-history", label: "Search Shell History", icon: Clock },
     { id: "logout", label: "Terminate All & Logout", icon: LogOut, danger: true },
 ];
 
