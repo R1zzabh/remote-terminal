@@ -54,7 +54,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         return { term, fitAddon };
     }, [theme]);
 
-    const attachSession = useCallback((id: string) => {
+    const attachSession = useCallback((id: string, sshHost?: string) => {
         const { term, fitAddon } = createTerminalObject();
         const ws = new WebSocket(`ws://localhost:3001/ws?sessionId=${id}`);
 
@@ -66,8 +66,8 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
 
         ws.onopen = () => {
             setSessions(prev => prev.map(s => s.id === id ? { ...s, status: "connected" } : s));
-            term.write("\r\n\x1b[32m[SYSTEM]\x1b[0m Session Restored\r\n");
-            ws.send(JSON.stringify({ type: "auth", token }));
+            term.write(`\r\n\x1b[32m[SYSTEM]\x1b[0m ${sshHost ? `Connecting to ${sshHost}...` : 'Session Restored'}\r\n`);
+            ws.send(JSON.stringify({ type: "auth", token, sshHost }));
         };
 
         ws.onmessage = (event) => {
@@ -112,9 +112,9 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         }
     }, [token, attachSession]);
 
-    const createNewSession = useCallback(() => {
+    const createNewSession = useCallback((sshHost?: string) => {
         const id = Math.random().toString(36).substring(7);
-        const session = attachSession(id);
+        const session = attachSession(id, sshHost);
         setSessions(prev => [...prev, session]);
         setActiveSessionId(id);
     }, [attachSession]);
@@ -161,12 +161,13 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         document.documentElement.setAttribute('data-theme', theme);
     }, [theme, sessions]);
 
-    const handleAction = (action: string) => {
+    const handleAction = (action: string, value?: string) => {
         if (action === 'logout') onLogout();
         else if (action === 'toggle-sidebar') setShowSidebar(prev => !prev);
         else if (action.startsWith('theme-')) setTheme(action.replace('theme-', '') as any);
         else if (action === 'clear') activeSession?.term.clear();
         else if (action === 'status') restoreSessions();
+        else if (action === 'ssh-connect' && value) createNewSession(value);
     };
 
     return (
@@ -193,7 +194,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                         <X size={14} className="close-icon" onClick={(e) => { e.stopPropagation(); closeSession(s.id); }} />
                     </div>
                 ))}
-                <button onClick={createNewSession} className="tab-action-btn" title="New Session">
+                <button onClick={() => createNewSession()} className="tab-action-btn" title="New Session">
                     <Plus size={18} />
                 </button>
                 <button onClick={restoreSessions} className="tab-action-btn" title="Sync Sessions">
