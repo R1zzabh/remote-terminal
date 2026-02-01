@@ -54,7 +54,8 @@ class DB {
         this.db.exec(`CREATE INDEX IF NOT EXISTS idx_history_user ON history(username)`);
         this.db.exec(`CREATE INDEX IF NOT EXISTS idx_history_ts ON history(timestamp DESC)`);
 
-        logger.info("Database initialized.");
+        this.db.exec("VACUUM"); // Compact and optimize on startup
+        logger.info("Database initialized and vacuumed.");
     }
 
     private runMigration() {
