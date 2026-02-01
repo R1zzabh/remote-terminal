@@ -3799,3 +3799,36 @@
 {"timestamp":"2026-02-01T03:28:38.103Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916472596"}
 {"timestamp":"2026-02-01T03:28:38.105Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916472599"}
 {"timestamp":"2026-02-01T03:28:38.107Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1769916472941"}
+{"timestamp":"2026-02-01T03:29:22.616Z","level":"INFO","message":"Database initialized."}
+{"timestamp":"2026-02-01T03:29:22.686Z","level":"INFO","message":"Auth initialized. 1 users found in database."}
+{"timestamp":"2026-02-01T03:29:22.692Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}
+{"timestamp":"2026-02-01T03:29:25.205Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:29:25.213Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916565210"}
+{"timestamp":"2026-02-01T03:29:25.227Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:29:25.259Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916565257"}
+{"timestamp":"2026-02-01T03:29:25.281Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:29:25.308Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916565306"}
+{"timestamp":"2026-02-01T03:29:25.310Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:29:25.320Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916565318"}
+{"timestamp":"2026-02-01T03:29:25.324Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:29:25.332Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916565330"}
+{"timestamp":"2026-02-01T03:29:28.781Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916565210"}
+{"timestamp":"2026-02-01T03:29:28.783Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916565330"}
+{"timestamp":"2026-02-01T03:29:28.783Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916565257"}
+{"timestamp":"2026-02-01T03:29:28.784Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916565318"}
+{"timestamp":"2026-02-01T03:29:28.785Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916565306"}
+{"timestamp":"2026-02-01T03:29:28.917Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:29:28.923Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916568922"}
+{"timestamp":"2026-02-01T03:29:28.934Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:29:28.962Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916568960"}
+{"timestamp":"2026-02-01T03:29:28.992Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:29:29.001Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916568999"}
+{"timestamp":"2026-02-01T03:29:29.011Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:29:29.015Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916569013"}
+{"timestamp":"2026-02-01T03:29:29.026Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:29:29.030Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769916569028"}
+{"timestamp":"2026-02-01T03:29:31.264Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916569013"}
+{"timestamp":"2026-02-01T03:29:31.264Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916568999"}
+{"timestamp":"2026-02-01T03:29:31.265Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916569028"}
+{"timestamp":"2026-02-01T03:29:31.265Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916568960"}
+{"timestamp":"2026-02-01T03:29:31.265Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769916568922"}
