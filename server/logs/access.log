@@ -1342,3 +1342,26 @@
 {"timestamp":"2026-02-01T02:48:23.835Z","level":"INFO","message":"WebSocket connection opened"}
 {"timestamp":"2026-02-01T02:48:23.850Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769914103848"}
 {"timestamp":"2026-02-01T02:48:23.854Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769914103851"}
+{"timestamp":"2026-02-01T02:49:15.254Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}
+{"timestamp":"2026-02-01T02:49:38.318Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:49:38.376Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769914178373"}
+{"timestamp":"2026-02-01T02:49:38.405Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:49:38.443Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769914178441"}
+{"timestamp":"2026-02-01T02:49:38.469Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:49:38.492Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769914178491"}
+{"timestamp":"2026-02-01T02:50:48.321Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:50:48.323Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769914178373"}
+{"timestamp":"2026-02-01T02:50:48.324Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769914178441"}
+{"timestamp":"2026-02-01T02:50:48.325Z","level":"INFO","message":"WebSocket closed for unknown"}
+{"timestamp":"2026-02-01T02:50:48.326Z","level":"INFO","message":"WebSocket closed for admin","sessionId":"admin-1769914178491"}
+{"timestamp":"2026-02-01T02:50:48.648Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:50:48.668Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:50:48.724Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769914248723"}
+{"timestamp":"2026-02-01T02:50:48.726Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769914248725"}
+{"timestamp":"2026-02-01T02:50:48.758Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:50:48.805Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769914248803"}
+{"timestamp":"2026-02-01T02:50:48.839Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:50:48.865Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T02:50:48.869Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769914248867"}
+{"timestamp":"2026-02-01T02:50:48.895Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769914248894"}
+{"timestamp":"2026-02-01T02:50:52.014Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}

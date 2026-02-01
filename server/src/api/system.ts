@@ -1,0 +1,85 @@
+import { Router, Request, Response } from "express";
+import si from "systeminformation";
+import { verifyToken } from "../auth/index.js";
+import { logger } from "../utils/logger.js";
+
+const router = Router();
+
+router.get("/stats", async (req: Request, res: Response) => {
+    const token = req.headers.authorization?.split(" ")[1];
+    if (!token || !verifyToken(token)) return res.status(401).json({ error: "Unauthorized" });
+
+    try {
+        const [cpu, mem, fs] = await Promise.all([
+            si.currentLoad(),
+            si.mem(),
+            si.fsSize()
+        ]);
+
+        res.json({
+            cpu: {
+                load: cpu.currentLoad,
+                cores: cpu.cpus.map(c => c.load)
+            },
+            memory: {
+                total: mem.total,
+                active: mem.active,
+                used: mem.used,
+                percent: (mem.active / mem.total) * 100
+            },
+            disk: fs.map(f => ({
+                mount: f.mount,
+                used: f.used,
+                size: f.size,
+                percent: f.use
+            }))
+        });
+    } catch (error) {
+        logger.error("Failed to fetch system stats", { error });
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+router.get("/processes", async (req: Request, res: Response) => {
+    const token = req.headers.authorization?.split(" ")[1];
+    if (!token || !verifyToken(token)) return res.status(401).json({ error: "Unauthorized" });
+
+    try {
+        const procs = await si.processes();
+        // Return top 50 processes by CPU usage
+        const list = procs.list
+            .sort((a, b) => b.cpu - a.cpu)
+            .slice(0, 50)
+            .map(p => ({
+                pid: p.pid,
+                name: p.name,
+                cpu: p.cpu,
+                mem: p.mem,
+                user: p.user,
+                command: p.command
+            }));
+        res.json(list);
+    } catch (error) {
+        logger.error("Failed to fetch processes", { error });
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+router.post("/kill", async (req: Request, res: Response) => {
+    const token = req.headers.authorization?.split(" ")[1];
+    if (!token || !verifyToken(token)) return res.status(401).json({ error: "Unauthorized" });
+
+    const { pid } = req.body;
+    if (!pid) return res.status(400).json({ error: "PID required" });
+
+    try {
+        process.kill(pid, "SIGTERM");
+        logger.info(`Process killed: ${pid}`);
+        res.json({ success: true });
+    } catch (error) {
+        logger.error(`Failed to kill process ${pid}`, { error });
+        res.status(500).json({ error: "Failed to kill process" });
+    }
+});
+
+export default router;

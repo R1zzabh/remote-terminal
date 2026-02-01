@@ -7,6 +7,8 @@ import authRouter from "./api/auth.js";
 import filesRouter from "./api/files.js";
 import sessionsRouter from "./api/sessions.js";
 import uploadRouter from "./api/upload.js";
+import systemRouter from "./api/system.js";
+import historyRouter from "./api/history.js";
 import { logger } from "./utils/logger.js";
 import { initializeAuth } from "./auth/index.js";
 import { handleWebSocketOpen, handleWebSocketMessage, handleWebSocketClose } from "./ws/handler.js";
@@ -21,6 +23,8 @@ app.use("/api", authRouter);
 app.use("/api/files", filesRouter);
 app.use("/api/sessions", sessionsRouter);
 app.use("/api/upload", uploadRouter);
+app.use("/api/system", systemRouter);
+app.use("/api/history", historyRouter);
 
 const server = createServer(app);
 const wss = new WebSocketServer({ noServer: true });
