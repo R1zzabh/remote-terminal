@@ -1873,3 +1873,17 @@
 {"timestamp":"2026-02-01T02:52:51.005Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769914371001"}
 {"timestamp":"2026-02-01T02:52:51.012Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769914371007"}
 {"timestamp":"2026-02-01T02:52:51.018Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769914371014"}
+{"timestamp":"2026-02-01T02:53:36.005Z","level":"INFO","message":"✓ Auth initialized. Default admin created: admin"}
+{"timestamp":"2026-02-01T02:53:36.006Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}
+{"timestamp":"2026-02-01T02:53:54.670Z","level":"INFO","message":"Users loaded from storage."}
+{"timestamp":"2026-02-01T02:53:54.672Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}
+{"timestamp":"2026-02-01T02:54:09.430Z","level":"INFO","message":"Users loaded from storage."}
+{"timestamp":"2026-02-01T02:54:09.432Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}
+{"timestamp":"2026-02-01T02:54:15.144Z","level":"INFO","message":"Users loaded from storage."}
+{"timestamp":"2026-02-01T02:54:15.147Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}
+{"timestamp":"2026-02-01T02:54:24.901Z","level":"INFO","message":"Users loaded from storage."}
+{"timestamp":"2026-02-01T02:54:24.904Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}
+{"timestamp":"2026-02-01T02:54:41.403Z","level":"INFO","message":"Users loaded from storage."}
+{"timestamp":"2026-02-01T02:54:41.405Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}
+{"timestamp":"2026-02-01T02:54:51.960Z","level":"INFO","message":"Users loaded from storage."}
+{"timestamp":"2026-02-01T02:54:51.962Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}

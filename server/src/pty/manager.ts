@@ -10,7 +10,7 @@ export interface PTYSession {
 
 const sessions = new Map<string, PTYSession>();
 
-export function createSession(username: string, sessionId: string, sshHost?: string): PTYSession {
+export function createSession(username: string, sessionId: string, sshHost?: string, cwd?: string): PTYSession {
     const shell = sshHost ? "ssh" : (process.env.SHELL || "/bin/bash");
     const args = sshHost ? [sshHost] : ["-c", `tmux new-session -A -s ryo-${username}-${sessionId} || ${process.env.SHELL || "/bin/bash"}`];
 
@@ -18,7 +18,7 @@ export function createSession(username: string, sessionId: string, sshHost?: str
         name: "xterm-256color",
         cols: 80,
         rows: 24,
-        cwd: process.env.HOME || "/",
+        cwd: cwd || process.env.HOME || "/",
         env: {
             ...process.env,
             TERM: "xterm-256color",

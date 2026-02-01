@@ -1,0 +1,8 @@
+[
+  {
+    "username": "admin",
+    "passwordHash": "$2b$10$BZcpOAxb4h.c3wyYwNGA1Orht7.cl5tukw65cj3ZXTc/89gTsvAj2",
+    "role": "admin",
+    "homeDir": "/home/ridgehub"
+  }
+]

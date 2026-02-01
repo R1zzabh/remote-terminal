@@ -4,10 +4,14 @@ import * as pty from "node-pty";
 export interface User {
     username: string;
     passwordHash: string;
+    role: "admin" | "user";
+    homeDir: string;
 }
 
 export interface JWTPayload {
     username: string;
+    role: "admin" | "user";
+    homeDir: string;
     iat?: number;
     exp?: number;
 }

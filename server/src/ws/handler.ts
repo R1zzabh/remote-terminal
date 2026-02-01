@@ -75,7 +75,7 @@ function handleAuth(ws: AuthenticatedWebSocket, msg: WSMessage) {
     ws.data.authenticated = true;
 
     // Create PTY session
-    const session = createSession(payload.username, sessionId, msg.sshHost);
+    const session = createSession(payload.username, sessionId, msg.sshHost, payload.homeDir);
 
     // Forward PTY output to WebSocket
     session.pty.onData((data: string) => {

@@ -1,9 +1,19 @@
 import { Router } from "express";
 import { handleLogin } from "../auth/index.js";
+import rateLimit from "express-rate-limit";
 
 const router = Router();
 
-router.post("/login", async (req, res) => {
+// Rate limiter for login: 5 attempts per 15 minutes per IP
+const loginLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 5,
+    message: { error: "Too many login attempts, please try again after 15 minutes." },
+    standardHeaders: true,
+    legacyHeaders: false,
+});
+
+router.post("/login", loginLimiter, async (req, res) => {
     const { username, password } = req.body;
 
     if (!username || !password) {

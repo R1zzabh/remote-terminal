@@ -3,25 +3,30 @@ import fs from "fs-extra";
 import path from "path";
 import { verifyToken } from "../auth/index.js";
 import { logger } from "../utils/logger.js";
+import { JWTPayload } from "../types.js";
 
 const router = Router();
-const ROOT_DIR = process.env.HOME || process.cwd();
+
+const getNormalizedPath = (targetPath: string, userHome: string) => {
+    const resolvedPath = path.resolve(targetPath);
+    const resolvedHome = path.resolve(userHome);
+
+    if (!resolvedPath.startsWith(resolvedHome)) {
+        throw new Error("Access Denied");
+    }
+    return resolvedPath;
+};
 
 router.get("/", async (req: Request, res: Response) => {
     const token = req.headers.authorization?.split(" ")[1];
-    if (!token || !verifyToken(token)) {
-        return res.status(401).json({ error: "Unauthorized" });
-    }
+    const payload = token ? verifyToken(token) : null;
+    if (!payload) return res.status(401).json({ error: "Unauthorized" });
 
-    const targetPath = (req.query.path as string) || ROOT_DIR;
-
-    // Security check: Normalize and prevent traversal
-    const normalizedPath = path.resolve(targetPath);
-    if (!normalizedPath.startsWith(path.resolve(ROOT_DIR))) {
-        return res.status(403).json({ error: "Access Denied" });
-    }
+    const userHome = payload.homeDir;
+    const targetPath = (req.query.path as string) || userHome;
 
     try {
+        const normalizedPath = getNormalizedPath(targetPath, userHome);
         const items = await fs.readdir(normalizedPath, { withFileTypes: true });
         const result = items.map(item => ({
             name: item.name,
@@ -34,113 +39,111 @@ router.get("/", async (req: Request, res: Response) => {
         });
 
         res.json(result);
-    } catch (error) {
+    } catch (error: any) {
+        if (error.message === "Access Denied") return res.status(403).json({ error: "Access Denied" });
         res.status(500).json({ error: "Failed to read directory" });
     }
 });
 
 router.get("/content", async (req: Request, res: Response) => {
     const token = req.headers.authorization?.split(" ")[1];
-    if (!token || !verifyToken(token)) return res.status(401).json({ error: "Unauthorized" });
+    const payload = token ? verifyToken(token) : null;
+    if (!payload) return res.status(401).json({ error: "Unauthorized" });
 
     const targetPath = req.query.path as string;
     if (!targetPath) return res.status(400).json({ error: "Path required" });
 
-    const normalizedPath = path.resolve(targetPath);
-    if (!normalizedPath.startsWith(path.resolve(ROOT_DIR))) return res.status(403).json({ error: "Access Denied" });
-
     try {
+        const normalizedPath = getNormalizedPath(targetPath, payload.homeDir);
         const content = await fs.readFile(normalizedPath, "utf-8");
         res.json({ content });
-    } catch (error) {
+    } catch (error: any) {
+        if (error.message === "Access Denied") return res.status(403).json({ error: "Access Denied" });
         res.status(500).json({ error: "Failed to read file" });
     }
 });
 
 router.post("/content", async (req: Request, res: Response) => {
     const token = req.headers.authorization?.split(" ")[1];
-    if (!token || !verifyToken(token)) return res.status(401).json({ error: "Unauthorized" });
+    const payload = token ? verifyToken(token) : null;
+    if (!payload) return res.status(401).json({ error: "Unauthorized" });
 
     const { path: targetPath, content } = req.body;
     if (!targetPath) return res.status(400).json({ error: "Path required" });
 
-    const normalizedPath = path.resolve(targetPath);
-    if (!normalizedPath.startsWith(path.resolve(ROOT_DIR))) return res.status(403).json({ error: "Access Denied" });
-
     try {
+        const normalizedPath = getNormalizedPath(targetPath, payload.homeDir);
         await fs.writeFile(normalizedPath, content, "utf-8");
-        logger.info(`File saved: ${normalizedPath}`);
+        logger.info(`File saved: ${normalizedPath} by ${payload.username}`);
         res.json({ success: true });
-    } catch (error) {
-        logger.error(`Failed to save file: ${normalizedPath}`, { error });
+    } catch (error: any) {
+        if (error.message === "Access Denied") return res.status(403).json({ error: "Access Denied" });
+        logger.error(`Failed to save file: ${targetPath}`, { error });
         res.status(500).json({ error: "Failed to save file" });
     }
 });
 
 router.post("/create", async (req: Request, res: Response) => {
     const token = req.headers.authorization?.split(" ")[1];
-    if (!token || !verifyToken(token)) return res.status(401).json({ error: "Unauthorized" });
+    const payload = token ? verifyToken(token) : null;
+    if (!payload) return res.status(401).json({ error: "Unauthorized" });
 
     const { path: targetPath, isDirectory } = req.body;
     if (!targetPath) return res.status(400).json({ error: "Path required" });
 
-    const normalizedPath = path.resolve(targetPath);
-    if (!normalizedPath.startsWith(path.resolve(ROOT_DIR))) return res.status(403).json({ error: "Access Denied" });
-
     try {
+        const normalizedPath = getNormalizedPath(targetPath, payload.homeDir);
         if (isDirectory) {
             await fs.ensureDir(normalizedPath);
         } else {
             await fs.ensureFile(normalizedPath);
         }
-        logger.info(`Item created: ${normalizedPath} (dir: ${isDirectory})`);
+        logger.info(`Item created: ${normalizedPath} by ${payload.username}`);
         res.json({ success: true });
-    } catch (error) {
-        logger.error(`Failed to create item: ${normalizedPath}`, { error });
+    } catch (error: any) {
+        if (error.message === "Access Denied") return res.status(403).json({ error: "Access Denied" });
+        logger.error(`Failed to create item: ${targetPath}`, { error });
         res.status(500).json({ error: "Failed to create item" });
     }
 });
 
 router.post("/rename", async (req: Request, res: Response) => {
     const token = req.headers.authorization?.split(" ")[1];
-    if (!token || !verifyToken(token)) return res.status(401).json({ error: "Unauthorized" });
+    const payload = token ? verifyToken(token) : null;
+    if (!payload) return res.status(401).json({ error: "Unauthorized" });
 
     const { oldPath, newPath } = req.body;
     if (!oldPath || !newPath) return res.status(400).json({ error: "Paths required" });
 
-    const normOld = path.resolve(oldPath);
-    const normNew = path.resolve(newPath);
-
-    if (!normOld.startsWith(path.resolve(ROOT_DIR)) || !normNew.startsWith(path.resolve(ROOT_DIR))) {
-        return res.status(403).json({ error: "Access Denied" });
-    }
-
     try {
+        const normOld = getNormalizedPath(oldPath, payload.homeDir);
+        const normNew = getNormalizedPath(newPath, payload.homeDir);
         await fs.move(normOld, normNew);
-        logger.info(`Item renamed: ${normOld} -> ${normNew}`);
+        logger.info(`Item renamed: ${normOld} -> ${normNew} by ${payload.username}`);
         res.json({ success: true });
-    } catch (error) {
-        logger.error(`Failed to rename: ${normOld}`, { error });
+    } catch (error: any) {
+        if (error.message === "Access Denied") return res.status(403).json({ error: "Access Denied" });
+        logger.error(`Failed to rename: ${oldPath}`, { error });
         res.status(500).json({ error: "Failed to rename item" });
     }
 });
 
 router.delete("/", async (req: Request, res: Response) => {
     const token = req.headers.authorization?.split(" ")[1];
-    if (!token || !verifyToken(token)) return res.status(401).json({ error: "Unauthorized" });
+    const payload = token ? verifyToken(token) : null;
+    if (!payload) return res.status(401).json({ error: "Unauthorized" });
 
     const targetPath = req.query.path as string;
     if (!targetPath) return res.status(400).json({ error: "Path required" });
 
-    const normalizedPath = path.resolve(targetPath);
-    if (!normalizedPath.startsWith(path.resolve(ROOT_DIR))) return res.status(403).json({ error: "Access Denied" });
-
     try {
+        const normalizedPath = getNormalizedPath(targetPath, payload.homeDir);
         await fs.remove(normalizedPath);
-        logger.info(`Item deleted: ${normalizedPath}`);
+        logger.info(`Item deleted: ${normalizedPath} by ${payload.username}`);
         res.json({ success: true });
-    } catch (error) {
-        logger.error(`Failed to delete: ${normalizedPath}`, { error });
+    } catch (error: any) {
+        if (error.message === "Access Denied") return res.status(403).json({ error: "Access Denied" });
+        logger.error(`Failed to delete: ${targetPath}`, { error });
         res.status(500).json({ error: "Failed to delete item" });
     }
 });
