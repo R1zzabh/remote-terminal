@@ -1,4 +1,6 @@
 import { RawData } from "ws";
+import fs from "fs-extra";
+import path from "path";
 import type { AuthenticatedWebSocket, WSMessage, WSData } from "../types.js";
 import { verifyToken } from "../auth/index.js";
 import { createSession, getSession, destroySession, resizeSession, writeToSession } from "../pty/manager.js";
@@ -89,6 +91,33 @@ function handleAuth(ws: AuthenticatedWebSocket, msg: WSMessage) {
 
     logger.info(`Session authenticated: ${payload.username}`, { sessionId, sshHost: msg.sshHost });
     ws.send(JSON.stringify({ type: "authenticated", sessionId }));
+
+    // Run startup macro if not SSH
+    if (!msg.sshHost) {
+        runStartupMacro(ws, payload.username, sessionId);
+    }
+}
+
+async function runStartupMacro(ws: AuthenticatedWebSocket, username: string, sessionId: string) {
+    const MACROS_FILE = path.resolve(process.cwd(), "data", "macros.json");
+    try {
+        if (await fs.pathExists(MACROS_FILE)) {
+            const allMacros = await fs.readJson(MACROS_FILE);
+            const userMacros = allMacros[username] || [];
+            const defaultMacro = userMacros.find((m: any) => m.isDefault);
+
+            if (defaultMacro && defaultMacro.commands.length > 0) {
+                logger.info(`Running startup macro for ${username}: ${defaultMacro.name}`);
+                for (const cmd of defaultMacro.commands) {
+                    writeToSession(sessionId, cmd + "\r");
+                    // Small delay between commands to prevent buffer issues
+                    await new Promise(r => setTimeout(r, 100));
+                }
+            }
+        }
+    } catch (error) {
+        logger.error("Failed to run startup macro", { error });
+    }
 }
 
 function handleInput(ws: AuthenticatedWebSocket, msg: WSMessage) {
