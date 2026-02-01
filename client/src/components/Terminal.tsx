@@ -6,7 +6,8 @@ import { SearchAddon } from "xterm-addon-search";
 import { WebglAddon } from "xterm-addon-webgl";
 import "xterm/css/xterm.css";
 import { CommandPalette } from "./CommandPalette";
-import { Plus, X, Monitor, RefreshCw, LayoutTemplate, Search } from "lucide-react";
+import { Dashboard } from "./Dashboard";
+import { Plus, X, Monitor, RefreshCw, LayoutTemplate, Search, Files, Activity } from "lucide-react";
 import { clsx } from "clsx";
 import { FileExplorer } from "./FileExplorer";
 import { CodeEditor } from "./CodeEditor";
@@ -48,6 +49,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
     const [theme, setTheme] = useState<keyof typeof THEMES>("dark");
     const [fontFamily, setFontFamily] = useState("'JetBrains Mono', 'Fira Code', monospace");
     const [showSidebar, setShowSidebar] = useState(true);
+    const [sidebarView, setSidebarView] = useState<'files' | 'system'>('files');
     const [editingFilePath, setEditingFilePath] = useState<string | null>(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [showSearch, setShowSearch] = useState(false);
@@ -282,11 +284,33 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
             </div>
 
             <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
-                {showSidebar && <FileExplorer
-                    token={token}
-                    onSelectFolder={(path) => activeSession?.panes[0].ws.send(JSON.stringify({ type: "input", data: `cd "${path}"\r` }))}
-                    onSelectFile={(path) => setEditingFilePath(path)}
-                />}
+                {showSidebar && (
+                    <div style={{ display: 'flex', borderRight: '1px solid var(--glass-border)' }}>
+                        {/* Sidebar Switcher */}
+                        <div style={{ width: '48px', background: 'rgba(0,0,0,0.2)', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '12px 0', gap: '20px', borderRight: '1px solid var(--glass-border)' }}>
+                            <Files
+                                size={20}
+                                className={clsx("cursor-pointer transition-colors", sidebarView === 'files' ? "text-accent" : "text-dim hover:text-white")}
+                                onClick={() => setSidebarView('files')}
+                            />
+                            <Activity
+                                size={20}
+                                className={clsx("cursor-pointer transition-colors", sidebarView === 'system' ? "text-accent" : "text-dim hover:text-white")}
+                                onClick={() => setSidebarView('system')}
+                            />
+                        </div>
+
+                        {sidebarView === 'files' ? (
+                            <FileExplorer
+                                token={token}
+                                onSelectFolder={(path) => activeSession?.panes[0].ws.send(JSON.stringify({ type: "input", data: `cd "${path}"\r` }))}
+                                onSelectFile={(path) => setEditingFilePath(path)}
+                            />
+                        ) : (
+                            <Dashboard token={token} />
+                        )}
+                    </div>
+                )}
 
                 <div style={{ flex: 1, position: 'relative', display: 'flex' }}>
                     <div style={{ flex: 1, position: 'relative', display: 'flex', flexDirection: activeSession?.layout === 'vertical' ? 'row' : 'column' }}>
