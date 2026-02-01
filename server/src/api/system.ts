@@ -88,4 +88,46 @@ router.post("/kill", async (req: Request, res: Response) => {
     }
 });
 
+router.get("/report", async (req: Request, res: Response) => {
+    const token = req.headers.authorization?.split(" ")[1];
+    if (!token || !verifyToken(token)) return res.status(401).json({ error: "Unauthorized" });
+
+    try {
+        const [os, cpu, mem, disk] = await Promise.all([
+            si.osInfo(),
+            si.cpu(),
+            si.mem(),
+            si.fsSize()
+        ]);
+
+        const report = `
+RYO TERMINAL SYSTEM REPORT
+Generated: ${new Date().toISOString()}
+----------------------------------------
+OS: ${os.distro} ${os.release} (${os.arch})
+Hostname: ${os.hostname}
+Kernel: ${os.kernel}
+
+CPU: ${cpu.manufacturer} ${cpu.brand}
+Cores: ${cpu.cores} (${cpu.physicalCores} physical)
+Speed: ${cpu.speed} GHz
+
+MEMORY:
+Total: ${(mem.total / 1024 / 1024 / 1024).toFixed(2)} GB
+Free: ${(mem.free / 1024 / 1024 / 1024).toFixed(2)} GB
+Used: ${(mem.used / 1024 / 1024 / 1024).toFixed(2)} GB
+
+STORAGE:
+${disk.map(d => `${d.mount}: ${d.use}% used of ${(d.size / 1024 / 1024 / 1024).toFixed(2)} GB`).join("\n")}
+----------------------------------------
+End of Report
+        `.trim();
+
+        res.type("text/plain").send(report);
+    } catch (error) {
+        logger.error("Failed to generate report", { error });
+        res.status(500).send("Failed to generate report");
+    }
+});
+
 export default router;
