@@ -4,7 +4,7 @@ import { FitAddon } from "xterm-addon-fit";
 import { WebLinksAddon } from "xterm-addon-web-links";
 import "xterm/css/xterm.css";
 import { CommandPalette } from "./CommandPalette";
-import { Plus, X, Monitor } from "lucide-react";
+import { Plus, X, Monitor, RefreshCw } from "lucide-react";
 import { clsx } from "clsx";
 import { FileExplorer } from "./FileExplorer";
 
@@ -26,6 +26,7 @@ interface TerminalSession {
     fitAddon: FitAddon;
     ws: WebSocket;
     status: "connecting" | "connected" | "disconnected" | "error";
+    initialised: boolean;
 }
 
 export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
@@ -39,9 +40,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
 
     const activeSession = sessions.find(s => s.id === activeSessionId);
 
-    const createNewSession = useCallback(() => {
-        const id = Math.random().toString(36).substring(7);
-
+    const createTerminalObject = useCallback(() => {
         const term = new Terminal({
             cursorBlink: true,
             theme: THEMES[theme],
@@ -49,24 +48,25 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
             fontSize: 14,
             allowProposedApi: true
         });
-
         const fitAddon = new FitAddon();
         term.loadAddon(fitAddon);
         term.loadAddon(new WebLinksAddon());
+        return { term, fitAddon };
+    }, [theme]);
 
+    const attachSession = useCallback((id: string) => {
+        const { term, fitAddon } = createTerminalObject();
         const ws = new WebSocket(`ws://localhost:3001/ws?sessionId=${id}`);
 
-        const newSession: TerminalSession = {
-            id,
-            term,
-            fitAddon,
-            ws,
-            status: "connecting"
+        const session: TerminalSession = {
+            id, term, fitAddon, ws,
+            status: "connecting",
+            initialised: false
         };
 
         ws.onopen = () => {
-            updateSessionStatus(id, "connected");
-            term.write("\r\n\x1b[32m[SYSTEM]\x1b[0m Connected to Ryo Terminal Server\r\n");
+            setSessions(prev => prev.map(s => s.id === id ? { ...s, status: "connected" } : s));
+            term.write("\r\n\x1b[32m[SYSTEM]\x1b[0m Session Restored\r\n");
             ws.send(JSON.stringify({ type: "auth", token }));
         };
 
@@ -76,7 +76,6 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                 if (msg.type === "output") {
                     term.write(msg.data);
                 } else if (msg.type === "authenticated") {
-                    term.write("\x1b[32m[AUTH]\x1b[0m Access Granted!\r\n");
                     term.onData(data => {
                         if (ws.readyState === WebSocket.OPEN) {
                             ws.send(JSON.stringify({ type: "input", data }));
@@ -87,35 +86,62 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
             } catch (e) { console.error(e); }
         };
 
-        ws.onclose = () => updateSessionStatus(id, "disconnected");
-        ws.onerror = () => updateSessionStatus(id, "error");
+        ws.onclose = () => setSessions(prev => prev.map(s => s.id === id ? { ...s, status: "disconnected" } : s));
+        ws.onerror = () => setSessions(prev => prev.map(s => s.id === id ? { ...s, status: "error" } : s));
 
-        setSessions(prev => [...prev, newSession]);
+        return session;
+    }, [token, createTerminalObject]);
+
+    const restoreSessions = useCallback(async () => {
+        try {
+            const res = await fetch("http://localhost:3001/api/sessions", {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            const existing = await res.json();
+
+            if (existing.length > 0) {
+                const restored = existing.map((s: any) => attachSession(s.id));
+                setSessions(restored);
+                setActiveSessionId(restored[0].id);
+            } else {
+                createNewSession();
+            }
+        } catch (e) {
+            console.error("Failed to restore sessions", e);
+            createNewSession();
+        }
+    }, [token, attachSession]);
+
+    const createNewSession = useCallback(() => {
+        const id = Math.random().toString(36).substring(7);
+        const session = attachSession(id);
+        setSessions(prev => [...prev, session]);
         setActiveSessionId(id);
-    }, [token, theme]);
+    }, [attachSession]);
 
-    const updateSessionStatus = (id: string, status: TerminalSession["status"]) => {
-        setSessions(prev => prev.map(s => s.id === id ? { ...s, status } : s));
-    };
-
-    const closeSession = (id: string) => {
+    const closeSession = async (id: string) => {
         const session = sessions.find(s => s.id === id);
         if (session) {
             session.ws.close();
             session.term.dispose();
             setSessions(prev => prev.filter(s => s.id !== id));
+
+            // Clean up on backend
+            fetch(`http://localhost:3001/api/sessions/${id}`, {
+                method: 'DELETE',
+                headers: { Authorization: `Bearer ${token}` }
+            }).catch(console.error);
+
             if (activeSessionId === id) {
                 const remaining = sessions.filter(s => s.id !== id);
-                setActiveSessionId(remaining.length > 0 ? remaining[0].id : null);
+                setActiveSessionId(remaining.length > 1 ? remaining[0].id : null);
             }
         }
     };
 
     useEffect(() => {
-        if (sessions.length === 0) {
-            createNewSession();
-        }
-    }, [createNewSession, sessions.length]);
+        restoreSessions();
+    }, [restoreSessions]);
 
     useEffect(() => {
         sessions.forEach(session => {
@@ -135,16 +161,18 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         document.documentElement.setAttribute('data-theme', theme);
     }, [theme, sessions]);
 
-    const handleSelectFolder = (path: string) => {
-        if (activeSession) {
-            activeSession.ws.send(JSON.stringify({ type: "input", data: `cd "${path}"\r` }));
-        }
+    const handleAction = (action: string) => {
+        if (action === 'logout') onLogout();
+        else if (action === 'toggle-sidebar') setShowSidebar(prev => !prev);
+        else if (action.startsWith('theme-')) setTheme(action.replace('theme-', '') as any);
+        else if (action === 'clear') activeSession?.term.clear();
+        else if (action === 'status') restoreSessions();
     };
 
     return (
         <div className="terminal-page" style={{ height: "100vh", display: "flex", flexDirection: "column", background: "#050505" }}>
-            {/* Tab Bar */}
-            <div className="tab-bar" style={{ display: 'flex', background: 'rgba(255,255,255,0.03)', borderBottom: '1px solid var(--glass-border)', padding: '4px 8px', gap: '4px' }}>
+            <div className="tab-bar" style={{ display: 'flex', background: 'rgba(255,255,255,0.03)', borderBottom: '1px solid var(--glass-border)', padding: '4px 8px', gap: '4px', alignItems: 'center' }}>
+                <div style={{ padding: '0 12px', fontSize: '13px', fontWeight: 'bold', color: 'var(--accent-color)', letterSpacing: '1px' }}>RYO</div>
                 {sessions.map(s => (
                     <div
                         key={s.id}
@@ -161,21 +189,24 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                         }}
                     >
                         <Monitor size={14} />
-                        <span>Session {s.id}</span>
+                        <span>{s.id}</span>
                         <X size={14} className="close-icon" onClick={(e) => { e.stopPropagation(); closeSession(s.id); }} />
                     </div>
                 ))}
-                <button
-                    onClick={createNewSession}
-                    style={{ background: 'transparent', border: 'none', color: 'var(--text-dim)', cursor: 'pointer', padding: '0 8px' }}
-                >
+                <button onClick={createNewSession} className="tab-action-btn" title="New Session">
                     <Plus size={18} />
                 </button>
+                <button onClick={restoreSessions} className="tab-action-btn" title="Sync Sessions">
+                    <RefreshCw size={16} />
+                </button>
+                <div style={{ flex: 1 }} />
+                <button onClick={onLogout} style={{ background: 'transparent', border: 'none', color: 'var(--text-dim)', fontSize: '11px', cursor: 'pointer', padding: '0 12px' }}>Logout</button>
             </div>
 
-            {/* Main Area */}
             <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
-                {showSidebar && <FileExplorer token={token} onSelectFolder={handleSelectFolder} />}
+                {showSidebar && <FileExplorer token={token} onSelectFolder={(path) => {
+                    activeSession?.ws.send(JSON.stringify({ type: "input", data: `cd "${path}"\r` }));
+                }} />}
 
                 <div style={{ flex: 1, position: 'relative' }}>
                     {sessions.map(s => (
@@ -189,7 +220,6 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                                 zIndex: s.id === activeSessionId ? 1 : 0
                             }}
                         >
-                            {/* Status Overlay */}
                             {s.status !== 'connected' && (
                                 <div style={{ position: 'absolute', top: 10, right: 20, zIndex: 10, fontSize: '10px', color: 'var(--accent-color)' }}>
                                     {s.status.toUpperCase()}...
@@ -200,18 +230,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                 </div>
             </div>
 
-            <CommandPalette
-                isOpen={isPaletteOpen}
-                onClose={() => setIsPaletteOpen(false)}
-                onAction={(action) => {
-                    if (action === 'logout') onLogout();
-                    else if (action === 'toggle-sidebar') {
-                        setShowSidebar(prev => !prev);
-                    }
-                    else if (action.startsWith('theme-')) setTheme(action.replace('theme-', '') as any);
-                    else if (action === 'clear') activeSession?.term.clear();
-                }}
-            />
+            <CommandPalette isOpen={isPaletteOpen} onClose={() => setIsPaletteOpen(false)} onAction={handleAction} />
         </div>
     );
 }
