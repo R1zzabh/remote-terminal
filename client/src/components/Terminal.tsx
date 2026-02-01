@@ -8,11 +8,13 @@ import { ImageAddon } from "xterm-addon-image";
 import "xterm/css/xterm.css";
 import { CommandPalette } from "./CommandPalette";
 import { Dashboard } from "./Dashboard";
-import { Plus, X, Monitor, RefreshCw, LayoutTemplate, Search, Files, Activity, Clock } from "lucide-react";
+import { Plus, X, Monitor, RefreshCw, LayoutTemplate, Search, Files, Activity, Clock, ShieldCheck } from "lucide-react";
 import { clsx } from "clsx";
 import { FileExplorer } from "./FileExplorer";
 import { CodeEditor } from "./CodeEditor";
 import { ShortcutManager } from "./ShortcutManager";
+import { UserAdmin } from "./UserAdmin";
+import { decodeToken } from "../utils/auth";
 
 const THEMES = {
     dark: { background: "#050505", foreground: "#e0e0e0", cursor: "#00ff88" },
@@ -50,7 +52,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
     const [theme, setTheme] = useState<keyof typeof THEMES>("dark");
     const [fontFamily, setFontFamily] = useState("'JetBrains Mono', 'Fira Code', monospace");
     const [showSidebar, setShowSidebar] = useState(true);
-    const [sidebarView, setSidebarView] = useState<'files' | 'system'>('files');
+    const [sidebarView, setSidebarView] = useState<'files' | 'system' | 'users'>('files');
     const [editingFilePath, setEditingFilePath] = useState<string | null>(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [showSearch, setShowSearch] = useState(false);
@@ -325,7 +327,18 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                     <div style={{ display: 'flex', borderRight: '1px solid var(--glass-border)' }}>
                         <div style={{ width: '48px', background: 'rgba(0,0,0,0.2)', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '12px 0', gap: '20px', borderRight: '1px solid var(--glass-border)' }}>
                             <Files size={20} className={clsx("cursor-pointer", sidebarView === 'files' ? "text-accent" : "text-dim")} onClick={() => setSidebarView('files')} />
-                            <Activity size={20} className={clsx("cursor-pointer", sidebarView === 'system' ? "text-accent" : "text-dim")} onClick={() => setSidebarView('system')} />
+                            <Activity
+                                size={20}
+                                className={clsx("cursor-pointer", sidebarView === 'system' ? "text-accent" : "text-dim")}
+                                onClick={() => setSidebarView('system')}
+                            />
+                            {decodeToken(token)?.role === 'admin' && (
+                                <ShieldCheck
+                                    size={20}
+                                    className={clsx("cursor-pointer", sidebarView === 'users' ? "text-accent" : "text-dim")}
+                                    onClick={() => setSidebarView('users')}
+                                />
+                            )}
                         </div>
                         {sidebarView === 'files' ? (
                             <FileExplorer
@@ -333,8 +346,10 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                                 onSelectFolder={(path) => activeSession?.panes[0].ws.send(JSON.stringify({ type: "input", data: `cd "${path}"\r` }))}
                                 onSelectFile={(path) => setEditingFilePath(path)}
                             />
-                        ) : (
+                        ) : sidebarView === 'system' ? (
                             <Dashboard token={token} />
+                        ) : (
+                            <UserAdmin token={token} />
                         )}
                     </div>
                 )}
