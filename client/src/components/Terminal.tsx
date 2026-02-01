@@ -112,23 +112,35 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
     }, [token, onLogout]);
 
     return (
-        <div style={{ position: "relative", width: "100%", height: "100vh", background: "#0f0f0f" }}>
-            <div ref={terminalRef} style={{ width: "100%", height: "100%" }} />
-            <div style={{
-                position: "absolute",
-                top: "10px",
-                right: "20px",
-                padding: "4px 12px",
-                borderRadius: "20px",
-                fontSize: "12px",
-                background: status === "connected" ? "rgba(0, 255, 0, 0.1)" : "rgba(255, 0, 0, 0.1)",
-                color: status === "connected" ? "#00ff00" : "#ff4444",
-                border: `1px solid ${status === "connected" ? "rgba(0, 255, 0, 0.3)" : "rgba(255, 0, 0, 0.3)"}`,
-                backdropFilter: "blur(5px)",
-                zIndex: 1000,
-                transition: "all 0.3s ease"
-            }}>
-                {status.toUpperCase()}
+        <div style={{ position: "relative", width: "100%", height: "100vh", background: "#050505", display: "flex", flexDirection: "column" }}>
+            <div className="terminal-header">
+                <div className="terminal-title">Ryo Terminal</div>
+                <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+                    <div className="connection-status">
+                        <div className={`status-dot ${status === "connected" ? "connected" : ""}`} />
+                        &nbsp; {status.toUpperCase()}
+                    </div>
+                    <button
+                        onClick={onLogout}
+                        style={{
+                            background: "transparent",
+                            border: "1px solid var(--glass-border)",
+                            color: "var(--text-dim)",
+                            padding: "4px 12px",
+                            borderRadius: "8px",
+                            fontSize: "12px",
+                            cursor: "pointer",
+                            transition: "all 0.2s ease"
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.color = "#fff"}
+                        onMouseLeave={(e) => e.currentTarget.style.color = "var(--text-dim)"}
+                    >
+                        Logout
+                    </button>
+                </div>
+            </div>
+            <div className="terminal-wrapper">
+                <div ref={terminalRef} className="xterm-container" />
             </div>
         </div>
     );

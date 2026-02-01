@@ -5,8 +5,17 @@ import { createSession, getSession, destroySession, resizeSession, writeToSessio
 import { listTmuxSessions } from "../pty/tmux.js";
 
 export function handleWebSocketOpen(ws: AuthenticatedWebSocket) {
+    const banner = `\r\n\x1b[32m
+   ██████╗ ██╗   ██╗ ██████╗ 
+   ██╔══██╗╚██╗ ██╔╝██╔═══██╗
+   ██████╔╝ ╚████╔╝ ██║   ██║
+   ██╔══██╗  ╚██╔╝  ██║   ██║
+   ██║  ██║   ██║   ╚██████╔╝
+   ╚═╝  ╚═╝   ╚═╝    ╚═════╝ 
+   \x1b[0m\r\n\x1b[1mWelcome to Ryo Terminal v1.0.0\x1b[0m\r\n`;
     console.log("WebSocket connection opened");
     ws.send(JSON.stringify({ type: "connected", message: "Welcome to Ryo Terminal" }));
+    ws.send(JSON.stringify({ type: "output", data: banner }));
 }
 
 export function handleWebSocketMessage(ws: AuthenticatedWebSocket, message: string | Buffer) {

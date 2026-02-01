@@ -23,11 +23,22 @@ function App() {
     };
 
     return (
-        <div style={{ width: "100%", height: "100vh" }}>
-            {token ? (
-                <TerminalComponent token={token} onLogout={handleLogout} />
-            ) : (
+        <div style={{
+            height: "100vh",
+            width: "100vw",
+            background: "#050505",
+            animation: "fadeIn 0.5s ease-out"
+        }}>
+            <style>{`
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+            `}</style>
+            {!token ? (
                 <Login onLogin={handleLogin} />
+            ) : (
+                <TerminalComponent token={token} onLogout={handleLogout} />
             )}
         </div>
     );
