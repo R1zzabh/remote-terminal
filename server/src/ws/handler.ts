@@ -6,7 +6,7 @@ import { listTmuxSessions } from "../pty/tmux.js";
 
 export function handleWebSocketOpen(ws: AuthenticatedWebSocket) {
     console.log("WebSocket connection opened");
-    ws.send(JSON.stringify({ type: "connected", message: "Welcome to Shobha Terminal" }));
+    ws.send(JSON.stringify({ type: "connected", message: "Welcome to Ryo Terminal" }));
 }
 
 export function handleWebSocketMessage(ws: AuthenticatedWebSocket, message: string | Buffer) {

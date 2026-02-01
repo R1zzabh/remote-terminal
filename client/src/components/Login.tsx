@@ -1,4 +1,4 @@
-import { useState, FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 
 interface LoginProps {
     onLogin: (token: string) => void;
@@ -41,7 +41,7 @@ export function Login({ onLogin }: LoginProps) {
     return (
         <div className="login-container">
             <div className="login-box">
-                <h1 className="login-title">Shobha Terminal</h1>
+                <h1 className="login-title">Ryo Terminal</h1>
                 <p className="login-subtitle">Secure remote terminal access</p>
 
                 {error && <div className="error-message">{error}</div>}

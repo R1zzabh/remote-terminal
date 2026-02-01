@@ -147,8 +147,7 @@ wss.on('error', (err) => {
 server.listen(config.port, () => {
     console.log(`
 ╔════════════════════════════════════════╗
-║   Shobha Terminal Server Running      ║
-╚════════════════════════════════════════╝
+║    Ryo Terminal Server Running        ║
 
 🚀 Server: http://localhost:${config.port}
 🔌 WebSocket: ws://localhost:${config.port}/ws
