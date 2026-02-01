@@ -1,23 +1,25 @@
 import useSWR from "swr";
-import { Activity, Cpu, Database, HardDrive, Trash2, RefreshCw } from "lucide-react";
+import { Activity, Cpu, Database, HardDrive, RefreshCw, X, FileText, Trash2 } from "lucide-react";
+import { formatBytes } from "../utils/format";
 
 interface DashboardProps {
     token: string;
+    onClose: () => void; // Added onClose prop based on the instruction's usage
 }
 
 const fetcher = (url: string, token: string) =>
-    fetch(url, { headers: { Authorization: `Bearer ${token}` } }).then(res => res.json());
+    fetch(url, { headers: { Authorization: `Bearer ${token} ` } }).then(res => res.json());
 
-export function Dashboard({ token }: DashboardProps) {
-    const { data: stats, mutate: mutateStats } = useSWR(
+export function Dashboard({ token, onClose }: DashboardProps) { // Added onClose to destructuring
+    const { data: stats, mutate: mutateStats, isLoading: isLoadingStats } = useSWR( // Added isLoadingStats
         token ? [`http://localhost:3001/api/system/stats`, token] : null,
-        ([url, t]) => fetcher(url, t),
+        ([url, t]: [string, string]) => fetcher(url, t),
         { refreshInterval: 5000 }
     );
 
-    const { data: processes, mutate: mutateProcs } = useSWR(
+    const { data: processes, mutate: mutateProcs, isLoading: isLoadingProcs } = useSWR( // Added isLoadingProcs
         token ? [`http://localhost:3001/api/system/processes`, token] : null,
-        ([url, t]) => fetcher(url, t),
+        ([url, t]: [string, string]) => fetcher(url, t),
         { refreshInterval: 10000 }
     );
 
@@ -34,13 +36,7 @@ export function Dashboard({ token }: DashboardProps) {
         mutateProcs();
     };
 
-    const formatBytes = (bytes: number) => {
-        if (bytes === 0) return '0 B';
-        const k = 1024;
-        const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
-        const i = Math.floor(Math.log(bytes) / Math.log(k));
-        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-    };
+    const isLoading = isLoadingStats || isLoadingProcs; // Derived isLoading
 
     return (
         <div className="system-dashboard" style={{
@@ -50,7 +46,29 @@ export function Dashboard({ token }: DashboardProps) {
         }}>
             <div className="explorer-header" style={{ padding: '8px 12px', borderBottom: '1px solid var(--glass-border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <span style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--text-dim)' }}>SYSTEM DASHBOARD</span>
-                <RefreshCw size={14} className="cursor-pointer text-dim hover:text-white" onClick={() => { mutateStats(); mutateProcs(); }} />
+                <div className="flex items-center gap-2"> {/* Added a wrapper div for the buttons */}
+                    <RefreshCw size={14} className={isLoading ? "animate-spin text-dim" : "cursor-pointer text-dim hover:text-white"} onClick={() => { mutateStats(); mutateProcs(); }} />
+                    <button
+                        onClick={async () => {
+                            const res = await fetch('http://localhost:3001/api/system/report', {
+                                headers: { Authorization: `Bearer ${token}` }
+                            });
+                            const text = await res.text();
+                            const blob = new Blob([text], { type: 'text/plain' });
+                            const url = window.URL.createObjectURL(blob);
+                            const a = document.createElement('a');
+                            a.href = url;
+                            a.download = `ryo-report-${new Date().getTime()}.txt`;
+                            a.click();
+                        }}
+                        className="flex items-center gap-1 px-2 py-1 bg-white/5 hover:bg-white/10 rounded text-[10px] text-dim hover:text-white"
+                        title="Download System Report"
+                    >
+                        <FileText size={10} />
+                        Report
+                    </button>
+                    <button onClick={onClose} className="text-dim hover:text-white ml-2"><X size={16} /></button>
+                </div>
             </div>
 
             <div className="p-4 flex flex-col gap-6">

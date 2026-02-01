@@ -51,6 +51,18 @@ export function CodeEditor({ path, token, theme, onClose }: CodeEditorProps) {
         }
     };
 
+    // Shortcut: Ctrl+S / Cmd+S
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                handleSave();
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [content, path, token]); // Re-bind when deps change to ensure closure has latest content
+
     const getLanguage = () => {
         const ext = path.split('.').pop()?.toLowerCase();
         switch (ext) {

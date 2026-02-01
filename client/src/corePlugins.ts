@@ -1,11 +1,15 @@
-import { Files, Activity, ShieldCheck, Palette, Zap, ShoppingBag } from "lucide-react";
+import { Files, Activity, ShieldCheck, Palette, Zap, ShoppingBag, Clock } from "lucide-react";
 import { pluginRegistry } from "./utils/pluginRegistry";
-import { FileExplorer } from "./components/FileExplorer";
-import { Dashboard } from "./components/Dashboard";
-import { UserAdmin } from "./components/UserAdmin";
-import { ThemeBuilder } from "./components/ThemeBuilder";
-import { MacroManager } from "./components/MacroManager";
-import { Marketplace } from "./components/Marketplace";
+import React from "react";
+
+// Lazy-loaded components
+const FileExplorer = React.lazy(() => import("./components/FileExplorer").then(m => ({ default: m.FileExplorer })));
+const Dashboard = React.lazy(() => import("./components/Dashboard").then(m => ({ default: m.Dashboard })));
+const UserAdmin = React.lazy(() => import("./components/UserAdmin").then(m => ({ default: m.UserAdmin })));
+const ThemeBuilder = React.lazy(() => import("./components/ThemeBuilder").then(m => ({ default: m.ThemeBuilder })));
+const MacroManager = React.lazy(() => import("./components/MacroManager").then(m => ({ default: m.MacroManager })));
+const Marketplace = React.lazy(() => import("./components/Marketplace").then(m => ({ default: m.Marketplace })));
+const History = React.lazy(() => import("./components/History").then(m => ({ default: m.History })));
 
 export function registerCorePlugins() {
     pluginRegistry.register({
@@ -13,6 +17,13 @@ export function registerCorePlugins() {
         name: 'Files',
         icon: Files,
         component: FileExplorer
+    });
+
+    pluginRegistry.register({
+        id: 'history',
+        name: 'History',
+        icon: Clock,
+        component: History
     });
 
     pluginRegistry.register({

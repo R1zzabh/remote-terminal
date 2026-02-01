@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { Terminal } from "xterm";
 import { FitAddon } from "xterm-addon-fit";
 import { WebLinksAddon } from "xterm-addon-web-links";
@@ -15,6 +15,8 @@ import { decodeToken } from "../utils/auth";
 import { Plus, X, Monitor, RefreshCw, LayoutTemplate, Search, Menu, Clock } from "lucide-react";
 import { registerCorePlugins } from "../corePlugins";
 import { pluginRegistry } from "../utils/pluginRegistry";
+import { ErrorBoundary } from "./ErrorBoundary";
+import { Suspense } from "react";
 
 const THEMES = {
     dark: { background: "#050505", foreground: "#e0e0e0", cursor: "#00ff88" },
@@ -111,20 +113,22 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         return { term, fitAddon, searchAddon };
     }, [theme, fontFamily]);
 
+    const socketsRef = useRef<Map<string, WebSocket>>(new Map());
+
     const connectWebSocket = useCallback((paneId: string, term: Terminal, sshHost?: string, attempt = 0) => {
         const ws = new WebSocket(`ws://localhost:3001/ws?sessionId=${paneId}`);
+        socketsRef.current.set(paneId, ws);
 
         const retry = () => {
             const delay = Math.min(1000 * Math.pow(2, attempt), 30000);
-            console.info(`Reconnecting in ${delay}ms... (Attempt ${attempt + 1})`);
             setTimeout(() => connectWebSocket(paneId, term, sshHost, attempt + 1), delay);
         };
 
         ws.onopen = () => {
-            setSessions(prev => prev.map(s => ({
-                ...s,
-                panes: s.panes.map(p => p.id === paneId ? { ...p, ws, status: "connected" as const } : p)
-            })));
+            setSessions(prev => prev.map(s => s.panes.some(p => p.id === paneId)
+                ? { ...s, panes: s.panes.map(p => p.id === paneId ? { ...p, status: "connected" } : p) }
+                : s
+            ));
             term.write(`\r\n\x1b[32m[SYSTEM]\x1b[0m ${sshHost ? `Connecting to ${sshHost}...` : 'Connected to Server'}\r\n`);
             ws.send(JSON.stringify({ type: "auth", token, sshHost }));
         };
@@ -134,20 +138,16 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                 const msg = JSON.parse(event.data);
                 if (msg.type === "output") term.write(msg.data);
                 else if (msg.type === "authenticated") {
-                    // Reset attempt on successful auth
-                    attempt = 0;
                     ws.send(JSON.stringify({ type: "resize", cols: term.cols, rows: term.rows }));
                 }
             } catch (e) { console.error(e); }
         };
 
         ws.onclose = (e) => {
-            setSessions(prev => prev.map(s => ({
-                ...s,
-                panes: s.panes.map(p => p.id === paneId ? { ...p, status: "disconnected" as const } : p)
-            })));
-
-            // Reconnect if not closed cleanly
+            setSessions(prev => prev.map(s => s.panes.some(p => p.id === paneId)
+                ? { ...s, panes: s.panes.map(p => p.id === paneId ? { ...p, status: "disconnected" } : p) }
+                : s
+            ));
             if (e.code !== 1000 && e.code !== 1001) {
                 term.write(`\r\n\x1b[31m[SYSTEM] Connection lost. Reconnecting...\x1b[0m\r\n`);
                 retry();
@@ -155,58 +155,45 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         };
 
         ws.onerror = () => {
-            setSessions(prev => prev.map(s => ({
-                ...s,
-                panes: s.panes.map(p => p.id === paneId ? { ...p, status: "error" as const } : p)
-            })));
+            setSessions(prev => prev.map(s => s.panes.some(p => p.id === paneId)
+                ? { ...s, panes: s.panes.map(p => p.id === paneId ? { ...p, status: "error" } : p) }
+                : s
+            ));
         };
 
         return ws;
-    }, [token, sessions, activeSessionId]);
+    }, [token]);
 
     const createPane = useCallback((paneId: string, sshHost?: string): TerminalPane => {
         const { term, fitAddon, searchAddon } = createTerminalObject();
+        const pane: TerminalPane = { id: paneId, term, fitAddon, searchAddon, ws: null as any, status: "connecting" };
 
-        const pane: TerminalPane = {
-            id: paneId, term, fitAddon, searchAddon,
-            ws: null as any, // Will be set by connectWebSocket
-            status: "connecting"
-        };
-
-        const ws = connectWebSocket(paneId, term, sshHost);
-        pane.ws = ws;
+        connectWebSocket(paneId, term, sshHost);
 
         term.onData(data => {
-            const currentPane = sessions.find(s => s.panes.some(p => p.id === paneId))?.panes.find(p => p.id === paneId);
-            if (currentPane?.ws?.readyState === WebSocket.OPEN) {
-                currentPane.ws.send(JSON.stringify({ type: "input", data }));
+            const ws = socketsRef.current.get(paneId);
+            if (ws?.readyState === WebSocket.OPEN) {
+                ws.send(JSON.stringify({ type: "input", data }));
             }
         });
 
         term.onResize(size => {
-            const currentPane = sessions.find(s => s.panes.some(p => p.id === paneId))?.panes.find(p => p.id === paneId);
-            if (currentPane?.ws?.readyState === WebSocket.OPEN) {
-                currentPane.ws.send(JSON.stringify({ type: "resize", cols: size.cols, rows: size.rows }));
+            const ws = socketsRef.current.get(paneId);
+            if (ws?.readyState === WebSocket.OPEN) {
+                ws.send(JSON.stringify({ type: "resize", cols: size.cols, rows: size.rows }));
             }
         });
 
         term.onBell(() => {
-            const sess = sessions.find(s => s.panes.some(p => p.id === paneId));
-            if (sess) {
-                const tab = document.getElementById(`tab-${sess.id}`);
-                if (tab) {
-                    tab.style.animation = 'bell-shake 0.5s cubic-bezier(.36,.07,.19,.97) both';
-                    tab.style.borderColor = 'var(--accent-color)';
-                    setTimeout(() => {
-                        tab.style.animation = '';
-                        tab.style.borderColor = activeSessionId === sess.id ? 'var(--glass-border)' : 'transparent';
-                    }, 500);
-                }
+            const tab = document.getElementById(`tab-indicator-${paneId}`);
+            if (tab) {
+                tab.style.animation = 'bell-shake 0.5s cubic-bezier(.36,.07,.19,.97) both';
+                setTimeout(() => tab.style.animation = '', 500);
             }
         });
 
         return pane;
-    }, [token, createTerminalObject, connectWebSocket, sessions, activeSessionId]);
+    }, [createTerminalObject, connectWebSocket]);
 
     const createNewTab = useCallback((sshHost?: string) => {
         const tabId = Math.random().toString(36).substring(7);
@@ -226,7 +213,6 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                 headers: { Authorization: `Bearer ${token}` }
             });
             const existing = await res.json();
-
             if (existing.length > 0) {
                 const restored = existing.map((s: any): TerminalSession => ({
                     id: Math.random().toString(36).substring(7),
@@ -234,7 +220,12 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                     layout: "single"
                 }));
                 setSessions(restored);
-                if (!activeSessionId) setActiveSessionId(restored[0].id);
+                const savedActiveId = localStorage.getItem('ryo_active_tab');
+                if (savedActiveId && restored.some(s => s.id === savedActiveId)) {
+                    setActiveSessionId(savedActiveId);
+                } else {
+                    setActiveSessionId(restored[0].id);
+                }
             } else {
                 createNewTab();
             }
@@ -242,7 +233,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
             console.error("Failed to restore sessions", e);
             createNewTab();
         }
-    }, [token, createPane, activeSessionId, createNewTab]);
+    }, [token, createPane, createNewTab]);
 
     const splitActiveTab = useCallback((type: 'horizontal' | 'vertical') => {
         if (!activeSession) return;
@@ -275,8 +266,10 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
     };
 
     useEffect(() => {
-        restoreSessions();
-    }, [restoreSessions]);
+        let mounted = true;
+        if (mounted) restoreSessions();
+        return () => { mounted = false; };
+    }, []); // Only run once on mount
 
     useEffect(() => {
         sessions.forEach(session => {
@@ -347,12 +340,29 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                 setTouchStartX(null);
             }}
         >
-            <div className="tab-bar" style={{ display: 'flex', background: 'rgba(255,255,255,0.03)', borderBottom: '1px solid var(--glass-border)', padding: '4px 8px', gap: '4px', alignItems: 'center' }}>
-                <div className="terminal-header" style={{ height: 'var(--header-height)', display: 'flex', alignItems: 'center', background: 'var(--bg-secondary)', borderBottom: '1px solid var(--glass-border)', zIndex: 1001 }}>
-                    <div className="show-mobile" style={{ padding: '0 12px' }} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-                        <Menu size={20} className="text-accent cursor-pointer" />
-                    </div>
-                    <div className="hidden-mobile" style={{ padding: '0 12px', fontSize: '13px', fontWeight: 'bold', color: 'var(--accent-color)', letterSpacing: '1px' }}>RYO</div>
+            {/* Header / Tab Bar */}
+            <div className="terminal-header" style={{
+                height: 'var(--header-height)',
+                display: 'flex',
+                alignItems: 'center',
+                background: 'var(--bg-secondary)',
+                borderBottom: '1px solid var(--glass-border)',
+                zIndex: 1001,
+                padding: '0 12px',
+                gap: '8px'
+            }}>
+                <div className="show-mobile" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                    <Menu size={20} className="text-accent cursor-pointer" />
+                </div>
+                <div className="hidden-mobile" style={{
+                    fontSize: '13px',
+                    fontWeight: 'bold',
+                    color: 'var(--accent-color)',
+                    letterSpacing: '1px',
+                    marginRight: '12px'
+                }}>RYO</div>
+
+                <div className="tab-container" style={{ display: 'flex', gap: '4px', overflowX: 'auto', flex: 1, padding: '4px 0' }}>
                     {sessions.map(s => (
                         <div
                             key={s.id}
@@ -366,7 +376,8 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                                 color: s.id === activeSessionId ? '#fff' : 'var(--text-dim)',
                                 border: '1px solid',
                                 borderColor: s.id === activeSessionId ? 'var(--glass-border)' : 'transparent',
-                                transition: 'all 0.2s ease'
+                                transition: 'all 0.2s ease',
+                                whiteSpace: 'nowrap'
                             }}
                         >
                             <Monitor size={14} />
@@ -374,54 +385,77 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                             <X size={14} className="close-icon" onClick={(e) => { e.stopPropagation(); closeTab(s.id); }} />
                         </div>
                     ))}
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                     <button onClick={() => createNewTab()} className="tab-action-btn" title="New Tab"><Plus size={18} /></button>
                     <button onClick={() => splitActiveTab('vertical')} className="tab-action-btn" title="Split Vertical"><LayoutTemplate size={16} /></button>
                     <button onClick={() => restoreSessions()} className="tab-action-btn" title="Sync Sessions"><RefreshCw size={16} /></button>
-                    <div style={{ flex: 1 }} />
-                    <button onClick={onLogout} style={{ background: 'transparent', border: 'none', color: 'var(--text-dim)', fontSize: '11px', cursor: 'pointer', padding: '0 12px' }}>Logout</button>
+                    <div style={{ width: '1px', height: '24px', background: 'var(--glass-border)', margin: '0 8px' }} />
+                    <button onClick={onLogout} style={{ background: 'transparent', border: 'none', color: 'var(--text-dim)', fontSize: '11px', cursor: 'pointer' }}>Logout</button>
                 </div>
+            </div>
 
-                <div style={{ flex: 1, display: 'flex', overflow: 'hidden', position: 'relative' }}>
-                    {/* Mobile Overlay */}
-                    {isMobileMenuOpen && (
-                        <div
-                            className="show-mobile"
-                            style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 999 }}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        />
-                    )}
+            {/* Main Content Area */}
+            <div className="terminal-main" style={{ flex: 1, display: 'flex', overflow: 'hidden', position: 'relative' }}>
+                {/* Sidebar Overlay for Mobile */}
+                {isMobileMenuOpen && (
+                    <div
+                        className="show-mobile"
+                        style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 999 }}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                    />
+                )}
 
-                    <div className={clsx("sidebar-root", isMobileMenuOpen ? "mobile-drawer open" : "mobile-drawer", !showSidebar && "hidden")} style={{ display: 'flex', borderRight: '1px solid var(--glass-border)' }}>
-                        <div style={{ width: '48px', background: 'rgba(0,0,0,0.2)', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '12px 0', gap: '20px', borderRight: '1px solid var(--glass-border)' }}>
-                            {pluginRegistry.getPlugins(decodeToken(token)?.role).map(p => (
-                                <p.icon
-                                    key={p.id}
-                                    size={20}
-                                    className={clsx("cursor-pointer", sidebarView === p.id ? "text-accent" : "text-dim")}
-                                    onClick={() => setSidebarView(p.id)}
-                                />
-                            ))}
-                        </div>
+                {/* Sidebar */}
+                <div className={clsx("sidebar-root", isMobileMenuOpen ? "mobile-drawer open" : "mobile-drawer", !showSidebar && "hidden")}
+                    style={{
+                        display: showSidebar ? 'flex' : 'none',
+                        borderRight: '1px solid var(--glass-border)',
+                        background: 'var(--glass-bg)',
+                        backdropFilter: 'blur(20px)',
+                        width: isMobileMenuOpen ? '85%' : 'var(--sidebar-width)',
+                        maxWidth: '320px',
+                        flexShrink: 0
+                    }}>
+                    <div style={{ width: '56px', background: 'rgba(0,0,0,0.2)', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '16px 0', gap: '24px', borderRight: '1px solid var(--glass-border)', flexShrink: 0 }}>
+                        {useMemo(() => pluginRegistry.getPlugins(decodeToken(token)?.role), [token]).map((p: any) => (
+                            <p.icon
+                                key={p.id}
+                                size={20}
+                                className={clsx("cursor-pointer transition-colors", sidebarView === p.id ? "text-accent" : "text-dim")}
+                                onClick={() => setSidebarView(p.id)}
+                            />
+                        ))}
+                    </div>
+                    <div className="sidebar-content" style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
                         {(() => {
                             const activePlugin = pluginRegistry.getPlugin(sidebarView) || pluginRegistry.getPlugin('files');
                             if (!activePlugin) return null;
                             const Component = activePlugin.component;
                             return (
-                                <Component
-                                    token={token}
-                                    theme={theme}
-                                    onClose={() => setSidebarView('files')}
-                                    // Specific props for core plugins if needed, or pass all
-                                    onSelectFolder={(path: string) => activeSession?.panes[0].ws.send(JSON.stringify({ type: "input", data: `cd "${path}"\r` }))}
-                                    onSelectFile={(path: string) => setEditingFilePath(path)}
-                                />
+                                <ErrorBoundary key={activePlugin.id}>
+                                    <Suspense fallback={<div className="p-4 text-dim text-xs">Loading {activePlugin.name}...</div>}>
+                                        <div style={{ flex: 1, overflowY: 'auto' }}>
+                                            <Component
+                                                token={token}
+                                                theme={theme}
+                                                onClose={() => setSidebarView('files')}
+                                                onSelectFolder={(path: string) => activeSession?.panes[0].ws.send(JSON.stringify({ type: "input", data: `cd "${path}"\r` }))}
+                                                onSelectFile={(path: string) => setEditingFilePath(path)}
+                                                onSelectCommand={(cmd: string) => activeSession?.panes[0].ws.send(JSON.stringify({ type: "input", data: `${cmd}\r` }))}
+                                            />
+                                        </div>
+                                    </Suspense>
+                                </ErrorBoundary>
                             );
                         })()}
                     </div>
                 </div>
 
-                <div style={{ flex: 1, position: 'relative', display: 'flex', flexDirection: 'column' }}>
-                    <div style={{ flex: 1, position: 'relative', display: 'flex', flexDirection: activeSession?.layout === 'vertical' ? 'row' : 'column' }}>
+                {/* Terminal Pane Container */}
+                <div style={{ flex: 1, position: 'relative', display: 'flex', flexDirection: 'column', background: '#050505', overflow: 'hidden' }}>
+                    <div style={{ flex: 1, position: 'relative', display: 'flex', flexDirection: activeSession?.layout === 'vertical' ? 'row' : 'column', overflow: 'hidden' }}>
                         {activeSession?.panes.map((pane, index) => (
                             <div
                                 key={pane.id}
@@ -431,10 +465,11 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                                     flex: 1, position: 'relative',
                                     borderLeft: index > 0 && activeSession.layout === 'vertical' ? '1px solid var(--glass-border)' : 'none',
                                     borderTop: index > 0 && activeSession.layout === 'horizontal' ? '1px solid var(--glass-border)' : 'none',
+                                    overflow: 'hidden'
                                 }}
                             >
                                 {pane.status !== 'connected' && (
-                                    <div style={{ position: 'absolute', top: 10, right: 20, zIndex: 10, fontSize: '10px', color: 'var(--accent-color)' }}>
+                                    <div style={{ position: 'absolute', top: 12, right: 12, zIndex: 10, fontSize: '10px', color: 'var(--accent-color)', background: 'rgba(0,0,0,0.5)', padding: '2px 6px', borderRadius: '4px' }}>
                                         {pane.status.toUpperCase()}...
                                     </div>
                                 )}
@@ -450,7 +485,6 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                                 if (!activeSession) return;
                                 let data = key;
                                 if (ctrlPressed) {
-                                    // Map common ctrl keys
                                     const code = key.toUpperCase().charCodeAt(0);
                                     if (code >= 65 && code <= 90) data = String.fromCharCode(code - 64);
                                 }
@@ -462,13 +496,21 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                     />
 
                     {editingFilePath && (
-                        <div className="editor-pane">
+                        <div className="editor-pane" style={{
+                            position: 'absolute',
+                            right: 0, top: 0, bottom: 0,
+                            width: '50%',
+                            background: 'var(--bg-secondary)',
+                            zIndex: 100,
+                            borderLeft: '1px solid var(--glass-border)',
+                            boxShadow: '-4px 0 24px rgba(0,0,0,0.5)'
+                        }}>
                             <CodeEditor path={editingFilePath} token={token} theme={theme} onClose={() => setEditingFilePath(null)} />
                         </div>
                     )}
 
                     {showSearch && (
-                        <div style={{ position: 'absolute', top: 10, right: 20, zIndex: 100, background: 'var(--glass-bg)', backdropFilter: 'blur(20px)', border: '1px solid var(--glass-border)', borderRadius: '8px', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <div style={{ position: 'absolute', top: 12, right: 12, zIndex: 100, background: 'var(--glass-bg)', backdropFilter: 'blur(20px)', border: '1px solid var(--glass-border)', borderRadius: '8px', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: '8px', boxShadow: 'var(--glass-shadow)' }}>
                             <Search size={14} className="text-dim" />
                             <input
                                 autoFocus
@@ -479,12 +521,12 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                                 onKeyDown={e => { if (e.key === 'Enter') activeSession?.panes[0].searchAddon.findNext(searchTerm); if (e.key === 'Escape') setShowSearch(false); }}
                                 style={{ background: 'transparent', border: 'none', color: '#fff', outline: 'none', fontSize: '13px' }}
                             />
-                            <X size={14} className="cursor-pointer text-dim" onClick={() => setShowSearch(false)} />
+                            <X size={14} className="cursor-pointer text-dim hover:text-white transition-colors" onClick={() => setShowSearch(false)} />
                         </div>
                     )}
 
                     {showHistory && (
-                        <div style={{ position: 'absolute', top: '15vh', left: '50%', transform: 'translateX(-50%)', zIndex: 1000, width: '500px', background: 'var(--glass-bg)', backdropFilter: 'blur(30px)', border: '1px solid var(--glass-border)', borderRadius: '16px', boxShadow: 'var(--glass-shadow)', overflow: 'hidden' }}>
+                        <div style={{ position: 'absolute', top: '10vh', left: '50%', transform: 'translateX(-50%)', zIndex: 1000, width: '90%', maxWidth: '500px', background: 'var(--glass-bg)', backdropFilter: 'blur(30px)', border: '1px solid var(--glass-border)', borderRadius: '16px', boxShadow: 'var(--glass-shadow)', overflow: 'hidden' }}>
                             <div style={{ padding: '16px', borderBottom: '1px solid var(--glass-border)', display: 'flex', alignItems: 'center', gap: '12px' }}>
                                 <Clock size={16} className="text-accent" />
                                 <input
@@ -494,14 +536,14 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                                     onChange={e => fetchHistory(e.target.value)}
                                     onKeyDown={e => { if (e.key === 'Escape') setShowHistory(false); }}
                                 />
-                                <X size={16} className="cursor-pointer text-dim" onClick={() => setShowHistory(false)} />
+                                <X size={16} className="cursor-pointer text-dim hover:text-white" onClick={() => setShowHistory(false)} />
                             </div>
                             <div style={{ maxHeight: '400px', overflowY: 'auto', padding: '8px' }}>
                                 {historyResults.map((line, i) => (
                                     <div
                                         key={i}
                                         onClick={() => { activeSession?.panes[0].ws.send(JSON.stringify({ type: "input", data: line + "\r" })); setShowHistory(false); }}
-                                        style={{ padding: '10px 12px', borderRadius: '8px', cursor: 'pointer', fontSize: '13px', color: '#ccc' }}
+                                        style={{ padding: '10px 12px', borderRadius: '8px', cursor: 'pointer', fontSize: '13px', color: '#ccc', transition: 'background 0.2s' }}
                                         onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
                                         onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
                                     >
@@ -518,6 +560,6 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
 
             <ShortcutManager onAction={handleAction} />
             <CommandPalette isOpen={isPaletteOpen} onClose={() => setIsPaletteOpen(false)} onAction={handleAction} />
-        </div>
+        </div >
     );
 }

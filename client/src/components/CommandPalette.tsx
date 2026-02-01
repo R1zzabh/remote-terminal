@@ -26,13 +26,16 @@ const COMMANDS = [
     { id: "search-history", label: "Search Shell History", icon: Clock },
     { id: "theme-builder", label: "Open Theme Builder", icon: Palette },
     { id: "macro-manager", label: "Open Macro Manager", icon: Zap },
+    { id: "goto-file", label: "Go to File...", icon: Search },
+    { id: "toggle-sidebar", label: "Toggle Sidebar", icon: Sidebar },
     { id: "logout", label: "Terminate All & Logout", icon: LogOut, danger: true },
 ];
 
 export function CommandPalette({ onAction, isOpen, onClose }: CommandPaletteProps) {
     const [query, setQuery] = useState("");
     const [selectedIndex, setSelectedIndex] = useState(0);
-    const [mode, setMode] = useState<"default" | "ssh" | "font">("default");
+    const [mode, setMode] = useState<"default" | "ssh" | "font" | "file">("default");
+    const [files, setFiles] = useState<any[]>([]);
     const inputRef = useRef<HTMLInputElement>(null);
 
     const filteredCommands = mode === "default" ? COMMANDS.filter(cmd =>
@@ -43,12 +46,25 @@ export function CommandPalette({ onAction, isOpen, onClose }: CommandPaletteProp
         f.toLowerCase().includes(query.toLowerCase())
     ) : [];
 
+    const filteredFiles = mode === "file" ? files.filter(f =>
+        f.name.toLowerCase().includes(query.toLowerCase()) ||
+        f.path.toLowerCase().includes(query.toLowerCase())
+    ).slice(0, 10) : [];
+
     useEffect(() => {
         if (isOpen) {
             setQuery("");
             setSelectedIndex(0);
             setMode("default");
             setTimeout(() => inputRef.current?.focus(), 10);
+
+            // Pre-fetch files for Go to File
+            const token = localStorage.getItem('ryo_token');
+            if (token) {
+                fetch('http://localhost:3001/api/files?recursive=true', {
+                    headers: { Authorization: `Bearer ${token}` }
+                }).then(res => res.json()).then(data => Array.isArray(data) && setFiles(data));
+            }
         }
     }, [isOpen]);
 
@@ -56,7 +72,9 @@ export function CommandPalette({ onAction, isOpen, onClose }: CommandPaletteProp
         const handleKeyDown = (e: KeyboardEvent) => {
             if (!isOpen) return;
 
-            const itemsCount = mode === "font" ? (filteredFonts.length || 1) : (filteredCommands.length || 1);
+            const itemsCount = mode === "font" ? (filteredFonts.length || 1) :
+                mode === "file" ? (filteredFiles.length || 1) :
+                    (filteredCommands.length || 1);
 
             if (e.key === "ArrowDown") {
                 setSelectedIndex(prev => (prev + 1) % itemsCount);
@@ -80,6 +98,15 @@ export function CommandPalette({ onAction, isOpen, onClose }: CommandPaletteProp
                     return;
                 }
 
+                if (mode === "file") {
+                    const file = filteredFiles[selectedIndex];
+                    if (file) {
+                        onAction('open-file', file.path);
+                        onClose();
+                    }
+                    return;
+                }
+
                 const cmd = filteredCommands[selectedIndex];
                 if (cmd) {
                     if (cmd.id === 'ssh') {
@@ -87,6 +114,9 @@ export function CommandPalette({ onAction, isOpen, onClose }: CommandPaletteProp
                         setQuery("");
                     } else if (cmd.id === 'font') {
                         setMode("font");
+                        setQuery("");
+                    } else if (cmd.id === 'goto-file') {
+                        setMode("file");
                         setQuery("");
                     } else {
                         onAction(cmd.id);
@@ -105,7 +135,14 @@ export function CommandPalette({ onAction, isOpen, onClose }: CommandPaletteProp
 
         window.addEventListener("keydown", handleKeyDown);
         return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [isOpen, filteredCommands, filteredFonts, selectedIndex, onAction, onClose, mode, query]);
+    }, [isOpen, filteredCommands, filteredFonts, filteredFiles, selectedIndex, onAction, onClose, mode, query]);
+
+    useEffect(() => {
+        if (query.startsWith(':') && mode === "default") {
+            setMode("file");
+            setQuery(query.substring(1)); // Remove the ':'
+        }
+    }, [query, mode]);
 
     if (!isOpen) return null;
 
@@ -115,6 +152,7 @@ export function CommandPalette({ onAction, isOpen, onClose }: CommandPaletteProp
                 <div className="command-palette-search">
                     {mode === "ssh" && <Globe size={18} className="text-accent" />}
                     {mode === "font" && <Type size={18} className="text-accent" />}
+                    {mode === "file" && <Search size={18} className="text-accent" />}
                     {mode === "default" && <Search size={18} className="text-dim" />}
                     <input
                         ref={inputRef}
@@ -122,7 +160,8 @@ export function CommandPalette({ onAction, isOpen, onClose }: CommandPaletteProp
                         placeholder={
                             mode === "ssh" ? "user@hostname or host..." :
                                 mode === "font" ? "Filter fonts..." :
-                                    "Search commands..."
+                                    mode === "file" ? "Search files..." :
+                                        "Search commands..."
                         }
                         value={query}
                         onChange={e => setQuery(e.target.value)}
@@ -147,6 +186,9 @@ export function CommandPalette({ onAction, isOpen, onClose }: CommandPaletteProp
                                         setQuery("");
                                     } else if (cmd.id === 'font') {
                                         setMode("font");
+                                        setQuery("");
+                                    } else if (cmd.id === 'goto-file') {
+                                        setMode("file");
                                         setQuery("");
                                     } else {
                                         onAction(cmd.id);

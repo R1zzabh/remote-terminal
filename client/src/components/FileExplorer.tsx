@@ -70,17 +70,17 @@ export function FileExplorer({ token, onSelectFolder, onSelectFile }: FileExplor
     const [newName, setNewName] = useState("");
     const [isDragging, setIsDragging] = useState(false);
     const [isUploading, setIsUploading] = useState(false);
+    const [search, setSearch] = useState("");
 
-    const { data: files, error, mutate, isLoading } = useSWR(
+    const { data: files, mutate, isLoading, error } = useSWR(
         token ? [`http://localhost:3001/api/files?path=${currentPath}`, token] : null,
         ([url, t]) => fetcher(url, t)
     );
 
-    const handleBack = () => {
-        const parts = currentPath.split("/");
-        parts.pop();
-        setCurrentPath(parts.join("/"));
-    };
+    const filteredFiles = files?.filter((f: FileItem) =>
+        f.name.toLowerCase().includes(search.toLowerCase())
+    );
+
 
     const handleFileUpload = async (files: FileList) => {
         setIsUploading(true);
@@ -155,6 +155,27 @@ export function FileExplorer({ token, onSelectFolder, onSelectFile }: FileExplor
         mutate();
     };
 
+    const Breadcrumbs = () => {
+        const parts = currentPath ? currentPath.split("/") : [];
+        return (
+            <div className="breadcrumbs" style={{ display: 'flex', alignItems: 'center', gap: '4px', padding: '4px 12px', background: 'rgba(255,255,255,0.02)', borderBottom: '1px solid var(--glass-border)', fontSize: '10px' }}>
+                <span className="cursor-pointer hover:text-accent text-dim" onClick={() => setCurrentPath("")}>root</span>
+                {parts.map((part, i) => (
+                    <span key={i} style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <ChevronRight size={10} className="text-dim" />
+                        <span
+                            className="cursor-pointer hover:text-accent text-dim truncate"
+                            style={{ maxWidth: '60px' }}
+                            onClick={() => setCurrentPath(parts.slice(0, i + 1).join("/"))}
+                        >
+                            {part}
+                        </span>
+                    </span>
+                ))}
+            </div>
+        );
+    };
+
     if (error) return <div className="p-4 text-danger">Error loading files</div>;
 
     return (
@@ -199,6 +220,20 @@ export function FileExplorer({ token, onSelectFolder, onSelectFile }: FileExplor
                 </div>
             </div>
 
+            <div className="p-2 border-b border-white/5">
+                <div className="relative">
+                    <input
+                        type="text"
+                        placeholder="Filter files..."
+                        className="w-full bg-white/5 border border-white/10 rounded py-1 px-2 text-[10px] text-white focus:outline-none focus:border-accent/50"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                </div>
+            </div>
+
+            <Breadcrumbs />
+
             <div className="explorer-content" style={{ flex: 1, overflowY: 'auto', padding: '8px' }}>
                 {isCreating && (
                     <div style={{ display: 'flex', alignItems: 'center', gap: '4px', padding: '4px 8px' }}>
@@ -214,22 +249,12 @@ export function FileExplorer({ token, onSelectFolder, onSelectFile }: FileExplor
                         <X size={12} className="cursor-pointer" onClick={() => setIsCreating(null)} />
                     </div>
                 )}
-                {currentPath && (
-                    <div
-                        className="explorer-item"
-                        onClick={handleBack}
-                        style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '4px 8px', cursor: 'pointer', fontSize: '13px', color: 'var(--text-dim)' }}
-                    >
-                        <ChevronRight size={14} style={{ transform: 'rotate(180deg)' }} />
-                        <span>..</span>
-                    </div>
-                )}
 
                 {isLoading ? (
                     <div className="p-4 text-center text-dim text-xs">Loading...</div>
                 ) : (
                     <>
-                        {files?.map((file: FileItem) => (
+                        {filteredFiles?.map((file: FileItem) => (
                             <FileItemComponent
                                 key={file.path}
                                 file={file}
