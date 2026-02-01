@@ -4,7 +4,7 @@ import { FitAddon } from "xterm-addon-fit";
 import { WebLinksAddon } from "xterm-addon-web-links";
 import "xterm/css/xterm.css";
 import { CommandPalette } from "./CommandPalette";
-import { Plus, X, Monitor, RefreshCw } from "lucide-react";
+import { Plus, X, Monitor, RefreshCw, LayoutTemplate } from "lucide-react";
 import { clsx } from "clsx";
 import { FileExplorer } from "./FileExplorer";
 import { CodeEditor } from "./CodeEditor";
@@ -21,19 +21,24 @@ interface TerminalComponentProps {
     onLogout: () => void;
 }
 
-interface TerminalSession {
+interface TerminalPane {
     id: string;
     term: Terminal;
     fitAddon: FitAddon;
     ws: WebSocket;
     status: "connecting" | "connected" | "disconnected" | "error";
-    initialised: boolean;
+}
+
+interface TerminalSession {
+    id: string; // Tab ID
+    panes: TerminalPane[];
+    layout: "single" | "horizontal" | "vertical";
 }
 
 export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
     const [sessions, setSessions] = useState<TerminalSession[]>([]);
-    const [activeSessionId, setActiveSessionId] = useState<string | null>(null);
-    const terminalContainersRef = useRef<Map<string, HTMLDivElement>>(new Map());
+    const [activeSessionId, setActiveSessionId] = useState<string | null>(localStorage.getItem('ryo_active_tab'));
+    const paneContainersRef = useRef<Map<string, HTMLDivElement>>(new Map());
 
     const [isPaletteOpen, setIsPaletteOpen] = useState(false);
     const [theme, setTheme] = useState<keyof typeof THEMES>("dark");
@@ -42,6 +47,11 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
     const [editingFilePath, setEditingFilePath] = useState<string | null>(null);
 
     const activeSession = sessions.find(s => s.id === activeSessionId);
+
+    // PERSISTENCE: Active Tab
+    useEffect(() => {
+        if (activeSessionId) localStorage.setItem('ryo_active_tab', activeSessionId);
+    }, [activeSessionId]);
 
     const createTerminalObject = useCallback(() => {
         const term = new Terminal({
@@ -55,21 +65,23 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         term.loadAddon(fitAddon);
         term.loadAddon(new WebLinksAddon());
         return { term, fitAddon };
-    }, [theme]);
+    }, [theme, fontFamily]);
 
-    const attachSession = useCallback((id: string, sshHost?: string) => {
+    const createPane = useCallback((paneId: string, sshHost?: string): TerminalPane => {
         const { term, fitAddon } = createTerminalObject();
-        const ws = new WebSocket(`ws://localhost:3001/ws?sessionId=${id}`);
+        const ws = new WebSocket(`ws://localhost:3001/ws?sessionId=${paneId}`);
 
-        const session: TerminalSession = {
-            id, term, fitAddon, ws,
-            status: "connecting",
-            initialised: false
+        const pane: TerminalPane = {
+            id: paneId, term, fitAddon, ws,
+            status: "connecting"
         };
 
         ws.onopen = () => {
-            setSessions(prev => prev.map(s => s.id === id ? { ...s, status: "connected" } : s));
-            term.write(`\r\n\x1b[32m[SYSTEM]\x1b[0m ${sshHost ? `Connecting to ${sshHost}...` : 'Session Restored'}\r\n`);
+            setSessions(prev => prev.map(s => ({
+                ...s,
+                panes: s.panes.map(p => p.id === paneId ? { ...p, status: "connected" as const } : p)
+            })));
+            term.write(`\r\n\x1b[32m[SYSTEM]\x1b[0m ${sshHost ? `Connecting to ${sshHost}...` : 'Session Initialized'}\r\n`);
             ws.send(JSON.stringify({ type: "auth", token, sshHost }));
         };
 
@@ -89,10 +101,17 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
             } catch (e) { console.error(e); }
         };
 
-        ws.onclose = () => setSessions(prev => prev.map(s => s.id === id ? { ...s, status: "disconnected" } : s));
-        ws.onerror = () => setSessions(prev => prev.map(s => s.id === id ? { ...s, status: "error" } : s));
+        ws.onclose = () => setSessions(prev => prev.map(s => ({
+            ...s,
+            panes: s.panes.map(p => p.id === paneId ? { ...p, status: "disconnected" as const } : p)
+        })));
 
-        return session;
+        ws.onerror = () => setSessions(prev => prev.map(s => ({
+            ...s,
+            panes: s.panes.map(p => p.id === paneId ? { ...p, status: "error" as const } : p)
+        })));
+
+        return pane;
     }, [token, createTerminalObject]);
 
     const restoreSessions = useCallback(async () => {
@@ -103,40 +122,63 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
             const existing = await res.json();
 
             if (existing.length > 0) {
-                const restored = existing.map((s: any) => attachSession(s.id));
+                // Group existing backend sessions into tabs (For now, 1 session per tab)
+                const restored = existing.map((s: any): TerminalSession => ({
+                    id: Math.random().toString(36).substring(7),
+                    panes: [createPane(s.id)],
+                    layout: "single"
+                }));
                 setSessions(restored);
-                setActiveSessionId(restored[0].id);
+                if (!activeSessionId) setActiveSessionId(restored[0].id);
             } else {
-                createNewSession();
+                createNewTab();
             }
         } catch (e) {
             console.error("Failed to restore sessions", e);
-            createNewSession();
+            createNewTab();
         }
-    }, [token, attachSession]);
+    }, [token, createPane, activeSessionId]);
 
-    const createNewSession = useCallback((sshHost?: string) => {
-        const id = Math.random().toString(36).substring(7);
-        const session = attachSession(id, sshHost);
-        setSessions(prev => [...prev, session]);
-        setActiveSessionId(id);
-    }, [attachSession]);
+    const createNewTab = useCallback((sshHost?: string) => {
+        const tabId = Math.random().toString(36).substring(7);
+        const paneId = Math.random().toString(36).substring(7);
+        const newSession: TerminalSession = {
+            id: tabId,
+            panes: [createPane(paneId, sshHost)],
+            layout: "single"
+        };
+        setSessions(prev => [...prev, newSession]);
+        setActiveSessionId(tabId);
+    }, [createPane]);
 
-    const closeSession = async (id: string) => {
-        const session = sessions.find(s => s.id === id);
+    const splitActiveTab = useCallback((type: 'horizontal' | 'vertical') => {
+        if (!activeSession) return;
+
+        const newPaneId = Math.random().toString(36).substring(7);
+        const newPane = createPane(newPaneId);
+
+        setSessions(prev => prev.map(s => s.id === activeSessionId ? {
+            ...s,
+            panes: [...s.panes, newPane],
+            layout: type
+        } : s));
+    }, [activeSession, activeSessionId, createPane]);
+
+    const closeTab = async (tabId: string) => {
+        const session = sessions.find(s => s.id === tabId);
         if (session) {
-            session.ws.close();
-            session.term.dispose();
-            setSessions(prev => prev.filter(s => s.id !== id));
+            session.panes.forEach(p => {
+                p.ws.close();
+                p.term.dispose();
+                fetch(`http://localhost:3001/api/sessions/${p.id}`, {
+                    method: 'DELETE',
+                    headers: { Authorization: `Bearer ${token}` }
+                }).catch(console.error);
+            });
 
-            // Clean up on backend
-            fetch(`http://localhost:3001/api/sessions/${id}`, {
-                method: 'DELETE',
-                headers: { Authorization: `Bearer ${token}` }
-            }).catch(console.error);
-
-            if (activeSessionId === id) {
-                const remaining = sessions.filter(s => s.id !== id);
+            setSessions(prev => prev.filter(s => s.id !== tabId));
+            if (activeSessionId === tabId) {
+                const remaining = sessions.filter(s => s.id !== tabId);
                 setActiveSessionId(remaining.length > 1 ? remaining[0].id : null);
             }
         }
@@ -148,20 +190,24 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
 
     useEffect(() => {
         sessions.forEach(session => {
-            const container = terminalContainersRef.current.get(session.id);
-            if (container && !session.term.element) {
-                session.term.open(container);
-                session.fitAddon.fit();
-                session.term.focus();
-            }
+            session.panes.forEach(pane => {
+                const container = paneContainersRef.current.get(pane.id);
+                if (container && !pane.term.element) {
+                    pane.term.open(container);
+                    pane.fitAddon.fit();
+                    pane.term.focus();
+                }
+            });
         });
     }, [sessions, activeSessionId]);
 
     useEffect(() => {
         sessions.forEach(s => {
-            s.term.options.theme = THEMES[theme];
-            s.term.options.fontFamily = fontFamily;
-            s.fitAddon.fit();
+            s.panes.forEach(p => {
+                p.term.options.theme = THEMES[theme];
+                p.term.options.fontFamily = fontFamily;
+                p.fitAddon.fit();
+            });
         });
         document.documentElement.setAttribute('data-theme', theme);
     }, [theme, fontFamily, sessions]);
@@ -170,10 +216,12 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         if (action === 'logout') onLogout();
         else if (action === 'toggle-sidebar') setShowSidebar(prev => !prev);
         else if (action.startsWith('theme-')) setTheme(action.replace('theme-', '') as any);
-        else if (action === 'clear') activeSession?.term.clear();
+        else if (action === 'clear') activeSession?.panes[0].term.clear();
         else if (action === 'status') restoreSessions();
-        else if (action === 'ssh-connect' && value) createNewSession(value);
+        else if (action === 'ssh-connect' && value) createNewTab(value);
         else if (action === 'font-change' && value) setFontFamily(value);
+        else if (action === 'split-horizontal') splitActiveTab('horizontal');
+        else if (action === 'split-vertical') splitActiveTab('vertical');
     };
 
     return (
@@ -196,16 +244,13 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                         }}
                     >
                         <Monitor size={14} />
-                        <span>{s.id}</span>
-                        <X size={14} className="close-icon" onClick={(e) => { e.stopPropagation(); closeSession(s.id); }} />
+                        <span>Tab {s.id}</span>
+                        <X size={14} className="close-icon" onClick={(e) => { e.stopPropagation(); closeTab(s.id); }} />
                     </div>
                 ))}
-                <button onClick={() => createNewSession()} className="tab-action-btn" title="New Session">
-                    <Plus size={18} />
-                </button>
-                <button onClick={restoreSessions} className="tab-action-btn" title="Sync Sessions">
-                    <RefreshCw size={16} />
-                </button>
+                <button onClick={() => createNewTab()} className="tab-action-btn" title="New Tab"><Plus size={18} /></button>
+                <button onClick={() => splitActiveTab('vertical')} className="tab-action-btn" title="Split Vertical"><LayoutTemplate size={16} /></button>
+                <button onClick={restoreSessions} className="tab-action-btn" title="Sync Sessions"><RefreshCw size={16} /></button>
                 <div style={{ flex: 1 }} />
                 <button onClick={onLogout} style={{ background: 'transparent', border: 'none', color: 'var(--text-dim)', fontSize: '11px', cursor: 'pointer', padding: '0 12px' }}>Logout</button>
             </div>
@@ -213,28 +258,26 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
             <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
                 {showSidebar && <FileExplorer
                     token={token}
-                    onSelectFolder={(path) => {
-                        activeSession?.ws.send(JSON.stringify({ type: "input", data: `cd "${path}"\r` }));
-                    }}
+                    onSelectFolder={(path) => activeSession?.panes[0].ws.send(JSON.stringify({ type: "input", data: `cd "${path}"\r` }))}
                     onSelectFile={(path) => setEditingFilePath(path)}
                 />}
 
                 <div style={{ flex: 1, position: 'relative', display: 'flex' }}>
-                    <div style={{ flex: 1, position: 'relative' }}>
-                        {sessions.map(s => (
+                    <div style={{ flex: 1, position: 'relative', display: 'flex', flexDirection: activeSession?.layout === 'vertical' ? 'row' : 'column' }}>
+                        {activeSession?.panes.map((pane, index) => (
                             <div
-                                key={s.id}
-                                ref={el => { if (el) terminalContainersRef.current.set(s.id, el); else terminalContainersRef.current.delete(s.id); }}
-                                className="terminal-wrapper"
+                                key={pane.id}
+                                ref={el => { if (el) paneContainersRef.current.set(pane.id, el); else paneContainersRef.current.delete(pane.id); }}
+                                className="pane-wrapper"
                                 style={{
-                                    position: 'absolute', inset: 0,
-                                    visibility: s.id === activeSessionId ? 'visible' : 'hidden',
-                                    zIndex: s.id === activeSessionId ? 1 : 0
+                                    flex: 1, position: 'relative',
+                                    borderLeft: index > 0 && activeSession.layout === 'vertical' ? '1px solid var(--glass-border)' : 'none',
+                                    borderTop: index > 0 && activeSession.layout === 'horizontal' ? '1px solid var(--glass-border)' : 'none',
                                 }}
                             >
-                                {s.status !== 'connected' && (
+                                {pane.status !== 'connected' && (
                                     <div style={{ position: 'absolute', top: 10, right: 20, zIndex: 10, fontSize: '10px', color: 'var(--accent-color)' }}>
-                                        {s.status.toUpperCase()}...
+                                        {pane.status.toUpperCase()}...
                                     </div>
                                 )}
                             </div>
@@ -243,11 +286,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
 
                     {editingFilePath && (
                         <div style={{ width: '40%', minWidth: '400px', borderLeft: '1px solid var(--glass-border)' }}>
-                            <CodeEditor
-                                path={editingFilePath}
-                                token={token}
-                                onClose={() => setEditingFilePath(null)}
-                            />
+                            <CodeEditor path={editingFilePath} token={token} onClose={() => setEditingFilePath(null)} />
                         </div>
                     )}
                 </div>

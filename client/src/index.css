@@ -485,3 +485,27 @@ body {
   background: rgba(255, 255, 255, 0.05);
   color: #fff;
 }
+
+.tool-btn {
+  background: transparent;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+}
+
+.tool-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.code-editor-container.maximized {
+  position: fixed;
+  inset: 40px 0 0 0;
+  z-index: 1000;
+  background: #1a1a1a;
+}
