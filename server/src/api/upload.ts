@@ -13,8 +13,9 @@ const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         const targetPath = req.query.path as string || ROOT_DIR;
         const normalizedPath = path.resolve(targetPath);
+        const relative = path.relative(path.resolve(ROOT_DIR), normalizedPath);
 
-        if (!normalizedPath.startsWith(path.resolve(ROOT_DIR))) {
+        if (relative.startsWith("..") || path.isAbsolute(relative)) {
             return cb(new Error("Access Denied"), "");
         }
 
