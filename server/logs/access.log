@@ -1891,3 +1891,7 @@
 {"timestamp":"2026-02-01T02:56:26.102Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}
 {"timestamp":"2026-02-01T02:56:38.812Z","level":"INFO","message":"Users loaded from storage."}
 {"timestamp":"2026-02-01T02:56:38.813Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}
+{"timestamp":"2026-02-01T03:04:07.836Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:04:07.853Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T03:04:07.932Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769915047929"}
+{"timestamp":"2026-02-01T03:04:07.936Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769915047934"}

@@ -8,13 +8,15 @@ import { ImageAddon } from "xterm-addon-image";
 import "xterm/css/xterm.css";
 import { CommandPalette } from "./CommandPalette";
 import { Dashboard } from "./Dashboard";
-import { Plus, X, Monitor, RefreshCw, LayoutTemplate, Search, Files, Activity, Clock, ShieldCheck } from "lucide-react";
 import { clsx } from "clsx";
 import { FileExplorer } from "./FileExplorer";
 import { CodeEditor } from "./CodeEditor";
 import { ShortcutManager } from "./ShortcutManager";
 import { UserAdmin } from "./UserAdmin";
+import { ThemeBuilder } from "./ThemeBuilder";
+import { MacroManager } from "./MacroManager";
 import { decodeToken } from "../utils/auth";
+import { Plus, X, Monitor, RefreshCw, LayoutTemplate, Search, Files, Activity, Clock, ShieldCheck, Palette as PaletteIcon, Zap } from "lucide-react";
 
 const THEMES = {
     dark: { background: "#050505", foreground: "#e0e0e0", cursor: "#00ff88" },
@@ -52,7 +54,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
     const [theme, setTheme] = useState<keyof typeof THEMES>("dark");
     const [fontFamily, setFontFamily] = useState("'JetBrains Mono', 'Fira Code', monospace");
     const [showSidebar, setShowSidebar] = useState(true);
-    const [sidebarView, setSidebarView] = useState<'files' | 'system' | 'users'>('files');
+    const [sidebarView, setSidebarView] = useState<'files' | 'system' | 'users' | 'theme' | 'macros'>('files');
     const [editingFilePath, setEditingFilePath] = useState<string | null>(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [showSearch, setShowSearch] = useState(false);
@@ -283,6 +285,8 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         else if (action === 'close-tab') activeSessionId && closeTab(activeSessionId);
         else if (action === 'palette') setIsPaletteOpen(true);
         else if (action === 'search') setShowSearch(prev => !prev);
+        else if (action === 'theme-builder') setSidebarView('theme');
+        else if (action === 'macro-manager') setSidebarView('macros');
         else if (action === 'search-history') {
             setShowHistory(true);
             fetchHistory("");
@@ -339,6 +343,16 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                                     onClick={() => setSidebarView('users')}
                                 />
                             )}
+                            <PaletteIcon
+                                size={20}
+                                className={clsx("cursor-pointer", sidebarView === 'theme' ? "text-accent" : "text-dim")}
+                                onClick={() => setSidebarView('theme')}
+                            />
+                            <Zap
+                                size={20}
+                                className={clsx("cursor-pointer", sidebarView === 'macros' ? "text-accent" : "text-dim")}
+                                onClick={() => setSidebarView('macros')}
+                            />
                         </div>
                         {sidebarView === 'files' ? (
                             <FileExplorer
@@ -348,8 +362,12 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                             />
                         ) : sidebarView === 'system' ? (
                             <Dashboard token={token} />
-                        ) : (
+                        ) : sidebarView === 'users' ? (
                             <UserAdmin token={token} />
+                        ) : sidebarView === 'theme' ? (
+                            <ThemeBuilder onClose={() => setSidebarView('files')} />
+                        ) : (
+                            <MacroManager token={token} />
                         )}
                     </div>
                 )}

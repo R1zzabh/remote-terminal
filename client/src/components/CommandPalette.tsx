@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Search, Terminal as TerminalIcon, LogOut, Palette, Type, LayoutTemplate, Clock, Globe, Sidebar, Activity } from "lucide-react";
+import { Search, Terminal as TerminalIcon, LogOut, Palette, Type, LayoutTemplate, Clock, Globe, Sidebar, Activity, Zap } from "lucide-react";
 import { clsx } from "clsx";
 
 interface CommandPaletteProps {
@@ -24,6 +24,8 @@ const COMMANDS = [
     { id: "status", label: "Sync Sessions", icon: Activity },
     { id: "view-logs", label: "View System Logs", icon: Search },
     { id: "search-history", label: "Search Shell History", icon: Clock },
+    { id: "theme-builder", label: "Open Theme Builder", icon: Palette },
+    { id: "macro-manager", label: "Open Macro Manager", icon: Zap },
     { id: "logout", label: "Terminate All & Logout", icon: LogOut, danger: true },
 ];
 
