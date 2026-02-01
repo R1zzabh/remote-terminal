@@ -233,6 +233,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         else if (action === 'close-tab') activeSessionId && closeTab(activeSessionId);
         else if (action === 'palette') setIsPaletteOpen(true);
         else if (action === 'search') setShowSearch(prev => !prev);
+        else if (action === 'view-logs') setEditingFilePath(window.location.protocol === 'http:' ? '/home/ridgehub/shobha/server/logs/access.log' : 'server/logs/access.log');
     };
 
     return (
@@ -297,7 +298,12 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
 
                     {editingFilePath && (
                         <div style={{ width: '40%', minWidth: '400px', borderLeft: '1px solid var(--glass-border)' }}>
-                            <CodeEditor path={editingFilePath} token={token} onClose={() => setEditingFilePath(null)} />
+                            <CodeEditor
+                                path={editingFilePath}
+                                token={token}
+                                theme={theme}
+                                onClose={() => setEditingFilePath(null)}
+                            />
                         </div>
                     )}
 

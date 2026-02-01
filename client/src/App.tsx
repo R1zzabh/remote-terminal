@@ -1,46 +1,40 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Login } from "./components/Login";
 import { TerminalComponent } from "./components/Terminal";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 
 function App() {
     const [token, setToken] = useState<string | null>(localStorage.getItem("token"));
 
-    useEffect(() => {
-        const storedToken = localStorage.getItem("token");
-        if (storedToken) {
-            setToken(storedToken);
-        }
-    }, []);
-
     const handleLogin = (newToken: string) => {
-        localStorage.setItem("token", newToken);
         setToken(newToken);
+        localStorage.setItem("token", newToken);
     };
 
     const handleLogout = () => {
-        localStorage.removeItem("token");
         setToken(null);
+        localStorage.clear();
     };
 
     return (
-        <div style={{
-            height: "100vh",
-            width: "100vw",
-            background: "#050505",
-            animation: "fadeIn 0.5s ease-out"
-        }}>
-            <style>{`
-                @keyframes fadeIn {
-                    from { opacity: 0; }
-                    to { opacity: 1; }
-                }
-            `}</style>
-            {!token ? (
-                <Login onLogin={handleLogin} />
-            ) : (
-                <TerminalComponent token={token} onLogout={handleLogout} />
-            )}
-        </div>
+        <ErrorBoundary>
+            <div className="app-container" style={{
+                height: "100vh", width: "100vw", overflow: "hidden",
+                animation: "fadeIn 0.5s ease"
+            }}>
+                <style>{`
+                    @keyframes fadeIn {
+                        from { opacity: 0; }
+                        to { opacity: 1; }
+                    }
+                `}</style>
+                {token ? (
+                    <TerminalComponent token={token} onLogout={handleLogout} />
+                ) : (
+                    <Login onLogin={handleLogin} />
+                )}
+            </div>
+        </ErrorBoundary>
     );
 }
 

@@ -22,6 +22,7 @@ const COMMANDS = [
     { id: "split-horizontal", label: "Split Down", icon: LayoutTemplate },
     { id: "split-vertical", label: "Split Right", icon: LayoutTemplate },
     { id: "status", label: "Sync Sessions", icon: Activity },
+    { id: "view-logs", label: "View System Logs", icon: Search },
     { id: "logout", label: "Terminate All & Logout", icon: LogOut, danger: true },
 ];
 

@@ -9,15 +9,19 @@ import "ace-builds/src-noconflict/mode-html";
 import "ace-builds/src-noconflict/mode-json";
 import "ace-builds/src-noconflict/mode-markdown";
 import "ace-builds/src-noconflict/theme-monokai";
+import "ace-builds/src-noconflict/theme-terminal";
+import "ace-builds/src-noconflict/theme-nord_dark";
+import "ace-builds/src-noconflict/theme-solarized_dark";
 import "ace-builds/src-noconflict/ext-language_tools";
 
 interface CodeEditorProps {
     path: string;
     token: string;
+    theme: string;
     onClose: () => void;
 }
 
-export function CodeEditor({ path, token, onClose }: CodeEditorProps) {
+export function CodeEditor({ path, token, theme, onClose }: CodeEditorProps) {
     const [content, setContent] = useState("");
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
@@ -74,6 +78,15 @@ export function CodeEditor({ path, token, onClose }: CodeEditorProps) {
 
     if (loading) return <div className="p-8 text-center text-dim">Loading {path}...</div>;
 
+    const getAceTheme = () => {
+        switch (theme) {
+            case 'matrix': return 'terminal';
+            case 'nord': return 'nord_dark';
+            case 'solarized': return 'solarized_dark';
+            default: return 'monokai';
+        }
+    };
+
     return (
         <div className={`code-editor-container ${isMaximized ? 'maximized' : ''}`} style={{
             display: 'flex', flexDirection: 'column', height: '100%',
@@ -103,7 +116,7 @@ export function CodeEditor({ path, token, onClose }: CodeEditorProps) {
             <div style={{ flex: 1, overflow: 'hidden' }}>
                 <AceEditor
                     mode={getMode()}
-                    theme="monokai"
+                    theme={getAceTheme()}
                     onChange={setContent}
                     value={content}
                     name="ryo-editor"
