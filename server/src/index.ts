@@ -14,6 +14,7 @@ import macrosRouter from "./api/macros.js";
 import { logger } from "./utils/logger.js";
 import { initializeAuth } from "./auth/index.js";
 import { handleWebSocketOpen, handleWebSocketMessage, handleWebSocketClose } from "./ws/handler.js";
+import { cleanupStaleSessions } from "./pty/manager.js";
 import type { AuthenticatedWebSocket } from "./types.js";
 
 const app = express();
@@ -58,14 +59,20 @@ wss.on("connection", (ws: AuthenticatedWebSocket) => {
 });
 
 const start = async () => {
-    await initializeAuth();
-    server.listen(config.port, () => {
-        logger.info(`Ryo Terminal Server running on port ${config.port}`);
-        console.log(`📡 WebSocket ready at ws://localhost:${config.port}/ws\n`);
-    });
+    try {
+        await initializeAuth();
+        cleanupStaleSessions();
+        server.listen(config.port, () => {
+            logger.info(`Ryo Terminal Server running on port ${config.port}`);
+            console.log(`📡 WebSocket ready at ws://localhost:${config.port}/ws\n`);
+        });
+    } catch (err: any) {
+        logger.error("Failed to start server during initialization", { error: err.message });
+        process.exit(1);
+    }
 };
 
-start().catch(err => {
+start().catch((err: any) => {
     logger.error("Failed to start server", { error: err.message });
     process.exit(1);
 });

@@ -1,4 +1,6 @@
 import * as pty from "node-pty";
+import { exec } from "child_process";
+import { logger } from "../utils/logger.js";
 
 export interface PTYSession {
     pty: pty.IPty;
@@ -70,4 +72,25 @@ export function writeToSession(sessionId: string, data: string) {
     if (session) {
         session.pty.write(data);
     }
+}
+
+/**
+ * Audit: Cleanup stale tmux sessions that might have survived a server crash.
+ */
+export function cleanupStaleSessions() {
+    exec("tmux ls", (err, stdout) => {
+        if (err) return; // No tmux sessions or error
+        const lines = stdout.split("\n");
+        lines.forEach(line => {
+            if (line.includes("ryo-")) {
+                const sessionName = line.split(":")[0];
+                // If it's a ryo session but we don't have it in our Map, it's stale
+                const isManaged = Array.from(sessions.keys()).some(id => sessionName.includes(id));
+                if (!isManaged) {
+                    logger.info(`Cleaning up stale tmux session: ${sessionName}`);
+                    exec(`tmux kill-session -t ${sessionName}`);
+                }
+            }
+        });
+    });
 }

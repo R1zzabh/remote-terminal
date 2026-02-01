@@ -119,6 +119,7 @@ async function runStartupMacro(ws: AuthenticatedWebSocket, username: string, ses
 }
 
 const inputBuffers: Map<string, string> = new Map();
+const MAX_BUFFER_SIZE = 1024 * 10; // 10KB per session
 
 function handleInput(ws: AuthenticatedWebSocket, msg: WSMessage) {
     if (!ws.data.authenticated || !ws.data.sessionId) {
@@ -139,9 +140,16 @@ function handleInput(ws: AuthenticatedWebSocket, msg: WSMessage) {
             inputBuffers.set(ws.data.sessionId, "");
         } else {
             const currentBuffer = inputBuffers.get(ws.data.sessionId) || "";
-            // Only buffer printable characters (avoid escape sequences for simple history)
-            if (msg.data.length === 1 && msg.data.charCodeAt(0) >= 32) {
-                inputBuffers.set(ws.data.sessionId, currentBuffer + msg.data);
+
+            // Handle Backspace (ASCII 127) for simple history capture
+            if (msg.data === "\x7f") {
+                inputBuffers.set(ws.data.sessionId, currentBuffer.slice(0, -1));
+            }
+            // Only buffer printable characters and enforce limit
+            else if (msg.data.length === 1 && msg.data.charCodeAt(0) >= 32) {
+                if (currentBuffer.length < MAX_BUFFER_SIZE) {
+                    inputBuffers.set(ws.data.sessionId, currentBuffer + msg.data);
+                }
             }
         }
     }

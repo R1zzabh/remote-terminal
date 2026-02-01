@@ -49,6 +49,11 @@ class DB {
             )
         `);
 
+        // Indices
+        this.db.exec(`CREATE INDEX IF NOT EXISTS idx_macros_user ON macros(username)`);
+        this.db.exec(`CREATE INDEX IF NOT EXISTS idx_history_user ON history(username)`);
+        this.db.exec(`CREATE INDEX IF NOT EXISTS idx_history_ts ON history(timestamp DESC)`);
+
         logger.info("Database initialized.");
     }
 
