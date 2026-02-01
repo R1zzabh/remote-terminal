@@ -11,7 +11,7 @@ interface UseWebSocketOptions {
 export function useWebSocket({ url, token, onMessage, onOpen, onClose }: UseWebSocketOptions) {
     const [isConnected, setIsConnected] = useState(false);
     const wsRef = useRef<WebSocket | null>(null);
-    const reconnectTimeoutRef = useRef<number>();
+    const reconnectTimeoutRef = useRef<number | undefined>(undefined);
     const reconnectAttempts = useRef(0);
 
     const connect = useCallback(() => {
