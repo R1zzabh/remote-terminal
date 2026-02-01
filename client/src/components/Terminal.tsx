@@ -7,17 +7,14 @@ import { WebglAddon } from "xterm-addon-webgl";
 import { ImageAddon } from "xterm-addon-image";
 import "xterm/css/xterm.css";
 import { CommandPalette } from "./CommandPalette";
-import { Dashboard } from "./Dashboard";
 import { clsx } from "clsx";
-import { FileExplorer } from "./FileExplorer";
 import { CodeEditor } from "./CodeEditor";
-import { UserAdmin } from "./UserAdmin";
 import { ShortcutManager } from "./ShortcutManager";
-import { ThemeBuilder } from "./ThemeBuilder";
-import { MacroManager } from "./MacroManager";
 import { TouchToolbar } from "./TouchToolbar";
 import { decodeToken } from "../utils/auth";
-import { Plus, X, Monitor, RefreshCw, LayoutTemplate, Search, Files, Activity, Clock, ShieldCheck, Palette as PaletteIcon, Zap, Menu } from "lucide-react";
+import { Plus, X, Monitor, RefreshCw, LayoutTemplate, Search, Menu, Clock } from "lucide-react";
+import { registerCorePlugins } from "../corePlugins";
+import { pluginRegistry } from "../utils/pluginRegistry";
 
 const THEMES = {
     dark: { background: "#050505", foreground: "#e0e0e0", cursor: "#00ff88" },
@@ -55,7 +52,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
     const [theme, setTheme] = useState<keyof typeof THEMES>("dark");
     const [fontFamily, setFontFamily] = useState("'JetBrains Mono', 'Fira Code', monospace");
     const [showSidebar, setShowSidebar] = useState(true);
-    const [sidebarView, setSidebarView] = useState<'files' | 'system' | 'users' | 'theme' | 'macros'>('files');
+    const [sidebarView, setSidebarView] = useState('files');
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [ctrlPressed, setCtrlPressed] = useState(false);
     const [altPressed, setAltPressed] = useState(false);
@@ -72,6 +69,10 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
     useEffect(() => {
         if (activeSessionId) localStorage.setItem('ryo_active_tab', activeSessionId);
     }, [activeSessionId]);
+
+    useEffect(() => {
+        registerCorePlugins();
+    }, []);
 
     const createTerminalObject = useCallback(() => {
         const term = new Terminal({
@@ -359,45 +360,30 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
 
                     <div className={clsx("sidebar-root", isMobileMenuOpen ? "mobile-drawer open" : "mobile-drawer", !showSidebar && "hidden")} style={{ display: 'flex', borderRight: '1px solid var(--glass-border)' }}>
                         <div style={{ width: '48px', background: 'rgba(0,0,0,0.2)', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '12px 0', gap: '20px', borderRight: '1px solid var(--glass-border)' }}>
-                            <Files size={20} className={clsx("cursor-pointer", sidebarView === 'files' ? "text-accent" : "text-dim")} onClick={() => setSidebarView('files')} />
-                            <Activity
-                                size={20}
-                                className={clsx("cursor-pointer", sidebarView === 'system' ? "text-accent" : "text-dim")}
-                                onClick={() => setSidebarView('system')}
-                            />
-                            {decodeToken(token)?.role === 'admin' && (
-                                <ShieldCheck
+                            {pluginRegistry.getPlugins(decodeToken(token)?.role).map(p => (
+                                <p.icon
+                                    key={p.id}
                                     size={20}
-                                    className={clsx("cursor-pointer", sidebarView === 'users' ? "text-accent" : "text-dim")}
-                                    onClick={() => setSidebarView('users')}
+                                    className={clsx("cursor-pointer", sidebarView === p.id ? "text-accent" : "text-dim")}
+                                    onClick={() => setSidebarView(p.id)}
                                 />
-                            )}
-                            <PaletteIcon
-                                size={20}
-                                className={clsx("cursor-pointer", sidebarView === 'theme' ? "text-accent" : "text-dim")}
-                                onClick={() => setSidebarView('theme')}
-                            />
-                            <Zap
-                                size={20}
-                                className={clsx("cursor-pointer", sidebarView === 'macros' ? "text-accent" : "text-dim")}
-                                onClick={() => setSidebarView('macros')}
-                            />
+                            ))}
                         </div>
-                        {sidebarView === 'files' ? (
-                            <FileExplorer
-                                token={token}
-                                onSelectFolder={(path) => activeSession?.panes[0].ws.send(JSON.stringify({ type: "input", data: `cd "${path}"\r` }))}
-                                onSelectFile={(path) => setEditingFilePath(path)}
-                            />
-                        ) : sidebarView === 'system' ? (
-                            <Dashboard token={token} />
-                        ) : sidebarView === 'users' ? (
-                            <UserAdmin token={token} />
-                        ) : sidebarView === 'theme' ? (
-                            <ThemeBuilder onClose={() => setSidebarView('files')} />
-                        ) : (
-                            <MacroManager token={token} />
-                        )}
+                        {(() => {
+                            const activePlugin = pluginRegistry.getPlugin(sidebarView) || pluginRegistry.getPlugin('files');
+                            if (!activePlugin) return null;
+                            const Component = activePlugin.component;
+                            return (
+                                <Component
+                                    token={token}
+                                    theme={theme}
+                                    onClose={() => setSidebarView('files')}
+                                    // Specific props for core plugins if needed, or pass all
+                                    onSelectFolder={(path: string) => activeSession?.panes[0].ws.send(JSON.stringify({ type: "input", data: `cd "${path}"\r` }))}
+                                    onSelectFile={(path: string) => setEditingFilePath(path)}
+                                />
+                            );
+                        })()}
                     </div>
                 </div>
 
