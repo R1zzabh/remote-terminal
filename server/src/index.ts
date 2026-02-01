@@ -17,8 +17,17 @@ import { handleWebSocketOpen, handleWebSocketMessage, handleWebSocketClose } fro
 import { shutdownAllSessions, cleanupStaleSessions } from "./pty/manager.js";
 import { db } from "./utils/db.js";
 import type { AuthenticatedWebSocket } from "./types.js";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
 
 const app = express();
+app.use(helmet());
+const limiter = rateLimit({
+    windowMs: config.rateLimit.windowMs,
+    max: config.rateLimit.maxRequests,
+    message: { error: "Too many requests" },
+});
+app.use(limiter);
 app.use(express.json());
 app.use(cors({ origin: config.allowedOrigins, credentials: true }));
 
@@ -68,9 +77,9 @@ const start = async () => {
         }
 
         cleanupStaleSessions();
-        server.listen(config.port, () => {
-            logger.info(`Ryo Terminal Server running on port ${config.port}`);
-            console.log(`📡 WebSocket ready at ws://localhost:${config.port}/ws\n`);
+        server.listen(config.port, config.host, () => {
+            logger.info(`Ryo Terminal Server running on ${config.host}:${config.port}`);
+            console.log(`📡 WebSocket ready at ws://${config.host}:${config.port}/ws\n`);
         });
     } catch (err: any) {
         logger.error("Failed to start server during initialization", { error: err.message });

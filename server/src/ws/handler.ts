@@ -77,9 +77,8 @@ export function handleWebSocketClose(ws: AuthenticatedWebSocket) {
     }
 
     if (ws.data.sessionId) {
-        destroySession(ws.data.sessionId);
+        logger.info(`WebSocket detached for ${ws.data.username || "unknown"}`, { sessionId: ws.data.sessionId });
     }
-    logger.info(`WebSocket closed for ${ws.data.username || "unknown"}`, { sessionId: ws.data.sessionId });
 }
 
 function handleAuth(ws: AuthenticatedWebSocket, msg: WSMessage) {

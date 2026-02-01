@@ -112,7 +112,10 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
     const socketsRef = useRef<Map<string, WebSocket>>(new Map());
 
     const connectWebSocket = useCallback((paneId: string, term: Terminal, sshHost?: string, attempt = 0) => {
-        const ws = new WebSocket(`ws://localhost:3001/ws?sessionId=${paneId}`);
+        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        const hostname = window.location.hostname;
+        const port = 3001;
+        const ws = new WebSocket(`${protocol}//${hostname}:${port}/ws?sessionId=${paneId}`);
         socketsRef.current.set(paneId, ws);
 
         const retry = () => {
@@ -205,7 +208,8 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
 
     const restoreSessions = useCallback(async () => {
         try {
-            const res = await fetch("http://localhost:3001/api/sessions", {
+            const hostname = window.location.hostname;
+            const res = await fetch(`http://${hostname}:3001/api/sessions`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             const existing = await res.json();
@@ -245,10 +249,11 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
     const closeTab = async (tabId: string) => {
         const session = sessions.find(s => s.id === tabId);
         if (session) {
+            const hostname = window.location.hostname;
             session.panes.forEach(p => {
                 p.ws.close();
                 p.term.dispose();
-                fetch(`http://localhost:3001/api/sessions/${p.id}`, {
+                fetch(`http://${hostname}:3001/api/sessions/${p.id}`, {
                     method: 'DELETE',
                     headers: { Authorization: `Bearer ${token}` }
                 }).catch(console.error);
@@ -353,18 +358,18 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
             {/* macOS Window Title Bar */}
             <div className="macos-titlebar">
                 <div className="traffic-lights">
-                    <button className="dot red" title="Close" />
-                    <button className="dot yellow" title="Minimize" />
-                    <button className="dot green" title="Fullscreen" />
+                    <div className="dot red" onClick={() => onLogout()} title="Close App" />
+                    <div className="dot yellow" title="Minimize" />
+                    <div className="dot green" title="Fullscreen" />
                 </div>
                 <div className="window-title">
                     zsh — 80×24
                 </div>
-                <div className="titlebar-spacer" />
+                <div className="title-spacer" />
             </div>
 
             {/* macOS Tab Bar */}
-            <div className="macos-tabbar">
+            <div className="macos-tab-bar">
                 {sessions.map((session, index) => (
                     <div
                         key={session.id}
@@ -372,9 +377,9 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                         onClick={() => setActiveSessionId(session.id)}
                     >
                         <span className="tab-icon">📁</span>
-                        <span className="tab-title">Terminal {index + 1}</span>
+                        <span className="tab-label">Terminal {index + 1}</span>
                         <button
-                            className="tab-close"
+                            className="tab-close-btn"
                             onClick={(e) => {
                                 e.stopPropagation();
                                 closeTab(session.id);
@@ -385,7 +390,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                     </div>
                 ))}
                 <button
-                    className="new-tab-btn"
+                    className="add-tab-btn"
                     onClick={() => createNewTab()}
                     title="New Tab"
                 >

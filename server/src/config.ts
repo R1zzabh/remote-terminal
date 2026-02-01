@@ -1,5 +1,6 @@
 export const config = {
     port: parseInt(process.env.PORT || "3001"),
+    host: process.env.HOST || "0.0.0.0",
     jwtSecret: process.env.JWT_SECRET || "change-this-secret-in-production",
     jwtExpiry: "24h",
     allowedOrigins: process.env.ALLOWED_ORIGINS?.split(",") || ["http://localhost:5173", "http://localhost:5174"],
