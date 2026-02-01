@@ -1329,3 +1329,4 @@
 {"timestamp":"2026-02-01T02:46:34.589Z","level":"INFO","message":"WebSocket connection opened"}
 {"timestamp":"2026-02-01T02:46:34.595Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913994594"}
 {"timestamp":"2026-02-01T02:46:34.599Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769913994597"}
+{"timestamp":"2026-02-01T02:47:13.880Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}

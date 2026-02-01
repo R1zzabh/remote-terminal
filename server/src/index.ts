@@ -6,6 +6,7 @@ import { config } from "./config.js";
 import authRouter from "./api/auth.js";
 import filesRouter from "./api/files.js";
 import sessionsRouter from "./api/sessions.js";
+import uploadRouter from "./api/upload.js";
 import { logger } from "./utils/logger.js";
 import { initializeAuth } from "./auth/index.js";
 import { handleWebSocketOpen, handleWebSocketMessage, handleWebSocketClose } from "./ws/handler.js";
@@ -19,6 +20,7 @@ app.use(cors({ origin: config.allowedOrigins, credentials: true }));
 app.use("/api", authRouter);
 app.use("/api/files", filesRouter);
 app.use("/api/sessions", sessionsRouter);
+app.use("/api/upload", uploadRouter);
 
 const server = createServer(app);
 const wss = new WebSocketServer({ noServer: true });
