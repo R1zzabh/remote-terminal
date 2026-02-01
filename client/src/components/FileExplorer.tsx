@@ -1,5 +1,5 @@
 import { useState, memo } from "react";
-import { Folder, File, ChevronRight, RefreshCcw, FilePlus, FolderPlus, Edit3, Trash2, X, Check } from "lucide-react";
+import { Folder, File, ChevronRight, RefreshCcw, FilePlus, FolderPlus, Edit3, Trash2, X, Check, Download, UploadCloud } from "lucide-react";
 import useSWR from "swr";
 
 interface FileExplorerProps {
@@ -18,7 +18,7 @@ interface FileItem {
 const fetcher = (url: string, token: string) =>
     fetch(url, { headers: { Authorization: `Bearer ${token}` } }).then(res => res.json());
 
-const FileItemComponent = memo(({ file, renamingPath, newName, setNewName, onSelect, onDoubleClick, onRename, onCancelRename, onDelete }: any) => {
+const FileItemComponent = memo(({ file, renamingPath, newName, setNewName, onSelect, onDoubleClick, onRename, onCancelRename, onDelete, onDownload }: any) => {
     return (
         <div
             className="explorer-item group"
@@ -52,7 +52,8 @@ const FileItemComponent = memo(({ file, renamingPath, newName, setNewName, onSel
                 <>
                     {file.isDirectory ? <Folder size={14} color="#88c0d0" /> : <File size={14} color="var(--text-dim)" />}
                     <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', flex: 1 }}>{file.name}</span>
-                    <div className="explorer-actions" style={{ display: 'none', gap: '4px' }}>
+                    <div className="explorer-actions" style={{ display: 'none', gap: '6px' }}>
+                        {!file.isDirectory && <Download size={12} className="text-dim hover:text-white" onClick={(e) => { e.stopPropagation(); onDownload(file.path, file.name); }} />}
                         <Edit3 size={12} className="text-dim hover:text-white" onClick={(e) => { e.stopPropagation(); onRename(file.path, file.name); }} />
                         <Trash2 size={12} className="text-danger hover:text-red-400" onClick={(e) => { e.stopPropagation(); onDelete(file.path); }} />
                     </div>
@@ -67,6 +68,8 @@ export function FileExplorer({ token, onSelectFolder, onSelectFile }: FileExplor
     const [isCreating, setIsCreating] = useState<"file" | "folder" | null>(null);
     const [renamingPath, setRenamingPath] = useState<string | null>(null);
     const [newName, setNewName] = useState("");
+    const [isDragging, setIsDragging] = useState(false);
+    const [isUploading, setIsUploading] = useState(false);
 
     const { data: files, error, mutate, isLoading } = useSWR(
         token ? [`http://localhost:3001/api/files?path=${currentPath}`, token] : null,
@@ -77,6 +80,43 @@ export function FileExplorer({ token, onSelectFolder, onSelectFile }: FileExplor
         const parts = currentPath.split("/");
         parts.pop();
         setCurrentPath(parts.join("/"));
+    };
+
+    const handleFileUpload = async (files: FileList) => {
+        setIsUploading(true);
+        const formData = new FormData();
+        formData.append("file", files[0]);
+
+        try {
+            await fetch(`http://localhost:3001/api/upload?path=${currentPath}`, {
+                method: "POST",
+                headers: { Authorization: `Bearer ${token}` },
+                body: formData
+            });
+            mutate();
+        } catch (e) {
+            console.error("Upload failed", e);
+        } finally {
+            setIsUploading(false);
+        }
+    };
+
+    const handleDownload = async (filePath: string, fileName: string) => {
+        try {
+            const res = await fetch(`http://localhost:3001/api/files/content?path=${filePath}`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            const data = await res.json();
+            const blob = new Blob([data.content], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = fileName;
+            a.click();
+            window.URL.revokeObjectURL(url);
+        } catch (e) {
+            console.error("Download failed", e);
+        }
     };
 
     const handleCreate = async () => {
@@ -118,10 +158,38 @@ export function FileExplorer({ token, onSelectFolder, onSelectFile }: FileExplor
     if (error) return <div className="p-4 text-danger">Error loading files</div>;
 
     return (
-        <div className="file-explorer" style={{
-            width: '240px', background: 'rgba(255,255,255,0.02)',
-            borderRight: '1px solid var(--glass-border)', display: 'flex', flexDirection: 'column'
-        }}>
+        <div
+            className="file-explorer"
+            style={{
+                width: '240px', background: 'rgba(255,255,255,0.02)',
+                borderRight: '1px solid var(--glass-border)', display: 'flex', flexDirection: 'column',
+                position: 'relative'
+            }}
+            onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
+            onDragLeave={() => setIsDragging(false)}
+            onDrop={(e) => {
+                e.preventDefault();
+                setIsDragging(false);
+                if (e.dataTransfer.files) handleFileUpload(e.dataTransfer.files);
+            }}
+        >
+            {isDragging && (
+                <div style={{
+                    position: 'absolute', inset: 0, zIndex: 10,
+                    background: 'rgba(136, 192, 208, 0.15)', backdropFilter: 'blur(4px)',
+                    border: '2px dashed #88c0d0', borderRadius: '4px',
+                    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                    gap: '12px', color: '#88c0d0', pointerEvents: 'none'
+                }}>
+                    <UploadCloud size={32} />
+                    <span style={{ fontSize: '12px', fontWeight: 'bold' }}>DROP TO UPLOAD</span>
+                </div>
+            )}
+
+            {isUploading && (
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: 'var(--accent-color)', animation: 'shimmer 1.5s infinite' }} />
+            )}
+
             <div className="explorer-header" style={{ padding: '8px 12px', borderBottom: '1px solid var(--glass-border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <span style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--text-dim)' }}>EXPLORER</span>
                 <div style={{ display: 'flex', gap: '8px' }}>
@@ -180,6 +248,7 @@ export function FileExplorer({ token, onSelectFolder, onSelectFile }: FileExplor
                                 }}
                                 onCancelRename={() => setRenamingPath(null)}
                                 onDelete={() => handleDelete(file.path)}
+                                onDownload={handleDownload}
                             />
                         ))}
                         <style>{`
