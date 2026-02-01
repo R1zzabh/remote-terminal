@@ -7,29 +7,39 @@ import { logger } from "../utils/logger.js";
 const router = Router();
 const HOME = process.env.HOME || process.cwd();
 
+import { db } from "../utils/db.js";
+
 router.get("/", async (req: Request, res: Response) => {
     const token = req.headers.authorization?.split(" ")[1];
-    if (!token || !verifyToken(token)) return res.status(401).json({ error: "Unauthorized" });
+    const payload = token ? verifyToken(token) : null;
+    if (!payload) return res.status(401).json({ error: "Unauthorized" });
 
     const query = (req.query.q as string || "").toLowerCase();
-
-    // Check for common shell history files
-    const historyFiles = [
-        path.join(HOME, ".bash_history"),
-        path.join(HOME, ".zsh_history"),
-        path.join(HOME, ".history")
-    ];
 
     try {
         let allHistory: string[] = [];
 
+        // 1. Fetch from Database
+        const dbHistory = db.query("SELECT command FROM history WHERE username = ? ORDER BY timestamp DESC LIMIT 500", [payload.username]);
+        allHistory = dbHistory.map((h: any) => h.command);
+
+        // 2. Fetch from Common shell history files
+        const historyFiles = [
+            path.join(payload.homeDir, ".bash_history"),
+            path.join(payload.homeDir, ".zsh_history"),
+        ];
+
         for (const file of historyFiles) {
             if (await fs.pathExists(file)) {
-                const content = await fs.readFile(file, "utf-8");
-                const lines = content.split("\n")
-                    .map(line => line.trim())
-                    .filter(line => line.length > 0);
-                allHistory = [...allHistory, ...lines];
+                try {
+                    const content = await fs.readFile(file, "utf-8");
+                    const lines = content.split("\n")
+                        .map(line => line.trim())
+                        .filter(line => line.length > 0);
+                    allHistory = [...allHistory, ...lines];
+                } catch (e) {
+                    // Ignore read errors for individual files
+                }
             }
         }
 
@@ -41,7 +51,7 @@ router.get("/", async (req: Request, res: Response) => {
 
         res.json(filtered);
     } catch (error) {
-        logger.error("Failed to read shell history", { error });
+        logger.error("Failed to read history", { error });
         res.status(500).json({ error: "Internal Server Error" });
     }
 });

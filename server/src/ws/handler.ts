@@ -6,6 +6,7 @@ import { verifyToken } from "../auth/index.js";
 import { createSession, getSession, destroySession, resizeSession, writeToSession } from "../pty/manager.js";
 import { listTmuxSessions } from "../pty/tmux.js";
 import { logger } from "../utils/logger.js";
+import { db } from "../utils/db.js";
 
 export function handleWebSocketOpen(ws: AuthenticatedWebSocket) {
     const banner = `\r\n\x1b[32m
@@ -99,18 +100,15 @@ function handleAuth(ws: AuthenticatedWebSocket, msg: WSMessage) {
 }
 
 async function runStartupMacro(ws: AuthenticatedWebSocket, username: string, sessionId: string) {
-    const MACROS_FILE = path.resolve(process.cwd(), "data", "macros.json");
     try {
-        if (await fs.pathExists(MACROS_FILE)) {
-            const allMacros = await fs.readJson(MACROS_FILE);
-            const userMacros = allMacros[username] || [];
-            const defaultMacro = userMacros.find((m: any) => m.isDefault);
+        const defaultMacro = db.get("SELECT name, commands FROM macros WHERE username = ? AND isDefault = 1", [username]);
 
-            if (defaultMacro && defaultMacro.commands.length > 0) {
-                logger.info(`Running startup macro for ${username}: ${defaultMacro.name}`);
-                for (const cmd of defaultMacro.commands) {
+        if (defaultMacro) {
+            const commands = JSON.parse((defaultMacro as any).commands);
+            if (commands.length > 0) {
+                logger.info(`Running startup macro for ${username}: ${(defaultMacro as any).name}`);
+                for (const cmd of commands) {
                     writeToSession(sessionId, cmd + "\r");
-                    // Small delay between commands to prevent buffer issues
                     await new Promise(r => setTimeout(r, 100));
                 }
             }
@@ -120,6 +118,8 @@ async function runStartupMacro(ws: AuthenticatedWebSocket, username: string, ses
     }
 }
 
+const inputBuffers: Map<string, string> = new Map();
+
 function handleInput(ws: AuthenticatedWebSocket, msg: WSMessage) {
     if (!ws.data.authenticated || !ws.data.sessionId) {
         ws.send(JSON.stringify({ type: "error", message: "Not authenticated" }));
@@ -128,6 +128,22 @@ function handleInput(ws: AuthenticatedWebSocket, msg: WSMessage) {
 
     if (msg.data) {
         writeToSession(ws.data.sessionId, msg.data);
+
+        // Record history on enter
+        if (msg.data.includes("\r") || msg.data.includes("\n")) {
+            const currentBuffer = inputBuffers.get(ws.data.sessionId) || "";
+            const command = currentBuffer.trim();
+            if (command.length > 0 && ws.data.username) {
+                db.run("INSERT INTO history (username, command) VALUES (?, ?)", [ws.data.username, command]);
+            }
+            inputBuffers.set(ws.data.sessionId, "");
+        } else {
+            const currentBuffer = inputBuffers.get(ws.data.sessionId) || "";
+            // Only buffer printable characters (avoid escape sequences for simple history)
+            if (msg.data.length === 1 && msg.data.charCodeAt(0) >= 32) {
+                inputBuffers.set(ws.data.sessionId, currentBuffer + msg.data);
+            }
+        }
     }
 }
 

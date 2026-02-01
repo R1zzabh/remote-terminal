@@ -10,8 +10,9 @@ const router = Router();
 const getNormalizedPath = (targetPath: string, userHome: string) => {
     const resolvedPath = path.resolve(targetPath);
     const resolvedHome = path.resolve(userHome);
+    const relative = path.relative(resolvedHome, resolvedPath);
 
-    if (!resolvedPath.startsWith(resolvedHome)) {
+    if (relative.startsWith('..') || path.isAbsolute(relative)) {
         throw new Error("Access Denied");
     }
     return resolvedPath;

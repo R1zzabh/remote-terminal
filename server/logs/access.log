@@ -1913,3 +1913,22 @@
 {"timestamp":"2026-02-01T03:10:40.531Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769915440530"}
 {"timestamp":"2026-02-01T03:10:40.555Z","level":"INFO","message":"WebSocket connection opened"}
 {"timestamp":"2026-02-01T03:10:40.558Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769915440556"}
+{"timestamp":"2026-02-01T03:16:07.362Z","level":"INFO","message":"Database initialized."}
+{"timestamp":"2026-02-01T03:16:07.368Z","level":"INFO","message":"Migrated 1 users from JSON."}
+{"timestamp":"2026-02-01T03:16:07.426Z","level":"INFO","message":"Auth initialized. 1 users found in database."}
+{"timestamp":"2026-02-01T03:16:07.427Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}
+{"timestamp":"2026-02-01T03:16:08.622Z","level":"INFO","message":"Database initialized."}
+{"timestamp":"2026-02-01T03:16:08.679Z","level":"INFO","message":"Auth initialized. 1 users found in database."}
+{"timestamp":"2026-02-01T03:16:08.680Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}
+{"timestamp":"2026-02-01T03:16:23.358Z","level":"INFO","message":"Database initialized."}
+{"timestamp":"2026-02-01T03:16:23.413Z","level":"INFO","message":"Auth initialized. 1 users found in database."}
+{"timestamp":"2026-02-01T03:16:23.414Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}
+{"timestamp":"2026-02-01T03:16:49.713Z","level":"INFO","message":"Database initialized."}
+{"timestamp":"2026-02-01T03:16:49.770Z","level":"INFO","message":"Auth initialized. 1 users found in database."}
+{"timestamp":"2026-02-01T03:16:49.771Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}
+{"timestamp":"2026-02-01T03:16:59.857Z","level":"INFO","message":"Database initialized."}
+{"timestamp":"2026-02-01T03:16:59.915Z","level":"INFO","message":"Auth initialized. 1 users found in database."}
+{"timestamp":"2026-02-01T03:16:59.917Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}
+{"timestamp":"2026-02-01T03:18:53.963Z","level":"INFO","message":"Database initialized."}
+{"timestamp":"2026-02-01T03:18:54.024Z","level":"INFO","message":"Auth initialized. 1 users found in database."}
+{"timestamp":"2026-02-01T03:18:54.026Z","level":"INFO","message":"Ryo Terminal Server running on port 3001"}

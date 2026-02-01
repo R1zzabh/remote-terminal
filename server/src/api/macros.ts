@@ -1,21 +1,9 @@
 import { Router, Request, Response } from "express";
-import fs from "fs-extra";
-import path from "path";
 import { verifyToken } from "../auth/index.js";
 import { logger } from "../utils/logger.js";
+import { db } from "../utils/db.js";
 
 const router = Router();
-const MACROS_FILE = path.resolve(process.cwd(), "data", "macros.json");
-
-interface Macro {
-    name: string;
-    commands: string[];
-    isDefault: boolean;
-}
-
-interface UserMacros {
-    [username: string]: Macro[];
-}
 
 router.get("/", async (req: Request, res: Response) => {
     const token = req.headers.authorization?.split(" ")[1];
@@ -23,14 +11,13 @@ router.get("/", async (req: Request, res: Response) => {
     if (!payload) return res.status(401).json({ error: "Unauthorized" });
 
     try {
-        await fs.ensureDir(path.dirname(MACROS_FILE));
-        if (!(await fs.pathExists(MACROS_FILE))) {
-            return res.json([]);
-        }
-
-        const allMacros: UserMacros = await fs.readJson(MACROS_FILE);
-        const userMacros = allMacros[payload.username] || [];
-        res.json(userMacros);
+        const macros = db.query("SELECT name, commands, isDefault FROM macros WHERE username = ?", [payload.username]);
+        const formatted = macros.map((m: any) => ({
+            ...m,
+            commands: JSON.parse(m.commands),
+            isDefault: !!m.isDefault
+        }));
+        res.json(formatted);
     } catch (error) {
         logger.error("Failed to read macros", { error });
         res.status(500).json({ error: "Internal Server Error" });
@@ -48,30 +35,20 @@ router.post("/", async (req: Request, res: Response) => {
     }
 
     try {
-        await fs.ensureDir(path.dirname(MACROS_FILE));
-        let allMacros: UserMacros = {};
-        if (await fs.pathExists(MACROS_FILE)) {
-            allMacros = await fs.readJson(MACROS_FILE);
-        }
+        db.transaction(() => {
+            if (isDefault) {
+                db.run("UPDATE macros SET isDefault = 0 WHERE username = ?", [payload.username]);
+            }
 
-        const userMacros = allMacros[payload.username] || [];
-
-        // If this is set as default, unset others
-        if (isDefault) {
-            userMacros.forEach(m => m.isDefault = false);
-        }
-
-        const existingIndex = userMacros.findIndex(m => m.name === name);
-        const newMacro = { name, commands, isDefault };
-
-        if (existingIndex >= 0) {
-            userMacros[existingIndex] = newMacro;
-        } else {
-            userMacros.push(newMacro);
-        }
-
-        allMacros[payload.username] = userMacros;
-        await fs.writeJson(MACROS_FILE, allMacros, { spaces: 2 });
+            const existing = db.get("SELECT id FROM macros WHERE username = ? AND name = ?", [payload.username, name]);
+            if (existing) {
+                db.run("UPDATE macros SET commands = ?, isDefault = ? WHERE id = ?",
+                    [JSON.stringify(commands), isDefault ? 1 : 0, (existing as any).id]);
+            } else {
+                db.run("INSERT INTO macros (username, name, commands, isDefault) VALUES (?, ?, ?, ?)",
+                    [payload.username, name, JSON.stringify(commands), isDefault ? 1 : 0]);
+            }
+        });
 
         logger.info(`Macro saved for ${payload.username}: ${name}`);
         res.json({ success: true });
@@ -89,16 +66,8 @@ router.delete("/:name", async (req: Request, res: Response) => {
     const { name } = req.params;
 
     try {
-        if (!(await fs.pathExists(MACROS_FILE))) return res.status(404).json({ error: "No macros found" });
-
-        const allMacros: UserMacros = await fs.readJson(MACROS_FILE);
-        const userMacros = allMacros[payload.username] || [];
-
-        const filtered = userMacros.filter(m => m.name !== name);
-        if (filtered.length === userMacros.length) return res.status(404).json({ error: "Macro not found" });
-
-        allMacros[payload.username] = filtered;
-        await fs.writeJson(MACROS_FILE, allMacros, { spaces: 2 });
+        const result = db.run("DELETE FROM macros WHERE username = ? AND name = ?", [payload.username, name]);
+        if (result.changes === 0) return res.status(404).json({ error: "Macro not found" });
 
         logger.info(`Macro deleted for ${payload.username}: ${name}`);
         res.json({ success: true });
