@@ -3,7 +3,6 @@ import { Terminal } from "xterm";
 import { FitAddon } from "xterm-addon-fit";
 import { WebLinksAddon } from "xterm-addon-web-links";
 import { SearchAddon } from "xterm-addon-search";
-import { WebglAddon } from "xterm-addon-webgl";
 import { ImageAddon } from "xterm-addon-image";
 import "xterm/css/xterm.css";
 import { CommandPalette } from "./CommandPalette";
@@ -113,7 +112,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
 
     const socketsRef = useRef<Map<string, WebSocket>>(new Map());
 
-    const connectWebSocket = useCallback((paneId: string, term: Terminal, sshHost?: string, joinSessionId?: string, attempt = 0) => {
+    const connectWebSocket = useCallback((paneId: string, term: Terminal, sshHost?: string, joinSessionId?: string, hostSessionName?: string, attempt = 0) => {
         const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
         const hostname = window.location.hostname;
         const port = 3001;
@@ -122,7 +121,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
 
         const retry = () => {
             const delay = Math.min(1000 * Math.pow(2, attempt), 30000);
-            setTimeout(() => connectWebSocket(paneId, term, sshHost, joinSessionId, attempt + 1), delay);
+            setTimeout(() => connectWebSocket(paneId, term, sshHost, joinSessionId, hostSessionName, attempt + 1), delay);
         };
 
         ws.onopen = () => {
@@ -130,8 +129,8 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                 ? { ...s, panes: s.panes.map(p => p.id === paneId ? { ...p, status: "connected" } : p) }
                 : s
             ));
-            term.write(`\r\n\x1b[32m[SYSTEM]\x1b[0m ${sshHost ? `Connecting to ${sshHost}...` : joinSessionId ? `Joining session ${joinSessionId}...` : 'Connected to Server'}\r\n`);
-            ws.send(JSON.stringify({ type: "auth", token, sshHost, joinSessionId }));
+            term.write(`\r\n\x1b[32m[SYSTEM]\x1b[0m ${sshHost ? `Connecting to ${sshHost}...` : joinSessionId ? `Joining session ${joinSessionId}...` : hostSessionName ? `Attaching to tmux: ${hostSessionName}...` : 'Connected to Server'}\r\n`);
+            ws.send(JSON.stringify({ type: "auth", token, sshHost, joinSessionId, hostSessionName }));
         };
 
         ws.onmessage = (event) => {
@@ -165,10 +164,10 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         return ws;
     }, [token]);
 
-    const createPane = useCallback((paneId: string, sshHost?: string, joinSessionId?: string): TerminalPane => {
+    const createPane = useCallback((paneId: string, sshHost?: string, joinSessionId?: string, hostSessionName?: string): TerminalPane => {
         const { term, fitAddon, searchAddon } = createTerminalObject();
 
-        const ws = connectWebSocket(paneId, term, sshHost, joinSessionId);
+        const ws = connectWebSocket(paneId, term, sshHost, joinSessionId, hostSessionName);
         const pane: TerminalPane = { id: paneId, term, fitAddon, searchAddon, ws, status: "connecting" };
 
         term.onData(data => {
@@ -214,6 +213,19 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         const newSession: TerminalSession = {
             id: tabId,
             panes: [createPane(paneId, undefined, sessionId)],
+            layout: "single"
+        };
+        setSessions(prev => [...prev, newSession]);
+        setActiveSessionId(tabId);
+        setShowSessionPicker(false);
+    }, [createPane]);
+
+    const attachHostSession = useCallback((tmuxName: string) => {
+        const tabId = Math.random().toString(36).substring(7);
+        const paneId = Math.random().toString(36).substring(7);
+        const newSession: TerminalSession = {
+            id: tabId,
+            panes: [createPane(paneId, undefined, undefined, tmuxName)],
             layout: "single"
         };
         setSessions(prev => [...prev, newSession]);
@@ -450,6 +462,14 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                 >
                     <Plus size={14} />
                 </button>
+                <button
+                    className="add-tab-btn"
+                    onClick={() => setShowSessionPicker(true)}
+                    title="Sessions"
+                    style={{ marginLeft: 8 }}
+                >
+                    <Users size={14} />
+                </button>
             </div>
 
             <div className="terminal-main" style={{ flex: 1, display: 'flex', overflow: 'hidden', position: 'relative' }}>
@@ -650,6 +670,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                 <SessionPicker
                     token={token}
                     onJoin={joinSession}
+                    onAttachHost={attachHostSession}
                     onCreate={() => { setShowSessionPicker(false); createNewTab(); }}
                     onClose={() => setShowSessionPicker(false)}
                 />
