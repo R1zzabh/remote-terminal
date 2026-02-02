@@ -3,7 +3,7 @@ import fs from "fs-extra";
 import path from "path";
 import type { AuthenticatedWebSocket, WSMessage, WSData } from "../types.js";
 import { verifyToken } from "../auth/index.js";
-import { createSession, getSession, destroySession, resizeSession, writeToSession, attachClient, detachClient, listShareableSessions } from "../pty/manager.js";
+import { createSession, getSession, destroySession, resizeSession, writeToSession, attachClient, detachClient, listShareableSessions, attachToHostSession } from "../pty/manager.js";
 import { listTmuxSessions } from "../pty/tmux.js";
 import { logger } from "../utils/logger.js";
 import { db } from "../utils/db.js";
@@ -63,6 +63,11 @@ export function handleWebSocketMessage(ws: AuthenticatedWebSocket, message: RawD
                 const sessions = listShareableSessions();
                 ws.send(JSON.stringify({ type: "sessions-list", sessions }));
                 break;
+            case "list-host-sessions":
+                listTmuxSessions().then(hostSessions => {
+                    ws.send(JSON.stringify({ type: "host-sessions-list", sessions: hostSessions }));
+                });
+                break;
             default:
                 ws.send(JSON.stringify({ type: "error", message: "Unknown message type" }));
         }
@@ -104,7 +109,7 @@ function handleAuth(ws: AuthenticatedWebSocket, msg: WSMessage) {
     let sessionId: string;
     let session = undefined;
 
-    // JOIN MODE
+    // JOIN MODE - connect to existing Ryo session
     if (msg.joinSessionId) {
         sessionId = msg.joinSessionId;
         session = getSession(sessionId);
@@ -114,7 +119,17 @@ function handleAuth(ws: AuthenticatedWebSocket, msg: WSMessage) {
         }
         // Check permissions if needed (currently public)
     }
-    // CREATE/ATTACH MODE
+    // HOST SESSION MODE - attach to existing tmux session on host
+    else if (msg.hostSessionName) {
+        try {
+            session = attachToHostSession(payload.username, msg.hostSessionName, msg.shareMode);
+            sessionId = session.sessionId;
+        } catch (error) {
+            ws.send(JSON.stringify({ type: "error", message: `Failed to attach: ${(error as Error).message}` }));
+            return;
+        }
+    }
+    // CREATE/ATTACH MODE - create new or attach to existing
     else {
         // Use client-provided sessionId if available, otherwise generate one
         const clientSessionId = msg.sessionId || (ws as any).clientSessionId;

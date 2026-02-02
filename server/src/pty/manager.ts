@@ -57,6 +57,56 @@ export function createSession(username: string, sessionId: string, sshHost?: str
     return session;
 }
 
+export function attachToHostSession(username: string, tmuxSessionName: string, shareMode: "collaborative" | "view-only" = "collaborative"): PTYSession {
+    // Create sessionId based on the tmux session name
+    const sessionId = `host-${tmuxSessionName}-${Date.now()}`;
+
+    // Spawn a PTY that attaches to the existing tmux session
+    let ptyProcess: pty.IPty;
+    try {
+        ptyProcess = pty.spawn("tmux", ["attach-session", "-t", tmuxSessionName], {
+            name: "xterm-256color",
+            cols: 80,
+            rows: 24,
+            cwd: process.env.HOME || "/",
+            env: {
+                ...process.env,
+                TERM: "xterm-256color",
+                COLORTERM: "truecolor",
+                RYO_TERMINAL: "1",
+            } as any,
+        });
+    } catch (error) {
+        logger.error(`Failed to attach to tmux session ${tmuxSessionName}:`, { error });
+        throw new Error(`Failed to attach to tmux session: ${error instanceof Error ? error.message : "Unknown error"}`);
+    }
+
+    const session: PTYSession = {
+        pty: ptyProcess,
+        sessionId,
+        username,
+        createdAt: new Date(),
+        sshHost: undefined,
+        clients: new Set(),
+        owner: username,
+        shareMode
+    };
+
+    // Broadcast PTY output to all connected clients
+    ptyProcess.onData((data) => {
+        broadcastToSession(session, { type: "output", data });
+    });
+
+    ptyProcess.onExit(() => {
+        broadcastToSession(session, { type: "exit", message: "Session ended" });
+        session.clients.forEach(client => client.close());
+        sessions.delete(sessionId);
+    });
+
+    sessions.set(sessionId, session);
+    return session;
+}
+
 export function getSession(sessionId: string): PTYSession | undefined {
     return sessions.get(sessionId);
 }

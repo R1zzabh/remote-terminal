@@ -17,7 +17,7 @@ export interface JWTPayload {
 }
 
 export interface WSMessage {
-    type: "input" | "resize" | "ping" | "auth" | "tmux" | "join" | "list-sessions";
+    type: "input" | "resize" | "ping" | "auth" | "tmux" | "join" | "list-sessions" | "list-host-sessions";
     data?: string;
     cols?: number;
     rows?: number;
@@ -27,6 +27,7 @@ export interface WSMessage {
     sessionId?: string;
     joinSessionId?: string;
     shareMode?: "collaborative" | "view-only";
+    hostSessionName?: string; // tmux session name to attach to
 }
 
 export interface WSData {

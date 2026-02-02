@@ -71,3 +71,467 @@ Node.js v22.13.0
 }
 [INFO] WebSocket detached for testuser { sessionId: 'testuser-1770042876235' }
 [INFO] WebSocket detached for testuser { sessionId: 'testuser-1770042876235' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770043097795',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+2:47:52 PM [tsx] change in ./src/pty/manager.ts Restarting...
+[INFO] SIGTERM received. Starting graceful shutdown... 
+[INFO] Shutting down 3 active PTY sessions... 
+[INFO] Graceful shutdown complete. 
+c[INFO] Database initialized and vacuumed. 
+[INFO] Auth initialized. 1 users found in database. 
+[WARN] SECURITY WARNING: Using default JWT secret. Change this in production by setting JWT_SECRET environment variable! 
+[INFO] Ryo Terminal Server running on 0.0.0.0:3001 
+📡 WebSocket ready at ws://0.0.0.0:3001/ws
+
+[INFO] Cleaning up stale tmux session: ryo-admin-admin-1770042474916 
+[INFO] Cleaning up stale tmux session: ryo-admin-admin-1770042723105 
+[INFO] Cleaning up stale tmux session: ryo-admin-admin-1770043097795 
+[INFO] WebSocket connection opened 
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770043674249',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+2:48:13 PM [tsx] change in ./src/ws/handler.ts Restarting...
+[INFO] SIGTERM received. Starting graceful shutdown... 
+[INFO] Shutting down 1 active PTY sessions... 
+[INFO] Graceful shutdown complete. 
+c[INFO] Database initialized and vacuumed. 
+[INFO] Auth initialized. 1 users found in database. 
+[WARN] SECURITY WARNING: Using default JWT secret. Change this in production by setting JWT_SECRET environment variable! 
+[INFO] Ryo Terminal Server running on 0.0.0.0:3001 
+📡 WebSocket ready at ws://0.0.0.0:3001/ws
+
+[INFO] Cleaning up stale tmux session: ryo-admin-admin-1770043674249 
+[INFO] WebSocket connection opened 
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770043696280',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket connection opened 
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770043704586',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+2:48:42 PM [tsx] change in ./src/ws/handler.ts Restarting...
+[INFO] SIGTERM received. Starting graceful shutdown... 
+[INFO] Shutting down 2 active PTY sessions... 
+[INFO] Graceful shutdown complete. 
+c[INFO] Database initialized and vacuumed. 
+[INFO] Auth initialized. 1 users found in database. 
+[WARN] SECURITY WARNING: Using default JWT secret. Change this in production by setting JWT_SECRET environment variable! 
+[INFO] Ryo Terminal Server running on 0.0.0.0:3001 
+📡 WebSocket ready at ws://0.0.0.0:3001/ws
+
+[INFO] Cleaning up stale tmux session: ryo-admin-admin-1770043696280 
+[INFO] Cleaning up stale tmux session: ryo-admin-admin-1770043704586 
+[INFO] WebSocket connection opened 
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770043726604',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770043753247',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket connection opened 
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770043842979',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770043842999',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770043753247' }
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770043842999' }
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770043842979' }
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770043726604' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770043870202',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: testuser {
+  sessionId: 'host-test_host_session-1770043985369',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for testuser { sessionId: 'host-test_host_session-1770043985369' }
+Failed to kill tmux session ryo-testuser-host-test_host_session-1770043985369: Error: Command failed: tmux kill-session -t ryo-testuser-host-test_host_session-1770043985369
+can't find session: ryo-testuser-host-test_host_session-1770043985369
+
+    at genericNodeError (node:internal/errors:983:15)
+    at wrappedFn (node:internal/errors:537:14)
+    at ChildProcess.exithandler (node:child_process:414:12)
+    at ChildProcess.emit (node:events:524:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5) {
+  code: 1,
+  killed: false,
+  signal: null,
+  cmd: 'tmux kill-session -t ryo-testuser-host-test_host_session-1770043985369',
+  stdout: '',
+  stderr: "can't find session: ryo-testuser-host-test_host_session-1770043985369\n"
+}
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770043870202' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044080135',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044083599',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044080135' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044148904',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044156661',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044156682',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044083599' }
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044156682' }
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044156661' }
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044148904' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044283465',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044285119',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044285119' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044285137',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044285137' }
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044283465' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044326765',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044330160',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket connection opened 
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044330160' }
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044330176',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044330176' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin { sessionId: 'admin-1770044326765', sshHost: undefined, mode: 'JOIN' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044337713',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket connection opened 
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044337713' }
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044337730',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044337730' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'host-mywork-1770044340275',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044408788',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket connection opened 
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044408788' }
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044408807',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044408807' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044421618',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044421618' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044433998',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044443278',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044443278' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044443295',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044443295' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'host-mywork-1770044488639',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'host-mywork-1770044488639' }
+Failed to kill tmux session ryo-admin-host-mywork-1770044488639: Error: Command failed: tmux kill-session -t ryo-admin-host-mywork-1770044488639
+can't find session: ryo-admin-host-mywork-1770044488639
+
+    at genericNodeError (node:internal/errors:983:15)
+    at wrappedFn (node:internal/errors:537:14)
+    at ChildProcess.exithandler (node:child_process:414:12)
+    at ChildProcess.emit (node:events:524:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at Socket.<anonymous> (node:internal/child_process:456:11)
+    at Socket.emit (node:events:524:28)
+    at Pipe.<anonymous> (node:net:351:12) {
+  code: 1,
+  killed: false,
+  signal: null,
+  cmd: 'tmux kill-session -t ryo-admin-host-mywork-1770044488639',
+  stdout: '',
+  stderr: "can't find session: ryo-admin-host-mywork-1770044488639\n"
+}
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'host-mywork-1770044503990',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'host-mywork-1770044340275' }
+Failed to kill tmux session ryo-admin-host-mywork-1770044340275: Error: Command failed: tmux kill-session -t ryo-admin-host-mywork-1770044340275
+can't find session: ryo-admin-host-mywork-1770044340275
+
+    at genericNodeError (node:internal/errors:983:15)
+    at wrappedFn (node:internal/errors:537:14)
+    at ChildProcess.exithandler (node:child_process:414:12)
+    at ChildProcess.emit (node:events:524:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5) {
+  code: 1,
+  killed: false,
+  signal: null,
+  cmd: 'tmux kill-session -t ryo-admin-host-mywork-1770044340275',
+  stdout: '',
+  stderr: "can't find session: ryo-admin-host-mywork-1770044340275\n"
+}
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044326765' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'host-mywork-1770044505447',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin { sessionId: 'admin-1770044326765', sshHost: undefined, mode: 'JOIN' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044506836',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044326765' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044508822',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044509145',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044509145' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044509163',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044509163' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'host-ryo-admin-admin-1770044509163-1770044511884',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'host-ryo-admin-admin-1770044509163-1770044511884' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'host-ryo-admin-admin-1770044509163-1770044513090',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'host-ryo-admin-admin-1770044509163-1770044513090' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'host-ryo-admin-admin-1770044509163-1770044515189',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'host-ryo-admin-admin-1770044509163-1770044515189' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044516486',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044516499',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044516486' }
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044516499' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'host-ryo-admin-admin-1770044509163-1770044521549',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'host-ryo-admin-admin-1770044509163-1770044521549' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'host-ryo-admin-admin-1770044516499-1770044521819',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'host-ryo-admin-admin-1770044516499-1770044521819' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'host-ryo-admin-admin-1770044516499-1770044523089',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'host-ryo-admin-admin-1770044516499-1770044523089' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'host-ryo-admin-admin-1770044516499-1770044525298',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'host-ryo-admin-admin-1770044516499-1770044525298' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044526559',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044526559' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'admin-1770044526579',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'admin-1770044526579' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'host-mywork-1770044529329',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'host-ryo-admin-admin-1770044516499-1770044529351',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'host-ryo-admin-admin-1770044516499-1770044529351' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'host-ryo-admin-admin-1770044509163-1770044529391',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'host-ryo-admin-admin-1770044509163-1770044529391' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'host-ryo-admin-admin-1770044516499-1770044536861',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'host-ryo-admin-admin-1770044516499-1770044536861' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'host-ryo-admin-admin-1770044509163-1770044544112',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'host-ryo-admin-admin-1770044509163-1770044544112' }
+[INFO] WebSocket connection opened 
+[INFO] Session authenticated: admin {
+  sessionId: 'host-ryo-admin-admin-1770044516499-1770044552364',
+  sshHost: undefined,
+  mode: 'CREATE'
+}
+[INFO] WebSocket detached for admin { sessionId: 'host-ryo-admin-admin-1770044516499-1770044552364' }
