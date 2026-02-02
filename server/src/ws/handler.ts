@@ -3,7 +3,7 @@ import fs from "fs-extra";
 import path from "path";
 import type { AuthenticatedWebSocket, WSMessage, WSData } from "../types.js";
 import { verifyToken } from "../auth/index.js";
-import { createSession, getSession, destroySession, resizeSession, writeToSession, reattachSession } from "../pty/manager.js";
+import { createSession, getSession, destroySession, resizeSession, writeToSession, attachClient, detachClient, listShareableSessions } from "../pty/manager.js";
 import { listTmuxSessions } from "../pty/tmux.js";
 import { logger } from "../utils/logger.js";
 import { db } from "../utils/db.js";
@@ -59,6 +59,10 @@ export function handleWebSocketMessage(ws: AuthenticatedWebSocket, message: RawD
             case "tmux":
                 handleTmuxCommand(ws, msg);
                 break;
+            case "list-sessions":
+                const sessions = listShareableSessions();
+                ws.send(JSON.stringify({ type: "sessions-list", sessions }));
+                break;
             default:
                 ws.send(JSON.stringify({ type: "error", message: "Unknown message type" }));
         }
@@ -76,8 +80,12 @@ export function handleWebSocketClose(ws: AuthenticatedWebSocket) {
         heartbeatTimers.delete(ws);
     }
 
-    if (ws.data.sessionId) {
+    if (ws.data && ws.data.sessionId) {
         logger.info(`WebSocket detached for ${ws.data.username || "unknown"}`, { sessionId: ws.data.sessionId });
+        const session = getSession(ws.data.sessionId);
+        if (session) {
+            detachClient(session, ws);
+        }
     }
 }
 
@@ -93,36 +101,48 @@ function handleAuth(ws: AuthenticatedWebSocket, msg: WSMessage) {
         return;
     }
 
-    // Use client-provided sessionId if available, otherwise generate one
-    const clientSessionId = msg.sessionId || (ws as any).clientSessionId;
-    const sessionId = clientSessionId || `${payload.username}-${Date.now()}`;
+    let sessionId: string;
+    let session = undefined;
+
+    // JOIN MODE
+    if (msg.joinSessionId) {
+        sessionId = msg.joinSessionId;
+        session = getSession(sessionId);
+        if (!session) {
+            ws.send(JSON.stringify({ type: "error", message: "Session not found" }));
+            return;
+        }
+        // Check permissions if needed (currently public)
+    }
+    // CREATE/ATTACH MODE
+    else {
+        // Use client-provided sessionId if available, otherwise generate one
+        const clientSessionId = msg.sessionId || (ws as any).clientSessionId;
+        sessionId = clientSessionId || `${payload.username}-${Date.now()}`;
+
+        session = getSession(sessionId);
+        if (!session) {
+            session = createSession(payload.username, sessionId, msg.sshHost, payload.homeDir, msg.shareMode);
+        }
+    }
 
     ws.data.username = payload.username;
     ws.data.sessionId = sessionId;
     ws.data.authenticated = true;
 
-    // Try to reattach to existing session, or create new
-    let session = reattachSession(sessionId);
-    if (!session) {
-        session = createSession(payload.username, sessionId, msg.sshHost, payload.homeDir);
-    }
+    // Attach client to session (manager handles broadcasting now)
+    attachClient(session, ws);
 
-    // Forward PTY output to WebSocket
-    session.pty.onData((data: string) => {
-        ws.send(JSON.stringify({ type: "output", data }));
-    });
-
-    session.pty.onExit(() => {
-        ws.send(JSON.stringify({ type: "exit", message: "Session ended" }));
-        ws.close();
-    });
-
-    logger.info(`Session authenticated: ${payload.username}`, { sessionId, sshHost: msg.sshHost });
+    logger.info(`Session authenticated: ${payload.username}`, { sessionId, sshHost: msg.sshHost, mode: msg.joinSessionId ? 'JOIN' : 'CREATE' });
     ws.send(JSON.stringify({ type: "authenticated", sessionId }));
 
-    // Run startup macro if not SSH
-    if (!msg.sshHost) {
-        runStartupMacro(ws, payload.username, sessionId);
+    // Run startup macro if creating new non-SSH session
+    if (!msg.joinSessionId && !msg.sshHost) {
+        // Only if we are the first client/creator? 
+        // Logic: if session.clients.size === 1
+        if (session.clients.size === 1) {
+            runStartupMacro(ws, payload.username, sessionId);
+        }
     }
 }
 
@@ -151,6 +171,14 @@ const MAX_BUFFER_SIZE = 1024 * 10; // 10KB per session
 function handleInput(ws: AuthenticatedWebSocket, msg: WSMessage) {
     if (!ws.data.authenticated || !ws.data.sessionId) {
         ws.send(JSON.stringify({ type: "error", message: "Not authenticated" }));
+        return;
+    }
+
+    const session = getSession(ws.data.sessionId);
+    if (!session) return;
+
+    if (session.shareMode === "view-only" && session.owner !== ws.data.username) {
+        // Allow owner to type, viewers blocked
         return;
     }
 

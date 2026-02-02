@@ -17,7 +17,7 @@ export interface JWTPayload {
 }
 
 export interface WSMessage {
-    type: "input" | "resize" | "ping" | "auth" | "tmux";
+    type: "input" | "resize" | "ping" | "auth" | "tmux" | "join" | "list-sessions";
     data?: string;
     cols?: number;
     rows?: number;
@@ -25,6 +25,8 @@ export interface WSMessage {
     command?: string;
     sshHost?: string;
     sessionId?: string;
+    joinSessionId?: string;
+    shareMode?: "collaborative" | "view-only";
 }
 
 export interface WSData {
@@ -38,11 +40,14 @@ export interface AuthenticatedWebSocket extends WebSocket {
 }
 
 export interface PTYSession {
-    id: string;
     pty: pty.IPty;
+    sessionId: string;
     username: string;
     createdAt: Date;
-    lastActivity: Date;
+    sshHost?: string;
+    clients: Set<AuthenticatedWebSocket>;
+    owner: string;
+    shareMode: "collaborative" | "view-only";
 }
 
 export interface TmuxSession {

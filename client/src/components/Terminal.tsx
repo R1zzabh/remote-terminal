@@ -11,11 +11,12 @@ import { clsx } from "clsx";
 import { CodeEditor } from "./CodeEditor";
 import { ShortcutManager } from "./ShortcutManager";
 import { decodeToken } from "../utils/auth";
-import { Plus, X, Monitor, RefreshCw, Search, Clock, Power } from "lucide-react";
+import { Plus, X, Monitor, RefreshCw, Search, Clock, Power, Users } from "lucide-react";
 import { registerCorePlugins } from "../corePlugins";
 import { pluginRegistry } from "../utils/pluginRegistry";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { Suspense } from "react";
+import { SessionPicker } from "./SessionPicker";
 
 const THEMES = {
     dark: { background: "#050505", foreground: "#e0e0e0", cursor: "#00ff88" },
@@ -59,6 +60,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
     const [showSearch, setShowSearch] = useState(false);
     const [showHistory, setShowHistory] = useState(false);
     const [historyResults, setHistoryResults] = useState<string[]>([]);
+    const [showSessionPicker, setShowSessionPicker] = useState(false);
     const hasRestoredRef = useRef(false);
 
     const activeSession = sessions.find(s => s.id === activeSessionId);
@@ -111,7 +113,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
 
     const socketsRef = useRef<Map<string, WebSocket>>(new Map());
 
-    const connectWebSocket = useCallback((paneId: string, term: Terminal, sshHost?: string, attempt = 0) => {
+    const connectWebSocket = useCallback((paneId: string, term: Terminal, sshHost?: string, joinSessionId?: string, attempt = 0) => {
         const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
         const hostname = window.location.hostname;
         const port = 3001;
@@ -120,7 +122,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
 
         const retry = () => {
             const delay = Math.min(1000 * Math.pow(2, attempt), 30000);
-            setTimeout(() => connectWebSocket(paneId, term, sshHost, attempt + 1), delay);
+            setTimeout(() => connectWebSocket(paneId, term, sshHost, joinSessionId, attempt + 1), delay);
         };
 
         ws.onopen = () => {
@@ -128,8 +130,8 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                 ? { ...s, panes: s.panes.map(p => p.id === paneId ? { ...p, status: "connected" } : p) }
                 : s
             ));
-            term.write(`\r\n\x1b[32m[SYSTEM]\x1b[0m ${sshHost ? `Connecting to ${sshHost}...` : 'Connected to Server'}\r\n`);
-            ws.send(JSON.stringify({ type: "auth", token, sshHost }));
+            term.write(`\r\n\x1b[32m[SYSTEM]\x1b[0m ${sshHost ? `Connecting to ${sshHost}...` : joinSessionId ? `Joining session ${joinSessionId}...` : 'Connected to Server'}\r\n`);
+            ws.send(JSON.stringify({ type: "auth", token, sshHost, joinSessionId }));
         };
 
         ws.onmessage = (event) => {
@@ -163,10 +165,10 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         return ws;
     }, [token]);
 
-    const createPane = useCallback((paneId: string, sshHost?: string): TerminalPane => {
+    const createPane = useCallback((paneId: string, sshHost?: string, joinSessionId?: string): TerminalPane => {
         const { term, fitAddon, searchAddon } = createTerminalObject();
 
-        const ws = connectWebSocket(paneId, term, sshHost);
+        const ws = connectWebSocket(paneId, term, sshHost, joinSessionId);
         const pane: TerminalPane = { id: paneId, term, fitAddon, searchAddon, ws, status: "connecting" };
 
         term.onData(data => {
@@ -206,6 +208,19 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         setActiveSessionId(tabId);
     }, [createPane]);
 
+    const joinSession = useCallback((sessionId: string) => {
+        const tabId = Math.random().toString(36).substring(7);
+        const paneId = Math.random().toString(36).substring(7);
+        const newSession: TerminalSession = {
+            id: tabId,
+            panes: [createPane(paneId, undefined, sessionId)],
+            layout: "single"
+        };
+        setSessions(prev => [...prev, newSession]);
+        setActiveSessionId(tabId);
+        setShowSessionPicker(false);
+    }, [createPane]);
+
     const restoreSessions = useCallback(async () => {
         try {
             const hostname = window.location.hostname;
@@ -227,6 +242,9 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                     setActiveSessionId(restored[0].id);
                 }
             } else {
+                // createNewTab(); // Don't auto create, show picker or empty state?
+                // For now, let's just show empty state or picker if preferred.
+                // Or standard behavior: one blank tab.
                 createNewTab();
             }
         } catch (e) {
@@ -350,6 +368,7 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
         else if (action === 'split-horizontal') splitActiveTab('horizontal');
         else if (action === 'split-vertical') splitActiveTab('vertical');
         else if (action === 'new-tab') createNewTab();
+        else if (action === 'join-session') setShowSessionPicker(true);
         else if (action === 'close-tab') activeSessionId && closeTab(activeSessionId);
         else if (action === 'palette') setIsPaletteOpen(true);
         else if (action === 'search') setShowSearch(prev => !prev);
@@ -485,20 +504,40 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
                         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '16px', color: 'var(--text-dim)' }}>
                             <Monitor size={48} strokeWidth={1} />
                             <span style={{ fontSize: '14px' }}>No active terminal</span>
-                            <button
-                                onClick={() => createNewTab()}
-                                style={{
-                                    background: 'var(--accent-primary)',
-                                    border: 'none',
-                                    padding: '10px 24px',
-                                    borderRadius: '8px',
-                                    color: '#fff',
-                                    cursor: 'pointer',
-                                    fontWeight: 600
-                                }}
-                            >
-                                Open New Terminal
-                            </button>
+                            <div style={{ display: 'flex', gap: '12px' }}>
+                                <button
+                                    onClick={() => createNewTab()}
+                                    style={{
+                                        background: 'var(--accent-primary)',
+                                        border: 'none',
+                                        padding: '10px 24px',
+                                        borderRadius: '8px',
+                                        color: '#fff',
+                                        cursor: 'pointer',
+                                        fontWeight: 600
+                                    }}
+                                >
+                                    New Terminal
+                                </button>
+                                <button
+                                    onClick={() => setShowSessionPicker(true)}
+                                    style={{
+                                        background: 'rgba(255,255,255,0.1)',
+                                        border: '1px solid var(--glass-border)',
+                                        padding: '10px 24px',
+                                        borderRadius: '8px',
+                                        color: '#fff',
+                                        cursor: 'pointer',
+                                        fontWeight: 600,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '8px'
+                                    }}
+                                >
+                                    <Users size={16} />
+                                    Sessions
+                                </button>
+                            </div>
                         </div>
                     ) : (
                         sessions.map(session => (
@@ -607,6 +646,14 @@ export function TerminalComponent({ token, onLogout }: TerminalComponentProps) {
 
             <ShortcutManager onAction={handleAction} />
             <CommandPalette isOpen={isPaletteOpen} onClose={() => setIsPaletteOpen(false)} onAction={handleAction} />
+            {showSessionPicker && (
+                <SessionPicker
+                    token={token}
+                    onJoin={joinSession}
+                    onCreate={() => { setShowSessionPicker(false); createNewTab(); }}
+                    onClose={() => setShowSessionPicker(false)}
+                />
+            )}
         </div>
     );
 }

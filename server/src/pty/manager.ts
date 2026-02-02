@@ -2,18 +2,11 @@ import * as pty from "node-pty";
 import { exec } from "child_process";
 import { logger } from "../utils/logger.js";
 import { killTmuxSession } from "../pty/tmux.js";
-
-export interface PTYSession {
-    pty: pty.IPty;
-    sessionId: string;
-    username: string;
-    createdAt: Date;
-    sshHost?: string;
-}
+import type { AuthenticatedWebSocket, PTYSession } from "../types.js";
 
 const sessions = new Map<string, PTYSession>();
 
-export function createSession(username: string, sessionId: string, sshHost?: string, cwd?: string): PTYSession {
+export function createSession(username: string, sessionId: string, sshHost?: string, cwd?: string, shareMode: "collaborative" | "view-only" = "collaborative"): PTYSession {
     const shell = sshHost ? "ssh" : (process.env.SHELL || "/bin/bash");
     const args = sshHost ? [sshHost] : ["-c", `tmux new-session -A -s ryo-${username}-${sessionId} || ${process.env.SHELL || "/bin/bash"}`];
 
@@ -42,8 +35,23 @@ export function createSession(username: string, sessionId: string, sshHost?: str
         sessionId,
         username,
         createdAt: new Date(),
-        sshHost
+        sshHost,
+        clients: new Set(),
+        owner: username,
+        shareMode
     };
+
+    // Broadcast PTY output to all connected clients
+    ptyProcess.onData((data) => {
+        broadcastToSession(session, { type: "output", data });
+    });
+
+    ptyProcess.onExit(() => {
+        broadcastToSession(session, { type: "exit", message: "Session ended" });
+        // Close all sockets
+        session.clients.forEach(client => client.close());
+        sessions.delete(sessionId);
+    });
 
     sessions.set(sessionId, session);
     return session;
@@ -53,18 +61,54 @@ export function getSession(sessionId: string): PTYSession | undefined {
     return sessions.get(sessionId);
 }
 
-export function listSessions(username: string): PTYSession[] {
-    return Array.from(sessions.values()).filter(s => s.username === username);
+export function listSessions(username?: string): PTYSession[] {
+    if (username) {
+        return Array.from(sessions.values()).filter(s => s.username === username);
+    }
+    return Array.from(sessions.values());
 }
 
-export function reattachSession(sessionId: string): PTYSession | undefined {
-    return sessions.get(sessionId);
+export function listShareableSessions(): any[] {
+    return Array.from(sessions.values()).map(s => ({
+        id: s.sessionId,
+        username: s.username,
+        createdAt: s.createdAt,
+        clients: s.clients.size,
+        sshHost: s.sshHost,
+        shareMode: s.shareMode
+    }));
+}
+
+export function attachClient(session: PTYSession, ws: AuthenticatedWebSocket) {
+    session.clients.add(ws);
+    // Send current session state or history if we had a buffer (optional optimization)
+    // For now just resize to client's requested size or default
+}
+
+export function detachClient(session: PTYSession, ws: AuthenticatedWebSocket) {
+    session.clients.delete(ws);
+    if (session.clients.size === 0) {
+        // Option: Keep session alive for a bit? Or kill immediately?
+        // For now, if it's a tmux session, the process might persist, but our node-pty wrapper will die?
+        // Actually, we should probably destroy it if no one is watching to save resources,
+        // unless it's designed to persist.
+        // Given 'tmux new-session -A', it persists in background if we detach.
+        // But here we are killing the PTY process wrapper.
+
+        // Let's set a timeout to kill it if no one reconnects in 1 minute?
+        // For simplicity in this iteration: KIll immediately if no clients.
+        deleteSession(session.sessionId);
+    }
 }
 
 export function deleteSession(sessionId: string) {
     const session = sessions.get(sessionId);
     if (session) {
-        session.pty.kill();
+        try {
+            session.pty.kill();
+        } catch (e) {
+            // Ignore
+        }
         // Also kill the actual tmux session
         killTmuxSession(`ryo-${session.username}-${sessionId}`).catch(err => logger.error("Failed to kill tmux session", { error: err }));
         sessions.delete(sessionId);
@@ -76,7 +120,14 @@ export const destroySession = deleteSession;
 export function resizeSession(sessionId: string, cols: number, rows: number) {
     const session = sessions.get(sessionId);
     if (session) {
-        session.pty.resize(cols, rows);
+        try {
+            session.pty.resize(cols, rows);
+            // Notify other clients of resize? (Optional, xterm usually handles reflow on data)
+            // But good to broadcast resize event if clients need to sync UI
+            broadcastToSession(session, { type: "resize", cols, rows }, { excludeSender: false });
+        } catch (err) {
+            logger.error(`Failed to resize session ${sessionId}`, err);
+        }
     }
 }
 
@@ -85,6 +136,16 @@ export function writeToSession(sessionId: string, data: string) {
     if (session) {
         session.pty.write(data);
     }
+}
+
+function broadcastToSession(session: PTYSession, message: any, options: { excludeSender?: AuthenticatedWebSocket | boolean } = {}) {
+    const msgString = JSON.stringify(message);
+    session.clients.forEach(client => {
+        if (options.excludeSender === client) return;
+        if (client.readyState === 1) { // OPEN
+            client.send(msgString);
+        }
+    });
 }
 
 /**

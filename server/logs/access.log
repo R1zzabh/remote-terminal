@@ -1059,3 +1059,52 @@
 {"timestamp":"2026-02-01T05:11:26.005Z","level":"INFO","message":"WebSocket detached for admin","sessionId":"admin-1769922678705"}
 {"timestamp":"2026-02-01T05:11:26.005Z","level":"INFO","message":"WebSocket detached for admin","sessionId":"admin-1769922470470"}
 {"timestamp":"2026-02-01T05:11:26.006Z","level":"INFO","message":"WebSocket detached for admin","sessionId":"admin-1769922676479"}
+{"timestamp":"2026-02-01T06:22:55.173Z","level":"INFO","message":"Database initialized and vacuumed."}
+{"timestamp":"2026-02-01T06:22:55.285Z","level":"INFO","message":"Auth initialized. 1 users found in database."}
+{"timestamp":"2026-02-01T06:22:55.285Z","level":"WARN","message":"SECURITY WARNING: Using default JWT secret. Change this in production by setting JWT_SECRET environment variable!"}
+{"timestamp":"2026-02-01T06:22:55.296Z","level":"INFO","message":"Ryo Terminal Server running on 0.0.0.0:3001"}
+{"timestamp":"2026-02-01T06:23:19.527Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T06:23:19.532Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769926999529"}
+{"timestamp":"2026-02-01T06:23:34.939Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T06:23:34.942Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769927014941"}
+{"timestamp":"2026-02-01T06:25:30.228Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T06:25:30.234Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769927130232"}
+{"timestamp":"2026-02-01T06:25:30.242Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-01T06:25:30.256Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1769927130254"}
+{"timestamp":"2026-02-01T06:35:11.166Z","level":"INFO","message":"WebSocket detached for admin","sessionId":"admin-1769927130254"}
+{"timestamp":"2026-02-01T06:35:11.178Z","level":"INFO","message":"WebSocket detached for admin","sessionId":"admin-1769927014941"}
+{"timestamp":"2026-02-01T06:35:11.178Z","level":"INFO","message":"WebSocket detached for admin","sessionId":"admin-1769926999529"}
+{"timestamp":"2026-02-01T06:35:11.178Z","level":"INFO","message":"WebSocket detached for admin","sessionId":"admin-1769927130232"}
+{"timestamp":"2026-02-02T14:19:21.315Z","level":"INFO","message":"Database initialized and vacuumed."}
+{"timestamp":"2026-02-02T14:19:21.404Z","level":"INFO","message":"Auth initialized. 1 users found in database."}
+{"timestamp":"2026-02-02T14:19:21.404Z","level":"WARN","message":"SECURITY WARNING: Using default JWT secret. Change this in production by setting JWT_SECRET environment variable!"}
+{"timestamp":"2026-02-02T14:19:21.411Z","level":"INFO","message":"Ryo Terminal Server running on 0.0.0.0:3001"}
+{"timestamp":"2026-02-02T14:19:41.021Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-02T14:20:19.896Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-02T14:20:19.900Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1770042019897"}
+{"timestamp":"2026-02-02T14:26:38.171Z","level":"INFO","message":"SIGTERM received. Starting graceful shutdown..."}
+{"timestamp":"2026-02-02T14:26:38.172Z","level":"INFO","message":"Shutting down 1 active PTY sessions..."}
+{"timestamp":"2026-02-02T14:26:38.173Z","level":"INFO","message":"Graceful shutdown complete."}
+{"timestamp":"2026-02-02T14:27:36.441Z","level":"INFO","message":"Database initialized and vacuumed."}
+{"timestamp":"2026-02-02T14:27:36.501Z","level":"INFO","message":"Auth initialized. 1 users found in database."}
+{"timestamp":"2026-02-02T14:27:36.502Z","level":"WARN","message":"SECURITY WARNING: Using default JWT secret. Change this in production by setting JWT_SECRET environment variable!"}
+{"timestamp":"2026-02-02T14:27:36.509Z","level":"INFO","message":"Ryo Terminal Server running on 0.0.0.0:3001"}
+{"timestamp":"2026-02-02T14:27:36.510Z","level":"INFO","message":"Cleaning up stale tmux session: ryo-admin-admin-1770042019897"}
+{"timestamp":"2026-02-02T14:27:53.219Z","level":"INFO","message":"SIGTERM received. Starting graceful shutdown..."}
+{"timestamp":"2026-02-02T14:27:53.219Z","level":"INFO","message":"Shutting down 0 active PTY sessions..."}
+{"timestamp":"2026-02-02T14:27:53.219Z","level":"INFO","message":"Graceful shutdown complete."}
+{"timestamp":"2026-02-02T14:27:53.536Z","level":"INFO","message":"Database initialized and vacuumed."}
+{"timestamp":"2026-02-02T14:27:53.591Z","level":"INFO","message":"Auth initialized. 1 users found in database."}
+{"timestamp":"2026-02-02T14:27:53.592Z","level":"WARN","message":"SECURITY WARNING: Using default JWT secret. Change this in production by setting JWT_SECRET environment variable!"}
+{"timestamp":"2026-02-02T14:27:53.599Z","level":"INFO","message":"Ryo Terminal Server running on 0.0.0.0:3001"}
+{"timestamp":"2026-02-02T14:27:54.913Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-02T14:27:54.918Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1770042474916","mode":"CREATE"}
+{"timestamp":"2026-02-02T14:27:56.773Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-02T14:32:03.103Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-02T14:32:03.108Z","level":"INFO","message":"Session authenticated: admin","sessionId":"admin-1770042723105","mode":"CREATE"}
+{"timestamp":"2026-02-02T14:34:36.232Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-02T14:34:36.236Z","level":"INFO","message":"Session authenticated: testuser","sessionId":"testuser-1770042876235","mode":"CREATE"}
+{"timestamp":"2026-02-02T14:34:36.239Z","level":"INFO","message":"WebSocket connection opened"}
+{"timestamp":"2026-02-02T14:34:36.241Z","level":"INFO","message":"Session authenticated: testuser","sessionId":"testuser-1770042876235","mode":"JOIN"}
+{"timestamp":"2026-02-02T14:34:36.248Z","level":"INFO","message":"WebSocket detached for testuser","sessionId":"testuser-1770042876235"}
+{"timestamp":"2026-02-02T14:34:36.248Z","level":"INFO","message":"WebSocket detached for testuser","sessionId":"testuser-1770042876235"}

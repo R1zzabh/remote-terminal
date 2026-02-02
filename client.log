@@ -3,14 +3,10 @@
 > vite
 
 
-  VITE v7.3.1  ready in 151 ms
+  VITE v7.3.1  ready in 191 ms
 
   ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
-5:00:05 AM [vite] (client) hmr update /src/components/Terminal.tsx
-5:00:07 AM [vite] (client) hmr update /src/components/Terminal.tsx
-5:00:26 AM [vite] (client) hmr update /src/index.css
-5:03:53 AM [vite] (client) hmr update /src/index.css
-5:03:55 AM [vite] (client) hmr update /src/components/Terminal.tsx
-5:07:38 AM [vite] (client) hmr update /src/components/Terminal.tsx
-5:09:39 AM [vite] (client) hmr update /src/components/Terminal.tsx
+2:28:52 PM [vite] (client) hmr update /src/index.css
+2:32:01 PM [vite] (client) hmr update /src/components/Terminal.tsx
+2:32:15 PM [vite] (client) hmr update /src/components/Terminal.tsx
